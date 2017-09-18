@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="plan" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"
+           attributeFormDefault="qualified">
+
+  <xs:element name="fundef">
+    <xs:complexType>
+      <xs:attribute name="fn" type="xs:string" />
+      <xs:attribute name="onblockid" type="xs:string" />
+      <xs:attribute name="offblockid" type="xs:string" />
+      <xs:attribute name="onevent" type="xs:string" />
+      <xs:attribute name="offevent" type="xs:string" />
+      <xs:attribute name="text" type="xs:string" />
+      <xs:attribute name="sound" type="xs:string" />
+      <xs:attribute name="icon" type="xs:string" />
+      <xs:attribute name="timer" type="xs:string" />
+      <xs:attribute name="addr" type="xs:string" />
+      <xs:attribute name="mappedfn" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="plan">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="fundef" />
+        <xs:element name="lclist">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="lc" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="cvbyte" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:attribute name="nr" type="xs:string" />
+                        <xs:attribute name="value" type="xs:string" />
+                        <xs:attribute name="desc" type="xs:string" />
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="bbt" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:attribute name="bk" type="xs:string" />
+                        <xs:attribute name="frombk" type="xs:string" />
+                        <xs:attribute name="route" type="xs:string" />
+                        <xs:attribute name="interval" type="xs:string" />
+                        <xs:attribute name="steps" type="xs:string" />
+                        <xs:attribute name="speed" type="xs:string" />
+                        <xs:attribute name="count" type="xs:string" />
+                        <xs:attribute name="fixed" type="xs:string" />
+                        <xs:attribute name="generatein" type="xs:string" />
+                        <xs:attribute name="centertrain" type="xs:string" />
+                        <xs:attribute name="delay" type="xs:string" />
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element ref="fundef" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                  <xs:attribute name="id" type="xs:string" />
+                  <xs:attribute name="prev_id" type="xs:string" />
+                  <xs:attribute name="shortid" type="xs:string" />
+                  <xs:attribute name="roadname" type="xs:string" />
+                  <xs:attribute name="number" type="xs:string" />
+                  <xs:attribute name="home" type="xs:string" />
+                  <xs:attribute name="desc" type="xs:string" />
+                  <xs:attribute name="dectype" type="xs:string" />
+                  <xs:attribute name="docu" type="xs:string" />
+                  <xs:attribute name="image" type="xs:string" />
+                  <xs:attribute name="imagenr" type="xs:string" />
+                  <xs:attribute name="remark" type="xs:string" />
+                  <xs:attribute name="len" type="xs:string" />
+                  <xs:attribute name="nrcars" type="xs:string" />
+                  <xs:attribute name="catnr" type="xs:string" />
+                  <xs:attribute name="purchased" type="xs:string" />
+                  <xs:attribute name="value" type="xs:string" />
+                  <xs:attribute name="identifier" type="xs:string" />
+                  <xs:attribute name="show" type="xs:string" />
+                  <xs:attribute name="useshortid" type="xs:string" />
+                  <xs:attribute name="mint" type="xs:string" />
+                  <xs:attribute name="throttlenr" type="xs:string" />
+                  <xs:attribute name="manually" type="xs:string" />
+                  <xs:attribute name="bus" type="xs:string" />
+                  <xs:attribute name="addr" type="xs:string" />
+                  <xs:attribute name="secaddr" type="xs:string" />
+                  <xs:attribute name="iid" type="xs:string" />
+                  <xs:attribute name="prot" type="xs:string" />
+                  <xs:attribute name="protver" type="xs:string" />
+                  <xs:attribute name="spcnt" type="xs:string" />
+                  <xs:attribute name="secspcnt" type="xs:string" />
+                  <xs:attribute name="fncnt" type="xs:string" />
+                  <xs:attribute name="V_min" type="xs:string" />
+                  <xs:attribute name="V_mid" type="xs:string" />
+                  <xs:attribute name="V_cru" type="xs:string" />
+                  <xs:attribute name="V_max" type="xs:string" />
+                  <xs:attribute name="V_maxsec" type="xs:string" />
+                  <xs:attribute name="KMH_min" type="xs:string" />
+                  <xs:attribute name="KMH_mid" type="xs:string" />
+                  <xs:attribute name="KMH_cru" type="xs:string" />
+                  <xs:attribute name="KMH_max" type="xs:string" />
+                  <xs:attribute name="KMH_Rmin" type="xs:string" />
+                  <xs:attribute name="KMH_Rmid" type="xs:string" />
+                  <xs:attribute name="KMH_Rcru" type="xs:string" />
+                  <xs:attribute name="KMH_Rmax" type="xs:string" />
+                  <xs:attribute name="V_Rmin" type="xs:string" />
+                  <xs:attribute name="V_Rmid" type="xs:string" />
+                  <xs:attribute name="V_Rcru" type="xs:string" />
+                  <xs:attribute name="V_Rmax" type="xs:string" />
+                  <xs:attribute name="V_step" type="xs:string" />
+                  <xs:attribute name="mass" type="xs:string" />
+                  <xs:attribute name="Vmidpercent" type="xs:string" />
+                  <xs:attribute name="Vmaxmin" type="xs:string" />
+                  <xs:attribute name="Vmaxmax" type="xs:string" />
+                  <xs:attribute name="Vmaxkmh" type="xs:string" />
+                  <xs:attribute name="Vmidset" type="xs:string" />
+                  <xs:attribute name="V_mode" type="xs:string" />
+                  <xs:attribute name="placing" type="xs:string" />
+                  <xs:attribute name="regulated" type="xs:string" />
+                  <xs:attribute name="restorefx" type="xs:string" />
+                  <xs:attribute name="restorefxalways" type="xs:string" />
+                  <xs:attribute name="restorespeed" type="xs:string" />
+                  <xs:attribute name="info4throttle" type="xs:string" />
+                  <xs:attribute name="dirpause" type="xs:string" />
+                  <xs:attribute name="adjustaccel" type="xs:string" />
+                  <xs:attribute name="maxload" type="xs:string" />
+                  <xs:attribute name="accelmin" type="xs:string" />
+                  <xs:attribute name="accelmax" type="xs:string" />
+                  <xs:attribute name="decelerate" type="xs:string" />
+                  <xs:attribute name="blockwaittime" type="xs:string" />
+                  <xs:attribute name="maxwaittime" type="xs:string" />
+                  <xs:attribute name="evttimer" type="xs:string" />
+                  <xs:attribute name="swaptimer" type="xs:string" />
+                  <xs:attribute name="ent2incorr" type="xs:string" />
+                  <xs:attribute name="priority" type="xs:string" />
+                  <xs:attribute name="usescheduletime" type="xs:string" />
+                  <xs:attribute name="commuter" type="xs:string" />
+                  <xs:attribute name="shortin" type="xs:string" />
+                  <xs:attribute name="inatpre2in" type="xs:string" />
+                  <xs:attribute name="usemanualroutes" type="xs:string" />
+                  <xs:attribute name="useownwaittime" type="xs:string" />
+                  <xs:attribute name="startupscid" type="xs:string" />
+                  <xs:attribute name="startuptourid" type="xs:string" />
+                  <xs:attribute name="check2in" type="xs:string" />
+                  <xs:attribute name="usedepartdelay" type="xs:string" />
+                  <xs:attribute name="freeblockonenter" type="xs:string" />
+                  <xs:attribute name="reducespeedatenter" type="xs:string" />
+                  <xs:attribute name="routespeedatenter" type="xs:string" />
+                  <xs:attribute name="v0onswap" type="xs:string" />
+                  <xs:attribute name="resetplacing" type="xs:string" />
+                  <xs:attribute name="manual" type="xs:string" />
+                  <xs:attribute name="lookupschedule" type="xs:string" />
+                  <xs:attribute name="lookupschedulevirtual" type="xs:string" />
+                  <xs:attribute name="engine" type="xs:string" />
+                  <xs:attribute name="cargo" type="xs:string" />
+                  <xs:attribute name="secondnextblock" type="xs:string" />
+                  <xs:attribute name="era" type="xs:string" />
+                  <xs:attribute name="class" type="xs:string" />
+                  <xs:attribute name="consist_syncfunmap" type="xs:string" />
+                  <xs:attribute name="consist_lightsoff" type="xs:string" />
+                  <xs:attribute name="consist_syncfun" type="xs:string" />
+                  <xs:attribute name="consist_synclights" type="xs:string" />
+                  <xs:attribute name="consist" type="xs:string" />
+                  <xs:attribute name="usebbt" type="xs:string" />
+                  <xs:attribute name="bbtsteps" type="xs:string" />
+                  <xs:attribute name="bbtstartinterval" type="xs:string" />
+                  <xs:attribute name="bbtmaxdiff" type="xs:string" />
+                  <xs:attribute name="bbtcorrection" type="xs:string" />
+                  <xs:attribute name="bbtkey" type="xs:string" />
+                  <xs:attribute name="destblockid" type="xs:string" />
+                  <xs:attribute name="cmdDelay" type="xs:string" />
+                  <xs:attribute name="mode" type="xs:string" />
+                  <xs:attribute name="fifotop" type="xs:string" />
+                  <xs:attribute name="V" type="xs:string" />
+                  <xs:attribute name="fx" type="xs:string" />
+                  <xs:attribute name="throttleid" type="xs:string" />
+                  <xs:attribute name="trainlen" type="xs:string" />
+                  <xs:attribute name="trainweight" type="xs:string" />
+                  <xs:attribute name="cmd" type="xs:string" />
+                  <xs:attribute name="signalaspect" type="xs:string" />
+                  <xs:attribute name="dir" type="xs:string" />
+                  <xs:attribute name="fn" type="xs:string" />
+                  <xs:attribute name="runtime" type="xs:string" />
+                  <xs:attribute name="usesecaddr" type="xs:string" />
+                  <xs:attribute name="controlcode" type="xs:string" />
+                  <xs:attribute name="slavecode" type="xs:string" />
+                  <xs:attribute name="server" type="xs:string" />
+                  <xs:attribute name="blockenterside" type="xs:string" />
+                  <xs:attribute name="blockenterid" type="xs:string" />
+                  <xs:attribute name="modereason" type="xs:string" />
+                  <xs:attribute name="resumeauto" type="xs:string" />
+                  <xs:attribute name="blockid" type="xs:string" />
+                  <xs:attribute name="mtime" type="xs:string" />
+                  <xs:attribute name="active" type="xs:string" />
+                  <xs:attribute name="waittime" type="xs:string" />
+                  <xs:attribute name="scidx" type="xs:string" />
+                  <xs:attribute name="scheduleid" type="xs:string" />
+                  <xs:attribute name="tourid" type="xs:string" />
+                  <xs:attribute name="train" type="xs:string" />
+                  <xs:attribute name="V_realkmh" type="xs:string" />
+                  <xs:attribute name="prev_x" type="xs:string" />
+                  <xs:attribute name="prev_y" type="xs:string" />
+                  <xs:attribute name="prev_ori" type="xs:string" />
+                  <xs:attribute name="rdate" type="xs:string" />
+                  <xs:attribute name="energypercentage" type="xs:string" />
+                  <xs:attribute name="owner" type="xs:string" />
+                  <xs:attribute name="color" type="xs:string" />
+                  <xs:attribute name="V_hint" type="xs:string" />
+                  <xs:attribute name="V_maxkmh" type="xs:string" />
+                  <xs:attribute name="bbtevent" type="xs:string" />
+                  <xs:attribute name="decfile" type="xs:string" />
+                  <xs:attribute name="weight" type="xs:string" />
+                  <xs:attribute name="minenergypercentage" type="xs:string" />
+                  <xs:attribute name="secondnextblock4wait" type="xs:string" />
+                  <xs:attribute name="cvnrs" type="xs:string" />
+                  <xs:attribute name="generated" type="xs:string" />
+                  <xs:attribute name="mdate" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="carlist">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="car" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="fundef" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                  <xs:attribute name="id" type="xs:string" />
+                  <xs:attribute name="image" type="xs:string" />
+                  <xs:attribute name="show" type="xs:string" />
+                  <xs:attribute name="prev_id" type="xs:string" />
+                  <xs:attribute name="ident" type="xs:string" />
+                  <xs:attribute name="number" type="xs:string" />
+                  <xs:attribute name="color" type="xs:string" />
+                  <xs:attribute name="roadname" type="xs:string" />
+                  <xs:attribute name="era" type="xs:string" />
+                  <xs:attribute name="location" type="xs:string" />
+                  <xs:attribute name="owner" type="xs:string" />
+                  <xs:attribute name="waybill" type="xs:string" />
+                  <xs:attribute name="purchased" type="xs:string" />
+                  <xs:attribute name="value" type="xs:string" />
+                  <xs:attribute name="status" type="xs:string" />
+                  <xs:attribute name="type" type="xs:string" />
+                  <xs:attribute name="commuter" type="xs:string" />
+                  <xs:attribute name="len" type="xs:string" />
+                  <xs:attribute name="weight_empty" type="xs:string" />
+                  <xs:attribute name="weight_loaded" type="xs:string" />
+                  <xs:attribute name="manuid" type="xs:string" />
+                  <xs:attribute name="catnr" type="xs:string" />
+                  <xs:attribute name="dectype" type="xs:string" />
+                  <xs:attribute name="docu" type="xs:string" />
+                  <xs:attribute name="remark" type="xs:string" />
+                  <xs:attribute name="V_max" type="xs:string" />
+                  <xs:attribute name="bus" type="xs:string" />
+                  <xs:attribute name="addr" type="xs:string" />
+                  <xs:attribute name="iid" type="xs:string" />
+                  <xs:attribute name="prot" type="xs:string" />
+                  <xs:attribute name="protver" type="xs:string" />
+                  <xs:attribute name="usedir" type="xs:string" />
+                  <xs:attribute name="invdir" type="xs:string" />
+                  <xs:attribute name="placing" type="xs:string" />
+                  <xs:attribute name="uselights" type="xs:string" />
+                  <xs:attribute name="fnlights" type="xs:string" />
+                  <xs:attribute name="f0vcmd" type="xs:string" />
+                  <xs:attribute name="spcnt" type="xs:string" />
+                  <xs:attribute name="prevlocation3" type="xs:string" />
+                  <xs:attribute name="prevlocation2" type="xs:string" />
+                  <xs:attribute name="prevlocation1" type="xs:string" />
+                  <xs:attribute name="prev_x" type="xs:string" />
+                  <xs:attribute name="prev_y" type="xs:string" />
+                  <xs:attribute name="prev_ori" type="xs:string" />
+                  <xs:attribute name="maxloadweight" type="xs:string" />
+                  <xs:attribute name="V_max_loaded" type="xs:string" />
+                  <xs:attribute name="V_min_hint" type="xs:string" />
+                  <xs:attribute name="V_mid_hint" type="xs:string" />
+                  <xs:attribute name="V_cru_hint" type="xs:string" />
+                  <xs:attribute name="V_max_hint" type="xs:string" />
+                  <xs:attribute name="subtype" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="operatorlist">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="operator" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="id" type="xs:string" />
+                  <xs:attribute name="prev_id" type="xs:string" />
+                  <xs:attribute name="lcid" type="xs:string" />
+                  <xs:attribute name="swaptrainimage" type="xs:string" />
+                  <xs:attribute name="carids" type="xs:string" />
+                  <xs:attribute name="cargo" type="xs:string" />
+                  <xs:attribute name="class" type="xs:string" />
+                  <xs:attribute name="V_max" type="xs:string" />
+                  <xs:attribute name="length" type="xs:string" />
+                  <xs:attribute name="shiftonly" type="xs:string" />
+                  <xs:attribute name="prev_x" type="xs:string" />
+                  <xs:attribute name="prev_y" type="xs:string" />
+                  <xs:attribute name="prev_ori" type="xs:string" />
+                  <xs:attribute name="centertrain" type="xs:string" />
+                  <xs:attribute name="centertrainonly" type="xs:string" />
+                  <xs:attribute name="inatpre2in" type="xs:string" />
+                  <xs:attribute name="shortin" type="xs:string" />
+                  <xs:attribute name="commuter" type="xs:string" />
+                  <xs:attribute name="secondnextblock" type="xs:string" />
+                  <xs:attribute name="secondnextblock4wait" type="xs:string" />
+                  <xs:attribute name="location" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
