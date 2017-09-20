@@ -2,7 +2,6 @@ package nl.scholtens.materieel.controller;
 
 import nl.scholtens.materieel.domein.Locomtief;
 import nl.scholtens.materieel.service.LocService;
-import nl.scholtens.materieel.service.LocServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,9 +19,9 @@ public class LocController {
     @RequestMapping(value = "/locs", method = RequestMethod.GET)
     public String getLocLijst(Model model) {
 
-        List<Locomtief> locomtiefs = locService.ophalenLocLijst();
+        List<Locomtief> locomtiefs = locService.ophalenLocLijst("/data/Data/rocrail/loc.xml");
         model.addAttribute("lijst", locomtiefs);
-        return "loclijstview";
+        return "loclijstView";
     }
 
 }

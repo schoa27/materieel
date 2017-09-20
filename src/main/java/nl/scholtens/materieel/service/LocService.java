@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface LocService {
 
-    List<Locomtief> ophalenLocLijst();
+    List<Locomtief> ophalenLocLijst(String file);
 }

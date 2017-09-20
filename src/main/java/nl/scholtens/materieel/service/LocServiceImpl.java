@@ -16,10 +16,10 @@ public class LocServiceImpl implements LocService {
     private MatrieelMapper materieel = new MatrieelMapper();
 
     @Override
-    public List<Locomtief> ophalenLocLijst() {
+    public List<Locomtief> ophalenLocLijst(String file) {
         List<Locomtief> locomtiefs = null;
         try {
-            locomtiefs = materieel.getlocList("/data/Data/rocrail/loc.xml");
+            locomtiefs = materieel.getlocList(file);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (JAXBException e) {

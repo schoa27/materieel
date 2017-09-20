@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://wwww.thymeleaf.org">
+<head>
+    <meta content="text/html; charset=ISO-8859-1"
+          http-equiv="content-type"/>
+    <title>locOverzicht</title>
+</head>
+<body>
+<form method="get" action="locOverzicht" name="locOverzicht"></form>
+
+<table style="text-align: left; width: 100%;" border="0" cellpadding="2"
+       cellspacing="2">
+    <tbody>
+    <tr>
+        <td style="vertical-align: middle; text-align: center;">Locomotief Overzicht
+        </td>
+    </tr>
+    <tr>
+        <td style="vertical-align: top;">
+            <table style="text-align: left; width: 100%;" border="1"
+                   cellpadding="2" cellspacing="2">
+                <tbody>
+                <tr>
+                    <td style="vertical-align: top;"><a name="Merk"></a>Merk</td>
+                    <td style="vertical-align: top;">TypeNummer</td>
+                    <td style="vertical-align: top;">BR</td>
+                    <td style="vertical-align: top;">Decoder adres</td>
+                    <td style="vertical-align: top;">Aandrijving</td>
+                    <td style="vertical-align: top;">Afbeelding</td>
+                </tr>
+                <tr th:each="locomotief, iterstat: ${lijst}">
+                    <td style="vertical-align: top;" th:text="${locomotief.id}" th:id="|td${iterstat.index}|"/>
+                    <td style="vertical-align: top;" th:text="${locomotief.typeNummer}" th:id="|td${iterstat.index}|"/>
+                    <td style="vertical-align: top;" th:text="${locomotief.id}" th:id="|td${iterstat.index}|"/>
+                    <td style="vertical-align: top;" th:text="${locomotief.decoderAdres}" th:id="|td${iterstat.index}|"/>
+                    <td style="vertical-align: top;" th:text="${locomotief.aandrijving}" th:id="|td${iterstat.index}|"/>
+                    <td style="vertical-align: top;" th:text="${locomotief.afbeelding}" th:id="|td${iterstat.index}|"/>
+                </tr>
+                </tbody>
+            </table>
+
+        </td>
+    </tr>
+    <tr>
+        <td style="vertical-align: top;">
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
+

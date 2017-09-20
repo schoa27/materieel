@@ -45,7 +45,12 @@ public class MatrieelMapper {
         getPlanGegevens(file);
 
         for (Plan.Lclist.Lc loc : locLijst) {
-            locotieven.add(new Locomtief(loc.getId(), loc.getNumber(), loc.getEngine()));
+            Locomtief locomtief = new Locomtief(loc.getId(), loc.getNumber(), loc.getEngine());
+            locomtief.setDecoderAdres(loc.getAddr());
+            locomtief.setTypeNummer(loc.getCatnr());
+            locomtief.setAfbeelding(loc.getImage());
+                    locotieven.add(locomtief);
+
         }
 
         return locotieven;

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://wwww.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>SetupView</title>
+</head>
+<body>
+<form method="post" action="/setup">
+    <fieldset>
+        <table>
+            <tr>
+                <td>lokatie van XML bestand</td>
+                <td><input type="text" name="padxml"/></td>
+            </tr>
+            <tr>
+                <td>lokatie van de afbeeldingen</td>
+                <td><input type="text" name="padafbeelding"/></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Opslaan"/></td>
+            </tr>
+        </table>
+    </fieldset>
+</form>
+<div th:if="${gevuld} == true">
+    <form method="post" action="/keuze">
+        <fieldset>
+            <form>
+                <table style="text-align: left; width: 100%;" border="0" cellpadding="2"
+                       cellspacing="2">
+                    <tr>
+                        <td><input type="submit" name="loc" value="Locomotief Overzicht" /></td>
+                        <td><input type="submit" name="car" value="Wagen Overzicht"/></td>
+                        <td><input type="submit" name="train" value="Stam Overzicht"/></td>
+                    </tr>
+                </table>
+            </form>
+        </fieldset>
+    </form>
+</div>
+</body>
+</html>

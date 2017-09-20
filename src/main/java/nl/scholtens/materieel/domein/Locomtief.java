@@ -5,12 +5,20 @@ public class Locomtief {
 
     private String number;
 
-    private String aandrjving;
+    private String decoderAdres;
+
+    private String typeNummer;
+
+    private String fabrikant;
+
+    private String aandrijving;
+
+    private String afbeelding;
 
     public Locomtief(String id, String number, String aandrjving) {
         this.id = id;
         this.number = number;
-        this.aandrjving = aandrjving;
+        this.aandrijving = aandrjving;
     }
 
     public String getId() {
@@ -29,11 +37,46 @@ public class Locomtief {
         this.number = number;
     }
 
-    public String getAandrjving() {
-        return aandrjving;
+    public String getAandrijving() {
+        return aandrijving;
     }
 
-    public void setAandrjving(String aandrjving) {
-        this.aandrjving = aandrjving;
+    public String getDecoderAdres() {
+        return decoderAdres;
     }
+
+    public String getAfbeelding() {
+        return afbeelding;
+    }
+
+    public void setAfbeelding(String afbeelding) {
+        this.afbeelding = afbeelding;
+    }
+
+    public void setDecoderAdres(String decoderAdres) {
+        this.decoderAdres = decoderAdres;
+
+    }
+
+    public String getTypeNummer() {
+        return typeNummer;
+    }
+
+    public void setTypeNummer(String typeNummer) {
+        this.typeNummer = typeNummer;
+    }
+
+    public String getFabrikant() {
+        return fabrikant;
+    }
+
+    public void setFabrikant(String fabrikant) {
+        this.fabrikant = fabrikant;
+    }
+
+    public void setAandrijving(String aandrjving) {
+        this.aandrijving = aandrijving;
+    }
+
+
 }
