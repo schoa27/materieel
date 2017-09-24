@@ -1,6 +1,6 @@
-package nl.scholtens.materieel.controller;
+package nl.scholtens.material.controller;
 
-import nl.scholtens.materieel.service.SetupService;
+import nl.scholtens.material.service.SetupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +23,7 @@ public class SetupController {
     }
 
     @RequestMapping(value = "/setup", method = RequestMethod.POST)
-    public ModelAndView opslaan(HttpServletRequest request, ModelAndView model) {
+    public ModelAndView writeSetup(HttpServletRequest request, ModelAndView model) {
         model.addObject("gevuld", false);
 
         if (!request.getParameter("padxml").isEmpty()
@@ -43,7 +43,7 @@ public class SetupController {
     }
 
     @RequestMapping(value = "/keuze", method = RequestMethod.POST)
-    public void overzichten(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void views(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String element = request.getParameterNames().nextElement();
 
         if (element.contentEquals("loc")) {

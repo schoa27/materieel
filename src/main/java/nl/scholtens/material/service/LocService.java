@@ -1,6 +1,6 @@
-package nl.scholtens.materieel.service;
+package nl.scholtens.material.service;
 
-import nl.scholtens.materieel.domein.Locomtive;
+import nl.scholtens.material.domain.Locomtive;
 
 import java.util.List;
 

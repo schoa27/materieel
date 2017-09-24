@@ -1,7 +1,7 @@
-package nl.scholtens.materieel.service;
+package nl.scholtens.material.service;
 
-import nl.scholtens.materieel.domein.Locomtive;
-import nl.scholtens.materieel.mapper.MatrieelMapper;
+import nl.scholtens.material.domain.Car;
+import nl.scholtens.material.mapper.MaterialMapper;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 
@@ -10,15 +10,15 @@ import java.io.FileNotFoundException;
 import java.util.List;
 
 @Service
-public class LocServiceImpl implements LocService {
+public class CarServiceImpl implements CarService {
 
-    private MatrieelMapper material = new MatrieelMapper();
+    private MaterialMapper material = new MaterialMapper();
 
     @Override
-    public List<Locomtive> getLocList(String file) {
-        List<Locomtive> locomtives = null;
+    public List<Car> getCarList(String file) {
+        List<Car> cars = null;
         try {
-            locomtives = material.getlocList(file);
+            cars = material.getCarList(file);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (JAXBException e) {
@@ -26,7 +26,6 @@ public class LocServiceImpl implements LocService {
         } catch (SAXException e) {
             e.printStackTrace();
         }
-
-        return locomtives;
+        return cars;
     }
 }

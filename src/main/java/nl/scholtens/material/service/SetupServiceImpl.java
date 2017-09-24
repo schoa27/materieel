@@ -1,4 +1,4 @@
-package nl.scholtens.materieel.service;
+package nl.scholtens.material.service;
 
 import org.springframework.stereotype.Service;
 

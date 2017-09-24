@@ -1,8 +1,8 @@
-package nl.scholtens.materieel.mapper;
+package nl.scholtens.material.mapper;
 
-import nl.scholtens.materieel.domein.Car;
-import nl.scholtens.materieel.domein.Locomtive;
-import nl.scholtens.materieel.sources.Plan;
+import nl.scholtens.material.domain.Car;
+import nl.scholtens.material.domain.Locomtive;
+import nl.scholtens.material.sources.Plan;
 import org.xml.sax.SAXException;
 
 import javax.xml.bind.JAXBException;
@@ -10,7 +10,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MatrieelMapper {
+public class MaterialMapper {
 
     private PlanMapper planMapper = new PlanMapper();
 

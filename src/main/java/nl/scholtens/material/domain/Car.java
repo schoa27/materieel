@@ -1,4 +1,4 @@
-package nl.scholtens.materieel.domein;
+package nl.scholtens.material.domain;
 
 public class Car extends Decoder{
 

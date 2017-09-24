@@ -1,6 +1,6 @@
-package nl.scholtens.materieel.service;
+package nl.scholtens.material.service;
 
-import nl.scholtens.materieel.domein.Car;
+import nl.scholtens.material.domain.Car;
 
 import java.util.List;
 

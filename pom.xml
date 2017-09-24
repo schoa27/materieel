@@ -75,7 +75,7 @@
 						<xjbSource>src/main/resources/xjb/</xjbSource>
 					</xjbSources>
 					<!-- The package of your generated sources -->
-					<packageName>nl.scholtens.materieel.sources</packageName>
+					<packageName>nl.scholtens.material.sources</packageName>
 					<laxSchemaValidation>true</laxSchemaValidation>
 				</configuration>
 			</plugin>

@@ -1,6 +1,6 @@
-package nl.scholtens.materieel.mapper;
+package nl.scholtens.material.mapper;
 
-import nl.scholtens.materieel.sources.Plan;
+import nl.scholtens.material.sources.Plan;
 import org.xml.sax.SAXException;
 
 import javax.xml.bind.JAXBContext;
@@ -18,7 +18,7 @@ import static javax.xml.XMLConstants.W3C_XML_SCHEMA_NS_URI;
 public class PlanMapper {
 
     public Plan mapPlan(String file) throws JAXBException,  JAXBException, SAXException, FileNotFoundException {
-        JAXBContext ctx = JAXBContext.newInstance("nl.scholtens.materieel.sources");
+        JAXBContext ctx = JAXBContext.newInstance("nl.scholtens.material.sources");
         Unmarshaller unmarshaller = ctx.createUnmarshaller();
 
         SchemaFactory schemaFactory = SchemaFactory.newInstance(W3C_XML_SCHEMA_NS_URI);

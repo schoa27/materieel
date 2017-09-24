@@ -1,10 +1,10 @@
-package nl.scholtens.materieel.controller;
+package nl.scholtens.material.controller;
 
-import nl.scholtens.materieel.domein.Car;
-import nl.scholtens.materieel.domein.Locomtive;
-import nl.scholtens.materieel.service.CarService;
-import nl.scholtens.materieel.service.LocService;
-import nl.scholtens.materieel.service.SetupService;
+import nl.scholtens.material.domain.Car;
+import nl.scholtens.material.domain.Locomtive;
+import nl.scholtens.material.service.CarService;
+import nl.scholtens.material.service.LocService;
+import nl.scholtens.material.service.SetupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,17 +40,14 @@ public class LocController  {
         return model;
     }
 
-
     @RequestMapping(value = "/cars", method = RequestMethod.GET)
-    public ModelAndView carsList(ModelAndView model) {
+    public ModelAndView getCarsList(ModelAndView model) {
         List<Car> cars = carService.getCarList(getXmlPath());
 
         model.addObject("list", cars);
         model.setViewName("carlistView");
         return model;
     }
-
-
 
     @RequestMapping(value = "/image/{imageName}", method = RequestMethod.GET)
     public @ResponseBody
