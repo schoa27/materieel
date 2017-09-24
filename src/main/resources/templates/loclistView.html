@@ -35,7 +35,7 @@
                     <td style="vertical-align: top;" th:text="${locomotief.id}" th:id="|td${iterstat.index}|"/>
                     <td style="vertical-align: top;" th:text="${locomotief.decoderAdres}" th:id="|td${iterstat.index}|"/>
                     <td style="vertical-align: top;" th:text="${locomotief.aandrijving}" th:id="|td${iterstat.index}|"/>
-                    <td style="vertical-align: top;" th:text="${imagePath} + ${locomotief.afbeelding}" th:id="|td${iterstat.index}|"/>
+                    <td th:id="|td${iterstat.index}|"><img th:src="@{/image/} + ${locomotief.afbeelding}"/></td>
                 </tr>
                 </tbody>
             </table>
