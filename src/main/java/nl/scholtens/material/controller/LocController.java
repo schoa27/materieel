@@ -2,8 +2,10 @@ package nl.scholtens.material.controller;
 
 import nl.scholtens.material.domain.Car;
 import nl.scholtens.material.domain.Locomtive;
+import nl.scholtens.material.domain.Operator;
 import nl.scholtens.material.service.CarService;
 import nl.scholtens.material.service.LocService;
+import nl.scholtens.material.service.OperatorService;
 import nl.scholtens.material.service.SetupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +30,9 @@ public class LocController  {
     private CarService carService;
 
     @Autowired
+    private OperatorService operatorService;
+
+    @Autowired
     private SetupService setupService;
 
 
@@ -48,6 +53,16 @@ public class LocController  {
         model.setViewName("carlistView");
         return model;
     }
+
+    @RequestMapping(value = "/operators", method = RequestMethod.GET)
+    public  ModelAndView getOperatorsList(ModelAndView model) {
+        List<Operator> operatorList = operatorService.getOperatorList(getXmlPath());
+
+        model.addObject("list", operatorList);
+        model.setViewName("operatorListView");
+        return model;
+    }
+
 
     @RequestMapping(value = "/image/{imageName}", method = RequestMethod.GET)
     public @ResponseBody

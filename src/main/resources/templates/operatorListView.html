@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://wwww.thymeleaf.org">
+<head>
+    <meta content="text/html; charset=ISO-8859-1"
+          http-equiv="content-type"/>
+    <title>locOverzicht</title>
+</head>
+<body>
+<form method="get" action="carOverzicht" name="carOverzicht"></form>
+
+<table style="text-align: left; width: 100%;" border="0" cellpadding="2"
+       cellspacing="2">
+    <tbody>
+    <tr>
+        <td style="vertical-align: middle; text-align: center;">Stam Overzicht
+        </td>
+    </tr>
+    <tr>
+        <td style="vertical-align: top;">
+            <table style="text-align: left; width: 100%;" border="1"
+                   cellpadding="2" cellspacing="2">
+                <tbody>
+                <tr>
+                    <td style="vertical-align: top;">Naam</td>
+                    <td style="vertical-align: top;">Locomotief</td>
+                </tr>
+                <tr th:each="operator, iterstat: ${list}">
+                    <td style="vertical-align: top;" th:text="${operator.id}" th:id="|td${iterstat.index}|"/>
+                    <td style="vertical-align: top;" th:text="${operator.locId}" th:id="|td${iterstat.index}|"/>
+                 </tr>
+                </tbody>
+            </table>
+       </td>
+    </tr>
+    <tr>
+        <td style="vertical-align: top;">
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
+

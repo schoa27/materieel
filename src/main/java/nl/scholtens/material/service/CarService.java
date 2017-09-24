@@ -7,4 +7,6 @@ import java.util.List;
 public interface CarService {
 
     public List<Car> getCarList(String file);
+
+    Car getCarById(String carId, List<Car> cars);
 }

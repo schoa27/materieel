@@ -15,6 +15,10 @@ public class Locomtive {
 
     private String afbeelding;
 
+    public Locomtive() {
+        super();
+    }
+
     public Locomtive(String id, String number, String aandrjving) {
         this.id = id;
         this.number = number;

@@ -14,9 +14,11 @@ public class CarServiceImpl implements CarService {
 
     private MaterialMapper material = new MaterialMapper();
 
+    private List<Car> cars;
+
     @Override
     public List<Car> getCarList(String file) {
-        List<Car> cars = null;
+
         try {
             cars = material.getCarList(file);
         } catch (FileNotFoundException e) {
@@ -27,5 +29,15 @@ public class CarServiceImpl implements CarService {
             e.printStackTrace();
         }
         return cars;
+    }
+
+    @Override
+    public Car getCarById(String carId, List<Car> cars) {
+        for (Car car : cars) {
+            if (car.getId().equals(carId)) {
+                return car;
+            }
+        }
+        return null;
     }
 }

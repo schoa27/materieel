@@ -2,6 +2,7 @@ package nl.scholtens.material.mapper;
 
 import nl.scholtens.material.domain.Car;
 import nl.scholtens.material.domain.Locomtive;
+import nl.scholtens.material.domain.Operator;
 import nl.scholtens.material.sources.Plan;
 import org.xml.sax.SAXException;
 
@@ -18,7 +19,7 @@ public class MaterialMapper {
 
     private List<Plan.Carlist.Car> carList;
 
-    private List<Plan.Operatorlist.Operator> stamlijst;
+    private List<Plan.Operatorlist.Operator> operatorList;
 
     private void getPlanGegevens(String file) throws FileNotFoundException, JAXBException, SAXException {
         Plan plan = planMapper.mapPlan(file);
@@ -36,7 +37,7 @@ public class MaterialMapper {
             }
             if (object instanceof Plan.Operatorlist) {
                 Plan.Operatorlist operatorlistObject = (Plan.Operatorlist) object;
-                stamlijst = operatorlistObject.getOperator();
+                operatorList = operatorlistObject.getOperator();
             }
         }
     }
@@ -64,8 +65,17 @@ public class MaterialMapper {
             newCar.setImage(car.getImage());
             cars.add(newCar);
         }
-
         return cars;
+    }
+
+    public List<Operator> getOperatorList(String file) throws FileNotFoundException, JAXBException, SAXException {
+        List<Operator> operators = new ArrayList<>();
+        getPlanGegevens(file);
+
+        for (Plan.Operatorlist.Operator operator : operatorList) {
+            operators.add(new Operator(operator.getId(), operator.getLcid(), operator.getCarids()));
+        }
+        return operators;
     }
 
 

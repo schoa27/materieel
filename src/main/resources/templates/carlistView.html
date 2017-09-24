@@ -4,7 +4,7 @@
 <head>
     <meta content="text/html; charset=ISO-8859-1"
           http-equiv="content-type"/>
-    <title>locOverzicht</title>
+    <title>WagenOverzicht</title>
 </head>
 <body>
 <form method="get" action="carOverzicht" name="carOverzicht"></form>
@@ -32,16 +32,9 @@
                     <td style="vertical-align: top;" th:text="${car.company}" th:id="|td${iterstat.index}|"/>
                     <td style="..." th:text="${car.type}" th:id="|td${iterstat.index}|"/>
                     <td th:id="|td${iterstat.index}|"><img th:src="@{/image/} + ${car.image}"/></td>
-
                 </tr>
-
                 </tbody>
             </table>
-
-        </td>
-    </tr>
-    <tr>
-        <td style="vertical-align: top;">
         </td>
     </tr>
     </tbody>

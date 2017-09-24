@@ -53,7 +53,7 @@ public class SetupController {
             response.sendRedirect("/cars");
         }
         if (element.contentEquals("train")) {
-            response.sendRedirect("/trains");
+            response.sendRedirect("/operators");
         }
     }
 }
