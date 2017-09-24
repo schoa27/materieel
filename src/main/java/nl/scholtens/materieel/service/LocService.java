@@ -1,10 +1,10 @@
 package nl.scholtens.materieel.service;
 
-import nl.scholtens.materieel.domein.Locomtief;
+import nl.scholtens.materieel.domein.Locomtive;
 
 import java.util.List;
 
 public interface LocService {
 
-    List<Locomtief> ophalenLocLijst(String file);
+    List<Locomtive> getLocList(String file);
 }

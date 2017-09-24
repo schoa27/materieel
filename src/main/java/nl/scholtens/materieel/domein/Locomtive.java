@@ -1,6 +1,6 @@
 package nl.scholtens.materieel.domein;
 
-public class Locomtief {
+public class Locomtive {
     private String id;
 
     private String number;
@@ -15,7 +15,7 @@ public class Locomtief {
 
     private String afbeelding;
 
-    public Locomtief(String id, String number, String aandrjving) {
+    public Locomtive(String id, String number, String aandrjving) {
         this.id = id;
         this.number = number;
         this.aandrijving = aandrjving;

@@ -1,4 +1,4 @@
 package nl.scholtens.materieel.domein;
 
-public class wagen {
+public class Decoder {
 }

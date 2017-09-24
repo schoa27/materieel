@@ -22,21 +22,19 @@
                    cellpadding="2" cellspacing="2">
                 <tbody>
                 <tr>
-                    <td style="vertical-align: top;"><a name="Merk"></a>Merk</td>
-                    <td style="vertical-align: top;">TypeNummer</td>
-                    <td style="vertical-align: top;">BR</td>
-                    <td style="vertical-align: top;">Decoder adres</td>
-                    <td style="vertical-align: top;">Aandrijving</td>
-                    <td style="vertical-align: top;">Afbeelding</td>
+                    <td style="vertical-align: top;">Nummer</td>
+                    <td style="vertical-align: top;">Maatschappij</td>
+                    <td style="...">Type</td>
+                    <td style="...">Afbeedling</td>
                 </tr>
-                <tr th:each="locomotief, iterstat: ${list}">
-                    <td style="vertical-align: top;" th:text="${locomotief.id}" th:id="|td${iterstat.index}|"/>
-                    <td style="vertical-align: top;" th:text="${locomotief.typeNummer}" th:id="|td${iterstat.index}|"/>
-                    <td style="vertical-align: top;" th:text="${locomotief.id}" th:id="|td${iterstat.index}|"/>
-                    <td style="vertical-align: top;" th:text="${locomotief.decoderAdres}" th:id="|td${iterstat.index}|"/>
-                    <td style="vertical-align: top;" th:text="${locomotief.aandrijving}" th:id="|td${iterstat.index}|"/>
-                    <td style="vertical-align: top;" th:text="${imagePath} + ${locomotief.afbeelding}" th:id="|td${iterstat.index}|"/>
+                <tr th:each="car, iterstat: ${list}">
+                    <td style="vertical-align: top;" th:text="${car.id}" th:id="|td${iterstat.index}|"/>
+                    <td style="vertical-align: top;" th:text="${car.company}" th:id="|td${iterstat.index}|"/>
+                    <td style="..." th:text="${car.type}" th:id="|td${iterstat.index}|"/>
+                    <td th:id="|td${iterstat.index}|"><img th:src="@{/image/} + ${car.image}"/></td>
+
                 </tr>
+
                 </tbody>
             </table>
 

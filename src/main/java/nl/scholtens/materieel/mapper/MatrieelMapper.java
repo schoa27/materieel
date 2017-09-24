@@ -1,6 +1,7 @@
 package nl.scholtens.materieel.mapper;
 
-import nl.scholtens.materieel.domein.Locomtief;
+import nl.scholtens.materieel.domein.Car;
+import nl.scholtens.materieel.domein.Locomtive;
 import nl.scholtens.materieel.sources.Plan;
 import org.xml.sax.SAXException;
 
@@ -13,9 +14,9 @@ public class MatrieelMapper {
 
     private PlanMapper planMapper = new PlanMapper();
 
-    private List<Plan.Lclist.Lc> locLijst;
+    private List<Plan.Lclist.Lc> locList;
 
-    private List<Plan.Carlist.Car> wagenlijst;
+    private List<Plan.Carlist.Car> carList;
 
     private List<Plan.Operatorlist.Operator> stamlijst;
 
@@ -27,11 +28,11 @@ public class MatrieelMapper {
         for (Object object : objectenLijst) {
             if (object instanceof Plan.Lclist) {
                 Plan.Lclist LclistObject = (Plan.Lclist) object;
-                locLijst = LclistObject.getLc();
+                locList = LclistObject.getLc();
             }
             if (object instanceof Plan.Carlist) {
                 Plan.Carlist carlistObject = (Plan.Carlist) object;
-                wagenlijst = carlistObject.getCar();
+                carList = carlistObject.getCar();
             }
             if (object instanceof Plan.Operatorlist) {
                 Plan.Operatorlist operatorlistObject = (Plan.Operatorlist) object;
@@ -40,20 +41,32 @@ public class MatrieelMapper {
         }
     }
 
-    public List<Locomtief> getlocList(String file) throws FileNotFoundException, JAXBException, SAXException {
-        List<Locomtief> locotieven = new ArrayList<>();
+    public List<Locomtive> getlocList(String file) throws FileNotFoundException, JAXBException, SAXException {
+        List<Locomtive> locotives = new ArrayList<>();
         getPlanGegevens(file);
 
-        for (Plan.Lclist.Lc loc : locLijst) {
-            Locomtief locomtief = new Locomtief(loc.getId(), loc.getNumber(), loc.getEngine());
-            locomtief.setDecoderAdres(loc.getAddr());
-            locomtief.setTypeNummer(loc.getCatnr());
-            locomtief.setAfbeelding(loc.getImage());
-                    locotieven.add(locomtief);
+        for (Plan.Lclist.Lc loc : locList) {
+            Locomtive locomtive = new Locomtive(loc.getId(), loc.getNumber(), loc.getEngine());
+            locomtive.setDecoderAdres(loc.getAddr());
+            locomtive.setTypeNummer(loc.getCatnr());
+            locomtive.setAfbeelding(loc.getImage());
+            locotives.add(locomtive);
+        }
+        return locotives;
+    }
 
+    public List<Car> getCarList(String file) throws FileNotFoundException, JAXBException, SAXException {
+        List<Car> cars = new ArrayList<>();
+        getPlanGegevens(file);
+
+        for (Plan.Carlist.Car car : carList) {
+            Car newCar = new Car(car.getId(), car.getRoadname(), car.getType(), car.getDectype().isEmpty());
+            newCar.setImage(car.getImage());
+            cars.add(newCar);
         }
 
-        return locotieven;
-
+        return cars;
     }
+
+
 }
