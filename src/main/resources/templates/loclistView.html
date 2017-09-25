@@ -6,6 +6,9 @@
           http-equiv="content-type"/>
     <title>locOverzicht</title>
 </head>
+
+<script type="text/javascript" th:src="@{/js/viewFunctions.js}" />
+
 <body>
 <form method="get" action="locOverzicht" name="locOverzicht"></form>
 
@@ -29,7 +32,9 @@
                     <td style="vertical-align: top;">Aandrijving</td>
                     <td style="vertical-align: top;">Afbeelding</td>
                 </tr>
-                <tr th:each="locomotief, iterstat: ${list}">
+                <tr onmouseover="ChangeColor(this, true);"
+                    onmouseout="ChangeColor(this, false);"
+                        th:each="locomotief, iterstat: ${list}">
                     <td style="vertical-align: top;" th:text="${locomotief.id}" th:id="|td${iterstat.index}|"/>
                     <td style="vertical-align: top;" th:text="${locomotief.typeNummer}" th:id="|td${iterstat.index}|"/>
                     <td style="vertical-align: top;" th:text="${locomotief.id}" th:id="|td${iterstat.index}|"/>

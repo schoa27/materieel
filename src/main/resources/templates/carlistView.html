@@ -6,6 +6,9 @@
           http-equiv="content-type"/>
     <title>WagenOverzicht</title>
 </head>
+
+<script type="text/javascript" th:src="@{/js/viewFunctions.js}" />
+
 <body>
 <form method="get" action="carOverzicht" name="carOverzicht"></form>
 
@@ -27,7 +30,9 @@
                     <td style="...">Type</td>
                     <td style="...">Afbeedling</td>
                 </tr>
-                <tr th:each="car, iterstat: ${list}">
+                <tr onmouseover="ChangeColor(this, true);"
+                    onmouseout="ChangeColor(this, false);"
+                        th:each="car, iterstat: ${list}">
                     <td style="vertical-align: top;" th:text="${car.id}" th:id="|td${iterstat.index}|"/>
                     <td style="vertical-align: top;" th:text="${car.company}" th:id="|td${iterstat.index}|"/>
                     <td style="..." th:text="${car.type}" th:id="|td${iterstat.index}|"/>

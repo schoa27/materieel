@@ -3,6 +3,8 @@ package nl.scholtens.material.service;
 import nl.scholtens.material.domain.Car;
 import nl.scholtens.material.domain.Operator;
 import nl.scholtens.material.mapper.MaterialMapper;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
@@ -13,6 +15,8 @@ import java.util.List;
 
 @Service
 public class OperatorServiceImpl implements OperatorService {
+
+    private static Logger logger = LogManager.getLogger(OperatorServiceImpl.class);
 
     @Autowired
     private CarService carService;

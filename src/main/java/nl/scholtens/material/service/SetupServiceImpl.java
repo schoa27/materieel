@@ -1,11 +1,15 @@
 package nl.scholtens.material.service;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
 
 @Service
 public class SetupServiceImpl implements SetupService {
+
+    private static Logger logger = LogManager.getLogger(SetupServiceImpl.class);
 
     @Override
     public void writeSetupFile(String pathXml, String pathImage) {

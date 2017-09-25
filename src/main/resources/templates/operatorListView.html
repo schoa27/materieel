@@ -4,8 +4,10 @@
     <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"/>
     <title>Operator Overzicht</title>
 </head>
-<body>
 
+<script type="text/javascript" th:src="@{/js/viewFunctions.js}"/>
+
+<body>
 <table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
     <tbody>
     <tr>
@@ -13,7 +15,9 @@
         <td style="vertical-align: top;">Maatschappij</td>
     </tr>
 
-    <tr th:each="operator : ${list}">
+    <tr onmouseover="ChangeColor(this, true);"
+        onmouseout="ChangeColor(this, false);"
+            th:each="operator : ${list}">
         <td style="vertical-align: top;" th:text="${operator.id}"/>
         <td style="vertical-align: top;" th:text="${operator.locId}"/>
         <td style="vertical-align: top;">Wagen(s)
