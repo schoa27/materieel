@@ -34,7 +34,8 @@
                 </tr>
                 <tr onmouseover="ChangeColor(this, true);"
                     onmouseout="ChangeColor(this, false);"
-                        th:each="locomotief, iterstat: ${list}">
+                    th:onclick="'javascript:DetailGegevens(\'/detail/loc/' + ${locomotief.id} + '\');'"
+                    th:each="locomotief, iterstat: ${list}">
                     <td style="vertical-align: top;" th:text="${locomotief.id}" th:id="|td${iterstat.index}|"/>
                     <td style="vertical-align: top;" th:text="${locomotief.typeNummer}" th:id="|td${iterstat.index}|"/>
                     <td style="vertical-align: top;" th:text="${locomotief.id}" th:id="|td${iterstat.index}|"/>

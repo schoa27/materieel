@@ -17,6 +17,7 @@
 
     <tr onmouseover="ChangeColor(this, true);"
         onmouseout="ChangeColor(this, false);"
+        th:onclick="'javascript:DetailGegevens(\'/detail/operator/' + ${operator.id} + '\');'"
             th:each="operator : ${list}">
         <td style="vertical-align: top;" th:text="${operator.id}"/>
         <td style="vertical-align: top;" th:text="${operator.locId}"/>
