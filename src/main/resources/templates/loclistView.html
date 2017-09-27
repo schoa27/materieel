@@ -12,6 +12,9 @@
 <body>
 <form method="get" action="locOverzicht" name="locOverzicht"></form>
 
+<div th:text="${form.header.version}"/>
+<div th:text="${form.header.date}"/>
+
 <table style="text-align: left; width: 100%;" border="0" cellpadding="2"
        cellspacing="2">
     <tbody>
@@ -34,14 +37,14 @@
                 </tr>
                 <tr onmouseover="ChangeColor(this, true);"
                     onmouseout="ChangeColor(this, false);"
-                    th:onclick="'javascript:DetailGegevens(\'/detail/loc/' + ${locomotief.id} + '\');'"
-                    th:each="locomotief, iterstat: ${list}">
-                    <td style="vertical-align: top;" th:text="${locomotief.id}" th:id="|td${iterstat.index}|"/>
-                    <td style="vertical-align: top;" th:text="${locomotief.typeNummer}" th:id="|td${iterstat.index}|"/>
-                    <td style="vertical-align: top;" th:text="${locomotief.id}" th:id="|td${iterstat.index}|"/>
-                    <td style="vertical-align: top;" th:text="${locomotief.decoderAdres}" th:id="|td${iterstat.index}|"/>
-                    <td style="vertical-align: top;" th:text="${locomotief.aandrijving}" th:id="|td${iterstat.index}|"/>
-                    <td th:id="|td${iterstat.index}|"><img th:src="@{/image/} + ${locomotief.afbeelding}"/></td>
+                    th:onclick="'javascript:DetailGegevens(\'/detail/loc/' + ${locomotive.id} + '\');'"
+                    th:each="locomotive, iterstat: ${form.locomotives}">
+                    <td style="vertical-align: top;" th:text="${locomotive.id}" th:id="|td${iterstat.index}|"/>
+                    <td style="vertical-align: top;" th:text="${locomotive.typeNummer}" th:id="|td${iterstat.index}|"/>
+                    <td style="vertical-align: top;" th:text="${locomotive.id}" th:id="|td${iterstat.index}|"/>
+                    <td style="vertical-align: top;" th:text="${locomotive.decoderAdres}" th:id="|td${iterstat.index}|"/>
+                    <td style="vertical-align: top;" th:text="${locomotive.aandrijving}" th:id="|td${iterstat.index}|"/>
+                    <td th:id="|td${iterstat.index}|"><img th:src="@{/image/} + ${locomotive.afbeelding}"/></td>
                 </tr>
                 </tbody>
             </table>

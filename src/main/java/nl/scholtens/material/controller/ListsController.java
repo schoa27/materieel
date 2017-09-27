@@ -1,8 +1,8 @@
 package nl.scholtens.material.controller;
 
 import nl.scholtens.material.domain.Car;
-import nl.scholtens.material.domain.Locomtive;
 import nl.scholtens.material.domain.Operator;
+import nl.scholtens.material.formobject.LocForm;
 import nl.scholtens.material.service.CarService;
 import nl.scholtens.material.service.LocService;
 import nl.scholtens.material.service.OperatorService;
@@ -21,7 +21,7 @@ import java.nio.file.Files;
 import java.util.List;
 
 @Controller
-public class LocController  {
+public class ListsController {
 
     @Autowired
     private LocService locService;
@@ -37,10 +37,12 @@ public class LocController  {
 
 
     @RequestMapping(value = "/locs", method = RequestMethod.GET)
-    public ModelAndView getLocLijst(ModelAndView model) {
-        List<Locomtive> locomtiefs = locService.getLocList(getXmlPath());
+    public ModelAndView getLocLijst(ModelAndView model) throws IOException {
+        LocForm locForm = new LocForm();
+        locForm.setLocomotives(locService.getLocList(getXmlPath()));
 
-        model.addObject("list", locomtiefs);
+
+        model.addObject("form", locForm);
         model.setViewName("loclistView");
         return model;
     }
