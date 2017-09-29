@@ -22,25 +22,24 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public List<Car> getCarList(String file) {
+        return getCarsFromFile(file);
+    }
 
+    @Override
+    public Car getCarById(String carId, String file) {
+        List<Car> cars = getCarList(file);
+        return cars.stream().filter(c -> carId.equals(c.getId())).findAny().get();
+    }
+
+    private List<Car> getCarsFromFile(String file) {
         try {
-            cars = material.getCarList(file);
+            return material.getCarList(file);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (JAXBException e) {
             e.printStackTrace();
         } catch (SAXException e) {
             e.printStackTrace();
-        }
-        return cars;
-    }
-
-    @Override
-    public Car getCarById(String carId, List<Car> cars) {
-        for (Car car : cars) {
-            if (car.getId().equals(carId)) {
-                return car;
-            }
         }
         return null;
     }

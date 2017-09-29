@@ -1,6 +1,6 @@
 package nl.scholtens.material.service;
 
-import nl.scholtens.material.domain.Locomtive;
+import nl.scholtens.material.domain.Locomotive;
 import nl.scholtens.material.mapper.MaterialMapper;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -19,10 +19,19 @@ public class LocServiceImpl implements LocService {
     private MaterialMapper material = new MaterialMapper();
 
     @Override
-    public List<Locomtive> getLocList(String file) {
-        List<Locomtive> locomtives = null;
+    public List<Locomotive> getLocList(String file) {
+        return getlocListFromFile(file);
+    }
+
+    @Override
+    public Locomotive getLocById(String locId, String file) {
+        List<Locomotive> locomotives = getlocListFromFile(file);
+        return locomotives.stream().filter(loc -> locId.equals(loc.getId())).findAny().get();
+    }
+
+    private List<Locomotive> getlocListFromFile(String file) {
         try {
-            locomtives = material.getlocList(file);
+            return material.getlocList(file);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (JAXBException e) {
@@ -30,7 +39,6 @@ public class LocServiceImpl implements LocService {
         } catch (SAXException e) {
             e.printStackTrace();
         }
-
-        return locomtives;
+        return null;
     }
 }

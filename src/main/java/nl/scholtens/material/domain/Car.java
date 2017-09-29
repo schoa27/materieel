@@ -10,19 +10,14 @@ public class Car extends Decoder{
 
     private String manufactor;
 
-    private boolean digital;
+    private String era;
+
+    private Decoder decoder;
 
     private String image;
 
     public Car() {
         super();
-    }
-
-    public Car(String id, String company, String type, boolean digital) {
-        this.id = id;
-        this.company = company;
-        this.type = type;
-        this.digital = digital;
     }
 
     public String getId() {
@@ -57,12 +52,20 @@ public class Car extends Decoder{
         this.manufactor = manufactor;
     }
 
-    public boolean isDigital() {
-        return digital;
+    public String getEra() {
+        return era;
     }
 
-    public void setDigital(boolean digital) {
-        this.digital = digital;
+    public void setEra(String era) {
+        this.era = era;
+    }
+
+    public Decoder getDecoder() {
+        return decoder;
+    }
+
+    public void setDecoder(Decoder decoder) {
+        this.decoder = decoder;
     }
 
     public String getImage() {

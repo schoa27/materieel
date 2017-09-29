@@ -40,13 +40,14 @@ public class OperatorServiceImpl implements OperatorService {
         return operatorList;
     }
 
+    //TODO uitzoeken stream
     private List<Operator> makeCarList(List<Operator> operators, List<Car> cars) {
         for (Operator operator : operators) {
             String[] carIds = operator.getCarIds().split(",");
 
             for (String carId : carIds) {
-                Car carById = carService.getCarById(carId, cars);
-                operator.getCars().add(carById);
+                operator.getCars().add(cars.stream()
+                        .filter(c -> carId.equals(c.getId())).findAny().get());
             }
         }
         return operators;

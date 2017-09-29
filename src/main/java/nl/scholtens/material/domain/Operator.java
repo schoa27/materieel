@@ -9,7 +9,7 @@ public class Operator {
 
     private String locId;
 
-    private Locomtive locomtive = new Locomtive();
+    private Locomotive locomotive = new Locomotive();
 
     private String carIds;
 
@@ -41,12 +41,12 @@ public class Operator {
         this.locId = locId;
     }
 
-    public Locomtive getLocomtive() {
-        return locomtive;
+    public Locomotive getLocomotive() {
+        return locomotive;
     }
 
-    public void setLocomtive(Locomtive locomtive) {
-        this.locomtive = locomtive;
+    public void setLocomotive(Locomotive locomotive) {
+        this.locomotive = locomotive;
     }
 
     public String getCarIds() {

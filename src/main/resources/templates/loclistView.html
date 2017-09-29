@@ -19,8 +19,7 @@
        cellspacing="2">
     <tbody>
     <tr>
-        <td style="vertical-align: middle; text-align: center;">Locomotief Overzicht
-        </td>
+        <td style="vertical-align: middle; text-align: center;">Locomotief Overzicht</td>
     </tr>
     <tr>
         <td style="vertical-align: top;">
@@ -39,12 +38,12 @@
                     onmouseout="ChangeColor(this, false);"
                     th:onclick="'javascript:DetailGegevens(\'/detail/loc/' + ${locomotive.id} + '\');'"
                     th:each="locomotive, iterstat: ${form.locomotives}">
+                    <td style="vertical-align: top;" th:text="${locomotive.owner}" th:id="|td${iterstat.index}|"/>
+                    <td style="vertical-align: top;" th:text="${locomotive.catalogNumber}" th:id="|td${iterstat.index}|"/>
                     <td style="vertical-align: top;" th:text="${locomotive.id}" th:id="|td${iterstat.index}|"/>
-                    <td style="vertical-align: top;" th:text="${locomotive.typeNummer}" th:id="|td${iterstat.index}|"/>
-                    <td style="vertical-align: top;" th:text="${locomotive.id}" th:id="|td${iterstat.index}|"/>
-                    <td style="vertical-align: top;" th:text="${locomotive.decoderAdres}" th:id="|td${iterstat.index}|"/>
-                    <td style="vertical-align: top;" th:text="${locomotive.aandrijving}" th:id="|td${iterstat.index}|"/>
-                    <td th:id="|td${iterstat.index}|"><img th:src="@{/image/} + ${locomotive.afbeelding}"/></td>
+                    <td style="vertical-align: top;" th:text="${locomotive.decoder.address}" th:id="|td${iterstat.index}|"/>
+                    <td style="vertical-align: top;" th:text="${locomotive.engine}" th:id="|td${iterstat.index}|"/>
+                    <td th:id="|td${iterstat.index}|"><img th:src="@{/image/} + ${locomotive.image}"/></td>
                 </tr>
                 </tbody>
             </table>

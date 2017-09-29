@@ -9,7 +9,7 @@ public class Body {
     private Bottom bottom = new Bottom();
 
 
-    public Body() throws IOException {
+    public Body() {
         initHeaderBottom();
     }
 
@@ -21,7 +21,7 @@ public class Body {
         this.header = header;
     }
 
-    private void initHeaderBottom() throws IOException {
+    private void initHeaderBottom() {
         try {
             BufferedReader br = new BufferedReader(new FileReader("src/main/resources/material.txt"));
             header.setVersion(br.readLine());

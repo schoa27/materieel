@@ -33,7 +33,7 @@
                 <tr onmouseover="ChangeColor(this, true);"
                     onmouseout="ChangeColor(this, false);"
                     th:onclick="'javascript:DetailGegevens(\'/detail/car/' + ${car.id} + '\');'"
-                        th:each="car, iterstat: ${list}">
+                        th:each="car, iterstat: ${form.cars}">
                     <td style="vertical-align: top;" th:text="${car.id}" th:id="|td${iterstat.index}|"/>
                     <td style="vertical-align: top;" th:text="${car.company}" th:id="|td${iterstat.index}|"/>
                     <td style="..." th:text="${car.type}" th:id="|td${iterstat.index}|"/>

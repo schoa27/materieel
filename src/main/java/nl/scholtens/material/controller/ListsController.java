@@ -1,7 +1,7 @@
 package nl.scholtens.material.controller;
 
-import nl.scholtens.material.domain.Car;
 import nl.scholtens.material.domain.Operator;
+import nl.scholtens.material.formobject.CarForm;
 import nl.scholtens.material.formobject.LocForm;
 import nl.scholtens.material.service.CarService;
 import nl.scholtens.material.service.LocService;
@@ -41,17 +41,17 @@ public class ListsController {
         LocForm locForm = new LocForm();
         locForm.setLocomotives(locService.getLocList(getXmlPath()));
 
-
         model.addObject("form", locForm);
         model.setViewName("loclistView");
         return model;
     }
 
     @RequestMapping(value = "/cars", method = RequestMethod.GET)
-    public ModelAndView getCarsList(ModelAndView model) {
-        List<Car> cars = carService.getCarList(getXmlPath());
+    public ModelAndView getCarsList(ModelAndView model) throws IOException {
+        CarForm carForm = new CarForm();
+        carForm.setCars(carService.getCarList(getXmlPath()));
 
-        model.addObject("list", cars);
+        model.addObject("form", carForm);
         model.setViewName("carlistView");
         return model;
     }

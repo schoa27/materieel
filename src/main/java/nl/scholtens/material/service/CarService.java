@@ -8,5 +8,5 @@ public interface CarService {
 
     public List<Car> getCarList(String file);
 
-    Car getCarById(String carId, List<Car> cars);
+    Car getCarById(String carId, String file);
 }

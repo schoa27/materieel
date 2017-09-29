@@ -1,7 +1,8 @@
 package nl.scholtens.material.mapper;
 
 import nl.scholtens.material.domain.Car;
-import nl.scholtens.material.domain.Locomtive;
+import nl.scholtens.material.domain.Decoder;
+import nl.scholtens.material.domain.Locomotive;
 import nl.scholtens.material.domain.Operator;
 import nl.scholtens.material.sources.Plan;
 import org.xml.sax.SAXException;
@@ -42,16 +43,12 @@ public class MaterialMapper {
         }
     }
 
-    public List<Locomtive> getlocList(String file) throws FileNotFoundException, JAXBException, SAXException {
-        List<Locomtive> locotives = new ArrayList<>();
+    public List<Locomotive> getlocList(String file) throws FileNotFoundException, JAXBException, SAXException {
+        List<Locomotive> locotives = new ArrayList<>();
         getPlanGegevens(file);
 
         for (Plan.Lclist.Lc loc : locList) {
-            Locomtive locomtive = new Locomtive(loc.getId(), loc.getNumber(), loc.getEngine());
-            locomtive.setDecoderAdres(loc.getAddr());
-            locomtive.setTypeNummer(loc.getCatnr());
-            locomtive.setAfbeelding(loc.getImage());
-            locotives.add(locomtive);
+            locotives.add(getLocomtive(loc));
         }
         return locotives;
     }
@@ -61,9 +58,7 @@ public class MaterialMapper {
         getPlanGegevens(file);
 
         for (Plan.Carlist.Car car : carList) {
-            Car newCar = new Car(car.getId(), car.getRoadname(), car.getType(), car.getDectype().isEmpty());
-            newCar.setImage(car.getImage());
-            cars.add(newCar);
+            cars.add(getCar(car));
         }
         return cars;
     }
@@ -76,6 +71,57 @@ public class MaterialMapper {
             operators.add(new Operator(operator.getId(), operator.getLcid(), operator.getCarids()));
         }
         return operators;
+    }
+
+    private Locomotive getLocomtive(Plan.Lclist.Lc loc) {
+        Locomotive locomotive = new Locomotive();
+        locomotive.setId(loc.getId());
+        locomotive.setNumber(loc.getNumber());
+        locomotive.setCompany(loc.getRoadname());
+        locomotive.setEra(loc.getEra());
+        locomotive.setLength(Integer.parseInt(loc.getLen()));
+        locomotive.setTrainType(loc.getCargo());
+        locomotive.setOwner(loc.getOwner());
+        locomotive.setCatalogNumber(loc.getCatnr());
+        locomotive.setEngine(loc.getEngine());
+        locomotive.setImage(loc.getImage());
+        locomotive.setDecoder(getDecoder(loc, null));
+        return locomotive;
+    }
+
+    private Car getCar(Plan.Carlist.Car car) {
+        Car newCar = new Car();
+        newCar.setId(car.getId());
+        newCar.setCompany(car.getRoadname());
+        newCar.setManufactor(car.getOwner());
+        newCar.setType(car.getType());
+        newCar.setEra(car.getEra());
+        newCar.setImage(car.getImage());
+
+        if (!car.getDectype().isEmpty()) {
+            newCar.setDecoder(getDecoder(null, car));
+        }
+
+        return newCar;
+    }
+
+    private Decoder getDecoder(Plan.Lclist.Lc loc, Plan.Carlist.Car car) {
+        Decoder decoder = new Decoder();
+        if (loc != null) {
+            decoder.setAddress(Integer.parseInt(loc.getAddr()));
+            decoder.setFunctionCount(Integer.parseInt(loc.getFncnt()));
+            decoder.setManufacture(loc.getDectype());
+            decoder.setProtocol(loc.getProt());
+            decoder.setSpeedSteps(Integer.parseInt(loc.getSpcnt()));
+        }
+        if (car != null) {
+            decoder.setAddress(Integer.parseInt(car.getAddr()));
+            decoder.setFunctionCount(car.getFundef().size());
+            decoder.setManufacture(car.getDectype());
+            decoder.setProtocol(car.getProt());
+            decoder.setSpeedSteps(Integer.parseInt(car.getSpcnt()));
+        }
+        return decoder;
     }
 
 
