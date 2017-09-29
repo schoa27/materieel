@@ -40,6 +40,7 @@ public class DetailsController {
     public ModelAndView carDetails(@PathVariable(value = "car") String carId, ModelAndView model) throws IOException {
         CarForm form = new CarForm();
         form.setCar(carService.getCarById(carId, getXmlPath()));
+        model.addObject("form", form);
         model.setViewName("carDetails");
         return model;
     }

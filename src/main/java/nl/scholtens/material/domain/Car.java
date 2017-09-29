@@ -10,7 +10,11 @@ public class Car extends Decoder{
 
     private String manufactor;
 
+    private String catalognr;
+
     private String era;
+
+    private Integer length;
 
     private Decoder decoder;
 
@@ -52,12 +56,28 @@ public class Car extends Decoder{
         this.manufactor = manufactor;
     }
 
+    public String getCatalognr() {
+        return catalognr;
+    }
+
+    public void setCatalognr(String catalognr) {
+        this.catalognr = catalognr;
+    }
+
     public String getEra() {
         return era;
     }
 
     public void setEra(String era) {
         this.era = era;
+    }
+
+    public Integer getLength() {
+        return length;
+    }
+
+    public void setLength(Integer length) {
+        this.length = length;
     }
 
     public Decoder getDecoder() {
