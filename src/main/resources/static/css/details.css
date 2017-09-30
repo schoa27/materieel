@@ -1,0 +1,30 @@
+@CHARSET "UTF-8";
+
+body.werkpagina {
+	
+}
+
+fieldset.fieldset {
+	
+}
+
+table.hoofdtabel {
+	width: 100%;
+}
+
+td.tabellinks {
+	width: 50%
+}
+
+td.tabelrechts {
+	width: 50%
+}
+
+td.tdrechts {
+	padding-left: 50px;
+	padding-bottom: 15 px;
+}
+td.tdlinks {
+	padding-left: 25px;
+	padding-bottom: 15 px;
+}

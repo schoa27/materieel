@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://wwww.thymeleaf.org">
-<head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="header :: header">
     <meta content="text/html; charset=ISO-8859-1"
           http-equiv="content-type"/>
     <title>WagenOverzicht</title>
@@ -32,8 +32,9 @@
                 </tr>
                 <tr onmouseover="ChangeColor(this, true);"
                     onmouseout="ChangeColor(this, false);"
-                    th:onclick="'javascript:DetailGegevens(\'/detail/car/' + ${car.id} + '\');'"
-                        th:each="car, iterstat: ${form.cars}">
+                    th:onclick="'javascript:DetailGegevens(\'/' +  ${'car-'} + ${car.id} + '\');'"
+                    th:each="car, iterstat: ${form.cars}" style="cursor: pointer">
+
                     <td style="vertical-align: top;" th:text="${car.id}" th:id="|td${iterstat.index}|"/>
                     <td style="vertical-align: top;" th:text="${car.company}" th:id="|td${iterstat.index}|"/>
                     <td style="..." th:text="${car.type}" th:id="|td${iterstat.index}|"/>

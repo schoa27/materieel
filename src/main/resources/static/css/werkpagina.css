@@ -1,0 +1,15 @@
+@CHARSET "UTF-8";
+body {
+	background-color: #909090;
+}
+
+h1 {
+	text-align: center;
+}
+
+h2 {
+	text-align: center;
+}
+a.cursief {
+	font-style: italic
+}

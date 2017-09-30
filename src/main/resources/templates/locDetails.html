@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://wwww.thymeleaf.org">
-<head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="header :: header">
     <meta content="text/html; charset=ISO-8859-1"
           http-equiv="content-type"/>
     <title>LocDetails</title>
@@ -129,7 +129,7 @@
                            cellpadding="2" cellspacing="2">
                         <tr>
                             <td>
-                                <img th:src="@{/image/} + ${form.locomotive.image}" height="60%" width="60%"/>
+                                <img th:src="@{/image/} + ${form.locomotive.image}"/>
                             </td>
                         </tr>
                     </table>

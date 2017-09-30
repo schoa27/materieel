@@ -26,39 +26,36 @@ public class DetailsController {
     @Autowired
     private SetupService setupService;
 
-    @RequestMapping(value = "/detail/loc/{loc}", method = RequestMethod.GET)
-    public ModelAndView locDetails(@PathVariable(value = "loc") String locId, ModelAndView model) throws IOException {
-        LocForm form = new LocForm();
-        form.setLocomotive(locService.getLocById(locId, getXmlPath()));
+    @RequestMapping(value = "/{item}", method = RequestMethod.GET)
+    public ModelAndView carDetails(@PathVariable(value = "item") String item, ModelAndView model) throws IOException {
 
-        model.addObject("form", form);
-        model.setViewName("locDetails");
+        if (item.substring(0, 3).equals("loc")) {
+            LocForm form = new LocForm();
+            form.setLocomotive(locService.getLocById(item.substring(4), getXmlPath()));
+            model.addObject("form", form);
+            model.setViewName("locDetails");
+        }
+
+        if (item.substring(0, 3).equals("car")) {
+            CarForm form = new CarForm();
+            form.setCar(carService.getCarById(item.substring(4), getXmlPath()));
+            model.addObject("form", form);
+            model.setViewName("carDetails");
+        }
+
+        if (item.substring(0, 3).equals("opr")) {
+
+        }
+
         return model;
     }
 
-    @RequestMapping(value = "/detail/car/{car}", method = RequestMethod.GET)
-    public ModelAndView carDetails(@PathVariable(value = "car") String carId, ModelAndView model) throws IOException {
-        CarForm form = new CarForm();
-        form.setCar(carService.getCarById(carId, getXmlPath()));
-        model.addObject("form", form);
-        model.setViewName("carDetails");
-        return model;
-    }
-
-    @RequestMapping(value = "/detail/operator/{operator}", method = RequestMethod.GET)
-    public ModelAndView operatorDetails(@PathVariable(value = "operator") String operatorId, ModelAndView model) {
-
-
-        model.setViewName("operatorDetails");
-        return model;
-    }
-
-    private String getImagePath( ) {
+    private String getImagePath() {
         final String[] paths = readSetupFile();
         return paths[1];
     }
 
-    private String getXmlPath( ) {
+    private String getXmlPath() {
         final String[] paths = readSetupFile();
         return paths[0];
     }

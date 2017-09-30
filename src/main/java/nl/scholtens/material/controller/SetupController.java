@@ -1,5 +1,6 @@
 package nl.scholtens.material.controller;
 
+import nl.scholtens.material.formobject.Body;
 import nl.scholtens.material.service.SetupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,8 +19,10 @@ public class SetupController {
     private SetupService setupService;
 
     @RequestMapping(value = "/setup", method = RequestMethod.GET)
-    public String instelling() {
-        return "setupView";
+    public ModelAndView instelling(ModelAndView model) {
+        model.addObject("form", new Body());
+        model.setViewName("setupView");
+        return model;
     }
 
     @RequestMapping(value = "/setup", method = RequestMethod.POST)
@@ -37,7 +40,7 @@ public class SetupController {
         if (setupService.readSetupFile().length > 0) {
             model.addObject("gevuld", true);
         }
-
+        model.addObject("form", new Body());
         model.setViewName("setupView");
         return model;
     }
