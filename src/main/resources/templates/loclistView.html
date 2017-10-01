@@ -10,6 +10,7 @@
 </head>
 
 <script type="text/javascript" th:src="@{/js/viewFunctions.js}"/>
+<script type="text/javascript" th:src="@{/js/sorttable.js}"/>
 
 <body class="werkpagina">
 <form method="post" action="/setup" name="setup">
@@ -19,16 +20,16 @@
                cellspacing="1">
             <tbody>
             <tr>
-                <td style="vertical-align: middle; text-align: center;">Locomotief Overzicht</td>
+                <td style="vertical-align: middle; text-align: center;"><h3>Locomotief Overzicht</h3></td>
             </tr>
             <tr>
                 <td style="vertical-align: top;">
                     <div class="scroltable">
-                        <table class="tabel" style="text-align: left; width: 100%;" border="1"
+                        <table class="sortable" style="text-align: left; width: 100%;" border="1"
                                cellpadding="1" cellspacing="1">
                             <tbody>
                             <tr class="rij">
-                                <td style="vertical-align: top;"><a name="Merk"></a>Merk</td>
+                                <td style="vertical-align: top;">Merk</td>
                                 <td style="vertical-align: top;">TypeNummer</td>
                                 <td style="vertical-align: top;">BR</td>
                                 <td style="vertical-align: top;">Decoder adres</td>

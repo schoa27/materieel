@@ -8,6 +8,7 @@
 </head>
 
 <script type="text/javascript" th:src="@{/js/viewFunctions.js}"/>
+<script type="text/javascript" th:src="@{/js/sorttable.js}"/>
 
 <body>
 <form method="post" action="/setup" name="setup">
@@ -18,17 +19,17 @@
                cellspacing="2">
             <tbody>
             <tr>
-                <td style="vertical-align: middle; text-align: center;">Wagen Overzicht
-                </td>
+                <td style="vertical-align: middle; text-align: center;"><h3>Wagen Overzicht</h3></td>
             </tr>
             <tr>
                 <td style="vertical-align: top;">
                     <div class="scroltable">
-                        <table style="text-align: justify; width: 100%;" border="1"
+                        <table class="sortable" style="text-align: justify; width: 100%;" border="1"
                                cellpadding="2" cellspacing="2">
 
                             <tbody>
                             <tr>
+                                <td style="vertical-align: top;">Merk</td>
                                 <td style="vertical-align: top;">Nummer</td>
                                 <td style="vertical-align: top;">Maatschappij</td>
                                 <td style="...">Type</td>
@@ -39,6 +40,7 @@
                                 th:onclick="'javascript:DetailGegevens(\'/' +  ${'car-'} + ${car.id} + '\');'"
                                 th:each="car, iterstat: ${form.cars}" style="cursor: pointer">
 
+                                <td style="vertical-align: top" th:text="${car.manufactor}" th:id="|td${iterstat.index}|"/>
                                 <td style="vertical-align: top;" th:text="${car.id}" th:id="|td${iterstat.index}|"/>
                                 <td style="vertical-align: top;" th:text="${car.company}"
                                     th:id="|td${iterstat.index}|"/>

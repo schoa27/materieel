@@ -65,6 +65,11 @@ public class ListsController {
         return model;
     }
 
+    @RequestMapping(value = "/sort", method = RequestMethod.GET)
+    public ModelAndView sortList(ModelAndView model) {
+
+        return model;
+    }
 
     @RequestMapping(value = "/image/{imageName}", method = RequestMethod.GET)
     public @ResponseBody
