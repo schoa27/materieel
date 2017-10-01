@@ -19,10 +19,12 @@ h1 {
 h3 {
 	text-align: center;
 }
+.h3left {
+	text-align: left;
+}
 a.cursief {
 	font-style: italic
 }
-
 
 .line {
 	width:100%;

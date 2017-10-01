@@ -20,6 +20,17 @@ public class SetupController {
 
     @RequestMapping(value = "/setup", method = RequestMethod.GET)
     public ModelAndView instelling(ModelAndView model) {
+        model.addObject("gevuld", false);
+
+        if (!setupService.isFileEmpty()) {
+            final String[] paths = setupService.readSetupFile();
+            model.addObject("xmlpath", paths[0]);
+            model.addObject("imagepath", paths[1]);
+        } else {
+            model.addObject("xmlpath", "pad en bestand niet gevuld");
+            model.addObject("imagepath", "pad niet gevuld");
+        }
+
         model.addObject("form", new Body());
         model.setViewName("setupView");
         return model;
@@ -37,7 +48,7 @@ public class SetupController {
             model.addObject("gevuld", true);
         }
 
-        if (setupService.readSetupFile().length > 0) {
+        if (!setupService.isFileEmpty()) {
             model.addObject("gevuld", true);
         }
 

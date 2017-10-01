@@ -57,4 +57,17 @@ public class SetupServiceImpl implements SetupService {
         }
         return paths;
     }
+
+    @Override
+    public boolean isFileEmpty() {
+        try {
+            BufferedReader br = new BufferedReader( new FileReader("materieel.ini"));
+            return br.readLine() == null;
+        } catch (FileNotFoundException e) {
+            System.err.println("Unable to find the file: fileName");
+        } catch (IOException e) {
+            System.err.println("Unable to read the file: fileName");
+        }
+        return true;
+    }
 }

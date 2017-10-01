@@ -5,26 +5,54 @@
     <title>SetupView</title>
 </head>
 <body>
+
+<div th:if="${gevuld} != true">
 <form method="post" action="/setup">
-    <fieldset>
-        <table>
+    <fieldset class="fieldset">
+        <table style="text-align: left; width: 100%;" border="0" cellpadding="2" cellspacing="2">
+            <tbody>
             <tr>
-                <td>lokatie en naam van XML bestand</td>
-                <td><input type="text" name="padxml"/></td>
-            </tr>
-            <tr>
-                <td>lokatie van de afbeeldingen</td>
-                <td><input type="text" name="padafbeelding"/></td>
+                <td style="vertical-align: top;"><h3 class="h3left" >Nieuwe Instellingen</h3>
+                    <table style="text-align: left; width: 75%;" border="0" cellpadding="2" cellspacing="2">
+                        <tbody>
+                        <tr>
+                            <td style="vertical-align: top;">lokatie en naam van XML bestand</td>
+                            <td style="vertical-align: top;"><input type="text" name="padxml"/></td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: top;">lokatie van de afbeeldingen</td>
+                            <td style="vertical-align: top;"><input type="text" name="padafbeelding"/></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </td>
+
+                <td style="vertical-align: top;"><h3 class="h3left" >Oude Instellingen</h3>
+                    <table style="text-align: left; width: 100%;" border="0" cellpadding="5" cellspacing="5">
+                        <tbody>
+                        <tr>
+                            <td style="vertical-align: top;" th:text="${xmlpath}"/>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: top;" th:text="${imagepath}"/>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
             </tr>
             <tr>
                 <td><input type="submit" value="Doorgaan"/></td>
             </tr>
+            </tbody>
         </table>
     </fieldset>
 </form>
+</div>
+
 <div th:if="${gevuld} == true">
     <form method="post" action="/keuze">
-        <fieldset>
+        <fieldset class="fieldset">
             <form>
                 <table style="text-align: left; width: 100%;" border="0" cellpadding="2"
                        cellspacing="2">
