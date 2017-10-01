@@ -12,57 +12,65 @@
 <script type="text/javascript" th:src="@{/js/viewFunctions.js}"/>
 
 <body class="werkpagina">
-<form method="get" action="locOverzicht" name="locOverzicht"></form>
+<form method="post" action="/setup" name="setup">
 
-<fieldset class="fieldset">
-    <table class="tabel" style="text-align: left; width: 100%;" border="0" cellpadding="1"
-           cellspacing="1">
-        <tbody>
-        <tr>
-            <td style="vertical-align: middle; text-align: center;">Locomotief Overzicht</td>
-        </tr>
-        <tr>
-            <td style="vertical-align: top;">
-                <table class="tabel" style="text-align: left; width: 100%;" border="1"
-                       cellpadding="1" cellspacing="1">
-                    <tbody>
-                    <tr class="rij">
-                        <td style="vertical-align: top;"><a name="Merk"></a>Merk</td>
-                        <td style="vertical-align: top;">TypeNummer</td>
-                        <td style="vertical-align: top;">BR</td>
-                        <td style="vertical-align: top;">Decoder adres</td>
-                        <td style="vertical-align: top;">Aandrijving</td>
-                        <td style="vertical-align: top;">Afbeelding</td>
-                    </tr>
-                    <tr class="rij" onmouseover="ChangeColor(this, true);"
-                        onmouseout="ChangeColor(this, false);"
-                        th:onclick="'javascript:DetailGegevens(\'/' + ${'loc-'} + ${locomotive.id} + '\');'"
-                        th:each="locomotive, iterstat: ${form.locomotives}" style="cursor: pointer" >
+    <fieldset class="fieldset">
+        <table class="tabel" style="text-align: left; width: 100%;" border="0" cellpadding="1"
+               cellspacing="1">
+            <tbody>
+            <tr>
+                <td style="vertical-align: middle; text-align: center;">Locomotief Overzicht</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                    <div class="scroltable">
+                        <table class="tabel" style="text-align: left; width: 100%;" border="1"
+                               cellpadding="1" cellspacing="1">
+                            <tbody>
+                            <tr class="rij">
+                                <td style="vertical-align: top;"><a name="Merk"></a>Merk</td>
+                                <td style="vertical-align: top;">TypeNummer</td>
+                                <td style="vertical-align: top;">BR</td>
+                                <td style="vertical-align: top;">Decoder adres</td>
+                                <td style="vertical-align: top;">Aandrijving</td>
+                                <td style="vertical-align: top;">Afbeelding</td>
+                            </tr>
+                            <tr class="rij" onmouseover="ChangeColor(this, true);"
+                                onmouseout="ChangeColor(this, false);"
+                                th:onclick="'javascript:DetailGegevens(\'/' + ${'loc-'} + ${locomotive.id} + '\');'"
+                                th:each="locomotive, iterstat: ${form.locomotives}" style="cursor: pointer">
 
-                        <td style="vertical-align: top;" th:text="${locomotive.owner}"
-                            th:id="|td${iterstat.index}|"/>
-                        <td style="vertical-align: top;" th:text="${locomotive.catalogNumber}"
-                            th:id="|td${iterstat.index}|"/>
-                        <td style="vertical-align: top;" th:text="${locomotive.id}"
-                            th:id="|td${iterstat.index}|"/>
-                        <td style="vertical-align: top;" th:text="${locomotive.decoder.address}"
-                            th:id="|td${iterstat.index}|"/>
-                        <td style="vertical-align: top;" th:text="${locomotive.engine}"
-                            th:id="|td${iterstat.index}|"/>
-                        <td th:id="|td${iterstat.index}|"><img
-                                th:src="@{/image/} + ${locomotive.image}"/></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </td>
-        </tr>
-        <tr class="rij">
-            <td style="vertical-align: top;">
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</fieldset>
+                                <td style="vertical-align: top;" th:text="${locomotive.owner}"
+                                    th:id="|td${iterstat.index}|"/>
+                                <td style="vertical-align: top;" th:text="${locomotive.catalogNumber}"
+                                    th:id="|td${iterstat.index}|"/>
+                                <td style="vertical-align: top;" th:text="${locomotive.id}"
+                                    th:id="|td${iterstat.index}|"/>
+                                <td style="vertical-align: top;" th:text="${locomotive.decoder.address}"
+                                    th:id="|td${iterstat.index}|"/>
+                                <td style="vertical-align: top;" th:text="${locomotive.engine}"
+                                    th:id="|td${iterstat.index}|"/>
+                                <div th:if="${!locomotive.image.empty} ">
+                                    <td th:id="|td${iterstat.index}|"><img th:src="@{/image/} + ${locomotive.image}"/>
+                                    </td>
+                                </div>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+            <tr class="rij">
+                <td style="vertical-align: top;">
+                </td>
+            </tr>
+            <tr>
+                <td><button name="terug" type="submit" value="true">terug</button></td>
+            </tr>
+            </tbody>
+        </table>
+    </fieldset>
+</form>
 </body>
 </html>
 

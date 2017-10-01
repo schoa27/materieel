@@ -85,9 +85,6 @@ public class MaterialMapper {
         locomotive.setCatalogNumber(loc.getCatnr());
         locomotive.setEngine(loc.getEngine());
         locomotive.setImage(loc.getImage());
-
-//        if (!loc.getImage().isEmpty()) locomotive.setImage((loc.getImage().substring(0, (loc.getImage().length() - 6))) + ".png");
-
         locomotive.setDecoder(getDecoder(loc, null));
         return locomotive;
     }
@@ -102,8 +99,6 @@ public class MaterialMapper {
         newCar.setEra(car.getEra());
         newCar.setLength(Integer.parseInt(car.getLen()));
         newCar.setImage(car.getImage());
-//      if (!car.getImage().isEmpty()) newCar.setImage((car.getImage().substring(0, (car.getImage().length() - 6))) + ".png");
-
         if (!car.getDectype().isEmpty())  newCar.setDecoder(getDecoder(null, car));
         return newCar;
     }

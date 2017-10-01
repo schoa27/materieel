@@ -29,7 +29,7 @@ public class SetupController {
     public ModelAndView writeSetup(HttpServletRequest request, ModelAndView model) {
         model.addObject("gevuld", false);
 
-        if (!request.getParameter("padxml").isEmpty()
+        if (request.getParameter("padxml") != null && !request.getParameter("padxml").isEmpty()
                 && !request.getParameter("padafbeelding").isEmpty()               ) {
 
             setupService.writeSetupFile(request.getParameter("padxml"), request.getParameter("padafbeelding"));
@@ -38,6 +38,10 @@ public class SetupController {
         }
 
         if (setupService.readSetupFile().length > 0) {
+            model.addObject("gevuld", true);
+        }
+
+        if (request.getParameter("terug") != null && request.getParameter("terug").equals("true")) {
             model.addObject("gevuld", true);
         }
         model.addObject("form", new Body());

@@ -7,45 +7,58 @@
     <title>WagenOverzicht</title>
 </head>
 
-<script type="text/javascript" th:src="@{/js/viewFunctions.js}" />
+<script type="text/javascript" th:src="@{/js/viewFunctions.js}"/>
 
 <body>
-<form method="get" action="carOverzicht" name="carOverzicht"></form>
+<form method="post" action="/setup" name="setup">
 
-<table style="text-align: left; width: 100%;" border="0" cellpadding="2"
-       cellspacing="2">
-    <tbody>
-    <tr>
-        <td style="vertical-align: middle; text-align: center;">Wagen Overzicht
-        </td>
-    </tr>
-    <tr>
-        <td style="vertical-align: top;">
-            <table style="text-align: left; width: 100%;" border="1"
-                   cellpadding="2" cellspacing="2">
-                <tbody>
-                <tr>
-                    <td style="vertical-align: top;">Nummer</td>
-                    <td style="vertical-align: top;">Maatschappij</td>
-                    <td style="...">Type</td>
-                    <td style="...">Afbeedling</td>
-                </tr>
-                <tr onmouseover="ChangeColor(this, true);"
-                    onmouseout="ChangeColor(this, false);"
-                    th:onclick="'javascript:DetailGegevens(\'/' +  ${'car-'} + ${car.id} + '\');'"
-                    th:each="car, iterstat: ${form.cars}" style="cursor: pointer">
+    <fieldset class="fieldset">
 
-                    <td style="vertical-align: top;" th:text="${car.id}" th:id="|td${iterstat.index}|"/>
-                    <td style="vertical-align: top;" th:text="${car.company}" th:id="|td${iterstat.index}|"/>
-                    <td style="..." th:text="${car.type}" th:id="|td${iterstat.index}|"/>
-                    <td th:id="|td${iterstat.index}|"><img th:src="@{/image/} + ${car.image}"/></td>
-                </tr>
-                </tbody>
-            </table>
-        </td>
-    </tr>
-    </tbody>
-</table>
+        <table style="text-align: left; width: 100%;" border="0" cellpadding="2"
+               cellspacing="2">
+            <tbody>
+            <tr>
+                <td style="vertical-align: middle; text-align: center;">Wagen Overzicht
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                    <div class="scroltable">
+                        <table style="text-align: justify; width: 100%;" border="1"
+                               cellpadding="2" cellspacing="2">
+
+                            <tbody>
+                            <tr>
+                                <td style="vertical-align: top;">Nummer</td>
+                                <td style="vertical-align: top;">Maatschappij</td>
+                                <td style="...">Type</td>
+                                <td style="...">Afbeedling</td>
+                            </tr>
+                            <tr onmouseover="ChangeColor(this, true);"
+                                onmouseout="ChangeColor(this, false);"
+                                th:onclick="'javascript:DetailGegevens(\'/' +  ${'car-'} + ${car.id} + '\');'"
+                                th:each="car, iterstat: ${form.cars}" style="cursor: pointer">
+
+                                <td style="vertical-align: top;" th:text="${car.id}" th:id="|td${iterstat.index}|"/>
+                                <td style="vertical-align: top;" th:text="${car.company}"
+                                    th:id="|td${iterstat.index}|"/>
+                                <td style="..." th:text="${car.type}" th:id="|td${iterstat.index}|"/>
+                                <div th:if="${!car.image.empty} ">
+                                    <td th:id="|td${iterstat.index}|"><img th:src="@{/image/} + ${car.image}"/></td>
+                                </div>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><button name="terug" type="submit" value="true">terug</button></td>
+            </tr>
+            </tbody>
+        </table>
+    </fieldset>
+</form>
 </body>
 </html>
 

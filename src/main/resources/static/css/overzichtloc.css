@@ -4,8 +4,8 @@ body.werkpagina {
 	
 }
 
-fieldset.fieldset {
-	
+.fieldset {
+	border-color: black;
 }
 
 table.tabel {
