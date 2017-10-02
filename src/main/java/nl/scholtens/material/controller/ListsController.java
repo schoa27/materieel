@@ -1,8 +1,8 @@
 package nl.scholtens.material.controller;
 
-import nl.scholtens.material.domain.Operator;
 import nl.scholtens.material.formobject.CarForm;
 import nl.scholtens.material.formobject.LocForm;
+import nl.scholtens.material.formobject.OperatorForm;
 import nl.scholtens.material.service.CarService;
 import nl.scholtens.material.service.LocService;
 import nl.scholtens.material.service.OperatorService;
@@ -18,7 +18,6 @@ import org.springframework.web.servlet.ModelAndView;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.List;
 
 @Controller
 public class ListsController {
@@ -58,16 +57,11 @@ public class ListsController {
 
     @RequestMapping(value = "/operators", method = RequestMethod.GET)
     public  ModelAndView getOperatorsList(ModelAndView model) {
-        List<Operator> operatorList = operatorService.getOperatorList(getXmlPath());
+        OperatorForm operatorForm = new OperatorForm();
+        operatorForm.setOperators(operatorService.getOperatorList(getXmlPath()));
 
-        model.addObject("list", operatorList);
+        model.addObject("form", operatorForm);
         model.setViewName("operatorListView");
-        return model;
-    }
-
-    @RequestMapping(value = "/sort", method = RequestMethod.GET)
-    public ModelAndView sortList(ModelAndView model) {
-
         return model;
     }
 

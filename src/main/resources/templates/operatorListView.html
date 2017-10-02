@@ -1,47 +1,72 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:include="header :: header">
     <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"/>
     <title>Operator Overzicht</title>
 </head>
 
 <script type="text/javascript" th:src="@{/js/viewFunctions.js}"/>
+<script type="text/javascript" th:src="@{/js/sorttable.js}"/>
 
 <body>
-<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
-    <tbody>
-    <tr>
-        <td style="vertical-align: top;">Type nr.</td>
-        <td style="vertical-align: top;">Maatschappij</td>
-    </tr>
+<form method="post" action="/setup" name="setup">
+    <fieldset>
+        <table style="text-align: left; width: 100%;" border="0" cellpadding="2"
+               cellspacing="2">
+            <tbody>
+            <tr>
+                <td style="vertical-align: middle; text-align: center;"><h3>Stam Overzicht</h3></td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top">
+                    <div class="scroltable">
+                        <table class="sortable" style="text-align: left; width: 100%;" border="1" cellpadding="2"
+                               cellspacing="2">
+                            <tbody>
+                            <tr>
+                                <td style="vertical-align: top;">Type nr.</td>
+                                <td style="vertical-align: top;">Maatschappij</td>
+                            </tr>
 
-    <tr onmouseover="ChangeColor(this, true);"
-        onmouseout="ChangeColor(this, false);"
-        th:onclick="'javascript:DetailGegevens(\'/detail/operator/' + ${operator.id} + '\');'"
-            th:each="operator : ${list}">
-        <td style="vertical-align: top;" th:text="${operator.id}"/>
-        <td style="vertical-align: top;" th:text="${operator.locId}"/>
-        <td style="vertical-align: top;">Wagen(s)
-            <table style="text-align: left; width: 100%;" border="1"
-                   cellpadding="2" cellspacing="2">
-                <tbody>
-                <tr>
-                    <td style="vertical-align: top;">Type nr.</td>
-                    <td style="vertical-align: top;">Maatschappij</td>
-                </tr>
-                <tr th:each="cars:${operator.cars}">
-                    <div th:each="car:${cars}">
-                        <td style="vertical-align: top;" th:text="${car.id}"/>
-                        <td style="vertical-align: top;" th:text="${car.company}"/>
+                            <tr onmouseover="ChangeColor(this, true);"
+                                onmouseout="ChangeColor(this, false);"
+                                th:onclick="'javascript:DetailGegevens(\'/' + ${'opr-'} + ${operator.id} + '\');'"
+                                th:each="operator, iterstat: ${form.operators}" style="cursor: pointer">
+
+                                <td style="vertical-align: top;" th:text="${operator.id}"/>
+                                <td style="vertical-align: top;" th:text="${operator.locId}"/>
+                                <td style="vertical-align: top;">Wagen(s)
+                                    <table style="text-align: left; width: 100%;" border="1"
+                                           cellpadding="2" cellspacing="2">
+                                        <tbody>
+                                        <tr>
+                                            <td style="vertical-align: top;">Type nr.</td>
+                                            <td style="vertical-align: top;">Maatschappij</td>
+                                        </tr>
+                                        <tr th:each="cars:${operator.cars}">
+                                            <div th:each="car:${cars}">
+                                                <td style="vertical-align: top;" th:text="${car.id}"/>
+                                                <td style="vertical-align: top;" th:text="${car.company}"/>
+                                            </div>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
-                </tr>
-                </tbody>
-            </table>
-        </td>
-    </tr>
-    </tbody>
-</table>
-
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button name="terug" type="submit" value="true">terug</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </fieldset>
+</form>
 </body>
 </html>
 

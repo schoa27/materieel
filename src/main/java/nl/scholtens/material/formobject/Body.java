@@ -28,9 +28,9 @@ public class Body {
             bottom.setName(br.readLine());
             bottom.setYear(br.readLine());
         } catch (FileNotFoundException e) {
-            System.err.println("Unable to find the file: fileName");
+            System.err.println("Unable to find the file: fileName material.txt");
         } catch (IOException e) {
-            System.err.println("Unable to read the file: fileName");
+            System.err.println("Unable to read the file: fileName material.txt");
         }
 
     }

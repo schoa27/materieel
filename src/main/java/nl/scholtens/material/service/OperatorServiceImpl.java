@@ -25,19 +25,18 @@ public class OperatorServiceImpl implements OperatorService {
 
     @Override
     public List<Operator> getOperatorList(String file) {
-        List<Operator> operatorList = null;
-        try {
-            carService.getCarList(file);
-            operatorList = makeCarList(material.getOperatorList(file), carService.getCarList(file));
+        List<Operator> operators = makeCarList(getOperatorsFromFile(file), carService.getCarList(file));
+        return operators;
+    }
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
+
+    @Override
+    public Operator getOperatorById(String operatorId, String file) {
+        List<Operator> operators = getOperatorList(file);
+        for (Operator opr : operators) {
+            if (opr.getId().equals(operatorId)) return opr;
         }
-        return operatorList;
+        return null;
     }
 
     //TODO uitzoeken stream
@@ -46,11 +45,26 @@ public class OperatorServiceImpl implements OperatorService {
             String[] carIds = operator.getCarIds().split(",");
 
             for (String carId : carIds) {
-                operator.getCars().add(cars.stream()
-                        .filter(c -> carId.equals(c.getId())).findAny().get());
+                for (Car car : cars) {
+                    if (car.getId().equals(carId)) operator.getCars().add(car);
+                }
+//                operator.getCars().add(cars.stream().filter(c -> carId.equals(c.getId())).findAny().get());
             }
         }
         return operators;
+    }
+
+    private List<Operator> getOperatorsFromFile(String file) {
+        try {
+            return material.getOperatorList(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
 

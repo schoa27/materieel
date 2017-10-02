@@ -2,8 +2,10 @@ package nl.scholtens.material.controller;
 
 import nl.scholtens.material.formobject.CarForm;
 import nl.scholtens.material.formobject.LocForm;
+import nl.scholtens.material.formobject.OperatorForm;
 import nl.scholtens.material.service.CarService;
 import nl.scholtens.material.service.LocService;
+import nl.scholtens.material.service.OperatorService;
 import nl.scholtens.material.service.SetupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,9 @@ public class DetailsController {
 
     @Autowired
     private CarService carService;
+
+    @Autowired
+    private OperatorService operatorService;
 
     @Autowired
     private SetupService setupService;
@@ -44,7 +49,10 @@ public class DetailsController {
         }
 
         if (item.substring(0, 3).equals("opr")) {
-
+            OperatorForm form = new OperatorForm();
+            form.setOperator(operatorService.getOperatorById(item.substring(4), getXmlPath()));
+            model.addObject("form", form);
+            model.setViewName("operatorDetails");
         }
 
         return model;
