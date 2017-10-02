@@ -21,6 +21,9 @@ public class OperatorServiceImpl implements OperatorService {
     @Autowired
     private CarService carService;
 
+    @Autowired
+    private LocService locService;
+
     private MaterialMapper material = new MaterialMapper();
 
     @Override
@@ -34,7 +37,7 @@ public class OperatorServiceImpl implements OperatorService {
     public Operator getOperatorById(String operatorId, String file) {
         List<Operator> operators = getOperatorList(file);
         for (Operator opr : operators) {
-            if (opr.getId().equals(operatorId)) return opr;
+            if (opr.getId().equals(operatorId)) return getLocById(opr, file);
         }
         return null;
     }
@@ -52,6 +55,11 @@ public class OperatorServiceImpl implements OperatorService {
             }
         }
         return operators;
+    }
+
+    private Operator getLocById(Operator operator, String file) {
+        operator.setLocomotive(locService.getLocById(operator.getLocId(), file));
+        return operator;
     }
 
     private List<Operator> getOperatorsFromFile(String file) {
