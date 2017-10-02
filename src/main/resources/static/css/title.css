@@ -13,9 +13,10 @@ body {
 }
 
 .inblok {
-	overflow-x: auto;
-	width: auto;
-	display: inline-block;
+	overflow: scroll;
+	width: 1240px;
+	height: 150px;
+	overflow-y: hidden;
 }
 
 h1 {
