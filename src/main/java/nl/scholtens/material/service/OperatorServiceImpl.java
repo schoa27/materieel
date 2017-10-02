@@ -36,10 +36,12 @@ public class OperatorServiceImpl implements OperatorService {
     @Override
     public Operator getOperatorById(String operatorId, String file) {
         List<Operator> operators = getOperatorList(file);
-        for (Operator opr : operators) {
-            if (opr.getId().equals(operatorId)) return getLocById(opr, file);
-        }
-        return null;
+            return getLocById(operators.get(Integer.parseInt(operatorId)), file);
+
+//        for (Operator opr : operators) {
+//            if (opr.getId().equals(operatorId)) return getLocById(opr, file);
+//        }
+//        return null;
     }
 
     //TODO uitzoeken stream

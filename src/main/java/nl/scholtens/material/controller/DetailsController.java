@@ -32,7 +32,7 @@ public class DetailsController {
     private SetupService setupService;
 
     @RequestMapping(value = "/{item}", method = RequestMethod.GET)
-    public ModelAndView carDetails(@PathVariable(value = "item") String item, ModelAndView model) throws IOException {
+    public ModelAndView details(@PathVariable(value = "item") String item,  ModelAndView model) throws IOException {
 
         if (item.substring(0, 3).equals("loc")) {
             LocForm form = new LocForm();

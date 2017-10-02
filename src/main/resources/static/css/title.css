@@ -13,6 +13,8 @@ body {
 }
 
 .inblok {
+	overflow-x: auto;
+	width: auto;
 	display: inline-block;
 }
 

@@ -27,10 +27,11 @@
                                 <td style="vertical-align: top;">Type nr.</td>
                                 <td style="vertical-align: top;">Maatschappij</td>
                             </tr>
+                            <!--th:onclick="'javascript:DetailGegevens(\'[' ${'opr-'} + ${operator.id} + ']')';' "-->
 
                             <tr onmouseover="ChangeColor(this, true);"
                                 onmouseout="ChangeColor(this, false);"
-                                th:onclick="'javascript:DetailGegevens(\'/' + ${'opr-'} + ${operator.id} + '\');'"
+                                th:onclick="'javascript:DetailGegevens(\'/' + ${'opr-'} + ${iterstat.index} + '\');' "
                                 th:each="operator, iterstat: ${form.operators}" style="cursor: pointer">
 
                                 <td style="vertical-align: top;" th:text="${operator.id}"/>
