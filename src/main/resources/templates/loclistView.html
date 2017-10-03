@@ -38,7 +38,7 @@
                             </tr>
                             <tr class="rij" onmouseover="ChangeColor(this, true);"
                                 onmouseout="ChangeColor(this, false);"
-                                th:onclick="'javascript:DetailGegevens(\'/' + ${'loc-'} + ${locomotive.id} + '\');'"
+                                th:onclick="'javascript:DetailGegevens(\'/' + ${'loc-'} + ${iterstat.index} + '\');'"
                                 th:each="locomotive, iterstat: ${form.locomotives}" style="cursor: pointer">
 
                                 <td style="vertical-align: top;" th:text="${locomotive.owner}"

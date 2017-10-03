@@ -28,11 +28,7 @@ public class CarServiceImpl implements CarService {
     @Override
     public Car getCarById(String carId, String file) {
         List<Car> cars = getCarList(file);
-        for (Car car: cars) {
-            if (car.getId().equals(carId)) return car;
-        }
-        return null;
-//        return cars.stream().filter(c -> c.getId() !=null) .filter(c -> carId.equals(c.getId())).findAny().get();
+        return cars.get(Integer.parseInt(carId));
     }
 
     private List<Car> getCarsFromFile(String file) {
