@@ -4,6 +4,8 @@ import nl.scholtens.material.domain.Car;
 import nl.scholtens.material.domain.Decoder;
 import nl.scholtens.material.domain.Locomotive;
 import nl.scholtens.material.domain.Operator;
+import nl.scholtens.material.enums.Constanten;
+import nl.scholtens.material.enums.Protocol;
 import nl.scholtens.material.sources.Plan;
 import org.xml.sax.SAXException;
 
@@ -78,7 +80,8 @@ public class MaterialMapper {
         locomotive.setId(loc.getId());
         locomotive.setNumber(loc.getNumber());
         locomotive.setCompany(loc.getRoadname());
-        locomotive.setEra(loc.getEra());
+        locomotive.setEra(Constanten.EPOCH[Integer.parseInt(loc.getEra())]);
+
         locomotive.setLength(Integer.parseInt(loc.getLen()));
         locomotive.setTrainType(loc.getCargo());
         locomotive.setOwner(loc.getOwner());
@@ -96,7 +99,7 @@ public class MaterialMapper {
         newCar.setManufactor(car.getOwner());
         newCar.setCatalognr(car.getCatnr());
         newCar.setType(car.getType());
-        newCar.setEra(car.getEra());
+        newCar.setEra(Constanten.EPOCH[Integer.parseInt(car.getEra())]);
         newCar.setLength(Integer.parseInt(car.getLen()));
         newCar.setImage(car.getImage());
         if (!car.getDectype().isEmpty())  newCar.setDecoder(getDecoder(null, car));
@@ -109,14 +112,14 @@ public class MaterialMapper {
             decoder.setAddress(Integer.parseInt(loc.getAddr()));
             decoder.setFunctionCount(Integer.parseInt(loc.getFncnt()));
             decoder.setManufacture(loc.getDectype());
-            decoder.setProtocol(loc.getProt());
+            decoder.setProtocol(Protocol.valueOf(loc.getProt()).getProtocol());
             decoder.setSpeedSteps(Integer.parseInt(loc.getSpcnt()));
         }
         if (car != null) {
             decoder.setAddress(Integer.parseInt(car.getAddr()));
             decoder.setFunctionCount(car.getFundef().size());
             decoder.setManufacture(car.getDectype());
-            decoder.setProtocol(car.getProt());
+            if (car.getProt() != null) decoder.setProtocol(Protocol.valueOf(car.getProt()).getProtocol());
             decoder.setSpeedSteps(Integer.parseInt(car.getSpcnt()));
         }
         return decoder;
