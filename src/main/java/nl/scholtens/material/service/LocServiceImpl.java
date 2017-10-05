@@ -24,10 +24,20 @@ public class LocServiceImpl implements LocService {
     }
 
     @Override
+    public Locomotive getLoc(String id, String file) {
+        List<Locomotive> locomotives = getlocListFromFile(file);
+        return locomotives.get(Integer.parseInt(id));
+    }
+
+    @Override
     public Locomotive getLocById(String locId, String file) {
         List<Locomotive> locomotives = getlocListFromFile(file);
-        return locomotives.get(Integer.parseInt(locId));
+        for (Locomotive locomotive: locomotives) {
+            if (locomotive.getId().equals(locId)) return locomotive;
+        }
+        return null;
     }
+
 
     private List<Locomotive> getlocListFromFile(String file) {
         try {

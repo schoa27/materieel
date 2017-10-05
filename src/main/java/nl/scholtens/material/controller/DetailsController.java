@@ -36,7 +36,7 @@ public class DetailsController {
 
         if (item.substring(0, 3).equals("loc")) {
             LocForm form = new LocForm();
-            form.setLocomotive(locService.getLocById(item.substring(4), getXmlPath()));
+            form.setLocomotive(locService.getLoc(item.substring(4), getXmlPath()));
             model.addObject("form", form);
             model.setViewName("locDetails");
         }

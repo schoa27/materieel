@@ -32,19 +32,12 @@ public class OperatorServiceImpl implements OperatorService {
         return operators;
     }
 
-
     @Override
     public Operator getOperatorById(String operatorId, String file) {
         List<Operator> operators = getOperatorList(file);
-            return getLocById(operators.get(Integer.parseInt(operatorId)), file);
-
-//        for (Operator opr : operators) {
-//            if (opr.getId().equals(operatorId)) return getLocById(opr, file);
-//        }
-//        return null;
+        return getLocById(operators.get(Integer.parseInt(operatorId)), file);
     }
 
-    //TODO uitzoeken stream
     private List<Operator> makeCarList(List<Operator> operators, List<Car> cars) {
         for (Operator operator : operators) {
             String[] carIds = operator.getCarIds().split(",");
@@ -53,7 +46,6 @@ public class OperatorServiceImpl implements OperatorService {
                 for (Car car : cars) {
                     if (car.getId().equals(carId)) operator.getCars().add(car);
                 }
-//                operator.getCars().add(cars.stream().filter(c -> carId.equals(c.getId())).findAny().get());
             }
         }
         return operators;
