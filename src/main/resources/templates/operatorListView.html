@@ -8,10 +8,11 @@
 <script type="text/javascript" th:src="@{/js/viewFunctions.js}"/>
 <script type="text/javascript" th:src="@{/js/sorttable.js}"/>
 
-<body>
+<body class="werkpagina">
+
 <form method="post" action="/setup" name="setup">
-    <fieldset>
-        <table style="text-align: left; width: 100%;" border="0" cellpadding="2"
+    <fieldset class="fieldset">
+        <table class="tabel" style="text-align: left; width: 100%;" border="0" cellpadding="2"
                cellspacing="2">
             <tbody>
             <tr>
@@ -27,8 +28,6 @@
                                 <td style="vertical-align: top;">Type nr.</td>
                                 <td style="vertical-align: top;">Maatschappij</td>
                             </tr>
-                            <!--th:onclick="'javascript:DetailGegevens(\'[' ${'opr-'} + ${operator.id} + ']')';' "-->
-
                             <tr onmouseover="ChangeColor(this, true);"
                                 onmouseout="ChangeColor(this, false);"
                                 th:onclick="'javascript:DetailGegevens(\'/' + ${'opr-'} + ${iterstat.index} + '\');' "
@@ -57,6 +56,10 @@
                             </tbody>
                         </table>
                     </div>
+                </td>
+            </tr>
+            <tr class="rij">
+                <td style="vertical-align: top;">
                 </td>
             </tr>
             <tr>
