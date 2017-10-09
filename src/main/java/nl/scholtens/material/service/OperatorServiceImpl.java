@@ -44,7 +44,12 @@ public class OperatorServiceImpl implements OperatorService {
 
             for (String carId : carIds) {
                 for (Car car : cars) {
-                    if (car.getId().equals(carId)) operator.getCars().add(car);
+                    if (car.getId().equals(carId)) {
+                        operator.getCars().add(car);
+                        if (car.getLength() != null) {
+                            operator.setLength(operator.getLength() + car.getLength());
+                        }
+                    }
                 }
             }
         }
@@ -53,6 +58,9 @@ public class OperatorServiceImpl implements OperatorService {
 
     private Operator getLocById(Operator operator, String file) {
         operator.setLocomotive(locService.getLocById(operator.getLocId(), file));
+        if (operator.getLocomotive().getLength() != null) {
+            operator.setLength(operator.getLength() + operator.getLocomotive().getLength());
+        }
         return operator;
     }
 

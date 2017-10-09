@@ -15,6 +15,8 @@ public class Operator {
 
     private List<Car> cars = new ArrayList<>();
 
+    private Integer length = 0;
+
     public Operator() {
         super();
     }
@@ -63,5 +65,13 @@ public class Operator {
 
     public void setCars(List<Car> cars) {
         this.cars = cars;
+    }
+
+    public Integer getLength() {
+        return length;
+    }
+
+    public void setLength(Integer length) {
+        this.length = length;
     }
 }
