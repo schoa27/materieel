@@ -25,3 +25,5 @@ nbdist/
 
 ## project
 *.ini
+*.xsd
+

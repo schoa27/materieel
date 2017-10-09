@@ -1,4 +1,4 @@
 Version 1.0
-Copyright A. Scholtens
+&Copy A. Scholtens
 2017
 

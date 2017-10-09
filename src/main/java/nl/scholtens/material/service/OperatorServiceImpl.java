@@ -11,6 +11,7 @@ import org.xml.sax.SAXException;
 
 import javax.xml.bind.JAXBException;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -58,7 +59,8 @@ public class OperatorServiceImpl implements OperatorService {
 
     private Operator getLocById(Operator operator, String file) {
         operator.setLocomotive(locService.getLocById(operator.getLocId(), file));
-        if (operator.getLocomotive().getLength() != null) {
+
+        if (operator.getLocomotive() != null && operator.getLocomotive().getLength() != null) {
             operator.setLength(operator.getLength() + operator.getLocomotive().getLength());
         }
         return operator;
@@ -72,6 +74,8 @@ public class OperatorServiceImpl implements OperatorService {
         } catch (JAXBException e) {
             e.printStackTrace();
         } catch (SAXException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return null;

@@ -1,4 +1,4 @@
-package nl.scholtens.material.enums;
+package nl.scholtens.material.enums.constants;
 
 public enum Protocol {
     P("ServerDefined"),

@@ -4,13 +4,13 @@ import nl.scholtens.material.domain.Car;
 import nl.scholtens.material.domain.Decoder;
 import nl.scholtens.material.domain.Locomotive;
 import nl.scholtens.material.domain.Operator;
-import nl.scholtens.material.enums.Constanten;
-import nl.scholtens.material.enums.Protocol;
+import nl.scholtens.material.enums.constants.Constanten;
+import nl.scholtens.material.enums.constants.Protocol;
 import nl.scholtens.material.sources.Plan;
 import org.xml.sax.SAXException;
 
 import javax.xml.bind.JAXBException;
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +24,7 @@ public class MaterialMapper {
 
     private List<Plan.Operatorlist.Operator> operatorList;
 
-    private void getPlanGegevens(String file) throws FileNotFoundException, JAXBException, SAXException {
+    private void getPlanGegevens(String file) throws IOException, JAXBException, SAXException {
         Plan plan = planMapper.mapPlan(file);
 
         List<Object> objectenLijst = plan.getFundefOrLclistOrCarlist();
@@ -45,7 +45,7 @@ public class MaterialMapper {
         }
     }
 
-    public List<Locomotive> getlocList(String file) throws FileNotFoundException, JAXBException, SAXException {
+    public List<Locomotive> getlocList(String file) throws IOException, JAXBException, SAXException {
         List<Locomotive> locotives = new ArrayList<>();
         getPlanGegevens(file);
 
@@ -55,7 +55,7 @@ public class MaterialMapper {
         return locotives;
     }
 
-    public List<Car> getCarList(String file) throws FileNotFoundException, JAXBException, SAXException {
+    public List<Car> getCarList(String file) throws IOException, JAXBException, SAXException {
         List<Car> cars = new ArrayList<>();
         getPlanGegevens(file);
 
@@ -65,7 +65,7 @@ public class MaterialMapper {
         return cars;
     }
 
-    public List<Operator> getOperatorList(String file) throws FileNotFoundException, JAXBException, SAXException {
+    public List<Operator> getOperatorList(String file) throws IOException, JAXBException, SAXException {
         List<Operator> operators = new ArrayList<>();
         getPlanGegevens(file);
 
