@@ -36,14 +36,19 @@ public class CarServiceImpl implements CarService {
         try {
             return material.getCarList(file);
         } catch (FileNotFoundException e) {
+            logger.error("collecting car list file not found");
             e.printStackTrace();
         } catch (JAXBException e) {
+            logger.error("collecting car list XSD parse failure JAXB");
             e.printStackTrace();
         } catch (SAXException e) {
+            logger.error("collecting car list XSD parse failure SAX");
             e.printStackTrace();
         } catch (IOException e) {
+            logger.error("collecting car list IO exception");
             e.printStackTrace();
         }
+        logger.error("collecting car list");
         return null;
     }
 }

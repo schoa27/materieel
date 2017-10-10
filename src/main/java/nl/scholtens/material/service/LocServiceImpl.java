@@ -33,9 +33,11 @@ public class LocServiceImpl implements LocService {
     @Override
     public Locomotive getLocById(String locId, String file) {
         List<Locomotive> locomotives = getlocListFromFile(file);
+
         for (Locomotive locomotive: locomotives) {
             if (locomotive.getId().equals(locId)) return locomotive;
         }
+        logger.error("no loc found for id " + locId);
         return null;
     }
 
@@ -43,14 +45,19 @@ public class LocServiceImpl implements LocService {
         try {
             return material.getlocList(file);
         } catch (FileNotFoundException e) {
+            logger.error("collecting loc list file not found");
             e.printStackTrace();
         } catch (JAXBException e) {
+            logger.error("collecting loc list XSD parse failure JAXB");
             e.printStackTrace();
         } catch (SAXException e) {
+            logger.error("collecting loc list XSD parse failure SAX");
             e.printStackTrace();
         } catch (IOException e) {
+            logger.error("collecting loc list IO exception");
             e.printStackTrace();
         }
+        logger.error("collecting loc list");
         return null;
     }
 }

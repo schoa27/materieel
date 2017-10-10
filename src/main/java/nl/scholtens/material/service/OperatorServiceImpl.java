@@ -70,14 +70,19 @@ public class OperatorServiceImpl implements OperatorService {
         try {
             return material.getOperatorList(file);
         } catch (FileNotFoundException e) {
+            logger.error("collecting operator list file not found");
             e.printStackTrace();
         } catch (JAXBException e) {
+            logger.error("collecting operator list XSD parse failure JAXB");
             e.printStackTrace();
         } catch (SAXException e) {
+            logger.error("collecting operator list XSD parse failure JAXB");
             e.printStackTrace();
         } catch (IOException e) {
+            logger.error("collecting operator list IO exception");
             e.printStackTrace();
         }
+        logger.error("collecting operator list");
         return null;
     }
 }
