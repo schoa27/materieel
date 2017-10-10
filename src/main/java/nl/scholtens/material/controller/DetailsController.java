@@ -8,6 +8,7 @@ import nl.scholtens.material.service.LocService;
 import nl.scholtens.material.service.OperatorService;
 import nl.scholtens.material.service.SetupService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,25 +32,28 @@ public class DetailsController {
     @Autowired
     private SetupService setupService;
 
+    @Value("${build.version}")
+    private String buildVersion;
+
     @RequestMapping(value = "/{item}", method = RequestMethod.GET)
     public ModelAndView details(@PathVariable(value = "item") String item,  ModelAndView model) throws IOException {
 
         if (item.substring(0, 3).equals("loc")) {
-            LocForm form = new LocForm();
+            LocForm form = new LocForm(buildVersion);
             form.setLocomotive(locService.getLoc(item.substring(4), getXmlPath()));
             model.addObject("form", form);
             model.setViewName("locDetails");
         }
 
         if (item.substring(0, 3).equals("car")) {
-            CarForm form = new CarForm();
+            CarForm form = new CarForm(buildVersion);
             form.setCar(carService.getCarById(item.substring(4), getXmlPath()));
             model.addObject("form", form);
             model.setViewName("carDetails");
         }
 
         if (item.substring(0, 3).equals("opr")) {
-            OperatorForm form = new OperatorForm();
+            OperatorForm form = new OperatorForm(buildVersion);
             form.setOperator(operatorService.getOperatorById(item.substring(4), getXmlPath()));
             model.addObject("form", form);
             model.setViewName("operatorDetails");

@@ -2,7 +2,6 @@ package nl.scholtens.material.formobject;
 
 import nl.scholtens.material.domain.Car;
 
-import java.io.IOException;
 import java.util.List;
 
 public class CarForm extends Body {
@@ -11,8 +10,8 @@ public class CarForm extends Body {
 
     private Car car;
 
-    public CarForm() throws IOException {
-        super();
+    public CarForm(String version) {
+        super(version);
     }
 
     public List<Car> getCars() {

@@ -2,7 +2,9 @@ package nl.scholtens.material.controller;
 
 import nl.scholtens.material.formobject.Body;
 import nl.scholtens.material.service.SetupService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,12 +17,19 @@ import java.io.IOException;
 @Controller
 public class SetupController {
 
+    Logger logger = Logger.getLogger(SetupController.class);
+
     @Autowired
     private SetupService setupService;
 
+    @Value("${build.version}")
+    private String buildVersion;
+
     @RequestMapping(value = "/setup", method = RequestMethod.GET)
-    public ModelAndView instelling(ModelAndView model) {
+    public ModelAndView instelling(ModelAndView model) throws IOException {
         model.addObject("gevuld", false);
+
+        model.addObject("version", buildVersion);
 
         if (!setupService.isFileEmpty()) {
             final String[] paths = setupService.readSetupFile();
@@ -31,7 +40,7 @@ public class SetupController {
             model.addObject("imagepath", "pad niet gevuld");
         }
 
-        model.addObject("form", new Body());
+        model.addObject("form", new Body(buildVersion));
         model.setViewName("setupView");
         return model;
     }
@@ -41,7 +50,7 @@ public class SetupController {
         model.addObject("gevuld", false);
 
         if (request.getParameter("padxml") != null && !request.getParameter("padxml").isEmpty()
-                && !request.getParameter("padafbeelding").isEmpty()               ) {
+                && !request.getParameter("padafbeelding").isEmpty()) {
 
             setupService.writeSetupFile(request.getParameter("padxml"), request.getParameter("padafbeelding"));
 
@@ -55,7 +64,7 @@ public class SetupController {
         if (request.getParameter("terug") != null && request.getParameter("terug").equals("true")) {
             model.addObject("gevuld", true);
         }
-        model.addObject("form", new Body());
+        model.addObject("form", new Body(buildVersion));
         model.setViewName("setupView");
         return model;
     }
@@ -74,4 +83,5 @@ public class SetupController {
             response.sendRedirect("/operators");
         }
     }
+
 }

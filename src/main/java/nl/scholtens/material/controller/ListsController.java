@@ -8,6 +8,7 @@ import nl.scholtens.material.service.LocService;
 import nl.scholtens.material.service.OperatorService;
 import nl.scholtens.material.service.SetupService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,10 +35,13 @@ public class ListsController {
     @Autowired
     private SetupService setupService;
 
+    @Value("${build.version}")
+    private String buildVersion;
 
     @RequestMapping(value = "/locs", method = RequestMethod.GET)
     public ModelAndView getLocLijst(ModelAndView model) throws IOException {
-        LocForm locForm = new LocForm();
+        LocForm locForm = new LocForm(buildVersion);
+
         locForm.setLocomotives(locService.getLocList(getXmlPath()));
 
         model.addObject("form", locForm);
@@ -47,7 +51,7 @@ public class ListsController {
 
     @RequestMapping(value = "/cars", method = RequestMethod.GET)
     public ModelAndView getCarsList(ModelAndView model) throws IOException {
-        CarForm carForm = new CarForm();
+        CarForm carForm = new CarForm(buildVersion);
         carForm.setCars(carService.getCarList(getXmlPath()));
 
         model.addObject("form", carForm);
@@ -57,7 +61,7 @@ public class ListsController {
 
     @RequestMapping(value = "/operators", method = RequestMethod.GET)
     public  ModelAndView getOperatorsList(ModelAndView model) {
-        OperatorForm operatorForm = new OperatorForm();
+        OperatorForm operatorForm = new OperatorForm(buildVersion);
         operatorForm.setOperators(operatorService.getOperatorList(getXmlPath()));
 
         model.addObject("form", operatorForm);

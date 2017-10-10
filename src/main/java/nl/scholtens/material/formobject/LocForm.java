@@ -2,7 +2,6 @@ package nl.scholtens.material.formobject;
 
 import nl.scholtens.material.domain.Locomotive;
 
-import java.io.IOException;
 import java.util.List;
 
 public class LocForm extends Body {
@@ -11,10 +10,9 @@ public class LocForm extends Body {
 
     private Locomotive locomotive;
 
-    public LocForm() throws IOException {
-        super();
+    public LocForm(String version) {
+        super(version);
     }
-
 
     public List<Locomotive> getLocomotives() {
         return locomotives;
