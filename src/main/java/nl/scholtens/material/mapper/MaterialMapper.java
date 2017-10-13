@@ -88,6 +88,7 @@ public class MaterialMapper {
         locomotive.setCatalogNumber(loc.getCatnr());
         locomotive.setEngine(loc.getEngine());
         locomotive.setImage(loc.getImage());
+        locomotive.setSlaveLocIds(loc.getConsist());
         locomotive.setDecoder(getDecoder(loc, null));
         return locomotive;
     }

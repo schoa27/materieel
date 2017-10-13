@@ -34,11 +34,27 @@ public class LocServiceImpl implements LocService {
     public Locomotive getLocById(String locId, String file) {
         List<Locomotive> locomotives = getlocListFromFile(file);
 
-        for (Locomotive locomotive: locomotives) {
+        Locomotive locomotive = getLocomotive(locId, locomotives);
+        if (locomotive != null) {
+            getSlaveLocomotives(locomotive, locomotives);
+        }
+        return locomotive;
+    }
+
+    private Locomotive getLocomotive(String locId, List<Locomotive> locomotives) {
+        for (Locomotive locomotive : locomotives) {
             if (locomotive.getId().equals(locId)) return locomotive;
         }
         logger.error("no loc found for id " + locId);
         return null;
+    }
+
+    private Locomotive getSlaveLocomotives(Locomotive locomotive, List<Locomotive> locomotives) {
+        String[] locIds = locomotive.getSlaveLocIds().split(",");
+        for (String locId : locIds) {
+            if (!locId.isEmpty()) locomotive.getSlaveLocList().add(getLocomotive(locId, locomotives));
+        }
+        return locomotive;
     }
 
     private List<Locomotive> getlocListFromFile(String file) {

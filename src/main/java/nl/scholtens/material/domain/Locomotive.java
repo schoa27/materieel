@@ -1,5 +1,8 @@
 package nl.scholtens.material.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Locomotive {
     private String id;
 
@@ -22,6 +25,10 @@ public class Locomotive {
     private String image;
 
     private Decoder decoder = new Decoder();
+
+    private String slaveLocIds;
+
+    private List<Locomotive> slaveLocList = new ArrayList<>();
 
     public String getId() {
         return id;
@@ -109,5 +116,21 @@ public class Locomotive {
 
     public void setDecoder(Decoder decoder) {
         this.decoder = decoder;
+    }
+
+    public String getSlaveLocIds() {
+        return slaveLocIds;
+    }
+
+    public void setSlaveLocIds(String slaveLocIds) {
+        this.slaveLocIds = slaveLocIds;
+    }
+
+    public List<Locomotive> getSlaveLocList() {
+        return slaveLocList;
+    }
+
+    public void setSlaveLocList(List<Locomotive> slaveLocList) {
+        this.slaveLocList = slaveLocList;
     }
 }

@@ -1,6 +1,7 @@
 package nl.scholtens.material.service;
 
 import nl.scholtens.material.domain.Car;
+import nl.scholtens.material.domain.Locomotive;
 import nl.scholtens.material.domain.Operator;
 import nl.scholtens.material.mapper.MaterialMapper;
 import org.apache.log4j.LogManager;
@@ -61,9 +62,19 @@ public class OperatorServiceImpl implements OperatorService {
         operator.setLocomotive(locService.getLocById(operator.getLocId(), file));
 
         if (operator.getLocomotive() != null && operator.getLocomotive().getLength() != null) {
-            operator.setLength(operator.getLength() + operator.getLocomotive().getLength());
+            operator.setLength(operator.getLength() + operator.getLocomotive().getLength() + getSlaveLenght(operator.getLocomotive()));
         }
         return operator;
+    }
+
+    private Integer getSlaveLenght(Locomotive locomotive) {
+        int length = 0;
+        if (!locomotive.getSlaveLocList().isEmpty()) {
+            for (Locomotive slaveLoc : locomotive.getSlaveLocList()) {
+                length = length + slaveLoc.getLength();
+            }
+        }
+        return length;
     }
 
     private List<Operator> getOperatorsFromFile(String file) {
