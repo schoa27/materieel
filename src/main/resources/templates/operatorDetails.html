@@ -152,6 +152,13 @@
                             <div th:if="${form.operator.locomotive !=null}">
                                 <td><img th:src="@{/image/} + ${form.operator.locomotive.image}" align="center"/>
                                 </td>
+                                <div th:if="${!form.operator.locomotive.slaveLocList.empty}">
+                                    <div th:each="slave, iterstat: ${form.operator.locomotive.slaveLocList}">
+                                        <td th:id="|td${iterstat.index}|">
+                                            <img th:src="@{/image/} + ${slave.image}" align="center"/>
+                                        </td>
+                                    </div>
+                                </div>
                             </div>
                             <div th:each="car, iterstat: ${form.operator.cars}">
                                 <td th:id="|td${iterstat.index}|"><img th:src="@{/image/} + ${car.image}"
@@ -162,6 +169,11 @@
                             <div th:if="${form.operator.locomotive !=null}">
                                 <td class="font" border="1" th:text="${form.operator.locomotive.id}"
                                     align="center"/>
+                                <div th:if="${!form.operator.locomotive.slaveLocList.empty}">
+                                    <div th:each="slave, iterstat: ${form.operator.locomotive.slaveLocList}">
+                                        <td class="font" border="1" th:text="${slave.id}" align="center"/>
+                                    </div>
+                                </div>
                             </div>
                             <div th:each="car, iterstat: ${form.operator.cars}">
                                 <td class="font" border="1" th:text="${car.id}" align="center"/>
