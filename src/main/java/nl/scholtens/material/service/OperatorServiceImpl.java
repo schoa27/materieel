@@ -31,6 +31,8 @@ public class OperatorServiceImpl implements OperatorService {
     @Override
     public List<Operator> getOperatorList(String file) {
         List<Operator> operators = makeCarList(getOperatorsFromFile(file), carService.getCarList(file));
+        getLocomotive(operators, file);
+
         return operators;
     }
 
@@ -38,6 +40,19 @@ public class OperatorServiceImpl implements OperatorService {
     public Operator getOperatorById(String operatorId, String file) {
         List<Operator> operators = getOperatorList(file);
         return getLocById(operators.get(Integer.parseInt(operatorId)), file);
+    }
+
+    private List<Operator> getLocomotive(List<Operator> operators, String file) {
+        List<Locomotive> locomotives = locService.getLocList(file);
+
+        for (Operator operator: operators) {
+            for (Locomotive locomotive: locomotives) {
+                if (operator.getLocId().equals(locomotive.getId())) {
+                    operator.setLocomotive(locomotive);
+                }
+            }
+        }
+        return operators;
     }
 
     private List<Operator> makeCarList(List<Operator> operators, List<Car> cars) {

@@ -21,7 +21,11 @@ public class LocServiceImpl implements LocService {
 
     @Override
     public List<Locomotive> getLocList(String file) {
-        return getlocListFromFile(file);
+        List<Locomotive> locomotives = getlocListFromFile(file);
+        for (Locomotive locomotive: locomotives) {
+            getSlaveLocomotives(locomotive, locomotives);
+        }
+        return locomotives;
     }
 
     @Override

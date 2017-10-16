@@ -13,6 +13,14 @@ body {
 
 }
 
+.scroltableA{
+	overflow-y:scroll;
+	height:100px;
+	width: 100%;
+	display: inline-block;
+
+}
+
 .inblok {
 	overflow: scroll;
 	width: 1240px;

@@ -25,7 +25,7 @@
                                cellspacing="2">
                             <tbody>
                             <tr>
-                                <td style="vertical-align: top;">Type nr.</td>
+                                <td style="vertical-align: top;">Stam</td>
                                 <td style="vertical-align: top;">Maatschappij</td>
                             </tr>
                             <tr onmouseover="ChangeColor(this, true);"
@@ -35,22 +35,52 @@
 
                                 <td style="vertical-align: top;" th:text="${operator.id}"/>
                                 <td style="vertical-align: top;" th:text="${operator.locId}"/>
-                                <td style="vertical-align: top;">Wagen(s)
-                                    <table style="text-align: left; width: 100%;" border="1"
-                                           cellpadding="2" cellspacing="2">
-                                        <tbody>
-                                        <tr>
-                                            <td style="vertical-align: top;">Type nr.</td>
-                                            <td style="vertical-align: top;">Maatschappij</td>
-                                        </tr>
-                                        <tr th:each="cars:${operator.cars}">
-                                            <div th:each="car:${cars}">
-                                                <td style="vertical-align: top;" th:text="${car.id}"/>
-                                                <td style="vertical-align: top;" th:text="${car.company}"/>
+                                <td style="vertical-align: top;">Tracktie loc(s)
+                                    <div class="scroltableA">
+                                        <table style="text-align: left; width: 100%;" border="1"
+                                               cellpadding="2" cellspacing="2">
+                                            <tbody>
+                                            <tr>
+                                                <td style="vertical-align: top;">Loc.</td>
+                                                <td style="vertical-align: top;">Maatschappij</td>
+                                            </tr>
+                                            <div th:each="loc:${operator.locomotive}">
+                                                <div th:if="${!loc.slaveLocList.empty}">
+                                                    <tr th:each="slaves: ${loc.slaveLocList}">
+
+                                                        <div th:each="slave:${slaves}">
+                                                            <td style="vertical-align: top;" th:text="${slave.id}"/>
+                                                            <td style="vertical-align: top;"
+                                                                th:text="${slave.company}"/>
+                                                        </div>
+
+                                                    </tr>
+                                                </div>
+
                                             </div>
-                                        </tr>
-                                        </tbody>
-                                    </table>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
+
+                                <td style="vertical-align: top;">Wagen(s)
+                                    <div class="scroltableA">
+                                        <table style="text-align: left; width: 100%;" border="1"
+                                               cellpadding="2" cellspacing="2">
+                                            <tbody>
+                                            <tr>
+                                                <td style="vertical-align: top;">Type nr.</td>
+                                                <td style="vertical-align: top;">Maatschappij</td>
+                                            </tr>
+                                            <tr th:each="cars:${operator.cars}">
+                                                <div th:each="car:${cars}">
+                                                    <td style="vertical-align: top;" th:text="${car.id}"/>
+                                                    <td style="vertical-align: top;" th:text="${car.company}"/>
+                                                </div>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </td>
                             </tr>
                             </tbody>
