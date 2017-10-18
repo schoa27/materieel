@@ -9,8 +9,12 @@ function ChangeColor(tableRow, highLight) {
 function DetailGegevens(servlet) {
     document.location.href = servlet;
 }
-
-function rowClick(value) {
-    location.href = "/" + value;
+//
+// function toggleInputs() {
+//     var inputs = document.getElementById('zoek');
+//     for (var i = inputs.length, n = 0; n < i; n++) {
+//         inputs[n].disabled = !inputs[n].disabled;
+//     }
+// }
 
 }

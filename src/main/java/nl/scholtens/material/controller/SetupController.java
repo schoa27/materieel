@@ -84,4 +84,38 @@ public class SetupController {
         }
     }
 
+    @RequestMapping(value = "/zoeken", method = RequestMethod.GET)
+    public ModelAndView searchMethodes(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        if (!request.getParameter("catalog").isEmpty()) {
+            ModelAndView mav = new ModelAndView();
+            mav.addObject("zoek", request.getParameter("catalog"));
+            mav.setViewName("forward:/zoek/catalog");
+            return mav;
+        }
+
+        if (!request.getParameter("owner").isEmpty()) {
+            ModelAndView mav = new ModelAndView();;
+            mav.addObject("zoek", request.getParameter("owner"));
+            mav.setViewName("forward:/zoek/owner");
+            return mav;
+        }
+
+        if (!request.getParameter("dcc").isEmpty()) {
+            ModelAndView mav = new ModelAndView();
+            request.setAttribute("zoek", request.getParameter("dcc"));
+            mav.addObject("zoek", request.getParameter("dcc"));
+            mav.setViewName("forward:/zoek/dcc");
+            return mav;
+        }
+
+        if (!request.getParameter("br").isEmpty()) {
+            ModelAndView mav = new ModelAndView();
+            mav.addObject("zoek", request.getParameter("br"));
+            mav.setViewName("forward:/zoek/br");
+            return mav;
+        }
+        return null;
+    }
+
 }

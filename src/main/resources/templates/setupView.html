@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <title>SetupView</title>
 </head>
+<script type="text/javascript" th:src="@{/js/viewFunctions.js}"/>
 <body>
 
 <div th:if="${gevuld} != true">
@@ -51,20 +52,48 @@
 </div>
 
 <div th:if="${gevuld} == true">
-    <form method="post" action="/keuze">
-        <fieldset class="fieldset">
-            <form>
-                <table style="text-align: center; width: 100%;" border="0" cellpadding="2"
-                       cellspacing="2">
-                    <tr>
-                        <td style="text-align: left;"><input type="submit" name="loc" value="Locomotief Overzicht"/></td>
-                        <td style="text-align: center;"><input type="submit" name="car" value="Wagen Overzicht"/></td>
-                        <td style="text-align: right;"><input type="submit" name="train" value="Stam Overzicht"/></td>
-                    </tr>
-                </table>
-            </form>
-        </fieldset>
-    </form>
+
+    <fieldset class="fieldset">
+        <form method="post" action="/keuze">
+            <table style="text-align: center; width: 100%;" border="0" cellpadding="2"
+                   cellspacing="2">
+                <tr>
+                    <td style="text-align: left;"><input type="submit" name="loc" value="Locomotief Overzicht"/></td>
+                    <td style="text-align: center;"><input type="submit" name="car" value="Wagen Overzicht"/></td>
+                    <td style="text-align: right;"><input type="submit" name="train" value="Stam Overzicht"/></td>
+                </tr>
+            </table>
+        </form>
+    </fieldset>
+    <fieldset class="fieldset">
+        <form method="get" action="/zoeken" >
+            <h3 class="h3left">Zoeken</h3>
+            <table style="text-align: center; width: 50%;" border="0" cellpadding="2"
+                   cellspacing="2">
+                <tr>
+                    <td style="text-align: left;">Zoeken op fabrikant</td>
+                    <td><input type="text" id="owner" name="owner" size="40"/></td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">Zoeken op catalogus nr.</td>
+                    <td><input type="text" id="catalog" name="catalog" size="40"/></td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">Zoeken op DCC adres</td>
+                    <td><input type="text" id="dcc" name="dcc" size="40"/></td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">Zoeken op BauReihe (BR)</td>
+                    <td><input type="text" id="br" name="br" size="40"/></td>
+                </tr>
+            </table>
+            <input type="submit" value="zoek" name="zoek"/>
+            <input type="submit" style="position: absolute; left: -9999px"/>
+        </form>
+    </fieldset>
+
 </div>
 </body>
+
+
 </html>
