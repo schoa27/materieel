@@ -9,6 +9,17 @@ function ChangeColor(tableRow, highLight) {
 function DetailGegevens(servlet) {
     document.location.href = servlet;
 }
+
+function selectLanguage() {
+    $(document).ready(function() {
+        $("#locales").change(function () {
+            var selectedOption = $('#locales').val();
+            if (selectedOption != ''){
+                window.location.replace('?lang=' + selectedOption);
+            }
+        });
+    });
+}
 //
 // function toggleInputs() {
 //     var inputs = document.getElementById('zoek');
@@ -17,4 +28,3 @@ function DetailGegevens(servlet) {
 //     }
 // }
 
-}

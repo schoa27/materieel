@@ -5,23 +5,41 @@
     <title>SetupView</title>
 </head>
 <script type="text/javascript" th:src="@{/js/viewFunctions.js}"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"/>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#locales").change(function () {
+            var selectedOption = $('#locales').val();
+            if (selectedOption != ''){
+                window.location.replace('?lang=' + selectedOption);
+            }
+        });
+    });
+</script>
 <body>
 
 <div th:if="${gevuld} != true">
     <form method="post" action="/setup">
         <fieldset class="fieldset">
+            <span th:text="#{lang.change}"></span>:
+            <select id="locales">
+                <option value=""></option>
+                <option value="en" th:text="#{lang.eng}"></option>
+                <option value="nl" th:text="#{lang.nl}"></option>
+            </select>
             <table style="text-align: left; width: 100%;" border="0" cellpadding="2" cellspacing="2">
                 <tbody>
                 <tr>
-                    <td style="vertical-align: top;"><h3 class="h3left">Nieuwe Instellingen</h3>
+                    <td style="vertical-align: top;"><h3 class="h3left" th:text="#{lang.nwsetup}">Nieuwe Instellingen</h3>
                         <table style="text-align: left; width: 75%;" border="0" cellpadding="2" cellspacing="2">
                             <tbody>
                             <tr>
-                                <td style="vertical-align: top;">lokatie en naam van XML bestand</td>
+                                <td style="vertical-align: top;" th:text="#{lang.xmllocation}">lokatie en naam van XML bestand</td>
                                 <td style="vertical-align: top;"><input type="text" name="padxml"/></td>
                             </tr>
                             <tr>
-                                <td style="vertical-align: top;">lokatie van de afbeeldingen</td>
+                                <td style="vertical-align: top;" th:text="#{lang.imagelocation}">lokatie van de afbeeldingen</td>
                                 <td style="vertical-align: top;"><input type="text" name="padafbeelding"/></td>
                             </tr>
                             </tbody>
@@ -29,7 +47,7 @@
 
                     </td>
 
-                    <td style="vertical-align: top;"><h3 class="h3left">Oude Instellingen</h3>
+                    <td style="vertical-align: top;"><h3 class="h3left" th:text="#{lang.odsetup}">Oude Instellingen</h3>
                         <table style="text-align: left; width: 100%;" border="0" cellpadding="5" cellspacing="5">
                             <tbody>
                             <tr>
@@ -43,7 +61,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><input type="submit" value="Doorgaan"/></td>
+                    <td><input type="submit" th:value="#{lang.continuebutton}" /></td>
                 </tr>
                 </tbody>
             </table>
@@ -58,36 +76,36 @@
             <table style="text-align: center; width: 100%;" border="0" cellpadding="2"
                    cellspacing="2">
                 <tr>
-                    <td style="text-align: left;"><input type="submit" name="loc" value="Locomotief Overzicht"/></td>
-                    <td style="text-align: center;"><input type="submit" name="car" value="Wagen Overzicht"/></td>
-                    <td style="text-align: right;"><input type="submit" name="train" value="Stam Overzicht"/></td>
+                    <td style="text-align: left;"><input type="submit" name="loc" th:value="#{lang.locoverview}"/></td>
+                    <td style="text-align: center;"><input type="submit" name="car" th:value="#{lang.caroverview}"/></td>
+                    <td style="text-align: right;"><input type="submit" name="train" th:value="#{lang.trainoverview}"/></td>
                 </tr>
             </table>
         </form>
     </fieldset>
     <fieldset class="fieldset">
         <form method="get" action="/zoeken" >
-            <h3 class="h3left">Zoeken</h3>
+            <h3 class="h3left" th:text="#{lang.search}">Zoeken</h3>
             <table style="text-align: center; width: 50%;" border="0" cellpadding="2"
                    cellspacing="2">
                 <tr>
-                    <td style="text-align: left;">Zoeken op fabrikant</td>
+                    <td style="text-align: left;" th:text="#{lang.searchowner}">Zoeken op fabrikant</td>
                     <td><input type="text" id="owner" name="owner" size="40"/></td>
                 </tr>
                 <tr>
-                    <td style="text-align: left;">Zoeken op catalogus nr.</td>
+                    <td style="text-align: left;" th:text="#{lang.searchcatalog}">Zoeken op catalogus nr.</td>
                     <td><input type="text" id="catalog" name="catalog" size="40"/></td>
                 </tr>
                 <tr>
-                    <td style="text-align: left;">Zoeken op DCC adres</td>
+                    <td style="text-align: left;" th:text="#{lang.searchdcc}">Zoeken op DCC adres</td>
                     <td><input type="text" id="dcc" name="dcc" size="40"/></td>
                 </tr>
                 <tr>
-                    <td style="text-align: left;">Zoeken op BauReihe (BR)</td>
+                    <td style="text-align: left;" th:text="#{lang.searchbr}">Zoeken op BauReihe (BR)</td>
                     <td><input type="text" id="br" name="br" size="40"/></td>
                 </tr>
             </table>
-            <input type="submit" value="zoek" name="zoek"/>
+            <input type="submit" th:value="#{lang.search}" name="zoek"/>
             <input type="submit" style="position: absolute; left: -9999px"/>
         </form>
     </fieldset>

@@ -16,9 +16,9 @@
         <td><img th:src="@{images/diesell.gif}" width="130" height="55"/></td>
         <td><img th:src="@{images/steaml.gif}" width="130" height="55"/></td>
         <td><img th:src="@{images/trainl.gif}" width="130" height="55"/></td>
-        <td><h1>
-            Overzicht<a class="cursief"> Materieel</a>
-        </h1></td>
+        <td><h1 th:text="#{lang.title1}">Overzicht</h1>
+            <a class="cursief" ><h1 th:text="#{lang.title2}">Materieel</h1></a>
+        </td>
         <td><img th:src="@{images/trainr.gif}" width="130" height="55"/></td>
         <td><img th:src="@{images/steamr.gif}" width="130" height="55"/></td>
         <td><img th:src="@{images/dieselr.gif}" width="130" height="55"/></td>
@@ -34,7 +34,7 @@
        cellspacing="2">
     <tr>
         <td><img th:src="@{images/digir.png}" with="400" height="20"/></td>
-        <td><h3>Overzicht van digitale locomotieven, treinstellen en wagons</h3></td>
+        <td><h3 th:text="#{lang.subtitle}">Overzicht van digitale locomotieven, treinstellen en wagons</h3></td>
         <td><img th:src="@{images/digil.png}" with="400" height="20"/></td>
     </tr>
 </table>

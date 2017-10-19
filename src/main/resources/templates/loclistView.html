@@ -20,7 +20,7 @@
 
 
         <tr>
-            <td style="vertical-align: middle; text-align: center;"><h3>Locomotief Overzicht</h3></td>
+            <td style="vertical-align: middle; text-align: center;"><h3 th:text="#{lang.locoverview}">Locomotief Overzicht</h3></td>
         </tr>
         <tr>
             <td style="vertical-align: top;">
@@ -29,12 +29,12 @@
                            cellpadding="1" cellspacing="1">
                         <tbody>
                         <tr class="rij">
-                            <td style="vertical-align: top;">Merk</td>
-                            <td style="vertical-align: top;">TypeNummer</td>
-                            <td style="vertical-align: top;">BR</td>
-                            <td style="vertical-align: top;">Decoder adres</td>
-                            <td style="vertical-align: top;">Aandrijving</td>
-                            <td style="vertical-align: top;">Afbeelding</td>
+                            <td style="vertical-align: top;" th:text="#{lang.owner}">Merk</td>
+                            <td style="vertical-align: top;" th:text="#{lang.catalognr}">TypeNummer</td>
+                            <td style="vertical-align: top;" th:text="#{lang.br}">BR</td>
+                            <td style="vertical-align: top;" th:text="#{lang.address}">Decoder adres</td>
+                            <td style="vertical-align: top;" th:text="#{lang.engine}">Aandrijving</td>
+                            <td style="vertical-align: top;" th:text="#{lang.image}">Afbeelding</td>
                         </tr>
                         <tr class="rij" onmouseover="ChangeColor(this, true);"
                             onmouseout="ChangeColor(this, false);"
@@ -68,7 +68,7 @@
         <tr>
             <td>
                 <form method="post" action="/setup" name="setup">
-                    <button name="terug" type="submit" value="true">terug</button>
+                    <button name="terug" type="submit" th:text="#{lang.back}">terug</button>
                 </form>
             </td>
          </tr>

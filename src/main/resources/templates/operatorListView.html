@@ -16,7 +16,7 @@
                cellspacing="2">
             <tbody>
             <tr>
-                <td style="vertical-align: middle; text-align: center;"><h3>Stam Overzicht</h3></td>
+                <td style="vertical-align: middle; text-align: center;"><h3 th:text="#{lang.trainoverview}">Stam Overzicht</h3></td>
             </tr>
             <tr>
                 <td style="vertical-align: top">
@@ -25,8 +25,8 @@
                                cellspacing="2">
                             <tbody>
                             <tr>
-                                <td style="vertical-align: top;">Stam</td>
-                                <td style="vertical-align: top;">Maatschappij</td>
+                                <td style="vertical-align: top;" th:text="#{lang.train}">Stam</td>
+                                <td style="vertical-align: top;" th:text="#{lang.loc}">Maatschappij</td>
                             </tr>
                             <tr onmouseover="ChangeColor(this, true);"
                                 onmouseout="ChangeColor(this, false);"
@@ -35,14 +35,14 @@
 
                                 <td style="vertical-align: top;" th:text="${operator.id}"/>
                                 <td style="vertical-align: top;" th:text="${operator.locId}"/>
-                                <td style="vertical-align: top;">Tracktie loc(s)
+                                <td style="vertical-align: top;"><span th:text="#{lang.traction}">Tracktie loc(s)</span>
                                     <div class="scroltableA">
                                         <table style="text-align: left; width: 100%;" border="1"
                                                cellpadding="2" cellspacing="2">
                                             <tbody>
                                             <tr>
-                                                <td style="vertical-align: top;">Loc.</td>
-                                                <td style="vertical-align: top;">Maatschappij</td>
+                                                <td style="vertical-align: top;" th:text="#{lang.locomotive}">Loc.</td>
+                                                <td style="vertical-align: top;" th:text="#{lang.company}">Maatschappij</td>
                                             </tr>
                                             <div th:each="loc:${operator.locomotive}">
                                                 <div th:if="${!loc.slaveLocList.empty}">
@@ -63,14 +63,14 @@
                                     </div>
                                 </td>
 
-                                <td style="vertical-align: top;">Wagen(s)
+                                <td style="vertical-align: top;"><span th:text="#{lang.waggons}">Wagen(s)</span>
                                     <div class="scroltableA">
                                         <table style="text-align: left; width: 100%;" border="1"
                                                cellpadding="2" cellspacing="2">
                                             <tbody>
                                             <tr>
-                                                <td style="vertical-align: top;">Type nr.</td>
-                                                <td style="vertical-align: top;">Maatschappij</td>
+                                                <td style="vertical-align: top;" th:text="#{lang.typenr}">Type nr.</td>
+                                                <td style="vertical-align: top;" th:text="#{lang.company}">Maatschappij</td>
                                             </tr>
                                             <tr th:each="cars:${operator.cars}">
                                                 <div th:each="car:${cars}">
@@ -94,7 +94,7 @@
             </tr>
             <tr>
                 <td>
-                    <button name="terug" type="submit" value="true">terug</button>
+                    <button name="terug" type="submit" value="true" th:text="#{lang.back}">terug</button>
                 </td>
             </tr>
             </tbody>

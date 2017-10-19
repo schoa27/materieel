@@ -12,7 +12,7 @@
            border="0" cellpadding="2" cellspacing="2">
         <tbody>
         <tr>
-            <td style="vertical-align: top; width: 50%;"><h3>Wagen</h3><br/>
+            <td style="vertical-align: top; width: 50%;"><h3 th:text="#{lang.car}">Wagen</h3><br/>
                 <table style="width: 100%" border="3" cellpadding="5" cellspacing="5">
                     <tr>
                         <td>
@@ -20,31 +20,31 @@
                                    cellpadding="2" cellspacing="2">
                                 <tbody>
                                 <tr>
-                                    <td style="vertical-align: top; width: 40%;">Nummer<br/></td>
+                                    <td style="vertical-align: top; width: 40%;" th:text="#{lang.numberid}">Nummer<br/></td>
                                     <td style="vertical-align: top;" th:text="${form.car.id}"/>
                                 </tr>
                                 <tr>
-                                    <td style="vertical-align: top;">Fabrikant<br/></td>
+                                    <td style="vertical-align: top;" th:text="#{lang.owner}">Fabrikant<br/></td>
                                     <td style="vertical-align: top;" th:text="${form.car.manufactor}"/>
                                 </tr>
                                 <tr>
-                                    <td style="vertical-align: top;">Lengte<br/></td>
+                                    <td style="vertical-align: top;" th:text="#{lang.length}">Lengte<br/></td>
                                     <td style="vertical-align: top;" th:text="${form.car.length}"/>
                                 </tr>
                                 <tr>
-                                    <td style="vertical-align: top;">Type.<br/></td>
+                                    <td style="vertical-align: top;" th:text="#{lang.type}">Type.<br/></td>
                                     <td style="vertical-align: top;" th:text="${form.car.type}"/>
                                 </tr>
                                 <tr>
-                                    <td style="vertical-align: top;">Catalogus nr.<br/></td>
+                                    <td style="vertical-align: top;" th:text="#{lang.catalognr}">Catalogus nr.<br/></td>
                                     <td style="vertical-align: top;" th:text="${form.car.catalognr}"/>
                                 </tr>
                                 <tr>
-                                    <td style="vertical-align: top;">Maatschappij<br/></td>
+                                    <td style="vertical-align: top;" th:text="#{lang.company}">Maatschappij<br/></td>
                                     <td style="vertical-align: top;" th:text="${form.car.company}"/>
                                 </tr>
                                 <tr>
-                                    <td style="vertical-align: top;">Periode<br/></td>
+                                    <td style="vertical-align: top;" th:text="#{lang.epoch}">Periode<br/></td>
                                     <td style="vertical-align: top;" th:text="${form.car.era}"/>
                                 </tr>
                                 </tbody>
@@ -61,12 +61,12 @@
                     <tr>
                         <td>
                             <form method="get" action="/cars" name="DetailsCars">
-                                <button name="terug" type="submit" value="true">terug</button>
+                                <button name="terug" type="submit" value="true" th:text="#{lang.back}">terug</button>
                             </form>
                         </td>
                         <td>
                             <form method="post" action="/setup">
-                                <button name="hoofdpagina" type="submit" value="true">hoofpagina</button>
+                                <button name="hoofdpagina" type="submit" value="true" th:text="#{lang.main}">hoofpagina</button>
                             </form>
                         </td>
 
@@ -79,7 +79,7 @@
                     <tbody>
                     <div th:if="${form.car.decoder} != null">
                         <tr>
-                            <td style="vertical-align: top;"><h3>Decoder</h3><br/>
+                            <td style="vertical-align: top;"><h3 th:text="#{lang.decoder}">Decoder</h3><br/>
                                 <table style="width: 100%" border="3" cellpadding="5" cellspacing="5">
                                     <tr>
                                         <td>
@@ -87,32 +87,32 @@
                                                    cellpadding="2" cellspacing="2">
                                                 <tbody>
                                                 <tr>
-                                                    <td style="vertical-align: top; width: 40%;">Fabrikant<br/></td>
+                                                    <td style="vertical-align: top; width: 40%;" th:text="#{lang.owner}">Fabrikant<br/></td>
                                                     <td style="vertical-align: top;"
                                                         th:text="${form.car.decoder.manufacture}"/>
                                                 </tr>
                                                 <tr>
-                                                    <td style="vertical-align: top;">Adres<br/></td>
+                                                    <td style="vertical-align: top;" th:text="#{lang.address}">Adres<br/></td>
                                                     <td style="vertical-align: top;"
                                                         th:text="${form.car.decoder.address}"/>
                                                 </tr>
                                                 <tr>
-                                                    <td style="vertical-align: top;">Rijstappe<br/></td>
+                                                    <td style="vertical-align: top;" th:text="#{lang.speed}">Rijstappe<br/></td>
                                                     <td style="vertical-align: top;"
                                                         th:text="${form.car.decoder.speedSteps}"/>
                                                 </tr>
                                                 <tr>
-                                                    <td style="vertical-align: top;">Protocol<br/></td>
+                                                    <td style="vertical-align: top;" th:text="#{lang.protocol}">Protocol<br/></td>
                                                     <td style="vertical-align: top;"
                                                         th:text="${form.car.decoder.protocol}"/>
                                                 </tr>
                                                 <tr>
-                                                    <td style="vertical-align: top;">Aantal functies<br/></td>
+                                                    <td style="vertical-align: top;" th:text="#{lang.function}">Aantal functies<br/></td>
                                                     <td style="vertical-align: top;"
                                                         th:text="${form.car.decoder.functionCount}"/>
                                                 </tr>
                                                 <tr>
-                                                    <td style="vertical-align: top;">Type<br/></td>
+                                                    <td style="vertical-align: top;" th:text="#{lang.type}">Type<br/></td>
                                                     <td style="vertical-align: top;"
                                                         th:text="${form.car.decoder.type}"/>
                                                 </tr>
@@ -126,7 +126,7 @@
                         </tr>
                     </div>
                     <tr>
-                        <td style="vertical-align: top;"><h3>Afbeelding</h3><br/></td>
+                        <td style="vertical-align: top;"><h3 th:text="#{lang.image}">Afbeelding</h3><br/></td>
                     </tr>
                     <table style="text-align: center; width: 100%;" border="3"
                            cellpadding="3" cellspacing="3">
