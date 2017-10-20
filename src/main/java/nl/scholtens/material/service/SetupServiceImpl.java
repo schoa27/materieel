@@ -2,9 +2,13 @@ package nl.scholtens.material.service;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.apache.tomcat.jni.Local;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 @Service
 public class SetupServiceImpl implements SetupService {
@@ -12,6 +16,17 @@ public class SetupServiceImpl implements SetupService {
     private static Logger logger = LogManager.getLogger(SetupServiceImpl.class);
 
     private final String FILENAME = "material.ini";
+
+
+    @Override
+    public String getDate(String location) {
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("EEEE, d MMMM ", Locale.US);
+
+        if (location != null) {
+           dateFormatter = new SimpleDateFormat("EEEE, d MMMM ", Locale.forLanguageTag(location));
+        }
+        return dateFormatter.format(new Date());
+    }
 
     @Override
     public void writeSetupFile(String pathXml, String pathImage) {
@@ -49,8 +64,8 @@ public class SetupServiceImpl implements SetupService {
         int row = 0;
         String path = null;
         try {
-            BufferedReader br = new BufferedReader( new FileReader(FILENAME));
-            while( (path = br.readLine()) != null) {
+            BufferedReader br = new BufferedReader(new FileReader(FILENAME));
+            while ((path = br.readLine()) != null) {
                 paths[row] = path;
                 row++;
             }
@@ -65,7 +80,7 @@ public class SetupServiceImpl implements SetupService {
     @Override
     public boolean isFileEmpty() {
         try {
-            BufferedReader br = new BufferedReader( new FileReader(FILENAME));
+            BufferedReader br = new BufferedReader(new FileReader(FILENAME));
             return br.readLine() == null;
         } catch (FileNotFoundException e) {
             logger.error("Unable to find the file methode isFileEmpty");

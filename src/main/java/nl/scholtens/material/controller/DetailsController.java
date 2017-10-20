@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 @Controller
@@ -36,24 +37,24 @@ public class DetailsController {
     private String buildVersion;
 
     @RequestMapping(value = "/{item}", method = RequestMethod.GET)
-    public ModelAndView details(@PathVariable(value = "item") String item,  ModelAndView model) throws IOException {
+    public ModelAndView details(@PathVariable(value = "item") String item, ModelAndView model, HttpServletRequest request) throws IOException {
 
         if (item.substring(0, 3).equals("loc")) {
-            LocForm form = new LocForm(buildVersion);
+            LocForm form = new LocForm(buildVersion, (String) request.getSession().getAttribute("lang"));
             form.setLocomotive(locService.getLoc(item.substring(4), getXmlPath()));
             model.addObject("form", form);
             model.setViewName("locDetails");
         }
 
         if (item.substring(0, 3).equals("car")) {
-            CarForm form = new CarForm(buildVersion);
+            CarForm form = new CarForm(buildVersion, (String) request.getSession().getAttribute("lang"));
             form.setCar(carService.getCarById(item.substring(4), getXmlPath()));
             model.addObject("form", form);
             model.setViewName("carDetails");
         }
 
         if (item.substring(0, 3).equals("opr")) {
-            OperatorForm form = new OperatorForm(buildVersion);
+            OperatorForm form = new OperatorForm(buildVersion, (String) request.getSession().getAttribute("lang"));
             form.setOperator(operatorService.getOperatorById(item.substring(4), getXmlPath()));
             model.addObject("form", form);
             model.setViewName("operatorDetails");

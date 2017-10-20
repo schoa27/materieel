@@ -6,13 +6,18 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 
 @Controller
 public class SetupController {
@@ -26,9 +31,11 @@ public class SetupController {
     private String buildVersion;
 
     @RequestMapping(value = "/setup", method = RequestMethod.GET)
-    public ModelAndView instelling(ModelAndView model) throws IOException {
-        model.addObject("gevuld", false);
+    public ModelAndView instelling(HttpServletRequest request, ModelAndView model) throws IOException {
+        HttpSession session = request.getSession();
+        session.setAttribute("lang", setupService.getDate(request.getParameter("lang")));
 
+        model.addObject("gevuld", false);
         model.addObject("version", buildVersion);
 
         if (!setupService.isFileEmpty()) {
@@ -40,7 +47,11 @@ public class SetupController {
             model.addObject("imagepath", "pad niet gevuld");
         }
 
-        model.addObject("form", new Body(buildVersion));
+
+        Body b = new Body(buildVersion, (String) session.getAttribute("lang"));
+        b.getHeader().setDate(setupService.getDate(request.getParameter("lang")));
+
+        model.addObject("form", b);
         model.setViewName("setupView");
         return model;
     }
@@ -64,7 +75,7 @@ public class SetupController {
         if (request.getParameter("terug") != null && request.getParameter("terug").equals("true")) {
             model.addObject("gevuld", true);
         }
-        model.addObject("form", new Body(buildVersion));
+        model.addObject("form", new Body(buildVersion, (String) request.getSession().getAttribute("lang")));
         model.setViewName("setupView");
         return model;
     }
@@ -117,5 +128,4 @@ public class SetupController {
         }
         return null;
     }
-
 }

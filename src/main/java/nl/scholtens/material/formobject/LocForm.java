@@ -10,8 +10,8 @@ public class LocForm extends Body {
 
     private Locomotive locomotive;
 
-    public LocForm(String version) {
-        super(version);
+    public LocForm(String version ,String date) {
+        super(version, date);
     }
 
     public List<Locomotive> getLocomotives() {

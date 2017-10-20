@@ -2,6 +2,7 @@ package nl.scholtens.material.formobject;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class Header {
 
@@ -20,8 +21,9 @@ public class Header {
 
 
     public String getDate() {
-        SimpleDateFormat dateFormatter = new SimpleDateFormat("EEEE, d MMMM ");
-        return dateFormatter.format(new Date());
+//        SimpleDateFormat dateFormatter = new SimpleDateFormat("EEEE, d MMMM ", Locale.US);
+//        return dateFormatter.format(new Date());
+        return date;
     }
 
     public void setDate(String date) {

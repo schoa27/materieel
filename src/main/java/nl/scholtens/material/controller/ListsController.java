@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -39,9 +40,11 @@ public class ListsController {
     private String buildVersion;
 
     @RequestMapping(value = "/locs", method = RequestMethod.GET)
-    public ModelAndView getLocLijst(ModelAndView model) throws IOException {
-        LocForm locForm = new LocForm(buildVersion);
+    public ModelAndView getLocLijst(HttpServletRequest request, ModelAndView model) throws IOException {
+        String lang = (String) request.getSession().getAttribute("lang");
 
+        LocForm locForm = new LocForm(buildVersion, (String) request.getSession().getAttribute("lang"));
+        locForm.getHeader().setDate(lang);
         locForm.setLocomotives(locService.getLocList(getXmlPath()));
 
         model.addObject("form", locForm);
@@ -50,8 +53,8 @@ public class ListsController {
     }
 
     @RequestMapping(value = "/cars", method = RequestMethod.GET)
-    public ModelAndView getCarsList(ModelAndView model) throws IOException {
-        CarForm carForm = new CarForm(buildVersion);
+    public ModelAndView getCarsList(HttpServletRequest request, ModelAndView model) throws IOException {
+        CarForm carForm = new CarForm(buildVersion, (String) request.getSession().getAttribute("lang"));
         carForm.setCars(carService.getCarList(getXmlPath()));
 
         model.addObject("form", carForm);
@@ -60,8 +63,8 @@ public class ListsController {
     }
 
     @RequestMapping(value = "/operators", method = RequestMethod.GET)
-    public  ModelAndView getOperatorsList(ModelAndView model) {
-        OperatorForm operatorForm = new OperatorForm(buildVersion);
+    public  ModelAndView getOperatorsList(HttpServletRequest request, ModelAndView model) {
+        OperatorForm operatorForm = new OperatorForm(buildVersion, (String) request.getSession().getAttribute("lang"));
         operatorForm.setOperators(operatorService.getOperatorList(getXmlPath()));
 
         model.addObject("form", operatorForm);

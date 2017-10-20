@@ -7,4 +7,6 @@ public interface SetupService {
     String[] readSetupFile();
 
     boolean isFileEmpty();
+
+    String getDate(String lang);
 }

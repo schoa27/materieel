@@ -12,8 +12,8 @@ public class ResultForm extends Body {
 
     private List<Car> cars = new ArrayList<>();
 
-    public ResultForm(String version) {
-        super(version);
+    public ResultForm(String version, String date) {
+        super(version, date);
     }
 
     public List<Locomotive> getLocomotives() {

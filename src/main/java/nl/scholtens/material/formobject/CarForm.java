@@ -10,8 +10,8 @@ public class CarForm extends Body {
 
     private Car car;
 
-    public CarForm(String version) {
-        super(version);
+    public CarForm(String version, String date) {
+        super(version, date);
     }
 
     public List<Car> getCars() {

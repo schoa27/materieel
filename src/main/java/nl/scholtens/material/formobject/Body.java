@@ -5,9 +5,11 @@ public class Body {
 
     private Header header;
 
-    public Body(String version) {
+    public Body(String version, String date) {
         header = new Header();
         header.setVersion(version);
+        header.setDate(date);
+
     }
 
     public Body() {

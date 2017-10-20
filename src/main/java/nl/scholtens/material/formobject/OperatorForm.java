@@ -10,8 +10,8 @@ public class OperatorForm extends Body {
 
     private Operator operator;
 
-    public OperatorForm(String version) {
-        super(version);
+    public OperatorForm(String version, String date) {
+        super(version, date);
     }
 
     public List<Operator> getOperators() {
