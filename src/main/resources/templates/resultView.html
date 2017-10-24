@@ -1,10 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Title</title>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="header :: header">
+    <meta content="text/html; charset=ISO-8859-1"
+          http-equiv="content-type"/>
+    <title>SearchOverview</title>
 </head>
+
+<!--<script type="text/javascript" th:src="@{/js/viewFunctions.js}"/>-->
+<script type="text/javascript" th:src="@{/js/sorttable.js}"/>
+
 <body>
-ResultView
+
+<fieldset class="fieldset">
+    <table class="tabel" style="text-align: left; width: 100%;" border="0" cellpadding="1"
+           cellspacing="1">
+        <tbody>
+        <tr>
+            <td style="vertical-align: middle; text-align: center;"><h3 th:text="#{lang.locoverview}"/></td>
+        </tr>
+        <tr>
+            <td style="vertical-align: top;">
+                <div th:include="fragments/locomotives"/>
+            </td>
+        </tr>
+        <tr>
+            <td style="vertical-align: middle; text-align: center;"><h3 th:text="#{lang.caroverview}"/></td>
+        </tr>
+        <tr>
+            <td style="vertical-align: top;">
+                <div th:include="fragments/cars"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <form method="post" action="/setup" name="setup">
+                    <button name="terug" type="submit" th:text="#{lang.back}"/>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</fieldset>
+<div th:include="footer"/>
 </body>
 </html>
+

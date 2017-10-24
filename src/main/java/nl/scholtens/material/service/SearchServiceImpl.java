@@ -56,13 +56,6 @@ public class SearchServiceImpl implements SearchService {
                 .collect(Collectors.toList());
     }
 
-//    private List<Locomotive> getLocomotivesByDccAddress(String address, String file) {
-//        return getLocomotives(file)
-//                .stream()
-//                .filter(locomotive -> locomotive.getDecoder() != null)
-//                .filter(locomotive -> locomotive.getDecoder().getAddress().equals(Integer.parseInt(address))).
-//                collect(Collectors.toList());
-//    }
     private List<Locomotive> getLocomotivesByDccAddress(String address, String file) {
         return getLocomotives(file)
                 .stream()

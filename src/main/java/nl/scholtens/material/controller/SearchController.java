@@ -62,7 +62,7 @@ public class SearchController {
         if (list.get("car") == null || !list.get("car").isEmpty()) {
             form.setCars((List<Car>) list.get("car"));
         }
-        mav.addObject("form", mav);
+        mav.addObject("form", form);
         mav.setViewName("resultView");
         return mav;
     }
