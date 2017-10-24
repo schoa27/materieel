@@ -6,101 +6,102 @@
 </head>
 <body>
 
-<fieldset class="fieldset">
-    <table style="width: 1200px%" border="1">
-        <tbody>
-        <tr>
-            <td>
-                <div th:if="${form.operator.locomotive !=null}">
-                    <table style="width: 100%" border="1" cellpadding="2" cellspacing="5">
-                        <tbody>
-                        <tr>
 
-                            <td style="vertical-align: top; width: 50%;"><h3 th:text="#{lang.loc}"/><br/>
-                                <div th:include="fragments/locomotive"/>
-                            </td>
-                            <td style="vertical-align: top;"><h3 th:text="#{lang.decoder}"/><br/>
-                                <table style="width: 100%" border="1" cellpadding="5" cellspacing="5">
-                                    <tr>
-                                        <td>
-                                            <div th:include="fragments/decoder"/>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <table style="width: 100%" border="1">
+<table style="width: 1200px%" border="1">
+    <tbody>
+    <tr>
+        <td>
+            <div th:if="${form.operator.locomotive !=null}">
+                <table style="width: 100%" border="1" cellpadding="2" cellspacing="5">
                     <tbody>
                     <tr>
-                        <td th:text="#{lang.train}"/>
+
+                        <td style="vertical-align: top; width: 50%;"><h3 th:text="#{lang.loc}"/><br/>
+                            <div th:include="fragments/locomotive"/>
+                        </td>
+                        <td style="vertical-align: top;"><h3 th:text="#{lang.decoder}"/><br/>
+                            <table style="width: 100%" border="1" cellpadding="5" cellspacing="5">
+                                <tr>
+                                    <td>
+                                        <div th:include="fragments/decoder"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
-                <table style="width: 12%" border="0">
-                    <tbody>
+            </div>
+            <table style="width: 100%" border="1">
+                <tbody>
+                <tr>
+                    <td th:text="#{lang.train}"/>
+                </tr>
+                </tbody>
+            </table>
+            <table style="width: 12%" border="0">
+                <tbody>
+                <tr>
+                    <td th:text="#{lang.length}">lengte</td>
+                    <td th:text="${form.operator.length}"/>
+                </tr>
+                </tbody>
+            </table>
+            <div class="inblok">
+                <table border="0" cellpadding="0" cellspacing="0">
                     <tr>
-                        <td th:text="#{lang.length}">lengte</td>
-                        <td th:text="${form.operator.length}"/>
+                        <div th:if="${form.operator.locomotive !=null}">
+                            <td><img th:src="@{/image/} + ${form.operator.locomotive.image}" align="center"/>
+                            </td>
+                            <div th:if="${!form.operator.locomotive.slaveLocList.empty}">
+                                <div th:each="slave, iterstat: ${form.operator.locomotive.slaveLocList}">
+                                    <td th:id="|td${iterstat.index}|">
+                                        <img th:src="@{/image/} + ${slave.image}" align="center"/>
+                                    </td>
+                                </div>
+                            </div>
+                        </div>
+                        <div th:each="car, iterstat: ${form.operator.cars}">
+                            <td th:id="|td${iterstat.index}|"><img th:src="@{/image/} + ${car.image}"
+                                                                   align="center"/></td>
+                        </div>
                     </tr>
-                    </tbody>
+                    <tr>
+                        <div th:if="${form.operator.locomotive !=null}">
+                            <td class="font" border="1" th:text="${form.operator.locomotive.id}"
+                                align="center"/>
+                            <div th:if="${!form.operator.locomotive.slaveLocList.empty}">
+                                <div th:each="slave, iterstat: ${form.operator.locomotive.slaveLocList}">
+                                    <td class="font" border="1" th:text="${slave.id}" align="center"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div th:each="car, iterstat: ${form.operator.cars}">
+                            <td class="font" border="1" th:text="${car.id}" align="center"/>
+                        </div>
+                    </tr>
                 </table>
-                <div class="inblok">
-                    <table border="0" cellpadding="0" cellspacing="0">
-                        <tr>
-                            <div th:if="${form.operator.locomotive !=null}">
-                                <td><img th:src="@{/image/} + ${form.operator.locomotive.image}" align="center"/>
-                                </td>
-                                <div th:if="${!form.operator.locomotive.slaveLocList.empty}">
-                                    <div th:each="slave, iterstat: ${form.operator.locomotive.slaveLocList}">
-                                        <td th:id="|td${iterstat.index}|">
-                                            <img th:src="@{/image/} + ${slave.image}" align="center"/>
-                                        </td>
-                                    </div>
-                                </div>
-                            </div>
-                            <div th:each="car, iterstat: ${form.operator.cars}">
-                                <td th:id="|td${iterstat.index}|"><img th:src="@{/image/} + ${car.image}"
-                                                                       align="center"/></td>
-                            </div>
-                        </tr>
-                        <tr>
-                            <div th:if="${form.operator.locomotive !=null}">
-                                <td class="font" border="1" th:text="${form.operator.locomotive.id}"
-                                    align="center"/>
-                                <div th:if="${!form.operator.locomotive.slaveLocList.empty}">
-                                    <div th:each="slave, iterstat: ${form.operator.locomotive.slaveLocList}">
-                                        <td class="font" border="1" th:text="${slave.id}" align="center"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div th:each="car, iterstat: ${form.operator.cars}">
-                                <td class="font" border="1" th:text="${car.id}" align="center"/>
-                            </div>
-                        </tr>
-                    </table>
-                </div>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-    <table>
-         <tr>
-            <td>
-                <form method="get" action="/operators">
-                    <button name="terug" type="submit" value="true" th:text="#{lang.back}"/>
-                </form>
-            </td>
-            <td>
-                <form method="post" action="/setup">
-                    <button name="hoofdpagina" type="submit" value="true" th:text="#{lang.main}"/>
-                </form>
-            </td>
-        </tr>
-    </table>
-</fieldset>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<table>
+    <tr>
+        <td>
+            <form method="get" action="/operators">
+                <button name="terug" type="submit" value="true" th:text="#{lang.back}"/>
+            </form>
+        </td>
+        <td>
+            <form method="post" action="/setup">
+                <button name="hoofdpagina" type="submit" value="true" th:text="#{lang.main}"/>
+            </form>
+        </td>
+    </tr>
+</table>
+
+<div th:include="footer"/>
 
 </body>
 </html>
