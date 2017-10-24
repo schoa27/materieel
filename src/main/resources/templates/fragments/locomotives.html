@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>LocomotiveList</title>
+</head>
+<body>
+
+<div th:fragment="locomotives">
+    <div class="scroltable">
+        <table class="sortable" style="text-align: left; width: 100%;" border="1"
+               cellpadding="1" cellspacing="1">
+            <tbody>
+            <tr class="rij">
+                <td style="vertical-align: top;" th:text="#{lang.owner}"/>
+                <td style="vertical-align: top;" th:text="#{lang.catalognr}"/>
+                <td style="vertical-align: top;" th:text="#{lang.br}"/>
+                <td style="vertical-align: top;" th:text="#{lang.address}"/>
+                <td style="vertical-align: top;" th:text="#{lang.engine}"/>
+                <td style="vertical-align: top;" th:text="#{lang.image}"/>
+            </tr>
+            <tr class="rij" onmouseover="ChangeColor(this, true);"
+                onmouseout="ChangeColor(this, false);"
+                th:onclick="'javascript:DetailGegevens(\'/' + ${'loc-'} + ${iterstat.index} + '\');'"
+                th:each="locomotive, iterstat: ${form.locomotives}" style="cursor: pointer">
+
+                <td style="vertical-align: top;" th:text="${locomotive.owner}"
+                    th:id="|td${iterstat.index}|"/>
+                <td style="vertical-align: top;" th:text="${locomotive.catalogNumber}"
+                    th:id="|td${iterstat.index}|"/>
+                <td style="vertical-align: top;" th:text="${locomotive.id}"
+                    th:id="|td${iterstat.index}|"/>
+                <td style="vertical-align: top;" th:text="${locomotive.decoder.address}"
+                    th:id="|td${iterstat.index}|"/>
+                <td style="vertical-align: top;" th:text="${locomotive.engine}"
+                    th:id="|td${iterstat.index}|"/>
+                <div th:if="${!locomotive.image.empty} ">
+                    <td th:id="|td${iterstat.index}|"><img th:src="@{/image/} + ${locomotive.image}"/>
+                    </td>
+                </div>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

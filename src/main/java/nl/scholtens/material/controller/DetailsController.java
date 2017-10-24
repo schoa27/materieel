@@ -1,5 +1,6 @@
 package nl.scholtens.material.controller;
 
+import nl.scholtens.material.domain.Locomotive;
 import nl.scholtens.material.formobject.CarForm;
 import nl.scholtens.material.formobject.LocForm;
 import nl.scholtens.material.formobject.OperatorForm;
@@ -40,22 +41,22 @@ public class DetailsController {
     public ModelAndView details(@PathVariable(value = "item") String item, ModelAndView model, HttpServletRequest request) throws IOException {
 
         if (item.substring(0, 3).equals("loc")) {
-            LocForm form = new LocForm(buildVersion, (String) request.getSession().getAttribute("lang"));
-            form.setLocomotive(locService.getLoc(item.substring(4), getXmlPath()));
+            LocForm form = new LocForm(buildVersion, (String) request.getSession().getAttribute("lang")
+                    , locService.getLoc(item.substring(4), getXmlPath()));
             model.addObject("form", form);
             model.setViewName("locDetails");
         }
 
         if (item.substring(0, 3).equals("car")) {
-            CarForm form = new CarForm(buildVersion, (String) request.getSession().getAttribute("lang"));
-            form.setCar(carService.getCarById(item.substring(4), getXmlPath()));
-            model.addObject("form", form);
+            CarForm form = new CarForm(buildVersion, (String) request.getSession().getAttribute("lang")
+                    , carService.getCarById(item.substring(4), getXmlPath()));
+             model.addObject("form", form);
             model.setViewName("carDetails");
         }
 
         if (item.substring(0, 3).equals("opr")) {
-            OperatorForm form = new OperatorForm(buildVersion, (String) request.getSession().getAttribute("lang"));
-            form.setOperator(operatorService.getOperatorById(item.substring(4), getXmlPath()));
+            OperatorForm form = new OperatorForm(buildVersion, (String) request.getSession().getAttribute("lang")
+                    ,operatorService.getOperatorById(item.substring(4), getXmlPath()));
             model.addObject("form", form);
             model.setViewName("operatorDetails");
         }

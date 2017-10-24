@@ -12,72 +12,20 @@
            border="0" cellpadding="2" cellspacing="2">
         <tbody>
         <tr>
-            <td style="vertical-align: top; width: 50%;"><h3 th:text="#{lang.loc}">Locomotief</h3><br/>
-                <table style="width: 100%" border="3" cellpadding="5" cellspacing="5">
-                    <tr>
-                        <td>
-                            <table style="text-align: left; width: 100%;" border="0"
-                                   cellpadding="2" cellspacing="2">
-                                <tbody>
-                                <tr>
-                                    <td style="vertical-align: top; width: 40%;" th:text="#{lang.baureihe}">BauReihe<br/></td>
-                                    <td style="vertical-align: top;" th:text="${form.locomotive.id}"/>
-                                </tr>
-                                <tr>
-                                    <td style="vertical-align: top;" th:text="#{lang.number}">Nummer<br/></td>
-                                    <td style="vertical-align: top;" th:text="${form.locomotive.number}"/>
-                                </tr>
-                                <tr>
-                                    <td style="vertical-align: top;" th:text="#{lang.owner}">Fabrikant<br/></td>
-                                    <td style="vertical-align: top;" th:text="${form.locomotive.owner}"/>
-                                </tr>
-                                <tr>
-                                    <td style="vertical-align: top;" th:text="#{lang.length}">Lengte<br/></td>
-                                    <td style="vertical-align: top;" th:text="${form.locomotive.length}"/>
-                                </tr>
-                                <tr>
-                                    <td style="vertical-align: top;" th:text="#{lang.catalognr}">Catalogus Nr.<br/></td>
-                                    <td style="vertical-align: top;" th:text="${form.locomotive.catalogNumber}"/>
-                                </tr>
-                                <tr>
-                                    <td style="vertical-align: top;" th:text="#{lang.company}">Maatschappij<br/></td>
-                                    <td style="vertical-align: top;" th:text="${form.locomotive.company}"/>
-                                </tr>
-                                <tr>
-                                    <td style="vertical-align: top;" th:text="#{lang.engine}">Aandrijving<br/></td>
-                                    <td style="vertical-align: top;" th:text="${form.locomotive.engine}"/>
-                                </tr>
-                                <tr>
-                                    <td style="vertical-align: top;" th:text="#{lang.epoch}">Periode<br/></td>
-                                    <td style="vertical-align: top;" th:text="${form.locomotive.era}"/>
-                                </tr>
-                                <tr>
-                                    <td style="vertical-align: top;" th:text="#{lang.used}">Inzet<br/></td>
-                                    <td style="vertical-align: top;" th:text="${form.locomotive.trainType}"/>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-
+            <td style="vertical-align: top; width: 50%;"><h3 th:text="#{lang.loc}"/>
+                <div th:include="fragments/locomotive"/>
                 <table>
-                    <tr class="rij">
-                        <td style="vertical-align: top;">
-                        </td>
-                    </tr>
                     <tr>
                         <td>
                             <form method="get" action="/locs" name="DetailsLocomotieve">
-                                <button name="terug" type="submit" th:text="#{lang.back}">terug</button>
+                                <button name="terug" type="submit" th:text="#{lang.back}"/>
                             </form>
                         </td>
                         <td>
                             <form method="post" action="/setup">
-                                <button name="hoofdpagina" type="submit" value="true" th:text="#{lang.main}">hoofpagina</button>
+                                <button name="hoofdpagina" type="submit" value="true" th:text="#{lang.main}"/>
                             </form>
                         </td>
-
                     </tr>
                 </table>
                 <br/>
@@ -87,51 +35,11 @@
                        cellpadding="2" cellspacing="2">
                     <tbody>
                     <tr>
-                        <td style="vertical-align: top;"><h3 th:text="#{lang.decoder}">Decoder</h3><br/>
+                        <td style="vertical-align: top;"><h3 th:text="#{lang.decoder}"/><br/>
                             <table style="width: 100%" border="3" cellpadding="5" cellspacing="5">
                                 <tr>
                                     <td>
-                                        <table style="text-align: left; width: 100%;" border="0"
-                                               cellpadding="2" cellspacing="2">
-                                            <tbody>
-                                            <tr>
-                                                <td style="vertical-align: top; width: 40%;" th:text="#{lang.owner}">Fabrikant<br/>
-                                                </td>
-                                                <td style="vertical-align: top;"
-                                                    th:text="${form.locomotive.decoder.manufacture}"/>
-                                            </tr>
-                                            <tr>
-                                                <td style="vertical-align: top;" th:text="#{lang.address}">Adres<br/>
-                                                </td>
-                                                <td style="vertical-align: top;"
-                                                    th:text="${form.locomotive.decoder.address}"/>
-                                            </tr>
-                                            <tr>
-                                                <td style="vertical-align: top;" th:text="#{lang.speed}">Rijstappe<br/>
-                                                </td>
-                                                <td style="vertical-align: top;"
-                                                    th:text="${form.locomotive.decoder.speedSteps}"/>
-                                            </tr>
-                                            <tr>
-                                                <td style="vertical-align: top;" th:text="#{lang.protocol}">Protocol<br/>
-                                                </td>
-                                                <td style="vertical-align: top;"
-                                                    th:text="${form.locomotive.decoder.protocol}"/>
-                                            </tr>
-                                            <tr>
-                                                <td style="vertical-align: top;" th:text="#{lang.function}">Aantal functies<br/>
-                                                </td>
-                                                <td style="vertical-align: top;"
-                                                    th:text="${form.locomotive.decoder.functionCount}"/>
-                                            </tr>
-                                            <tr>
-                                                <td style="vertical-align: top;" th:text="#{lang.type}">Type<br/>
-                                                </td>
-                                                <td style="vertical-align: top;"
-                                                    th:text="${form.locomotive.decoder.type}"/>
-                                            </tr>
-                                            </tbody>
-                                        </table>
+                                        <div th:include="fragments/decoder"/>
                                     </td>
                                 </tr>
                             </table>
@@ -139,27 +47,17 @@
                         </td>
                     </tr>
                     <tr>
-                        <td style="vertical-align: top;"><h3 th:text="#{lang.image}">Afbeelding</h3><br/>
+                        <td style="vertical-align: top;"><h3 th:text="#{lang.image}"/><br/>
                         </td>
                     </tr>
-                    <table style="text-align: center; width: 100%;" border="3"
-                           cellpadding="3" cellspacing="3">
-                        <tr>
-                            <td>
-                                <img th:src="@{/image/} + ${form.locomotive.image}"/>
-                            </td>
-                        </tr>
-                    </table>
+                    <div th:include="fragments/image"/>
                     </tbody>
                 </table>
-                <br/>
             </td>
         </tr>
         </tbody>
     </table>
-    <br/>
 </div>
-
 </body>
 
 </html>

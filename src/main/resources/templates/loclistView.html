@@ -4,77 +4,37 @@
 <head th:include="header :: header">
     <meta content="text/html; charset=ISO-8859-1"
           http-equiv="content-type"/>
-    <title>locOverzicht</title>
+    <title>locOverview</title>
 </head>
 
 <script type="text/javascript" th:src="@{/js/viewFunctions.js}"/>
 <script type="text/javascript" th:src="@{/js/sorttable.js}"/>
 
-<body class="werkpagina">
-
+<body>
 
 <fieldset class="fieldset">
     <table class="tabel" style="text-align: left; width: 100%;" border="0" cellpadding="1"
            cellspacing="1">
         <tbody>
-
-
         <tr>
-            <td style="vertical-align: middle; text-align: center;"><h3 th:text="#{lang.locoverview}">Locomotief Overzicht</h3></td>
+            <td style="vertical-align: middle; text-align: center;"><h3 th:text="#{lang.locoverview}"/></td>
         </tr>
         <tr>
             <td style="vertical-align: top;">
-                <div class="scroltable">
-                    <table class="sortable" style="text-align: left; width: 100%;" border="1"
-                           cellpadding="1" cellspacing="1">
-                        <tbody>
-                        <tr class="rij">
-                            <td style="vertical-align: top;" th:text="#{lang.owner}">Merk</td>
-                            <td style="vertical-align: top;" th:text="#{lang.catalognr}">TypeNummer</td>
-                            <td style="vertical-align: top;" th:text="#{lang.br}">BR</td>
-                            <td style="vertical-align: top;" th:text="#{lang.address}">Decoder adres</td>
-                            <td style="vertical-align: top;" th:text="#{lang.engine}">Aandrijving</td>
-                            <td style="vertical-align: top;" th:text="#{lang.image}">Afbeelding</td>
-                        </tr>
-                        <tr class="rij" onmouseover="ChangeColor(this, true);"
-                            onmouseout="ChangeColor(this, false);"
-                            th:onclick="'javascript:DetailGegevens(\'/' + ${'loc-'} + ${iterstat.index} + '\');'"
-                            th:each="locomotive, iterstat: ${form.locomotives}" style="cursor: pointer">
-
-                            <td style="vertical-align: top;" th:text="${locomotive.owner}"
-                                th:id="|td${iterstat.index}|"/>
-                            <td style="vertical-align: top;" th:text="${locomotive.catalogNumber}"
-                                th:id="|td${iterstat.index}|"/>
-                            <td style="vertical-align: top;" th:text="${locomotive.id}"
-                                th:id="|td${iterstat.index}|"/>
-                            <td style="vertical-align: top;" th:text="${locomotive.decoder.address}"
-                                th:id="|td${iterstat.index}|"/>
-                            <td style="vertical-align: top;" th:text="${locomotive.engine}"
-                                th:id="|td${iterstat.index}|"/>
-                            <div th:if="${!locomotive.image.empty} ">
-                                <td th:id="|td${iterstat.index}|"><img th:src="@{/image/} + ${locomotive.image}"/>
-                                </td>
-                            </div>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </td>
-        </tr>
-        <tr class="rij">
-            <td style="vertical-align: top;">
+                <div th:include="fragments/locomotives"/>
             </td>
         </tr>
         <tr>
             <td>
                 <form method="post" action="/setup" name="setup">
-                    <button name="terug" type="submit" th:text="#{lang.back}">terug</button>
+                    <button name="terug" type="submit" th:text="#{lang.back}"/>
                 </form>
             </td>
          </tr>
         </tbody>
     </table>
 </fieldset>
+
 </body>
 </html>
 

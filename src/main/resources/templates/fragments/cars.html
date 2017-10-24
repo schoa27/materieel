@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>CarList</title>
+</head>
+<body>
+
+<div th:fragment="cars">
+    <div class="scroltable">
+        <table class="sortable" style="text-align: justify; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+            <tbody>
+            <tr>
+                <td style="vertical-align: top;" th:text="#{lang.owner}"/>
+                <td style="vertical-align: top;" th:text="#{lang.catalognr}"/>
+                <td style="vertical-align: top;" th:text="#{lang.company}"/>
+                <td style="..." th:text="#{lang.type}"/>
+                <td style="..." th:text="#{lang.image}"/>
+            </tr>
+            <tr onmouseover="ChangeColor(this, true);"
+                onmouseout="ChangeColor(this, false);"
+                th:onclick="'javascript:DetailGegevens(\'/' +  ${'car-'} + ${iterstat.index} + '\');'"
+                th:each="car, iterstat: ${form.cars}" style="cursor: pointer">
+
+                <td style="vertical-align: top" th:text="${car.manufactor}" th:id="|td${iterstat.index}|"/>
+                <td style="vertical-align: top;" th:text="${car.id}" th:id="|td${iterstat.index}|"/>
+                <td style="vertical-align: top;" th:text="${car.company}"
+                    th:id="|td${iterstat.index}|"/>
+                <td style="..." th:text="${car.type}" th:id="|td${iterstat.index}|"/>
+                <div th:if="${!car.image.empty} ">
+                    <td th:id="|td${iterstat.index}|"><img th:src="@{/image/} + ${car.image}"/></td>
+                </div>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

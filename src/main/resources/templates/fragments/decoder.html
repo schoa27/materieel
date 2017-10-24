@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>DecoderDetails</title>
+</head>
+<body>
+
+<div th:fragment="decoder">
+    <table style="text-align: left; width: 100%;" border="0"
+           cellpadding="2" cellspacing="2">
+        <tbody>
+        <tr>
+            <td style="vertical-align: top; width: 40%;" th:text="#{lang.owner}">Fabrikant<br/>
+            </td>
+            <td style="vertical-align: top;"
+                th:text="${form.decoder.manufacture}"/>
+        </tr>
+        <tr>
+            <td style="vertical-align: top;" th:text="#{lang.address}">Adres<br/>
+            </td>
+            <td style="vertical-align: top;"
+                th:text="${form.decoder.address}"/>
+        </tr>
+        <tr>
+            <td style="vertical-align: top;" th:text="#{lang.speed}">Rijstappe<br/>
+            </td>
+            <td style="vertical-align: top;"
+                th:text="${form.decoder.speedSteps}"/>
+        </tr>
+        <tr>
+            <td style="vertical-align: top;" th:text="#{lang.protocol}">Protocol<br/>
+            </td>
+            <td style="vertical-align: top;"
+                th:text="${form.decoder.protocol}"/>
+        </tr>
+        <tr>
+            <td style="vertical-align: top;" th:text="#{lang.function}">Aantal functies<br/>
+            </td>
+            <td style="vertical-align: top;"
+                th:text="${form.decoder.functionCount}"/>
+        </tr>
+        <tr>
+            <td style="vertical-align: top;" th:text="#{lang.type}">Type<br/>
+            </td>
+            <td style="vertical-align: top;"
+                th:text="${form.decoder.type}"/>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

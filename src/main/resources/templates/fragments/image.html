@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Image</title>
+</head>
+<body>
+
+<div th:fragment="image">
+    <table style="text-align: center; width: 100%;" border="3" cellpadding="3" cellspacing="3">
+        <tr>
+            <td>
+                <img th:src="@{/image/} + ${form.image}"/>
+            </td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

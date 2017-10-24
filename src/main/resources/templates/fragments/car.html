@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>CarDetails</title>
+</head>
+<body>
+
+<div th:fragment="car">
+    <table style="width: 100%" border="3" cellpadding="5" cellspacing="5">
+        <tr>
+            <td>
+                <table style="text-align: left; width: 100%;" border="0"
+                       cellpadding="2" cellspacing="2">
+                    <tbody>
+                    <tr>
+                        <td style="vertical-align: top; width: 40%;" th:text="#{lang.numberid}">Nummer<br/></td>
+                        <td style="vertical-align: top;" th:text="${form.car.id}"/>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top;" th:text="#{lang.owner}">Fabrikant<br/></td>
+                        <td style="vertical-align: top;" th:text="${form.car.manufactor}"/>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top;" th:text="#{lang.length}">Lengte<br/></td>
+                        <td style="vertical-align: top;" th:text="${form.car.length}"/>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top;" th:text="#{lang.type}">Type.<br/></td>
+                        <td style="vertical-align: top;" th:text="${form.car.type}"/>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top;" th:text="#{lang.catalognr}">Catalogus nr.<br/></td>
+                        <td style="vertical-align: top;" th:text="${form.car.catalognr}"/>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top;" th:text="#{lang.company}">Maatschappij<br/></td>
+                        <td style="vertical-align: top;" th:text="${form.car.company}"/>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top;" th:text="#{lang.epoch}">Periode<br/></td>
+                        <td style="vertical-align: top;" th:text="${form.car.era}"/>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>
