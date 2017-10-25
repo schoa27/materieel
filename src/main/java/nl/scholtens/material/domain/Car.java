@@ -1,8 +1,9 @@
 package nl.scholtens.material.domain;
 
-public class Car extends Decoder{
+public class Car {
+    private Integer id;
 
-    private String id;
+    private String carid;
 
     private String company;
 
@@ -20,17 +21,27 @@ public class Car extends Decoder{
 
     private String image;
 
+
     public Car() {
         super();
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
+
+    public String getCarid() {
+        return carid;
+    }
+
+    public void setCarid(String carid) {
+        this.carid = carid;
+    }
+
 
     public String getCompany() {
         return company;

@@ -51,8 +51,8 @@ public class SearchServiceImpl implements SearchService {
     private List<Locomotive> getLocomotiveByBr(String br, String file) {
         return getLocomotives(file)
                 .stream()
-                .filter(locomotive -> locomotive.getId() != null)
-                .filter(locomotive -> locomotive.getId().toUpperCase().contains(br.toUpperCase()))
+                .filter(locomotive -> locomotive.getLocid() != null)
+                .filter(locomotive -> locomotive.getLocid().toUpperCase().contains(br.toUpperCase()))
                 .collect(Collectors.toList());
     }
 

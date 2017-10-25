@@ -48,9 +48,10 @@ public class MaterialMapper {
     public List<Locomotive> getlocList(String file) throws IOException, JAXBException, SAXException {
         List<Locomotive> locotives = new ArrayList<>();
         getPlanGegevens(file);
+        int id = 0;
 
         for (Plan.Lclist.Lc loc : locList) {
-            locotives.add(getLocomtive(loc));
+            locotives.add(getLocomtive(loc, id++));
         }
         return locotives;
     }
@@ -58,9 +59,10 @@ public class MaterialMapper {
     public List<Car> getCarList(String file) throws IOException, JAXBException, SAXException {
         List<Car> cars = new ArrayList<>();
         getPlanGegevens(file);
+        int id = 0;
 
         for (Plan.Carlist.Car car : carList) {
-            cars.add(getCar(car));
+            cars.add(getCar(car, id++));
         }
         return cars;
     }
@@ -75,9 +77,10 @@ public class MaterialMapper {
         return operators;
     }
 
-    private Locomotive getLocomtive(Plan.Lclist.Lc loc) {
+    private Locomotive getLocomtive(Plan.Lclist.Lc loc, int id) {
         Locomotive locomotive = new Locomotive();
-        locomotive.setId(loc.getId());
+        locomotive.setId(id);
+        locomotive.setLocid(loc.getId());
         locomotive.setNumber(loc.getNumber());
         locomotive.setCompany(loc.getRoadname());
         locomotive.setEra(Constanten.EPOCH[Integer.parseInt(loc.getEra())]);
@@ -93,9 +96,10 @@ public class MaterialMapper {
         return locomotive;
     }
 
-    private Car getCar(Plan.Carlist.Car car) {
+    private Car getCar(Plan.Carlist.Car car, int id) {
         Car newCar = new Car();
-        newCar.setId(car.getId());
+        newCar.setId(id);
+        newCar.setCarid(car.getId());
         newCar.setCompany(car.getRoadname());
         newCar.setManufactor(car.getOwner());
         newCar.setCatalognr(car.getCatnr());

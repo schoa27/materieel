@@ -1,6 +1,7 @@
 package nl.scholtens.material.controller;
 
 import nl.scholtens.material.formobject.Body;
+import nl.scholtens.material.formobject.SessionForm;
 import nl.scholtens.material.service.SetupService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,10 +31,11 @@ public class SetupController {
     @Value("${build.version}")
     private String buildVersion;
 
+    private SessionForm session;
+
     @RequestMapping(value = "/setup", method = RequestMethod.GET)
     public ModelAndView instelling(HttpServletRequest request, ModelAndView model) throws IOException {
-        HttpSession session = request.getSession();
-        session.setAttribute("lang", setupService.getDate(request.getParameter("lang")));
+        createSessionForm(request);
 
         model.addObject("gevuld", false);
         model.addObject("version", buildVersion);
@@ -47,11 +49,7 @@ public class SetupController {
             model.addObject("imagepath", "pad niet gevuld");
         }
 
-
-        Body b = new Body(buildVersion, (String) session.getAttribute("lang"));
-        b.getHeader().setDate(setupService.getDate(request.getParameter("lang")));
-
-        model.addObject("form", b);
+        model.addObject("form", new Body(buildVersion, session.getDate()));
         model.setViewName("setupView");
         return model;
     }
@@ -75,7 +73,7 @@ public class SetupController {
         if (request.getParameter("terug") != null && request.getParameter("terug").equals("true")) {
             model.addObject("gevuld", true);
         }
-        model.addObject("form", new Body(buildVersion, (String) request.getSession().getAttribute("lang")));
+        model.addObject("form", new Body(buildVersion, session.getDate()));
         model.setViewName("setupView");
         return model;
     }
@@ -127,5 +125,11 @@ public class SetupController {
             return mav;
         }
         return null;
+    }
+
+    private void createSessionForm(HttpServletRequest request) {
+        session = new SessionForm();
+        session.setDate(setupService.getDate(request.getParameter("lang")));
+        request.getSession().setAttribute("session", session);
     }
 }

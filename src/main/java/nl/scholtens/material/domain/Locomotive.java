@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Locomotive {
-    private String id;
+
+    private Integer id;
+
+    private String locid;
 
     private String number;
 
@@ -30,12 +33,21 @@ public class Locomotive {
 
     private List<Locomotive> slaveLocList = new ArrayList<>();
 
-    public String getId() {
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getLocid() {
+        return locid;
+    }
+
+    public void setLocid(String locid) {
+        this.locid = locid;
     }
 
     public String getNumber() {

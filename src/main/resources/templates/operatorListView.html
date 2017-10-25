@@ -49,7 +49,7 @@
                                                     <tr th:each="slaves: ${loc.slaveLocList}">
 
                                                         <div th:each="slave:${slaves}">
-                                                            <td style="vertical-align: top;" th:text="${slave.id}"/>
+                                                            <td style="vertical-align: top;" th:text="${slave.locid}"/>
                                                             <td style="vertical-align: top;"
                                                                 th:text="${slave.company}"/>
                                                         </div>
@@ -74,7 +74,7 @@
                                             </tr>
                                             <tr th:each="cars:${operator.cars}">
                                                 <div th:each="car:${cars}">
-                                                    <td style="vertical-align: top;" th:text="${car.id}"/>
+                                                    <td style="vertical-align: top;" th:text="${car.carid}"/>
                                                     <td style="vertical-align: top;" th:text="${car.company}"/>
                                                 </div>
                                             </tr>

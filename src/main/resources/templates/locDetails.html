@@ -14,20 +14,22 @@
         <tr>
             <td style="vertical-align: top; width: 50%;"><h3 th:text="#{lang.loc}"/>
                 <div th:include="fragments/locomotive"/>
-                <table>
-                    <tr>
-                        <td>
-                            <form method="get" action="/locs" name="DetailsLocomotieve">
-                                <button name="terug" type="submit" th:text="#{lang.back}"/>
-                            </form>
-                        </td>
-                        <td>
-                            <form method="post" action="/setup">
-                                <button name="hoofdpagina" type="submit" value="true" th:text="#{lang.main}"/>
-                            </form>
-                        </td>
-                    </tr>
-                </table>
+                <div th:if="${search} != true">
+                    <table>
+                        <tr>
+                            <td>
+                                <form method="get" action="/locs" name="DetailsLocomotieve">
+                                    <button name="terug" type="submit" th:text="#{lang.back}"/>
+                                </form>
+                            </td>
+                            <td>
+                                <form method="post" action="/setup">
+                                    <button name="hoofdpagina" type="submit" value="true" th:text="#{lang.main}"/>
+                                </form>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
                 <br/>
             </td>
             <td style="vertical-align: top;">

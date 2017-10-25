@@ -68,16 +68,16 @@
                     </tr>
                     <tr>
                         <div th:if="${form.operator.locomotive !=null}">
-                            <td class="font" border="1" th:text="${form.operator.locomotive.id}"
+                            <td class="font" border="1" th:text="${form.operator.locomotive.locid}"
                                 align="center"/>
                             <div th:if="${!form.operator.locomotive.slaveLocList.empty}">
                                 <div th:each="slave, iterstat: ${form.operator.locomotive.slaveLocList}">
-                                    <td class="font" border="1" th:text="${slave.id}" align="center"/>
+                                    <td class="font" border="1" th:text="${slave.locid}" align="center"/>
                                 </div>
                             </div>
                         </div>
                         <div th:each="car, iterstat: ${form.operator.cars}">
-                            <td class="font" border="1" th:text="${car.id}" align="center"/>
+                            <td class="font" border="1" th:text="${car.carid}" align="center"/>
                         </div>
                     </tr>
                 </table>

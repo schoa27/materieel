@@ -31,7 +31,13 @@ public class LocServiceImpl implements LocService {
     @Override
     public Locomotive getLoc(String id, String file) {
         List<Locomotive> locomotives = getlocListFromFile(file);
-        return locomotives.get(Integer.parseInt(id));
+
+        return locomotives
+                .stream()
+                .filter(locomotive -> locomotive.getId().equals(Integer.parseInt(id)))
+                .findFirst()
+                .get();
+
     }
 
     @Override
@@ -47,7 +53,7 @@ public class LocServiceImpl implements LocService {
 
     private Locomotive getLocomotive(String locId, List<Locomotive> locomotives) {
         for (Locomotive locomotive : locomotives) {
-            if (locomotive.getId().equals(locId)) return locomotive;
+            if (locomotive.getLocid().equals(locId)) return locomotive;
         }
         logger.error("no loc found for id " + locId);
         return null;

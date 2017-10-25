@@ -56,6 +56,7 @@ public class SearchController {
 
     private ModelAndView getModelAndView(HttpServletRequest request, Map<String, List<?>> list) {
         ResultForm form = new ResultForm(buildVersion, (String) request.getSession().getAttribute("lang"));
+        request.getSession().setAttribute("search", true);
 
         ModelAndView mav = new ModelAndView();
         form.setLocomotives((List<Locomotive>) list.get("loc"));

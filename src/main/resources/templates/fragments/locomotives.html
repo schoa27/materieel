@@ -21,14 +21,14 @@
             </tr>
             <tr class="rij" onmouseover="ChangeColor(this, true);"
                 onmouseout="ChangeColor(this, false);"
-                th:onclick="'javascript:DetailGegevens(\'/' + ${'loc-'} + ${iterstat.index} + '\');'"
+                th:onclick="'javascript:DetailGegevens(\'/' + ${'loc-'} + ${locomotive.id} + '\');'"
                 th:each="locomotive, iterstat: ${form.locomotives}" style="cursor: pointer">
 
                 <td style="vertical-align: top;" th:text="${locomotive.owner}"
                     th:id="|td${iterstat.index}|"/>
                 <td style="vertical-align: top;" th:text="${locomotive.catalogNumber}"
                     th:id="|td${iterstat.index}|"/>
-                <td style="vertical-align: top;" th:text="${locomotive.id}"
+                <td style="vertical-align: top;" th:text="${locomotive.locid}"
                     th:id="|td${iterstat.index}|"/>
                 <td style="vertical-align: top;" th:text="${locomotive.decoder.address}"
                     th:id="|td${iterstat.index}|"/>

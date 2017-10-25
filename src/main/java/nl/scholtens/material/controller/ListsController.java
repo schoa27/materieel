@@ -3,6 +3,7 @@ package nl.scholtens.material.controller;
 import nl.scholtens.material.formobject.CarForm;
 import nl.scholtens.material.formobject.LocForm;
 import nl.scholtens.material.formobject.OperatorForm;
+import nl.scholtens.material.formobject.SessionForm;
 import nl.scholtens.material.service.CarService;
 import nl.scholtens.material.service.LocService;
 import nl.scholtens.material.service.OperatorService;
@@ -77,6 +78,12 @@ public class ListsController {
     byte[] getImage(@PathVariable(value = "imageName") String imageName) throws IOException {
         File file = new File(getImagePath() + imageName + ".png");
         return Files.readAllBytes(file.toPath());
+    }
+
+    private void setRequestSession(HttpServletRequest request) {
+        SessionForm session = (SessionForm) request.getSession().getAttribute("session");
+        session.setList(true);
+        request.getSession().setAttribute("session", session);
     }
 
     private String getImagePath( ) {

@@ -29,7 +29,11 @@ public class CarServiceImpl implements CarService {
     @Override
     public Car getCarById(String carId, String file) {
         List<Car> cars = getCarList(file);
-        return cars.get(Integer.parseInt(carId));
+        return cars
+                .stream()
+                .filter(car -> car.getId().equals(Integer.parseInt(carId)))
+                .findFirst()
+                .get();
     }
 
     private List<Car> getCarsFromFile(String file) {
