@@ -15,11 +15,18 @@
             <td style="vertical-align: top; width: 50%;"><h3 th:text="#{lang.car}"/>
                 <div th:include="fragments/car"/>
                 <table>
-                     <tr>
+                    <tr>
                         <td>
-                            <form method="get" action="/cars" name="DetailsCars">
-                                <button name="terug" type="submit" value="true" th:text="#{lang.back}"/>
-                            </form>
+                            <div th:if="${sessionform.list} == true">
+                                <form method="get" action="/cars" name="DetailsCars">
+                                    <button name="terug" type="submit" value="true" th:text="#{lang.back}"/>
+                                </form>
+                            </div>
+                            <div th:if="${sessionform.search} == true">
+                                <form method="get" action="/zoeken" name="DetailsLocomotieve">
+                                    <button name="terug" type="submit" th:text="#{lang.back}"/>
+                                </form>
+                            </div>
                         </td>
                         <td>
                             <form method="post" action="/setup">

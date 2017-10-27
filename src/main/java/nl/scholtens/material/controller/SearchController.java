@@ -3,6 +3,7 @@ package nl.scholtens.material.controller;
 import nl.scholtens.material.domain.Car;
 import nl.scholtens.material.domain.Locomotive;
 import nl.scholtens.material.formobject.ResultForm;
+import nl.scholtens.material.formobject.SessionForm;
 import nl.scholtens.material.service.SearchService;
 import nl.scholtens.material.service.SetupService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,26 +33,22 @@ public class SearchController {
 
     @RequestMapping(value = "/zoek/owner", method = RequestMethod.GET)
     public ModelAndView searchOwner(HttpServletRequest request, HttpServletResponse response) {
-        String parameter = request.getParameter("owner");
-        return getModelAndView(request, searchService.searchOwner(parameter, getXmlPath()));
+        return getModelAndView(request, searchService.searchOwner(getSessionForm(request).getSearchParameter(), getXmlPath()));
     }
 
     @RequestMapping(value = "/zoek/catalog", method = RequestMethod.GET)
     public ModelAndView searchCatalog(HttpServletRequest request, HttpServletResponse response) {
-        String parameter = request.getParameter("catalog");
-        return getModelAndView(request, searchService.searchCatalog(parameter, getXmlPath()));
+        return getModelAndView(request, searchService.searchCatalog(getSessionForm(request).getSearchParameter(), getXmlPath()));
     }
 
     @RequestMapping(value = "/zoek/dcc", method = RequestMethod.GET)
     public ModelAndView searchDcc(HttpServletRequest request, HttpServletResponse response, ModelAndView model) {
-        String parameter = request.getParameter("dcc");
-        return getModelAndView(request, searchService.searchDccAddress(parameter, getXmlPath()));
+        return getModelAndView(request, searchService.searchDccAddress(getSessionForm(request).getSearchParameter(), getXmlPath()));
     }
 
     @RequestMapping(value = "/zoek/br", method = RequestMethod.GET)
     public ModelAndView searchBr(HttpServletRequest request, HttpServletResponse response) {
-        String parameter = request.getParameter("br");
-        return getModelAndView(request, searchService.searchBr(parameter, getXmlPath()));
+        return getModelAndView(request, searchService.searchBr(getSessionForm(request).getSearchParameter(), getXmlPath()));
     }
 
     private ModelAndView getModelAndView(HttpServletRequest request, Map<String, List<?>> list) {
@@ -66,6 +63,10 @@ public class SearchController {
         mav.addObject("form", form);
         mav.setViewName("resultView");
         return mav;
+    }
+
+    private SessionForm getSessionForm(HttpServletRequest request) {
+        return (SessionForm) request.getSession().getAttribute("sessionform");
     }
 
     private String getXmlPath() {

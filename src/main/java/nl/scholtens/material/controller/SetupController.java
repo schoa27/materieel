@@ -31,7 +31,7 @@ public class SetupController {
     @Value("${build.version}")
     private String buildVersion;
 
-    private SessionForm session;
+    private SessionForm sessionForm;
 
     @RequestMapping(value = "/setup", method = RequestMethod.GET)
     public ModelAndView instelling(HttpServletRequest request, ModelAndView model) throws IOException {
@@ -49,7 +49,7 @@ public class SetupController {
             model.addObject("imagepath", "pad niet gevuld");
         }
 
-        model.addObject("form", new Body(buildVersion, session.getDate()));
+        model.addObject("form", new Body(buildVersion, sessionForm.getDate()));
         model.setViewName("setupView");
         return model;
     }
@@ -57,6 +57,7 @@ public class SetupController {
     @RequestMapping(value = "/setup", method = RequestMethod.POST)
     public ModelAndView writeSetup(HttpServletRequest request, ModelAndView model) {
         model.addObject("gevuld", false);
+        intitSessionForm();
 
         if (request.getParameter("padxml") != null && !request.getParameter("padxml").isEmpty()
                 && !request.getParameter("padafbeelding").isEmpty()) {
@@ -73,13 +74,14 @@ public class SetupController {
         if (request.getParameter("terug") != null && request.getParameter("terug").equals("true")) {
             model.addObject("gevuld", true);
         }
-        model.addObject("form", new Body(buildVersion, session.getDate()));
+        model.addObject("form", new Body(buildVersion, sessionForm.getDate()));
         model.setViewName("setupView");
         return model;
     }
 
     @RequestMapping(value = "/keuze", method = RequestMethod.POST)
     public void views(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        sessionForm.setMethode(true ,false);
         String element = request.getParameterNames().nextElement();
 
         if (element.contentEquals("loc")) {
@@ -95,31 +97,55 @@ public class SetupController {
 
     @RequestMapping(value = "/zoeken", method = RequestMethod.GET)
     public ModelAndView searchMethodes(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        sessionForm.setMethode(false ,true);
 
-        if (!request.getParameter("catalog").isEmpty()) {
+        if (request.getParameter("catalog") != null)  {
+            if ( !request.getParameter("catalog").isEmpty()) {
+                sessionForm.setSearchParameter(request.getParameter("catalog"));
+                sessionForm.setSearchMethode("catalog");
+            }
+        }
+        if (sessionForm.getSearchParameter() != null && sessionForm.getSearchMethode().equals("catalog")) {
             ModelAndView mav = new ModelAndView();
-            mav.addObject("zoek", request.getParameter("catalog"));
+            mav.addObject("zoek", sessionForm.getSearchParameter());
             mav.setViewName("forward:/zoek/catalog");
             return mav;
         }
 
-        if (!request.getParameter("owner").isEmpty()) {
+        if (request.getParameter("owner") != null)  {
+            if ( !request.getParameter("owner").isEmpty()) {
+                sessionForm.setSearchParameter(request.getParameter("owner"));
+                sessionForm.setSearchMethode("owner");
+            }
+        }
+        if (sessionForm.getSearchParameter() != null && sessionForm.getSearchMethode().equals("owner")) {
             ModelAndView mav = new ModelAndView();;
             mav.addObject("zoek", request.getParameter("owner"));
             mav.setViewName("forward:/zoek/owner");
             return mav;
         }
 
-        if (!request.getParameter("dcc").isEmpty()) {
-            ModelAndView mav = new ModelAndView();
-            request.setAttribute("zoek", request.getParameter("dcc"));
+        if (request.getParameter("dcc") != null)  {
+            if ( !request.getParameter("dcc").isEmpty()) {
+                sessionForm.setSearchParameter(request.getParameter("dcc"));
+                sessionForm.setSearchMethode("dcc");
+            }
+        }
+        if (sessionForm.getSearchParameter() != null && sessionForm.getSearchMethode().equals("dcc")) {
+            ModelAndView mav = new ModelAndView();;
             mav.addObject("zoek", request.getParameter("dcc"));
             mav.setViewName("forward:/zoek/dcc");
             return mav;
         }
 
-        if (!request.getParameter("br").isEmpty()) {
-            ModelAndView mav = new ModelAndView();
+        if (request.getParameter("br") != null)  {
+            if ( !request.getParameter("br").isEmpty()) {
+                sessionForm.setSearchParameter(request.getParameter("br"));
+                sessionForm.setSearchMethode("br");
+            }
+        }
+        if (sessionForm.getSearchParameter() != null && sessionForm.getSearchMethode().equals("br")) {
+            ModelAndView mav = new ModelAndView();;
             mav.addObject("zoek", request.getParameter("br"));
             mav.setViewName("forward:/zoek/br");
             return mav;
@@ -128,8 +154,13 @@ public class SetupController {
     }
 
     private void createSessionForm(HttpServletRequest request) {
-        session = new SessionForm();
-        session.setDate(setupService.getDate(request.getParameter("lang")));
-        request.getSession().setAttribute("session", session);
+        sessionForm = new SessionForm();
+        sessionForm.setDate(setupService.getDate(request.getParameter("lang")));
+        request.getSession().setAttribute("sessionform", sessionForm);
+    }
+
+    private void intitSessionForm() {
+        sessionForm.setSearchMethode(null);
+        sessionForm.setSearchParameter(null);
     }
 }

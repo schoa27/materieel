@@ -42,10 +42,8 @@ public class ListsController {
 
     @RequestMapping(value = "/locs", method = RequestMethod.GET)
     public ModelAndView getLocLijst(HttpServletRequest request, ModelAndView model) throws IOException {
-        String lang = (String) request.getSession().getAttribute("lang");
 
-        LocForm locForm = new LocForm(buildVersion, (String) request.getSession().getAttribute("lang"));
-        locForm.getHeader().setDate(lang);
+        LocForm locForm = new LocForm(buildVersion, getSessionForm(request).getDate());
         locForm.setLocomotives(locService.getLocList(getXmlPath()));
 
         model.addObject("form", locForm);
@@ -55,7 +53,7 @@ public class ListsController {
 
     @RequestMapping(value = "/cars", method = RequestMethod.GET)
     public ModelAndView getCarsList(HttpServletRequest request, ModelAndView model) throws IOException {
-        CarForm carForm = new CarForm(buildVersion, (String) request.getSession().getAttribute("lang"));
+        CarForm carForm = new CarForm(buildVersion, getSessionForm(request).getDate());
         carForm.setCars(carService.getCarList(getXmlPath()));
 
         model.addObject("form", carForm);
@@ -65,7 +63,7 @@ public class ListsController {
 
     @RequestMapping(value = "/operators", method = RequestMethod.GET)
     public  ModelAndView getOperatorsList(HttpServletRequest request, ModelAndView model) {
-        OperatorForm operatorForm = new OperatorForm(buildVersion, (String) request.getSession().getAttribute("lang"));
+        OperatorForm operatorForm = new OperatorForm(buildVersion, getSessionForm(request).getDate());
         operatorForm.setOperators(operatorService.getOperatorList(getXmlPath()));
 
         model.addObject("form", operatorForm);
@@ -80,10 +78,8 @@ public class ListsController {
         return Files.readAllBytes(file.toPath());
     }
 
-    private void setRequestSession(HttpServletRequest request) {
-        SessionForm session = (SessionForm) request.getSession().getAttribute("session");
-        session.setList(true);
-        request.getSession().setAttribute("session", session);
+    private SessionForm getSessionForm(HttpServletRequest request) {
+        return (SessionForm) request.getSession().getAttribute("sessionform");
     }
 
     private String getImagePath( ) {

@@ -4,6 +4,7 @@ import nl.scholtens.material.domain.Locomotive;
 import nl.scholtens.material.formobject.CarForm;
 import nl.scholtens.material.formobject.LocForm;
 import nl.scholtens.material.formobject.OperatorForm;
+import nl.scholtens.material.formobject.SessionForm;
 import nl.scholtens.material.service.CarService;
 import nl.scholtens.material.service.LocService;
 import nl.scholtens.material.service.OperatorService;
@@ -41,27 +42,32 @@ public class DetailsController {
     public ModelAndView details(@PathVariable(value = "item") String item, ModelAndView model, HttpServletRequest request) throws IOException {
 
         if (item.substring(0, 3).equals("loc")) {
-            LocForm form = new LocForm(buildVersion, (String) request.getSession().getAttribute("lang")
+            LocForm form = new LocForm(buildVersion, getSessionForm(request).getDate()
                     , locService.getLoc(item.substring(4), getXmlPath()));
             model.addObject("form", form);
             model.setViewName("locDetails");
         }
 
         if (item.substring(0, 3).equals("car")) {
-            CarForm form = new CarForm(buildVersion, (String) request.getSession().getAttribute("lang")
+            CarForm form = new CarForm(buildVersion, getSessionForm(request).getDate()
                     , carService.getCarById(item.substring(4), getXmlPath()));
              model.addObject("form", form);
             model.setViewName("carDetails");
         }
 
         if (item.substring(0, 3).equals("opr")) {
-            OperatorForm form = new OperatorForm(buildVersion, (String) request.getSession().getAttribute("lang")
+            OperatorForm form = new OperatorForm(buildVersion, getSessionForm(request).getDate()
                     ,operatorService.getOperatorById(item.substring(4), getXmlPath()));
             model.addObject("form", form);
             model.setViewName("operatorDetails");
         }
 
+        model.addObject("sessionform", getSessionForm(request));
         return model;
+    }
+
+    private SessionForm getSessionForm(HttpServletRequest request) {
+        return (SessionForm) request.getSession().getAttribute("sessionform");
     }
 
     private String getImagePath() {

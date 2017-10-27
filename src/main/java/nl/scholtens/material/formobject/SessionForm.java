@@ -10,6 +10,11 @@ public class SessionForm {
 
     private Boolean list;
 
+    private String searchParameter;
+
+    private String searchMethode;
+
+
     public String getDate() {
         return date;
     }
@@ -40,5 +45,26 @@ public class SessionForm {
 
     public void setList(Boolean list) {
         this.list = list;
+    }
+
+    public void setMethode(boolean list, boolean search) {
+        setList(list);
+        setSearch(search);
+    }
+
+    public String getSearchParameter() {
+        return searchParameter;
+    }
+
+    public void setSearchParameter(String searchParameter) {
+        this.searchParameter = searchParameter;
+    }
+
+    public String getSearchMethode() {
+        return searchMethode;
+    }
+
+    public void setSearchMethode(String searchMethode) {
+        this.searchMethode = searchMethode;
     }
 }
