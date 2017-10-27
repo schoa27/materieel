@@ -9,22 +9,3 @@ function ChangeColor(tableRow, highLight) {
 function DetailGegevens(servlet) {
     document.location.href = servlet;
 }
-
-function selectLanguage() {
-    $(document).ready(function() {
-        $("#locales").change(function () {
-            var selectedOption = $('#locales').val();
-            if (selectedOption != ''){
-                window.location.replace('?lang=' + selectedOption);
-            }
-        });
-    });
-}
-//
-// function toggleInputs() {
-//     var inputs = document.getElementById('zoek');
-//     for (var i = inputs.length, n = 0; n < i; n++) {
-//         inputs[n].disabled = !inputs[n].disabled;
-//     }
-// }
-
