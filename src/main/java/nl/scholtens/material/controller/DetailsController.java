@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 @Controller
-public class DetailsController {
+public class DetailsController extends IoController {
 
     @Autowired
     private LocService locService;
@@ -31,9 +31,6 @@ public class DetailsController {
 
     @Autowired
     private OperatorService operatorService;
-
-    @Autowired
-    private SetupService setupService;
 
     @Value("${build.version}")
     private String buildVersion;
@@ -70,17 +67,4 @@ public class DetailsController {
         return (SessionForm) request.getSession().getAttribute("sessionform");
     }
 
-    private String getImagePath() {
-        final String[] paths = readSetupFile();
-        return paths[1];
-    }
-
-    private String getXmlPath() {
-        final String[] paths = readSetupFile();
-        return paths[0];
-    }
-
-    private String[] readSetupFile() {
-        return setupService.readSetupFile();
-    }
 }

@@ -23,7 +23,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 
 @Controller
-public class ListsController {
+public class ListsController extends IoController {
 
     @Autowired
     private LocService locService;
@@ -33,9 +33,6 @@ public class ListsController {
 
     @Autowired
     private OperatorService operatorService;
-
-    @Autowired
-    private SetupService setupService;
 
     @Value("${build.version}")
     private String buildVersion;
@@ -71,28 +68,7 @@ public class ListsController {
         return model;
     }
 
-    @RequestMapping(value = "/image/{imageName}", method = RequestMethod.GET)
-    public @ResponseBody
-    byte[] getImage(@PathVariable(value = "imageName") String imageName) throws IOException {
-        File file = new File(getImagePath() + imageName + ".png");
-        return Files.readAllBytes(file.toPath());
-    }
-
     private SessionForm getSessionForm(HttpServletRequest request) {
         return (SessionForm) request.getSession().getAttribute("sessionform");
-    }
-
-    private String getImagePath( ) {
-        final String[] paths = readSetupFile();
-        return paths[1];
-    }
-
-    private String getXmlPath( ) {
-        final String[] paths = readSetupFile();
-        return paths[0];
-    }
-
-    private String[] readSetupFile() {
-        return setupService.readSetupFile();
     }
 }

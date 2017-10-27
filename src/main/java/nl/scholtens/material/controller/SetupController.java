@@ -21,12 +21,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 
 @Controller
-public class SetupController {
+public class SetupController extends IoController {
 
     Logger logger = Logger.getLogger(SetupController.class);
-
-    @Autowired
-    private SetupService setupService;
 
     @Value("${build.version}")
     private String buildVersion;
@@ -40,8 +37,8 @@ public class SetupController {
         model.addObject("gevuld", false);
         model.addObject("version", buildVersion);
 
-        if (!setupService.isFileEmpty()) {
-            final String[] paths = setupService.readSetupFile();
+        if (!getSetupService().isFileEmpty()) {
+            final String[] paths = getSetupService().readSetupFile();
             model.addObject("xmlpath", paths[0]);
             model.addObject("imagepath", paths[1]);
         } else {
@@ -62,12 +59,12 @@ public class SetupController {
         if (request.getParameter("padxml") != null && !request.getParameter("padxml").isEmpty()
                 && !request.getParameter("padafbeelding").isEmpty()) {
 
-            setupService.writeSetupFile(request.getParameter("padxml"), request.getParameter("padafbeelding"));
+            getSetupService().writeSetupFile(request.getParameter("padxml"), request.getParameter("padafbeelding"));
 
             model.addObject("gevuld", true);
         }
 
-        if (!setupService.isFileEmpty()) {
+        if (!getSetupService().isFileEmpty()) {
             model.addObject("gevuld", true);
         }
 
@@ -155,7 +152,7 @@ public class SetupController {
 
     private void createSessionForm(HttpServletRequest request) {
         sessionForm = new SessionForm();
-        sessionForm.setDate(setupService.getDate(request.getParameter("lang")));
+        sessionForm.setDate(getSetupService().getDate(request.getParameter("lang")));
         request.getSession().setAttribute("sessionform", sessionForm);
     }
 

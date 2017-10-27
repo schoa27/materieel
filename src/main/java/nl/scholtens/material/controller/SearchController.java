@@ -20,13 +20,10 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-public class SearchController {
+public class SearchController extends IoController {
 
     @Autowired
     private SearchService searchService;
-
-    @Autowired
-    private SetupService setupService;
 
     @Value("${build.version}")
     private String buildVersion;
@@ -67,14 +64,5 @@ public class SearchController {
 
     private SessionForm getSessionForm(HttpServletRequest request) {
         return (SessionForm) request.getSession().getAttribute("sessionform");
-    }
-
-    private String getXmlPath() {
-        final String[] paths = readSetupFile();
-        return paths[0];
-    }
-
-    private String[] readSetupFile() {
-        return setupService.readSetupFile();
     }
 }
