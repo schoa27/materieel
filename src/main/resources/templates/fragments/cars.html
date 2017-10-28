@@ -26,7 +26,7 @@
                 <td style="vertical-align: top;" th:text="${car.carid}" th:id="|td${iterstat.index}|"/>
                 <td style="vertical-align: top;" th:text="${car.company}"
                     th:id="|td${iterstat.index}|"/>
-                <td style="..." th:text="${car.type}" th:id="|td${iterstat.index}|"/>
+                <td style="..." th:text="#{lang. + ${car.type}}" th:id="|td${iterstat.index}|"/>
                 <div th:if="${!car.image.empty} ">
                     <td th:id="|td${iterstat.index}|"><img th:src="@{/image/} + ${car.image}"/></td>
                 </div>

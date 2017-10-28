@@ -39,7 +39,7 @@
                     </tr>
                     <tr>
                         <td style="vertical-align: top;" th:text="#{lang.engine}"/>
-                        <td style="vertical-align: top;" th:text="${form.locomotive.engine}"/>
+                        <td style="vertical-align: top;" th:text="#{lang. + ${form.locomotive.engine}}"/>
                     </tr>
                     <tr>
                         <td style="vertical-align: top;" th:text="#{lang.epoch}"/>
@@ -47,7 +47,7 @@
                     </tr>
                     <tr>
                         <td style="vertical-align: top;" th:text="#{lang.used}"/>
-                        <td style="vertical-align: top;" th:text="${form.locomotive.trainType}"/>
+                        <td style="vertical-align: top;" th:text="#{lang. + ${form.locomotive.trainType}}"/>
                     </tr>
                     </tbody>
                 </table>

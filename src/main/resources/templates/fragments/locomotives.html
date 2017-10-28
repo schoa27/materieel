@@ -32,7 +32,7 @@
                     th:id="|td${iterstat.index}|"/>
                 <td style="vertical-align: top;" th:text="${locomotive.decoder.address}"
                     th:id="|td${iterstat.index}|"/>
-                <td style="vertical-align: top;" th:text="${locomotive.engine}"
+                <td style="vertical-align: top;" th:text="#{lang.+ ${locomotive.engine}}"
                     th:id="|td${iterstat.index}|"/>
                 <div th:if="${!locomotive.image.empty} ">
                     <td th:id="|td${iterstat.index}|"><img th:src="@{/image/} + ${locomotive.image}"/>

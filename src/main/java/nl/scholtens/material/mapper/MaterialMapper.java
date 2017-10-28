@@ -4,8 +4,7 @@ import nl.scholtens.material.domain.Car;
 import nl.scholtens.material.domain.Decoder;
 import nl.scholtens.material.domain.Locomotive;
 import nl.scholtens.material.domain.Operator;
-import nl.scholtens.material.enums.constants.Constanten;
-import nl.scholtens.material.enums.constants.Protocol;
+import nl.scholtens.material.enums.constants.*;
 import nl.scholtens.material.sources.Plan;
 import org.xml.sax.SAXException;
 
@@ -86,10 +85,10 @@ public class MaterialMapper {
         locomotive.setEra(Constanten.EPOCH[Integer.parseInt(loc.getEra())]);
 
         locomotive.setLength(Integer.parseInt(loc.getLen()));
-        locomotive.setTrainType(loc.getCargo());
+        locomotive.setTrainType(TrainType.valueOf(loc.getCargo().toUpperCase()).getTraintype());
         locomotive.setOwner(loc.getOwner());
         locomotive.setCatalogNumber(loc.getCatnr());
-        locomotive.setEngine(loc.getEngine());
+        locomotive.setEngine(Engine.valueOf(loc.getEngine().toUpperCase()).getEngine());
         locomotive.setImage(loc.getImage());
         locomotive.setSlaveLocIds(loc.getConsist());
         locomotive.setDecoder(getDecoder(loc, null));
@@ -103,7 +102,7 @@ public class MaterialMapper {
         newCar.setCompany(car.getRoadname());
         newCar.setManufactor(car.getOwner());
         newCar.setCatalognr(car.getCatnr());
-        newCar.setType(car.getType());
+        newCar.setType(CarType.valueOf(car.getType().toUpperCase()).getCartype());
         newCar.setEra(Constanten.EPOCH[Integer.parseInt(car.getEra())]);
         newCar.setLength(Integer.parseInt(car.getLen()));
         newCar.setImage(car.getImage());
