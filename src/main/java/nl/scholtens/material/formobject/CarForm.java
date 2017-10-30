@@ -15,6 +15,8 @@ public class CarForm extends Body {
 
     private String image;
 
+    private String bigImage;
+
     public CarForm(String version, String date) {
         super(version, date);
     }
@@ -24,6 +26,7 @@ public class CarForm extends Body {
         setCar(car);
         setDecoder(car);
         setImage(car);
+        setBigImage(getImage());
     }
 
     public List<Car> getCars() {
@@ -59,6 +62,17 @@ public class CarForm extends Body {
     private void setImage(Car car) {
         if (getCar() != null) {
             image = car.getImage();
+        }
+    }
+
+    public String getBigImage() {
+        return bigImage;
+    }
+
+    public void setBigImage(String image) {
+
+        if (getImage() != null) {
+            bigImage = getImage().substring(0, getImage().length() - 6) + ".png";
         }
     }
 }

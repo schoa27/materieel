@@ -4,13 +4,17 @@
     <meta charset="UTF-8"/>
     <title>Image</title>
 </head>
+
 <body>
 
 <div th:fragment="image">
     <table style="text-align: center; width: 100%;" border="3" cellpadding="3" cellspacing="3">
         <tr>
             <td>
-                <img th:src="@{/image/} + ${form.image}"/>
+                <a class="thumbnail" href="#thumb">
+                    <img th:src="@{/image/} + ${form.image}"/>
+                    <span><img th:src="@{/image/} + ${form.bigImage}" width="80%" /></span>
+                </a>
             </td>
         </tr>
     </table>

@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="plan" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           elementFormDefault="qualified"
-           attributeFormDefault="qualified">
-
+<xs:schema id="plan" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" >
   <xs:element name="fundef">
     <xs:complexType>
       <xs:attribute name="fn" type="xs:string" />
@@ -18,7 +15,7 @@
       <xs:attribute name="mappedfn" type="xs:string" />
     </xs:complexType>
   </xs:element>
-  <xs:element name="plan">
+  <xs:element name="plan" >
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element ref="fundef" />
@@ -26,7 +23,7 @@
           <xs:complexType>
             <xs:sequence>
               <xs:element name="lc" minOccurs="0" maxOccurs="unbounded">
-                <xs:complexType>
+                <xs:complexType mixed="true">
                   <xs:sequence>
                     <xs:element name="cvbyte" minOccurs="0" maxOccurs="unbounded">
                       <xs:complexType>
@@ -199,15 +196,17 @@
                   <xs:attribute name="energypercentage" type="xs:string" />
                   <xs:attribute name="owner" type="xs:string" />
                   <xs:attribute name="color" type="xs:string" />
-                  <xs:attribute name="V_hint" type="xs:string" />
-                  <xs:attribute name="V_maxkmh" type="xs:string" />
-                  <xs:attribute name="bbtevent" type="xs:string" />
                   <xs:attribute name="decfile" type="xs:string" />
                   <xs:attribute name="weight" type="xs:string" />
                   <xs:attribute name="minenergypercentage" type="xs:string" />
+                  <xs:attribute name="generated" type="xs:string" />
                   <xs:attribute name="secondnextblock4wait" type="xs:string" />
                   <xs:attribute name="cvnrs" type="xs:string" />
-                  <xs:attribute name="generated" type="xs:string" />
+                  <xs:attribute name="V_hint" type="xs:string" />
+                  <xs:attribute name="V_maxkmh" type="xs:string" />
+                  <xs:attribute name="bbtevent" type="xs:string" />
+                  <xs:attribute name="manuid" type="xs:string" />
+                  <xs:attribute name="oid" type="xs:string" />
                   <xs:attribute name="mdate" type="xs:string" />
                 </xs:complexType>
               </xs:element>
