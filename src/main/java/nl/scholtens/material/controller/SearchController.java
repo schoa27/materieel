@@ -1,11 +1,10 @@
 package nl.scholtens.material.controller;
 
-import nl.scholtens.material.domain.Car;
+import nl.scholtens.material.domain.Waggon;
 import nl.scholtens.material.domain.Locomotive;
 import nl.scholtens.material.formobject.ResultForm;
 import nl.scholtens.material.formobject.SessionForm;
 import nl.scholtens.material.service.SearchService;
-import nl.scholtens.material.service.SetupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -15,7 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -55,7 +53,7 @@ public class SearchController extends IoController {
         ModelAndView mav = new ModelAndView();
         form.setLocomotives((List<Locomotive>) list.get("loc"));
         if (list.get("car") == null || !list.get("car").isEmpty()) {
-            form.setCars((List<Car>) list.get("car"));
+            form.setWaggons((List<Waggon>) list.get("car"));
         }
         mav.addObject("form", form);
         mav.setViewName("resultView");

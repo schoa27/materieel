@@ -1,6 +1,6 @@
 package nl.scholtens.material.domain;
 
-public class Car {
+public class Waggon {
     private Integer id;
 
     private String carid;
@@ -22,7 +22,7 @@ public class Car {
     private String image;
 
 
-    public Car() {
+    public Waggon() {
         super();
     }
 

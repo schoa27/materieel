@@ -1,12 +1,12 @@
 package nl.scholtens.material.service;
 
-import nl.scholtens.material.domain.Car;
+import nl.scholtens.material.domain.Waggon;
 
 import java.util.List;
 
 public interface CarService {
 
-    public List<Car> getCarList(String file);
+    public List<Waggon> getCarList(String file);
 
-    Car getCarById(String carId, String file);
+    Waggon getCarById(String carId, String file);
 }

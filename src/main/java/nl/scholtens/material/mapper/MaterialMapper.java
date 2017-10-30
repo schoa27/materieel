@@ -1,10 +1,13 @@
 package nl.scholtens.material.mapper;
 
-import nl.scholtens.material.domain.Car;
+import nl.scholtens.material.domain.OperatorTrain;
+import nl.scholtens.material.domain.Waggon;
 import nl.scholtens.material.domain.Decoder;
 import nl.scholtens.material.domain.Locomotive;
-import nl.scholtens.material.domain.Operator;
 import nl.scholtens.material.enums.constants.*;
+import nl.scholtens.material.sources.Car;
+import nl.scholtens.material.sources.Lc;
+import nl.scholtens.material.sources.Operator;
 import nl.scholtens.material.sources.Plan;
 import org.xml.sax.SAXException;
 
@@ -17,74 +20,49 @@ public class MaterialMapper {
 
     private PlanMapper planMapper = new PlanMapper();
 
-    private List<Plan.Lclist.Lc> locList;
-
-    private List<Plan.Carlist.Car> carList;
-
-    private List<Plan.Operatorlist.Operator> operatorList;
-
-    private void getPlanGegevens(String file) throws IOException, JAXBException, SAXException {
+    private Plan getPlanGegevens(String file) throws IOException, JAXBException, SAXException {
         Plan plan = planMapper.mapPlan(file);
-
-        List<Object> objectenLijst = plan.getFundefOrLclistOrCarlist();
-
-        for (Object object : objectenLijst) {
-            if (object instanceof Plan.Lclist) {
-                Plan.Lclist LclistObject = (Plan.Lclist) object;
-                locList = LclistObject.getLc();
-            }
-            if (object instanceof Plan.Carlist) {
-                Plan.Carlist carlistObject = (Plan.Carlist) object;
-                carList = carlistObject.getCar();
-            }
-            if (object instanceof Plan.Operatorlist) {
-                Plan.Operatorlist operatorlistObject = (Plan.Operatorlist) object;
-                operatorList = operatorlistObject.getOperator();
-            }
-        }
+        return plan;
     }
 
     public List<Locomotive> getlocList(String file) throws IOException, JAXBException, SAXException {
-        List<Locomotive> locotives = new ArrayList<>();
-        getPlanGegevens(file);
+        List<Locomotive> locomotives = new ArrayList<>();
         int id = 0;
 
-        for (Plan.Lclist.Lc loc : locList) {
-            locotives.add(getLocomtive(loc, id++));
+        for (Lc loc : getPlanGegevens(file).getLclist().getLc()) {
+            locomotives.add(getLocomtive(loc, id++));
         }
-        return locotives;
+        return locomotives;
     }
 
-    public List<Car> getCarList(String file) throws IOException, JAXBException, SAXException {
-        List<Car> cars = new ArrayList<>();
-        getPlanGegevens(file);
+    public List<Waggon> getCarList(String file) throws IOException, JAXBException, SAXException {
+        List<Waggon> waggons = new ArrayList<>();
         int id = 0;
 
-        for (Plan.Carlist.Car car : carList) {
-            cars.add(getCar(car, id++));
+        for (Car car : getPlanGegevens(file).getCarlist().getCar()) {
+            waggons.add(getCar(car, id++));
         }
-        return cars;
+        return waggons;
     }
 
-    public List<Operator> getOperatorList(String file) throws IOException, JAXBException, SAXException {
-        List<Operator> operators = new ArrayList<>();
+    public List<OperatorTrain> getOperatorList(String file) throws IOException, JAXBException, SAXException {
+        List<OperatorTrain> operatorTrains = new ArrayList<>();
         getPlanGegevens(file);
 
-        for (Plan.Operatorlist.Operator operator : operatorList) {
-            operators.add(new Operator(operator.getId(), operator.getLcid(), operator.getCarids()));
+        for (Operator operator : getPlanGegevens(file).getOperatorlist().getOperator()) {
+            operatorTrains.add(new OperatorTrain(operator.getId(), operator.getLcid(), operator.getCarids()));
         }
-        return operators;
+        return operatorTrains;
     }
 
-    private Locomotive getLocomtive(Plan.Lclist.Lc loc, int id) {
+    private Locomotive getLocomtive(Lc loc, int id) {
         Locomotive locomotive = new Locomotive();
         locomotive.setId(id);
         locomotive.setLocid(loc.getId());
         locomotive.setNumber(loc.getNumber());
         locomotive.setCompany(loc.getRoadname());
-        locomotive.setEra(Constanten.EPOCH[Integer.parseInt(loc.getEra())]);
-
-        locomotive.setLength(Integer.parseInt(loc.getLen()));
+        locomotive.setEra(Constanten.EPOCH[loc.getEra().intValue()]);
+        locomotive.setLength(Integer.parseInt(loc.getLen().toString()));
         locomotive.setTrainType(TrainType.valueOf(loc.getCargo().toUpperCase()).getTraintype());
         locomotive.setOwner(loc.getOwner());
         locomotive.setCatalogNumber(loc.getCatnr());
@@ -95,39 +73,37 @@ public class MaterialMapper {
         return locomotive;
     }
 
-    private Car getCar(Plan.Carlist.Car car, int id) {
-        Car newCar = new Car();
-        newCar.setId(id);
-        newCar.setCarid(car.getId());
-        newCar.setCompany(car.getRoadname());
-        newCar.setManufactor(car.getOwner());
-        newCar.setCatalognr(car.getCatnr());
-        newCar.setType(CarType.valueOf(car.getType().toUpperCase()).getCartype());
-        newCar.setEra(Constanten.EPOCH[Integer.parseInt(car.getEra())]);
-        newCar.setLength(Integer.parseInt(car.getLen()));
-        newCar.setImage(car.getImage());
-        if (!car.getDectype().isEmpty())  newCar.setDecoder(getDecoder(null, car));
-        return newCar;
+    private Waggon getCar(Car car, int id) {
+        Waggon waggon = new Waggon();
+        waggon.setId(id);
+        waggon.setCarid(car.getId());
+        waggon.setCompany(car.getRoadname());
+        waggon.setManufactor(car.getOwner());
+        waggon.setCatalognr(car.getCatnr());
+        waggon.setType(CarType.valueOf(car.getType().toUpperCase()).getCartype());
+        waggon.setEra(Constanten.EPOCH[car.getEra().intValue()]);
+        waggon.setLength(Integer.parseInt(car.getLen().toString()));
+        waggon.setImage(car.getImage());
+        if (!car.getDectype().isEmpty())  waggon.setDecoder(getDecoder(null, car));
+        return waggon;
     }
 
-    private Decoder getDecoder(Plan.Lclist.Lc loc, Plan.Carlist.Car car) {
+    private Decoder getDecoder(Lc loc, Car car) {
         Decoder decoder = new Decoder();
         if (loc != null) {
-            decoder.setAddress(Integer.parseInt(loc.getAddr()));
-            decoder.setFunctionCount(Integer.parseInt(loc.getFncnt()));
+            decoder.setAddress(Integer.parseInt(loc.getAddr().toString()));
+            decoder.setFunctionCount(Integer.parseInt(loc.getFncnt().toString()));
             decoder.setManufacture(loc.getDectype());
             decoder.setProtocol(Protocol.valueOf(loc.getProt()).getProtocol());
-            decoder.setSpeedSteps(Integer.parseInt(loc.getSpcnt()));
+            decoder.setSpeedSteps(Integer.parseInt(loc.getSpcnt().toString()));
         }
         if (car != null) {
-            decoder.setAddress(Integer.parseInt(car.getAddr()));
+            decoder.setAddress(Integer.parseInt(car.getAddr().toString()));
             decoder.setFunctionCount(car.getFundef().size());
             decoder.setManufacture(car.getDectype());
             if (car.getProt() != null) decoder.setProtocol(Protocol.valueOf(car.getProt()).getProtocol());
-            decoder.setSpeedSteps(Integer.parseInt(car.getSpcnt()));
+            decoder.setSpeedSteps(Integer.parseInt(car.getSpcnt().toString()));
         }
         return decoder;
     }
-
-
 }

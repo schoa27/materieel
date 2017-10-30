@@ -7,20 +7,15 @@ import nl.scholtens.material.formobject.SessionForm;
 import nl.scholtens.material.service.CarService;
 import nl.scholtens.material.service.LocService;
 import nl.scholtens.material.service.OperatorService;
-import nl.scholtens.material.service.SetupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 
 @Controller
 public class ListsController extends IoController {
@@ -51,7 +46,7 @@ public class ListsController extends IoController {
     @RequestMapping(value = "/cars", method = RequestMethod.GET)
     public ModelAndView getCarsList(HttpServletRequest request, ModelAndView model) throws IOException {
         CarForm carForm = new CarForm(buildVersion, getSessionForm(request).getDate());
-        carForm.setCars(carService.getCarList(getXmlPath()));
+        carForm.setWaggons(carService.getCarList(getXmlPath()));
 
         model.addObject("form", carForm);
         model.setViewName("carlistView");
@@ -61,7 +56,7 @@ public class ListsController extends IoController {
     @RequestMapping(value = "/operators", method = RequestMethod.GET)
     public  ModelAndView getOperatorsList(HttpServletRequest request, ModelAndView model) {
         OperatorForm operatorForm = new OperatorForm(buildVersion, getSessionForm(request).getDate());
-        operatorForm.setOperators(operatorService.getOperatorList(getXmlPath()));
+        operatorForm.setOperatorTrains(operatorService.getOperatorList(getXmlPath()));
 
         model.addObject("form", operatorForm);
         model.setViewName("operatorListView");

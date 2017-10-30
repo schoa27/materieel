@@ -9,7 +9,7 @@ public enum Protocol {
     S("SX1"),
     X("SX2"),
     F("MFX"),
-    C("Car");
+    C("Waggon");
 
     private String protocol;
 

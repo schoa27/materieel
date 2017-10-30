@@ -1,13 +1,13 @@
 package nl.scholtens.material.service;
 
 
-import nl.scholtens.material.domain.Operator;
+import nl.scholtens.material.domain.OperatorTrain;
 
 import java.util.List;
 
 public interface OperatorService {
-    List<Operator> getOperatorList(String file);
+    List<OperatorTrain> getOperatorList(String file);
 
 
-    Operator getOperatorById(String operatorId, String file);
+    OperatorTrain getOperatorById(String operatorId, String file);
 }

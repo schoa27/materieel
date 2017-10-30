@@ -1,6 +1,6 @@
 package nl.scholtens.material.formobject;
 
-import nl.scholtens.material.domain.Car;
+import nl.scholtens.material.domain.Waggon;
 import nl.scholtens.material.domain.Locomotive;
 
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ public class ResultForm extends Body {
 
     private List<Locomotive> locomotives = new ArrayList<>();
 
-    private List<Car> cars = new ArrayList<>();
+    private List<Waggon> waggons = new ArrayList<>();
 
     public ResultForm(String version, String date) {
         super(version, date);
@@ -24,11 +24,11 @@ public class ResultForm extends Body {
         this.locomotives = locomotives;
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public List<Waggon> getWaggons() {
+        return waggons;
     }
 
-    public void setCars(List<Car> cars) {
-        this.cars = cars;
+    public void setWaggons(List<Waggon> waggons) {
+        this.waggons = waggons;
     }
 }

@@ -1,15 +1,15 @@
 package nl.scholtens.material.formobject;
 
-import nl.scholtens.material.domain.Car;
+import nl.scholtens.material.domain.Waggon;
 import nl.scholtens.material.domain.Decoder;
 
 import java.util.List;
 
 public class CarForm extends Body {
 
-    private List<Car> cars;
+    private List<Waggon> waggons;
 
-    private Car car;
+    private Waggon waggon;
 
     private Decoder decoder;
 
@@ -21,37 +21,37 @@ public class CarForm extends Body {
         super(version, date);
     }
 
-    public CarForm(String version, String date, Car car) {
+    public CarForm(String version, String date, Waggon waggon) {
         super(version, date);
-        setCar(car);
-        setDecoder(car);
-        setImage(car);
+        setWaggon(waggon);
+        setDecoder(waggon);
+        setImage(waggon);
         setBigImage(getImage());
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public List<Waggon> getWaggons() {
+        return waggons;
     }
 
-    public void setCars(List<Car> cars) {
-        this.cars = cars;
+    public void setWaggons(List<Waggon> waggons) {
+        this.waggons = waggons;
     }
 
-    public Car getCar() {
-        return car;
+    public Waggon getWaggon() {
+        return waggon;
     }
 
-    public void setCar(Car car) {
-        this.car = car;
+    public void setWaggon(Waggon waggon) {
+        this.waggon = waggon;
     }
 
     public Decoder getDecoder() {
         return decoder;
     }
 
-    private void setDecoder(Car car) {
-        if (getCar() != null) {
-            decoder = car.getDecoder();
+    private void setDecoder(Waggon waggon) {
+        if (getWaggon() != null) {
+            decoder = waggon.getDecoder();
         }
     }
 
@@ -59,9 +59,9 @@ public class CarForm extends Body {
         return image;
     }
 
-    private void setImage(Car car) {
-        if (getCar() != null) {
-            image = car.getImage();
+    private void setImage(Waggon waggon) {
+        if (getWaggon() != null) {
+            image = waggon.getImage();
         }
     }
 

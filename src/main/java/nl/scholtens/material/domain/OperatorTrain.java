@@ -3,7 +3,7 @@ package nl.scholtens.material.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Operator {
+public class OperatorTrain {
 
     private String id;
 
@@ -13,15 +13,15 @@ public class Operator {
 
     private String carIds;
 
-    private List<Car> cars = new ArrayList<>();
+    private List<Waggon> waggons = new ArrayList<>();
 
     private Integer length = 0;
 
-    public Operator() {
+    public OperatorTrain() {
         super();
     }
 
-    public Operator(String id, String locId, String carIds) {
+    public OperatorTrain(String id, String locId, String carIds) {
         this.id = id;
         this.locId = locId;
         this.carIds = carIds;
@@ -59,12 +59,12 @@ public class Operator {
         this.carIds = carIds;
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public List<Waggon> getWaggons() {
+        return waggons;
     }
 
-    public void setCars(List<Car> cars) {
-        this.cars = cars;
+    public void setWaggons(List<Waggon> waggons) {
+        this.waggons = waggons;
     }
 
     public Integer getLength() {

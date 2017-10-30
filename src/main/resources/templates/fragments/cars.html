@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<div th:fragment="cars">
+<div th:fragment="waggons">
     <div class="scroltable">
         <table class="sortable" style="text-align: justify; width: 100%;" border="1" cellpadding="2" cellspacing="2">
             <tbody>
@@ -19,16 +19,16 @@
             </tr>
             <tr onmouseover="ChangeColor(this, true);"
                 onmouseout="ChangeColor(this, false);"
-                th:onclick="'javascript:DetailGegevens(\'/' +  ${'car-'} + ${car.id} + '\');'"
-                th:each="car, iterstat: ${form.cars}" style="cursor: pointer">
+                th:onclick="'javascript:DetailGegevens(\'/' +  ${'car-'} + ${waggon.id} + '\');'"
+                th:each="waggon, iterstat: ${form.waggons}" style="cursor: pointer">
 
-                <td style="vertical-align: top" th:text="${car.manufactor}" th:id="|td${iterstat.index}|"/>
-                <td style="vertical-align: top;" th:text="${car.carid}" th:id="|td${iterstat.index}|"/>
-                <td style="vertical-align: top;" th:text="${car.company}"
+                <td style="vertical-align: top" th:text="${waggon.manufactor}" th:id="|td${iterstat.index}|"/>
+                <td style="vertical-align: top;" th:text="${waggon.carid}" th:id="|td${iterstat.index}|"/>
+                <td style="vertical-align: top;" th:text="${waggon.company}"
                     th:id="|td${iterstat.index}|"/>
-                <td style="..." th:text="#{lang. + ${car.type}}" th:id="|td${iterstat.index}|"/>
-                <div th:if="${!car.image.empty} ">
-                    <td th:id="|td${iterstat.index}|"><img th:src="@{/image/} + ${car.image}"/></td>
+                <td style="..." th:text="#{lang. + ${waggon.type}}" th:id="|td${iterstat.index}|"/>
+                <div th:if="${!waggon.image.empty} ">
+                    <td th:id="|td${iterstat.index}|"><img th:src="@{/image/} + ${waggon.image}"/></td>
                 </div>
             </tr>
             </tbody>

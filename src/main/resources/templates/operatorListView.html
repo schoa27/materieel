@@ -31,10 +31,10 @@
                             <tr onmouseover="ChangeColor(this, true);"
                                 onmouseout="ChangeColor(this, false);"
                                 th:onclick="'javascript:DetailGegevens(\'/' + ${'opr-'} + ${iterstat.index} + '\');' "
-                                th:each="operator, iterstat: ${form.operators}" style="cursor: pointer">
+                                th:each="operatorTrain, iterstat: ${form.operatorTrains}" style="cursor: pointer">
 
-                                <td style="vertical-align: top;" th:text="${operator.id}"/>
-                                <td style="vertical-align: top;" th:text="${operator.locId}"/>
+                                <td style="vertical-align: top;" th:text="${operatorTrain.id}"/>
+                                <td style="vertical-align: top;" th:text="${operatorTrain.locId}"/>
                                 <td style="vertical-align: top;"><span th:text="#{lang.traction}">Tracktie loc(s)</span>
                                     <div class="scroltableA">
                                         <table style="text-align: left; width: 100%;" border="1"
@@ -44,7 +44,7 @@
                                                 <td style="vertical-align: top;" th:text="#{lang.locomotive}">Loc.</td>
                                                 <td style="vertical-align: top;" th:text="#{lang.company}">Maatschappij</td>
                                             </tr>
-                                            <div th:each="loc:${operator.locomotive}">
+                                            <div th:each="loc:${operatorTrain.locomotive}">
                                                 <div th:if="${!loc.slaveLocList.empty}">
                                                     <tr th:each="slaves: ${loc.slaveLocList}">
 
@@ -72,10 +72,10 @@
                                                 <td style="vertical-align: top;" th:text="#{lang.typenr}">Type nr.</td>
                                                 <td style="vertical-align: top;" th:text="#{lang.company}">Maatschappij</td>
                                             </tr>
-                                            <tr th:each="cars:${operator.cars}">
-                                                <div th:each="car:${cars}">
-                                                    <td style="vertical-align: top;" th:text="${car.carid}"/>
-                                                    <td style="vertical-align: top;" th:text="${car.company}"/>
+                                            <tr th:each="waggons:${operatorTrain.waggons}">
+                                                <div th:each="waggon:${waggons}">
+                                                    <td style="vertical-align: top;" th:text="${waggon.carid}"/>
+                                                    <td style="vertical-align: top;" th:text="${waggon.company}"/>
                                                 </div>
                                             </tr>
                                             </tbody>

@@ -1,8 +1,5 @@
 package nl.scholtens.material.service;
 
-import nl.scholtens.material.domain.Car;
-import nl.scholtens.material.domain.Locomotive;
-
 import java.util.List;
 import java.util.Map;
 

@@ -2,15 +2,15 @@ package nl.scholtens.material.formobject;
 
 import nl.scholtens.material.domain.Decoder;
 import nl.scholtens.material.domain.Locomotive;
-import nl.scholtens.material.domain.Operator;
+import nl.scholtens.material.domain.OperatorTrain;
 
 import java.util.List;
 
 public class OperatorForm extends Body {
 
-    private List<Operator> operators;
+    private List<OperatorTrain> operatorTrains;
 
-    private Operator operator;
+    private OperatorTrain operatorTrain;
 
     private Locomotive locomotive;
 
@@ -21,36 +21,36 @@ public class OperatorForm extends Body {
         super(version, date);
     }
 
-    public OperatorForm(String version, String date, Operator operator) {
+    public OperatorForm(String version, String date, OperatorTrain operatorTrain) {
         super(version, date);
-        setOperator(operator);
-        setLocomotive(operator);
+        setOperatorTrain(operatorTrain);
+        setLocomotive(operatorTrain);
     }
 
 
-    public List<Operator> getOperators() {
-        return operators;
+    public List<OperatorTrain> getOperatorTrains() {
+        return operatorTrains;
     }
 
-    public void setOperators(List<Operator> operators) {
-        this.operators = operators;
+    public void setOperatorTrains(List<OperatorTrain> operatorTrains) {
+        this.operatorTrains = operatorTrains;
     }
 
-    public Operator getOperator() {
-        return operator;
+    public OperatorTrain getOperatorTrain() {
+        return operatorTrain;
     }
 
-    public void setOperator(Operator operator) {
-        this.operator = operator;
+    public void setOperatorTrain(OperatorTrain operatorTrain) {
+        this.operatorTrain = operatorTrain;
     }
 
     public Locomotive getLocomotive() {
         return this.locomotive;
     }
 
-    private void setLocomotive(Operator operator) {
-        if (operator.getLocomotive() != null) {
-            this.locomotive = operator.getLocomotive();
+    private void setLocomotive(OperatorTrain operatorTrain) {
+        if (operatorTrain.getLocomotive() != null) {
+            this.locomotive = operatorTrain.getLocomotive();
             setDecoder();
         }
     }

@@ -1,6 +1,6 @@
 package nl.scholtens.material.service;
 
-import nl.scholtens.material.domain.Car;
+import nl.scholtens.material.domain.Waggon;
 import nl.scholtens.material.mapper.MaterialMapper;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -19,24 +19,24 @@ public class CarServiceImpl implements CarService {
 
     private MaterialMapper material = new MaterialMapper();
 
-    private List<Car> cars;
+    private List<Waggon> waggons;
 
     @Override
-    public List<Car> getCarList(String file) {
+    public List<Waggon> getCarList(String file) {
         return getCarsFromFile(file);
     }
 
     @Override
-    public Car getCarById(String carId, String file) {
-        List<Car> cars = getCarList(file);
-        return cars
+    public Waggon getCarById(String carId, String file) {
+        List<Waggon> waggons = getCarList(file);
+        return waggons
                 .stream()
                 .filter(car -> car.getId().equals(Integer.parseInt(carId)))
                 .findFirst()
                 .get();
     }
 
-    private List<Car> getCarsFromFile(String file) {
+    private List<Waggon> getCarsFromFile(String file) {
         try {
             return material.getCarList(file);
         } catch (FileNotFoundException e) {

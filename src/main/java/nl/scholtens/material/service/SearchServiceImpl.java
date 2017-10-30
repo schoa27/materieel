@@ -1,6 +1,6 @@
 package nl.scholtens.material.service;
 
-import nl.scholtens.material.domain.Car;
+import nl.scholtens.material.domain.Waggon;
 import nl.scholtens.material.domain.Locomotive;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -64,7 +64,7 @@ public class SearchServiceImpl implements SearchService {
                         collect(Collectors.toList());
     }
 
-    private List<Car> getCarsByDccAddress(String address, String file) {
+    private List<Waggon> getCarsByDccAddress(String address, String file) {
         return getCars(file)
                 .stream()
                 .filter(car -> car.getDecoder() != null)
@@ -80,7 +80,7 @@ public class SearchServiceImpl implements SearchService {
                 .collect(Collectors.toList());
     }
 
-    private List<Car> getCarsFromOwner(String owner, String file) {
+    private List<Waggon> getCarsFromOwner(String owner, String file) {
         return getCars(file)
                 .stream()
                 .filter(car -> car.getManufactor() != null)
@@ -96,7 +96,7 @@ public class SearchServiceImpl implements SearchService {
                .collect(Collectors.toList());
     }
 
-    private List<Car> getCarsByCatalog(String catalog, String file) {
+    private List<Waggon> getCarsByCatalog(String catalog, String file) {
         return getCars(file)
                 .stream()
                 .filter(car -> car.getCatalognr() != null)
@@ -108,7 +108,7 @@ public class SearchServiceImpl implements SearchService {
         return locService.getLocList(file);
     }
 
-    private List<Car> getCars(String file) {
+    private List<Waggon> getCars(String file) {
         return carService.getCarList(file);
     }
 }
