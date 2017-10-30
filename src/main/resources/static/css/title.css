@@ -7,7 +7,7 @@ body {
 
 .scroltable{
 	overflow-y:scroll;
-	height:500px;
+	height: 400px;
 	width: 100%;
 	display: inline-block;
 }

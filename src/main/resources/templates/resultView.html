@@ -24,6 +24,7 @@
                 <div th:include="fragments/locomotives"/>
             </td>
         </tr>
+        <div th:if="${!form.waggons.empty}">
         <tr>
             <td style="vertical-align: middle; text-align: center;"><h3 th:text="#{lang.caroverview}"/></td>
         </tr>
@@ -32,6 +33,7 @@
                 <div th:include="fragments/cars"/>
             </td>
         </tr>
+        </div>
         <tr>
             <td>
                 <form method="post" action="/setup" name="setup">
