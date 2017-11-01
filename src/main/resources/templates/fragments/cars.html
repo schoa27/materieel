@@ -8,25 +8,23 @@
 
 <div th:fragment="cars">
     <div class="scroltable">
-        <table class="sortable" style="text-align: justify; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+        <table class="sortable" style="text-align: left; width: 100%;" border="1" cellpadding="1" cellspacing="2">
             <tbody>
             <tr>
-                <td style="vertical-align: top;" th:text="#{lang.owner}"/>
-                <td style="vertical-align: top;" th:text="#{lang.catalognr}"/>
-                <td style="vertical-align: top;" th:text="#{lang.company}"/>
-                <td style="..." th:text="#{lang.type}"/>
-                <td style="..." th:text="#{lang.image}"/>
+                <td th:text="#{lang.owner}"/>
+                <td th:text="#{lang.catalognr}"/>
+                <td th:text="#{lang.company}"/>
+                <td th:text="#{lang.type}"/>
+                <td th:text="#{lang.image}"/>
             </tr>
-            <tr onmouseover="ChangeColor(this, true);"
-                onmouseout="ChangeColor(this, false);"
+            <tr onmouseover="ChangeColor(this, true);" onmouseout="ChangeColor(this, false);"
                 th:onclick="'javascript:DetailGegevens(\'/' +  ${'car-'} + ${waggon.id} + '\');'"
-                th:each="waggon, iterstat: ${form.waggons}" style="cursor: pointer">
+                th:each="waggon, iterstat: ${form.waggons}">
 
-                <td style="vertical-align: top" th:text="${waggon.manufactor}" th:id="|td${iterstat.index}|"/>
-                <td style="vertical-align: top;" th:text="${waggon.carid}" th:id="|td${iterstat.index}|"/>
-                <td style="vertical-align: top;" th:text="${waggon.company}"
-                    th:id="|td${iterstat.index}|"/>
-                <td style="..." th:text="#{lang. + ${waggon.type}}" th:id="|td${iterstat.index}|"/>
+                <td th:text="${waggon.manufactor}" th:id="|td${iterstat.index}|"/>
+                <td th:text="${waggon.carid}" th:id="|td${iterstat.index}|"/>
+                <td th:text="${waggon.company}" th:id="|td${iterstat.index}|"/>
+                <td th:text="#{lang. + ${waggon.type}}" th:id="|td${iterstat.index}|"/>
                 <div th:if="${!waggon.image.empty} ">
                     <td th:id="|td${iterstat.index}|"><img th:src="@{/image/} + ${waggon.image}"/></td>
                 </div>

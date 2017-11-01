@@ -12,70 +12,63 @@
 
 <form method="post" action="/setup" name="setup">
     <fieldset class="fieldset">
-        <table class="tabel" style="text-align: left; width: 100%;" border="0" cellpadding="2"
-               cellspacing="2">
+        <table class="tabel" style="text-align: left; width: 100%;" border="0" cellpadding="2" cellspacing="2">
             <tbody>
             <tr>
-                <td style="vertical-align: middle; text-align: center;"><h3 th:text="#{lang.trainoverview}">Stam Overzicht</h3></td>
+                <td style="vertical-align: middle; text-align: center;"><h3 th:text="#{lang.trainoverview}"/></td>
             </tr>
             <tr>
                 <td style="vertical-align: top">
                     <div class="scroltable">
-                        <table class="sortable" style="text-align: left; width: 100%;" border="1" cellpadding="2"
-                               cellspacing="2">
+                        <table class="sortable" style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
                             <tbody>
                             <tr>
-                                <td style="vertical-align: top;" th:text="#{lang.train}">Stam</td>
-                                <td style="vertical-align: top;" th:text="#{lang.loc}">Maatschappij</td>
+                                <td th:text="#{lang.train}"/>
+                                <td th:text="#{lang.loc}"/>
                             </tr>
-                            <tr onmouseover="ChangeColor(this, true);"
-                                onmouseout="ChangeColor(this, false);"
+                            <tr onmouseover="ChangeColor(this, true);" onmouseout="ChangeColor(this, false);"
                                 th:onclick="'javascript:DetailGegevens(\'/' + ${'opr-'} + ${iterstat.index} + '\');' "
-                                th:each="operatorTrain, iterstat: ${form.operatorTrains}" style="cursor: pointer">
+                                th:each="operatorTrain, iterstat: ${form.operatorTrains}">
 
-                                <td style="vertical-align: top;" th:text="${operatorTrain.id}"/>
-                                <td style="vertical-align: top;" th:text="${operatorTrain.locId}"/>
-                                <td style="vertical-align: top;"><span th:text="#{lang.traction}">Tracktie loc(s)</span>
+                                <td th:text="${operatorTrain.id}"/>
+                                <td th:text="${operatorTrain.locId}"/>
+                                <td><span th:text="#{lang.traction}"/>
                                     <div class="scroltableA">
                                         <table style="text-align: left; width: 100%;" border="1"
                                                cellpadding="2" cellspacing="2">
                                             <tbody>
                                             <tr>
-                                                <td style="vertical-align: top;" th:text="#{lang.locomotive}">Loc.</td>
-                                                <td style="vertical-align: top;" th:text="#{lang.company}">Maatschappij</td>
+                                                <td th:text="#{lang.locomotive}"/>
+                                                <td th:text="#{lang.company}"/>
                                             </tr>
                                             <div th:each="loc:${operatorTrain.locomotive}">
                                                 <div th:if="${!loc.slaveLocList.empty}">
                                                     <tr th:each="slaves: ${loc.slaveLocList}">
-
                                                         <div th:each="slave:${slaves}">
-                                                            <td style="vertical-align: top;" th:text="${slave.locid}"/>
-                                                            <td style="vertical-align: top;"
-                                                                th:text="${slave.company}"/>
+                                                            <td th:text="${slave.locid}"/>
+                                                            <td th:text="${slave.company}"/>
                                                         </div>
-
                                                     </tr>
                                                 </div>
-
                                             </div>
                                             </tbody>
                                         </table>
                                     </div>
                                 </td>
 
-                                <td style="vertical-align: top;"><span th:text="#{lang.waggons}">Wagen(s)</span>
+                                <td><span th:text="#{lang.waggons}"/>
                                     <div class="scroltableA">
                                         <table style="text-align: left; width: 100%;" border="1"
                                                cellpadding="2" cellspacing="2">
                                             <tbody>
                                             <tr>
-                                                <td style="vertical-align: top;" th:text="#{lang.typenr}">Type nr.</td>
-                                                <td style="vertical-align: top;" th:text="#{lang.company}">Maatschappij</td>
+                                                <td th:text="#{lang.typenr}"/>
+                                                <td th:text="#{lang.company}"/>
                                             </tr>
                                             <tr th:each="waggons:${operatorTrain.waggons}">
                                                 <div th:each="waggon:${waggons}">
-                                                    <td style="vertical-align: top;" th:text="${waggon.carid}"/>
-                                                    <td style="vertical-align: top;" th:text="${waggon.company}"/>
+                                                    <td th:text="${waggon.carid}"/>
+                                                    <td th:text="${waggon.company}"/>
                                                 </div>
                                             </tr>
                                             </tbody>
@@ -88,13 +81,9 @@
                     </div>
                 </td>
             </tr>
-            <tr class="rij">
-                <td style="vertical-align: top;">
-                </td>
-            </tr>
             <tr>
                 <td>
-                    <button name="terug" type="submit" value="true" th:text="#{lang.back}">terug</button>
+                    <button name="terug" type="submit" value="true" th:text="#{lang.back}"/>
                 </td>
             </tr>
             </tbody>
