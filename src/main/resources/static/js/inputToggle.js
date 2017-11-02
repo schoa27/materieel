@@ -4,7 +4,7 @@ var owner = document.getElementById('owner'),
     br = document.getElementById('br');
 
 
-function  enableToggle(current, other) {
+function enableToggle(current, other) {
     other.disabled = current.value.replace(/\s+/, '').length > 0;
 }
 
@@ -27,7 +27,7 @@ dcc.onkeyup = function () {
 }
 
 br.onkeyup = function () {
-        enableToggle(this, owner);
-        enableToggle(this, catalog);
-        enableToggle(this, dcc);
-    }
+    enableToggle(this, owner);
+    enableToggle(this, catalog);
+    enableToggle(this, dcc);
+}
