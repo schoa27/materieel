@@ -7,19 +7,19 @@
 <body>
 
 
-<table style="width: 100%" border="1">
+<table th:class="tabel-main">
     <tbody>
     <tr>
         <td>
             <div th:if="${form.operatorTrain.locomotive !=null}">
-                <table style="width: 100%" border="1" cellpadding="2" cellspacing="5">
+                <table th:class="table-0-2-2">
                     <tbody>
-                    <tr>
-                        <td style="vertical-align: top; width: 50%;"><h3 th:text="#{lang.loc}"/><br/>
+                    <tr th:class="vTopw50">
+                        <td><h3 th:text="#{lang.loc}"/><br/>
                             <div th:include="fragments/locomotive"/>
                         </td>
-                        <td style="vertical-align: top;width: 50%"><h3 th:text="#{lang.decoder}"/><br/>
-                            <table style="width: 100%" border="3" cellpadding="5" cellspacing="5">
+                        <td><h3 th:text="#{lang.decoder}"/><br/>
+                            <table th:class="table-3-5-5">
                                 <tr>
                                     <td>
                                         <div th:include="fragments/decoder"/>
@@ -31,23 +31,23 @@
                     </tbody>
                 </table>
             </div>
-            <table style="width: 100%" border="1">
+            <table th:class="table-3-5-5">
                 <tbody>
                 <tr>
                     <td th:text="#{lang.train}"/>
                 </tr>
                 </tbody>
             </table>
-            <table style="width: 12%" border="0">
+            <table th:class="w12b0">
                 <tbody>
                 <tr>
-                    <td th:text="#{lang.length}">lengte</td>
+                    <td th:text="#{lang.length}"/>
                     <td th:text="${form.operatorTrain.length}"/>
                 </tr>
                 </tbody>
             </table>
             <div class="inblok">
-                <table border="0" cellpadding="0" cellspacing="0">
+                <table th:class="table-nb0-0-0">
                     <tr>
                         <div th:if="${form.operatorTrain.locomotive !=null}">
                             <td><img th:src="@{/image/} + ${form.operatorTrain.locomotive.image}" align="center"/>

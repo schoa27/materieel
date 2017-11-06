@@ -75,6 +75,27 @@ a.cursief {
 	width: 50%;
 }
 
+.w12b0 {
+	width: 12%;
+	border: none;
+	border-spacing: 2px;
+	padding: 2px;
+}
+.tabel-main {
+	text-align: left;
+	width: 100%;
+	height: 634px;
+	border: none;
+	padding: 2px;
+	border-spacing: 2px;
+}
+
+.table-nb0-0-0 {
+	border: none;
+	border-spacing: 0px;
+	padding: 0px;
+}
+
 .table-3-5-5 {
 	width: 100%;
 	border-spacing: 5px;
