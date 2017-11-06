@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -52,8 +53,10 @@ public class SearchController extends IoController {
 
         ModelAndView mav = new ModelAndView();
         form.setLocomotives((List<Locomotive>) list.get("loc"));
-        if (list.get("car") == null || !list.get("car").isEmpty()) {
-            form.setWaggons((List<Waggon>) list.get("car"));
+        if (list.get("car") != null ) {
+            if (!list.get("car").isEmpty()) {
+                form.setWaggons((List<Waggon>) list.get("car"));
+            }
         }
         mav.addObject("form", form);
         mav.setViewName("resultView");
