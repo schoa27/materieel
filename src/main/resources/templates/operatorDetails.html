@@ -10,6 +10,9 @@
 <table th:class="tabel-main">
     <tbody>
     <tr>
+        <td><h3 th:text="${form.operatorTrain.id}"/></td>
+    </tr>
+    <tr>
         <td>
             <div th:if="${form.operatorTrain.locomotive !=null}">
                 <table th:class="table-0-2-2">
@@ -31,13 +34,6 @@
                     </tbody>
                 </table>
             </div>
-            <table th:class="table-3-5-5">
-                <tbody>
-                <tr>
-                    <td th:text="#{lang.train}"/>
-                </tr>
-                </tbody>
-            </table>
             <table th:class="w12b0">
                 <tbody>
                 <tr>

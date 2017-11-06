@@ -11,18 +11,17 @@
 <body>
 <div th:if="${gevuld} != true">
     <form method="post" action="/setup">
-        <fieldset class="fieldset">
+        <fieldset>
             <span th:text="#{lang.change}"></span>:
             <select id="locales">
                 <option value="" th:text="#{lang.select}"></option>
                 <option name="en" value="en" th:text="#{lang.en}"></option>
                 <option name="nl" value="nl" th:text="#{lang.nl}"></option>
             </select>
-            <table style="text-align: left; width: 100%;" border="0" cellpadding="2" cellspacing="2">
+            <table th:class="table-0-2-2">
                 <tbody>
                 <tr>
-                    <td style="vertical-align: top;"><h3 class="h3left" th:text="#{lang.nwsetup}">Nieuwe
-                        Instellingen</h3>
+                    <td style="vertical-align: top;"><h3 class="h3left" th:text="#{lang.nwsetup}"/>
                         <table style="text-align: left; width: 75%;" border="0" cellpadding="2" cellspacing="2">
                             <tbody>
                             <tr>
@@ -39,7 +38,7 @@
                     </td>
 
                     <td><h3 class="h3left" th:text="#{lang.odsetup}"/>
-                        <table style="text-align: left; width: 100%;" border="0" cellpadding="5" cellspacing="5">
+                        <table th:class="table-0-2-2">
                             <tbody>
                             <tr>
                                 <td th:text="${xmlpath}"/>

@@ -10,24 +10,18 @@
 <script type="text/javascript" th:src="@{/js/viewFunctions.js}"/>
 <script type="text/javascript" th:src="@{/js/sorttable.js}"/>
 
-<body class="werkpagina">
+<body>
 <form method="post" action="/setup" name="setup">
 
-    <fieldset class="fieldset">
-
-        <table class="tabel" style="text-align: left; width: 100%;" border="0" cellpadding="2"
-               cellspacing="2">
+    <fieldset>
+        <table th:class="table-0-2-2">
             <tbody>
             <tr>
-                <td style="vertical-align: middle; text-align: center;"><h3 th:text="#{lang.caroverview}"/></td>
+                <td th:class="middleCenter"><h3 th:text="#{lang.caroverview}"/></td>
             </tr>
             <tr>
-                <td style="vertical-align: top;">
+                <td>
                     <div th:include="fragments/cars"/>
-                </td>
-            </tr>
-            <tr class="rij">
-                <td style="vertical-align: top;">
                 </td>
             </tr>
             <tr>
