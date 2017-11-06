@@ -11,7 +11,7 @@
     <table style="text-align: left; width: 100%; height: 634px;" border="0" cellpadding="2" cellspacing="2">
         <tbody>
         <tr>
-            <td style="vertical-align: top; width: 50%;"><h3 th:text="#{lang.waggon}"/>
+            <td th:class="vTopw50"><h3 th:text="#{lang.waggon}"/>
                 <div th:include="fragments/car"/>
                 <table>
                     <tr>
@@ -36,13 +36,13 @@
                     </tr>
                 </table>
             </td>
-            <td style="vertical-align: top; width: 50%">
-                <table style="text-align: left; width: 100%;" border="0" cellpadding="2" cellspacing="2">
+            <td th:class="vTopw50">
+                <table th:class="table-0-2-2">
                     <tbody>
                     <div th:if="${form.waggon.decoder} != null">
                         <tr>
-                            <td style="vertical-align: top; width: 50%"><h3 th:text="#{lang.decoder}"/>
-                                <table style="width: 100%" border="3" cellpadding="5" cellspacing="5">
+                            <td><h3 th:text="#{lang.decoder}"/>
+                                <table th:class="table-3-5-5">
                                     <tr>
                                         <td>
                                             <div th:include="fragments/decoder"/>
@@ -53,7 +53,7 @@
                         </tr>
                     </div>
                     <tr>
-                        <td style="vertical-align: top; width: 50%"><h3 th:text="#{lang.image}"/></td>
+                        <td><h3 th:text="#{lang.image}"/></td>
                     </tr>
                     <div th:include="fragments/image"/>
                     </tbody>

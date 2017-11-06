@@ -1,0 +1,103 @@
+@CHARSET "UTF-8";
+
+body {
+	background-color: #909090;
+	width: 1242px;
+}
+
+.scroltable{
+	overflow-y:scroll;
+	height: 400px;
+	width: 100%;
+	display: inline-block;
+}
+
+.scroltableA{
+	overflow-y:auto;
+	height:100px;
+	width: 100%;
+	display: inline-block;
+}
+
+.inblok {
+	overflow: auto;
+	width: 1240px;
+	height: 150px;
+	overflow-y: hidden;
+}
+
+h1 {
+	text-align: center;
+}
+
+h3 {
+	text-align: center;
+}
+.h3left {
+	text-align: left;
+}
+a.cursief {
+	font-style: italic
+}
+
+/*id definities */
+#table-1-1-1 {
+	border-color: black;
+	text-align: left;
+	width: 100%;
+	border: 1px solid black;
+	padding: 1px;
+	border-spacing: 1px;
+}
+
+/* class definities */
+
+.line {
+	width:1242px;
+	border-bottom: 1px solid black;
+	position: absolute;
+}
+
+.font {
+	font-size: 85%;
+}
+
+.w40 {
+	width: 40%;
+}
+
+.w50 {
+	width: 50%;
+}
+
+.vTopw50 {
+	vertical-align: top;
+	width: 50%;
+}
+
+.table-3-5-5 {
+	width: 100%;
+	border-spacing: 5px;
+	border: 6px darkgray;
+	border-style: ridge;
+	padding: 2px 10px;
+}
+
+.table-0-2-2 {
+	width: 100%;
+	text-align: left;
+	border-spacing: 2px;
+	border: 0;
+	border-style: none;
+	padding: 2px 10px;
+}
+
+.table-3-3-2 {
+	width: 100%;
+	text-align: center;
+	border: 6px darkgray;
+	border-style: ridge;
+	padding: 3px;
+	border-spacing: 2px 10px;
+}
+
