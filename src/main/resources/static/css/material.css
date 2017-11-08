@@ -59,13 +59,6 @@ a.cursief {
 }
 
 /* class definities */
-
-.line {
-	width:1242px;
-	border-bottom: 1px solid black;
-	position: absolute;
-}
-
 .font {
 	font-size: 85%;
 }

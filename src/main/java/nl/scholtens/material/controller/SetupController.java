@@ -6,11 +6,13 @@ import nl.scholtens.material.service.SetupService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.LocaleContextResolver;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +21,7 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.Locale;
 
 @Controller
 public class SetupController extends IoController {
@@ -38,9 +41,7 @@ public class SetupController extends IoController {
         model.addObject("version", buildVersion);
 
         if (!getSetupService().isFileEmpty()) {
-            final String[] paths = getSetupService().readSetupFile();
-            model.addObject("xmlpath", paths[0]);
-            model.addObject("imagepath", paths[1]);
+            getFileParameters(model);
         } else {
             model.addObject("xmlpath", "pad en bestand niet gevuld");
             model.addObject("imagepath", "pad niet gevuld");
@@ -72,6 +73,7 @@ public class SetupController extends IoController {
             model.addObject("gevuld", true);
         }
         model.addObject("form", new Body(buildVersion, sessionForm.getDate()));
+        getFileParameters(model);
         model.setViewName("setupView");
         return model;
     }
@@ -147,7 +149,7 @@ public class SetupController extends IoController {
             mav.setViewName("forward:/zoek/br");
             return mav;
         }
-        return null;
+        return new ModelAndView("forward:/material");
     }
 
     private void createSessionForm(HttpServletRequest request) {
@@ -159,5 +161,12 @@ public class SetupController extends IoController {
     private void intitSessionForm() {
         sessionForm.setSearchMethode(null);
         sessionForm.setSearchParameter(null);
+    }
+
+    private void getFileParameters(ModelAndView model) {
+        final String[] paths = getSetupService().readSetupFile();
+        model.addObject("xmlpath", paths[0]);
+        model.addObject("imagepath", paths[1]);
+        model.addObject("local", LocaleContextHolder.getLocale().getLanguage());
     }
 }

@@ -8,8 +8,7 @@
 
 <fieldset>
     <form method="post" action="/keuze">
-        <table style="text-align: center; width: 100%;" border="0" cellpadding="2"
-               cellspacing="2">
+        <table th:class="table-0-2-2">
             <tr>
                 <td style="text-align: left;"><input type="submit" name="loc" th:value="#{lang.locoverview}"/></td>
                 <td style="text-align: center;"><input type="submit" name="car" th:value="#{lang.caroverview}"/>
@@ -23,23 +22,49 @@
 
 <fieldset>
     <form method="get" action="/zoeken">
-        <h3 class="h3left" th:text="#{lang.search}">Zoeken</h3>
-        <table style="text-align: center; width: 50%;" border="0" cellpadding="2" cellspacing="2">
+        <table style="text-align: justify; width: 100%">
             <tr>
-                <td style="text-align: left;" th:text="#{lang.searchowner}"/>
-                <td><input type="text" id="owner" name="owner" size="40"/></td>
+                <td><h3 class="h3left" th:text="#{lang.search}"/></td>
+                <td><h3 class="h3left" th:text="#{lang.setup}"/></td>
             </tr>
             <tr>
-                <td style="text-align: left;" th:text="#{lang.searchcatalog}"/>
-                <td><input type="text" id="catalog" name="catalog" size="40"/></td>
-            </tr>
-            <tr>
-                <td style="text-align: left;" th:text="#{lang.searchdcc}"/>
-                <td><input type="text" id="dcc" name="dcc" size="40"/></td>
-            </tr>
-            <tr>
-                <td style="text-align: left;" th:text="#{lang.searchbr}"/>
-                <td><input type="text" id="br" name="br" size="40"/></td>
+                <td>
+                    <table th:class="table-0-2-2">
+                        <tr>
+                            <td th:text="#{lang.searchowner}"/>
+                            <td><input type="text" id="owner" name="owner" size="40"/></td>
+                        </tr>
+                        <tr>
+                            <td th:text="#{lang.searchcatalog}"/>
+                            <td><input type="text" id="catalog" name="catalog" size="40"/></td>
+                        </tr>
+                        <tr>
+                            <td th:text="#{lang.searchdcc}"/>
+                            <td><input type="text" id="dcc" name="dcc" size="40"/></td>
+                        </tr>
+                        <tr>
+                            <td th:text="#{lang.searchbr}"/>
+                            <td><input type="text" id="br" name="br" size="40"/></td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <table th:class="table-0-2-2">
+                        <tr>
+                            <td th:text="#{lang.paths}"/>
+                            <td th:text="${xmlpath}"/>
+                        </tr>
+                        <tr>
+                            <td/>
+                            <td th:text="${imagepath}"/>
+                        </tr>
+                        <br/>
+                        <tr>
+                            <td th:text="#{lang.selectlang}"/>
+                            <td th:text="#{lang. + ${local}}"/>
+                        </tr>
+                    </table>
+                </td>
             </tr>
         </table>
         <input type="submit" th:value="#{lang.search}" name="zoek"/>
