@@ -8,7 +8,7 @@
     <title>Material Overview</title>
 
 <body>
-<table align="center" style="text-align: left; width: 100%;" border="0" cellpadding="0" cellspacing="2">
+<table th:class="table-0-2-2">
     <tr>
         <td><img th:src="@{images/electricl.gif}" width="130" height="55"/></td>
         <td><img th:src="@{images/diesell.gif}" width="130" height="55"/></td>
@@ -24,17 +24,17 @@
     </tr>
 </table>
 
-<table align="center" style="text-align: left; width: 100%;" border="0" cellpadding="0" cellspacing="2">
+<table th:class="table-0-2-2">
     <tr>
         <td><img th:src="@{images/digir.png}" with="400" height="20"/></td>
         <td><h3 th:text="#{lang.subtitle}"/></td>
         <td><img th:src="@{images/digil.png}" with="400" height="20"/></td>
     </tr>
 </table>
-<table align="center" style="text-align: left; width: 100%;" border="0" cellpadding="0" cellspacing="2">
+<table th:class="table-0-2-2">
     <tr>
-        <td align="left" th:text="${form.header.version}"/>
-        <td align="right" th:text="${form.header.date}"/>
+        <td th:class="left" th:text="${form.header.version}"/>
+        <td th:class="right" th:text="${form.header.date}"/>
     </tr>
 </table>
 

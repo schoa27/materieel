@@ -10,11 +10,9 @@
     <form method="post" action="/keuze">
         <table th:class="table-0-2-2">
             <tr>
-                <td style="text-align: left;"><input type="submit" name="loc" th:value="#{lang.locoverview}"/></td>
-                <td style="text-align: center;"><input type="submit" name="car" th:value="#{lang.caroverview}"/>
-                </td>
-                <td style="text-align: right;"><input type="submit" name="train" th:value="#{lang.trainoverview}"/>
-                </td>
+                <td th:class="left"><input type="submit" name="loc" th:value="#{lang.locoverview}"/></td>
+                <td th:class="center"><input type="submit" name="car" th:value="#{lang.caroverview}"/></td>
+                <td th:class="right"><input type="submit" name="train" th:value="#{lang.trainoverview}"/></td>
             </tr>
         </table>
     </form>
@@ -22,7 +20,7 @@
 
 <fieldset>
     <form method="get" action="/zoeken">
-        <table style="text-align: justify; width: 100%">
+        <table th:class="justifyW100">
             <tr>
                 <td><h3 class="h3left" th:text="#{lang.search}"/></td>
                 <td><h3 class="h3left" th:text="#{lang.setup}"/></td>

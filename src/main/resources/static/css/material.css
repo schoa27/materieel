@@ -59,6 +59,24 @@ a.cursief {
 }
 
 /* class definities */
+
+.left {
+	text-align: left;
+}
+
+.center {
+	text-align: center;
+}
+
+.right {
+	text-align: right;
+}
+
+.justifyW100 {
+	text-align: justify;
+	width: 100%;
+}
+
 .font {
 	font-size: 85%;
 }
