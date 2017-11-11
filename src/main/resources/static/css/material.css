@@ -105,6 +105,12 @@ a.cursief {
 	border-spacing: 2px;
 	padding: 2px;
 }
+
+.w600ha {
+	width: 600px;
+	height: auto;
+}
+
 .tabel-main {
 	text-align: left;
 	width: 100%;
@@ -112,6 +118,14 @@ a.cursief {
 	border: none;
 	padding: 2px;
 	border-spacing: 2px;
+}
+
+.table-2-2-3 {
+	text-align: left;
+	width: 600px;
+	border: 2px darkgray;
+	padding: 2px;
+	border-spacing: 3px;
 }
 
 .table-nb0-0-0 {

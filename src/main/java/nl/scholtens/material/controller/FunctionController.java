@@ -27,7 +27,6 @@ public class FunctionController extends IoController {
     @Value("${build.version}")
     private String buildVersion;
 
-
     @RequestMapping(value = "/function/{item}", method = RequestMethod.GET)
     public ModelAndView getFunctions(@PathVariable(value = "item") String item, ModelAndView model, HttpServletRequest request) {
 
@@ -50,7 +49,6 @@ public class FunctionController extends IoController {
         }
         return model;
     }
-
 
     private SessionForm getSessionForm(HttpServletRequest request) {
         return (SessionForm) request.getSession().getAttribute("sessionform");

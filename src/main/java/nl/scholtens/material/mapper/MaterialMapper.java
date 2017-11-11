@@ -8,6 +8,7 @@ import org.xml.sax.SAXException;
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class MaterialMapper {
@@ -110,7 +111,7 @@ public class MaterialMapper {
                functionList.add(new DecoderFunction(((Fundef) object).getFn().toString(), ((Fundef) object).getText()));
             }
         }
+        Collections.sort(functionList, (fn1, fn2) -> fn1.getFn().compareTo(fn2.getFn()));
         return functionList;
-
     }
 }

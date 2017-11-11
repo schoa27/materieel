@@ -12,6 +12,6 @@ function DetailGegevens(servlet) {
 
 function openWindow(param) {
     window.open(param, 650, 400);
-    // a.resizeTo(witdh=600, height=400);
+    window.o
 
 }
