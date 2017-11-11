@@ -1,14 +1,8 @@
 package nl.scholtens.material.mapper;
 
-import nl.scholtens.material.domain.OperatorTrain;
-import nl.scholtens.material.domain.Waggon;
-import nl.scholtens.material.domain.Decoder;
-import nl.scholtens.material.domain.Locomotive;
+import nl.scholtens.material.domain.*;
 import nl.scholtens.material.enums.constants.*;
-import nl.scholtens.material.sources.Car;
-import nl.scholtens.material.sources.Lc;
-import nl.scholtens.material.sources.Operator;
-import nl.scholtens.material.sources.Plan;
+import nl.scholtens.material.sources.*;
 import org.xml.sax.SAXException;
 
 import javax.xml.bind.JAXBException;
@@ -70,6 +64,7 @@ public class MaterialMapper {
         locomotive.setImage(loc.getImage());
         locomotive.setSlaveLocIds(loc.getConsist());
         locomotive.setDecoder(getDecoder(loc, null));
+        locomotive.setFunctions(getFunctions(loc, null));
         return locomotive;
     }
 
@@ -105,5 +100,17 @@ public class MaterialMapper {
             decoder.setSpeedSteps(Integer.parseInt(car.getSpcnt().toString()));
         }
         return decoder;
+    }
+
+    private List<DecoderFunction>  getFunctions(Lc lc, Car car) {
+        List<DecoderFunction> functionList = new ArrayList<>();
+
+        for (Object object : lc.getFundefOrBbtOrCvbyte()) {
+            if (object instanceof Fundef) {
+               functionList.add(new DecoderFunction(((Fundef) object).getFn().toString(), ((Fundef) object).getText()));
+            }
+        }
+        return functionList;
+
     }
 }

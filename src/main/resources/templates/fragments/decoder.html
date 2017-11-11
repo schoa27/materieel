@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <title>DecoderDetails</title>
 </head>
+<script type="text/javascript" th:src="@{/js/viewFunctions.js}"></script>
 <body>
 
 <div th:fragment="decoder">
@@ -25,10 +26,22 @@
             <td th:text="#{lang.protocol}"/>
             <td th:text="${form.decoder.protocol}"/>
         </tr>
-        <tr>
+        <div th:if="${id} == loc">
+        <tr th:class="pointer"
+            th:onclick="'javascript:openWindow(\'/function/'+ ${'loc-'} + ${form.locomotive.id} + '\');'">
+
             <td th:text="#{lang.function}"/>
             <td th:text="${form.decoder.functionCount}"/>
         </tr>
+        </div>
+        <div th:if="${id} == car">
+            <tr th:class="pointer"
+                th:onclick="'javascript:openWindow(\'/function/'+ ${'car-'} + ${form.waggon.id} + '\');'">
+
+                <td th:text="#{lang.function}"/>
+                <td th:text="${form.decoder.functionCount}"/>
+            </tr>
+        </div>
         <tr>
             <td th:text="#{lang.type}"/>
             <td th:text="${form.decoder.type}"/>

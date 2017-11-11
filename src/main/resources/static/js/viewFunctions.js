@@ -9,3 +9,9 @@ function ChangeColor(tableRow, highLight) {
 function DetailGegevens(servlet) {
     document.location.href = servlet;
 }
+
+function openWindow(param) {
+    window.open(param, 650, 400);
+    // a.resizeTo(witdh=600, height=400);
+
+}

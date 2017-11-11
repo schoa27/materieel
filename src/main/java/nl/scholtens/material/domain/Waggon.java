@@ -1,5 +1,8 @@
 package nl.scholtens.material.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Waggon {
     private Integer id;
 
@@ -20,6 +23,8 @@ public class Waggon {
     private Decoder decoder;
 
     private String image;
+
+    private List<DecoderFunction> functions = new ArrayList<>();
 
 
     public Waggon() {
@@ -105,5 +110,13 @@ public class Waggon {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public List<DecoderFunction> getFunctions() {
+        return functions;
+    }
+
+    public void setFunctions(List<DecoderFunction> functions) {
+        this.functions = functions;
     }
 }

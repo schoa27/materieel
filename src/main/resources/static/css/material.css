@@ -59,6 +59,10 @@ a.cursief {
 }
 
 /* class definities */
+.pointer {
+	cursor: pointer;
+	font-style: italic
+}
 
 .left {
 	text-align: left;
@@ -140,4 +144,9 @@ a.cursief {
 	border-style: ridge;
 	padding: 3px;
 	border-spacing: 2px 10px;
+}
+
+.color {
+	background-color: #909090;
+	width: 620px;
 }

@@ -33,6 +33,8 @@ public class Locomotive {
 
     private List<Locomotive> slaveLocList = new ArrayList<>();
 
+    private List<DecoderFunction> functions = new ArrayList<>();
+
 
     public Integer getId() {
         return id;
@@ -144,5 +146,13 @@ public class Locomotive {
 
     public void setSlaveLocList(List<Locomotive> slaveLocList) {
         this.slaveLocList = slaveLocList;
+    }
+
+    public List<DecoderFunction> getFunctions() {
+        return functions;
+    }
+
+    public void setFunctions(List<DecoderFunction> functions) {
+        this.functions = functions;
     }
 }

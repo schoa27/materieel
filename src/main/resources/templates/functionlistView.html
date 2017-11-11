@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="css/material.css" type="text/css"/>
+    <title>DecoderFunctions</title>
+</head>
+
+<body onload="window.resizeTo(650,400)" style="background-color: #909090;">
+<h3 style="text-align: center" th:text="#{lang.fnoverview}"/>
+
+<fieldset style="width: 600px; height: auto;">
+
+    <table style="text-align: center; width: 600px;" border="2" cellpadding="2" cellspacing="3">
+        <tbody>
+        <tr>
+            <td th:text="#{lang.fn}"/>
+            <td th:text="#{lang.fntext}"/>
+        </tr>
+        <div th:if="${!locform.locomotive.functions.empty}">
+            <tr th:each="function, iterstat: ${locform.locomotive.functions}">
+                <td th:text="${function.fn}" th:id="|td${iterstat.index}|"/>
+                <td th:text="${function.discription}" th:id="|td${iterstat.index}|"/>
+            </tr>
+        </div>
+        <div th:if="${!carform.waggon.functions.empty}">
+            <tr th:each="function, iterstat: ${carform.waggon.functions}">
+                <td th:text="${function.fn}" th:id="|td${iterstat.index}|"/>
+                <td th:text="${function.discription}" th:id="|td${iterstat.index}|"/>
+            </tr>
+        </div>
+        </tbody>
+    </table>
+
+    <div th:if="${locform.locomotive.functions.empty and carform.waggon.functions.empty}">
+        <span style="text-align: center;" th:text="#{lang.nofn}"/>
+    </div>
+    <table style="text-align: center; width: 600px;" th:border="0" cellpadding="2" cellspacing="3">
+        <tr>
+            <td>
+                <button onclick="window.close()" type="submit" th:text="#{lang.close}"/>
+            </td>
+        </tr>
+    </table>
+</fieldset>
+</body>
+</html>

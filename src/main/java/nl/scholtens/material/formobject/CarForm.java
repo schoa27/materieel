@@ -3,13 +3,14 @@ package nl.scholtens.material.formobject;
 import nl.scholtens.material.domain.Waggon;
 import nl.scholtens.material.domain.Decoder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CarForm extends Body {
 
-    private List<Waggon> waggons;
+    private List<Waggon> waggons = new ArrayList<>();
 
-    private Waggon waggon;
+    private Waggon waggon = new Waggon();
 
     private Decoder decoder;
 

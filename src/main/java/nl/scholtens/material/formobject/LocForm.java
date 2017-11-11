@@ -3,13 +3,14 @@ package nl.scholtens.material.formobject;
 import nl.scholtens.material.domain.Decoder;
 import nl.scholtens.material.domain.Locomotive;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LocForm extends Body {
 
-    private List<Locomotive> locomotives;
+    private List<Locomotive> locomotives = new ArrayList<>();
 
-    private Locomotive locomotive;
+    private Locomotive locomotive = new Locomotive();
 
     private Decoder decoder;
 
