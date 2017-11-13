@@ -8,62 +8,64 @@
 <script type="text/javascript" th:src="@{/js/viewFunctions.js}"/>
 
 <body>
-<div th:if="${form.locomotive !=null}">
-    <table th:class="tabel-main">
-        <tbody>
-        <tr>
-            <td th:class="vTopw50"><h3 th:text="#{lang.loc}"/>
-                <div th:include="fragments/locomotive"/>
-                <table>
-                    <tr>
-                        <td>
-                            <div th:if="${sessionform.list} == true">
-                                <form method="get" action="/locs" name="DetailsLocomotieve">
-                                    <button name="terug" type="submit" th:text="#{lang.back}"/>
+<fieldset>
+    <div th:if="${form.locomotive !=null}">
+        <table th:class="tabel-main">
+            <tbody>
+            <tr>
+                <td th:class="vTopw50"><h3 th:text="#{lang.loc}"/>
+                    <div th:include="fragments/locomotive"/>
+                    <table>
+                        <tr>
+                            <td>
+                                <div th:if="${sessionform.list} == true">
+                                    <form method="get" action="/locs" name="DetailsLocomotieve">
+                                        <button name="terug" type="submit" th:text="#{lang.back}"/>
+                                    </form>
+                                </div>
+                                <div th:if="${sessionform.search} == true">
+                                    <form method="get" action="/zoeken" name="DetailsLocomotieve">
+                                        <button name="terug" type="submit" th:text="#{lang.back}"/>
+                                    </form>
+                                </div>
+                            </td>
+                            <td>
+                                <form method="post" action="/setup">
+                                    <button name="hoofdpagina" type="submit" value="true" th:text="#{lang.main}"/>
                                 </form>
-                            </div>
-                            <div th:if="${sessionform.search} == true">
-                                <form method="get" action="/zoeken" name="DetailsLocomotieve">
-                                    <button name="terug" type="submit" th:text="#{lang.back}"/>
-                                </form>
-                            </div>
-                        </td>
-                        <td>
-                            <form method="post" action="/setup">
-                                <button name="hoofdpagina" type="submit" value="true" th:text="#{lang.main}"/>
-                            </form>
-                        </td>
-                    </tr>
-                </table>
-                <br/>
-            </td>
-            <td th:class="vTopw50">
-                <table th:class="table-0-2-2">
-                    <tbody>
-                    <tr>
-                        <td><h3 th:text="#{lang.decoder}"/><br/>
-                            <table th:class="table-3-5-5">
-                                <tr>
-                                    <td>
-                                        <div th:include="fragments/decoder"/>
-                                    </td>
-                                </tr>
-                            </table>
-                            <br/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><h3 th:text="#{lang.image}"/><br/>
-                        </td>
-                    </tr>
-                    <div th:include="fragments/image"/>
-                    </tbody>
-                </table>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</div>
+                            </td>
+                        </tr>
+                    </table>
+                    <br/>
+                </td>
+                <td th:class="vTopw50">
+                    <table th:class="table-0-2-2">
+                        <tbody>
+                        <tr>
+                            <td><h3 th:text="#{lang.decoder}"/><br/>
+                                <table th:class="table-3-5-5">
+                                    <tr>
+                                        <td>
+                                            <div th:include="fragments/decoder"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <br/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><h3 th:text="#{lang.image}"/><br/>
+                            </td>
+                        </tr>
+                        <div th:include="fragments/image"/>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</fieldset>
 <div th:include="footer"/>
 </body>
 
