@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="plan">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="lclist"/>
+        <xs:element ref="carlist"/>
+        <xs:element ref="operatorlist"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="lclist">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="lc"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="lc">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="fundef"/>
+        <xs:element ref="bbt"/>
+        <xs:element ref="cvbyte"/>
+      </xs:choice>
+      <xs:attribute name="KMH_Rcru" use="required" type="xs:integer"/>
+      <xs:attribute name="KMH_Rmax" use="required" type="xs:integer"/>
+      <xs:attribute name="KMH_Rmid" use="required" type="xs:integer"/>
+      <xs:attribute name="KMH_Rmin" use="required" type="xs:integer"/>
+      <xs:attribute name="KMH_cru" use="required" type="xs:integer"/>
+      <xs:attribute name="KMH_max" use="required" type="xs:integer"/>
+      <xs:attribute name="KMH_mid" use="required" type="xs:integer"/>
+      <xs:attribute name="KMH_min" use="required" type="xs:integer"/>
+      <xs:attribute name="V" use="required" type="xs:integer"/>
+      <xs:attribute name="V_Rcru" use="required" type="xs:integer"/>
+      <xs:attribute name="V_Rmax" use="required" type="xs:integer"/>
+      <xs:attribute name="V_Rmid" use="required" type="xs:integer"/>
+      <xs:attribute name="V_Rmin" use="required" type="xs:integer"/>
+      <xs:attribute name="V_cru" use="required" type="xs:integer"/>
+      <xs:attribute name="V_hint" type="xs:NCName"/>
+      <xs:attribute name="V_max" use="required" type="xs:integer"/>
+      <xs:attribute name="V_maxkmh" type="xs:integer"/>
+      <xs:attribute name="V_maxsec" use="required" type="xs:integer"/>
+      <xs:attribute name="V_mid" use="required" type="xs:integer"/>
+      <xs:attribute name="V_min" use="required" type="xs:integer"/>
+      <xs:attribute name="V_mode" use="required" type="xs:NCName"/>
+      <xs:attribute name="V_realkmh" type="xs:integer"/>
+      <xs:attribute name="V_step" use="required" type="xs:integer"/>
+      <xs:attribute name="Vmaxkmh" use="required" type="xs:integer"/>
+      <xs:attribute name="Vmaxmax" use="required" type="xs:integer"/>
+      <xs:attribute name="Vmaxmin" use="required" type="xs:integer"/>
+      <xs:attribute name="Vmidpercent" use="required" type="xs:integer"/>
+      <xs:attribute name="Vmidset" use="required" type="xs:boolean"/>
+      <xs:attribute name="accelmax" use="required" type="xs:integer"/>
+      <xs:attribute name="accelmin" use="required" type="xs:integer"/>
+      <xs:attribute name="active" type="xs:boolean"/>
+      <xs:attribute name="addr" use="required" type="xs:integer"/>
+      <xs:attribute name="adjustaccel" use="required" type="xs:boolean"/>
+      <xs:attribute name="bbtcorrection" use="required" type="xs:integer"/>
+      <xs:attribute name="bbtevent" type="xs:boolean"/>
+      <xs:attribute name="bbtkey" use="required" type="xs:integer"/>
+      <xs:attribute name="bbtmaxdiff" use="required" type="xs:integer"/>
+      <xs:attribute name="bbtstartinterval" use="required" type="xs:integer"/>
+      <xs:attribute name="bbtsteps" use="required" type="xs:integer"/>
+      <xs:attribute name="blockenterid"/>
+      <xs:attribute name="blockenterside" type="xs:boolean"/>
+      <xs:attribute name="blockid"/>
+      <xs:attribute name="blockwaittime" use="required" type="xs:integer"/>
+      <xs:attribute name="bus" use="required" type="xs:integer"/>
+      <xs:attribute name="cargo" use="required" type="xs:NCName"/>
+      <xs:attribute name="catnr" use="required"/>
+      <xs:attribute name="check2in" use="required" type="xs:boolean"/>
+      <xs:attribute name="class" use="required"/>
+      <xs:attribute name="cmd" type="xs:NCName"/>
+      <xs:attribute name="cmdDelay" use="required" type="xs:integer"/>
+      <xs:attribute name="color" use="required"/>
+      <xs:attribute name="commuter" use="required" type="xs:boolean"/>
+      <xs:attribute name="consist" use="required"/>
+      <xs:attribute name="consist_lightsoff" use="required" type="xs:boolean"/>
+      <xs:attribute name="consist_syncfun" use="required" type="xs:boolean"/>
+      <xs:attribute name="consist_syncfunmap" use="required" type="xs:integer"/>
+      <xs:attribute name="consist_synclights" use="required" type="xs:boolean"/>
+      <xs:attribute name="controlcode"/>
+      <xs:attribute name="cvnrs" use="required"/>
+      <xs:attribute name="decelerate" use="required" type="xs:integer"/>
+      <xs:attribute name="decfile" use="required"/>
+      <xs:attribute name="dectype" use="required"/>
+      <xs:attribute name="desc" use="required"/>
+      <xs:attribute name="destblockid" use="required"/>
+      <xs:attribute name="dir" type="xs:boolean"/>
+      <xs:attribute name="dirpause" use="required" type="xs:integer"/>
+      <xs:attribute name="docu" use="required"/>
+      <xs:attribute name="energypercentage" use="required" type="xs:integer"/>
+      <xs:attribute name="engine" use="required" type="xs:NCName"/>
+      <xs:attribute name="ent2incorr" use="required" type="xs:integer"/>
+      <xs:attribute name="era" use="required" type="xs:integer"/>
+      <xs:attribute name="evttimer" use="required" type="xs:integer"/>
+      <xs:attribute name="fifotop" use="required" type="xs:boolean"/>
+      <xs:attribute name="fn" type="xs:boolean"/>
+      <xs:attribute name="fncnt" use="required" type="xs:integer"/>
+      <xs:attribute name="freeblockonenter" use="required" type="xs:boolean"/>
+      <xs:attribute name="fx" use="required" type="xs:integer"/>
+      <xs:attribute name="generated" use="required" type="xs:boolean"/>
+      <xs:attribute name="home" use="required"/>
+      <xs:attribute name="id" use="required"/>
+      <xs:attribute name="identifier" use="required"/>
+      <xs:attribute name="iid" use="required" type="xs:NCName"/>
+      <xs:attribute name="image" use="required"/>
+      <xs:attribute name="imagenr" use="required" type="xs:integer"/>
+      <xs:attribute name="inatpre2in" use="required" type="xs:boolean"/>
+      <xs:attribute name="info4throttle" use="required" type="xs:boolean"/>
+      <xs:attribute name="len" use="required" type="xs:integer"/>
+      <xs:attribute name="lookupschedule" use="required" type="xs:boolean"/>
+      <xs:attribute name="lookupschedulevirtual" use="required" type="xs:boolean"/>
+      <xs:attribute name="manual" use="required" type="xs:boolean"/>
+      <xs:attribute name="manually" use="required" type="xs:boolean"/>
+      <xs:attribute name="manuid"/>
+      <xs:attribute name="mass" use="required" type="xs:integer"/>
+      <xs:attribute name="maxload" use="required" type="xs:integer"/>
+      <xs:attribute name="maxwaittime" use="required" type="xs:integer"/>
+      <xs:attribute name="mdate" type="xs:integer"/>
+      <xs:attribute name="minenergypercentage" use="required" type="xs:integer"/>
+      <xs:attribute name="mint" use="required" type="xs:integer"/>
+      <xs:attribute name="mode" use="required" type="xs:NCName"/>
+      <xs:attribute name="modereason"/>
+      <xs:attribute name="mtime" type="xs:integer"/>
+      <xs:attribute name="nrcars" use="required" type="xs:integer"/>
+      <xs:attribute name="number" use="required"/>
+      <xs:attribute name="oid"/>
+      <xs:attribute name="owner" use="required"/>
+      <xs:attribute name="placing" use="required" type="xs:boolean"/>
+      <xs:attribute name="prev_id" use="required"/>
+      <xs:attribute name="prev_ori" use="required" type="xs:NCName"/>
+      <xs:attribute name="prev_x" use="required" type="xs:integer"/>
+      <xs:attribute name="prev_y" use="required" type="xs:integer"/>
+      <xs:attribute name="priority" use="required" type="xs:integer"/>
+      <xs:attribute name="prot" use="required" type="xs:NCName"/>
+      <xs:attribute name="protver" use="required" type="xs:integer"/>
+      <xs:attribute name="purchased" use="required"/>
+      <xs:attribute name="rdate" type="xs:integer"/>
+      <xs:attribute name="reducespeedatenter" use="required" type="xs:boolean"/>
+      <xs:attribute name="regulated" use="required" type="xs:boolean"/>
+      <xs:attribute name="remark" use="required"/>
+      <xs:attribute name="resetplacing" use="required" type="xs:boolean"/>
+      <xs:attribute name="restorefx" use="required" type="xs:boolean"/>
+      <xs:attribute name="restorefxalways" use="required" type="xs:boolean"/>
+      <xs:attribute name="restorespeed" use="required" type="xs:boolean"/>
+      <xs:attribute name="resumeauto" use="required" type="xs:boolean"/>
+      <xs:attribute name="roadname" use="required"/>
+      <xs:attribute name="routespeedatenter" use="required" type="xs:boolean"/>
+      <xs:attribute name="runtime" type="xs:integer"/>
+      <xs:attribute name="scheduleid"/>
+      <xs:attribute name="scidx" type="xs:integer"/>
+      <xs:attribute name="secaddr" use="required" type="xs:integer"/>
+      <xs:attribute name="secondnextblock" use="required" type="xs:boolean"/>
+      <xs:attribute name="secondnextblock4wait" use="required" type="xs:boolean"/>
+      <xs:attribute name="secspcnt" use="required" type="xs:integer"/>
+      <xs:attribute name="server" type="xs:NCName"/>
+      <xs:attribute name="shortid" use="required"/>
+      <xs:attribute name="shortin" use="required" type="xs:boolean"/>
+      <xs:attribute name="show" use="required" type="xs:boolean"/>
+      <xs:attribute name="signalaspect"/>
+      <xs:attribute name="slavecode"/>
+      <xs:attribute name="spcnt" use="required" type="xs:integer"/>
+      <xs:attribute name="startupscid" use="required"/>
+      <xs:attribute name="startuptourid" use="required"/>
+      <xs:attribute name="swaptimer" use="required" type="xs:integer"/>
+      <xs:attribute name="throttleid" use="required"/>
+      <xs:attribute name="throttlenr" use="required" type="xs:integer"/>
+      <xs:attribute name="tourid"/>
+      <xs:attribute name="train"/>
+      <xs:attribute name="trainlen" use="required" type="xs:integer"/>
+      <xs:attribute name="trainweight" use="required" type="xs:integer"/>
+      <xs:attribute name="usebbt" use="required" type="xs:boolean"/>
+      <xs:attribute name="usedepartdelay" use="required" type="xs:boolean"/>
+      <xs:attribute name="usemanualroutes" use="required" type="xs:boolean"/>
+      <xs:attribute name="useownwaittime" use="required" type="xs:boolean"/>
+      <xs:attribute name="usescheduletime" use="required" type="xs:boolean"/>
+      <xs:attribute name="usesecaddr" type="xs:boolean"/>
+      <xs:attribute name="useshortid" use="required" type="xs:boolean"/>
+      <xs:attribute name="v0onswap" use="required" type="xs:boolean"/>
+      <xs:attribute name="value" use="required"/>
+      <xs:attribute name="waittime" type="xs:integer"/>
+      <xs:attribute name="weight" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="bbt">
+    <xs:complexType>
+      <xs:attribute name="bk" use="required" type="xs:NCName"/>
+      <xs:attribute name="centertrain" type="xs:integer"/>
+      <xs:attribute name="count" use="required" type="xs:integer"/>
+      <xs:attribute name="delay" type="xs:integer"/>
+      <xs:attribute name="fixed" type="xs:boolean"/>
+      <xs:attribute name="frombk" use="required"/>
+      <xs:attribute name="generatein" type="xs:boolean"/>
+      <xs:attribute name="interval" use="required" type="xs:integer"/>
+      <xs:attribute name="route" use="required"/>
+      <xs:attribute name="speed" use="required" type="xs:integer"/>
+      <xs:attribute name="steps" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cvbyte">
+    <xs:complexType>
+      <xs:attribute name="desc" type="xs:NCName"/>
+      <xs:attribute name="nr" type="xs:integer"/>
+      <xs:attribute name="value" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="carlist">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="car"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="car">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="fundef"/>
+      </xs:sequence>
+      <xs:attribute name="V_cru_hint" use="required" type="xs:integer"/>
+      <xs:attribute name="V_max" use="required" type="xs:integer"/>
+      <xs:attribute name="V_max_hint" use="required" type="xs:integer"/>
+      <xs:attribute name="V_max_loaded" use="required" type="xs:integer"/>
+      <xs:attribute name="V_mid_hint" use="required" type="xs:integer"/>
+      <xs:attribute name="V_min_hint" use="required" type="xs:integer"/>
+      <xs:attribute name="addr" use="required" type="xs:integer"/>
+      <xs:attribute name="bus" use="required" type="xs:integer"/>
+      <xs:attribute name="catnr" use="required"/>
+      <xs:attribute name="color" use="required"/>
+      <xs:attribute name="commuter" use="required" type="xs:boolean"/>
+      <xs:attribute name="dectype" use="required"/>
+      <xs:attribute name="desc"/>
+      <xs:attribute name="docu" use="required"/>
+      <xs:attribute name="era" use="required" type="xs:integer"/>
+      <xs:attribute name="f0vcmd" use="required" type="xs:boolean"/>
+      <xs:attribute name="fnlights" use="required" type="xs:integer"/>
+      <xs:attribute name="home"/>
+      <xs:attribute name="id" use="required"/>
+      <xs:attribute name="ident" use="required"/>
+      <xs:attribute name="iid" use="required"/>
+      <xs:attribute name="image" use="required" type="xs:NCName"/>
+      <xs:attribute name="invdir" use="required" type="xs:boolean"/>
+      <xs:attribute name="len" use="required" type="xs:integer"/>
+      <xs:attribute name="location" use="required"/>
+      <xs:attribute name="manuid" use="required"/>
+      <xs:attribute name="maxloadweight" use="required" type="xs:integer"/>
+      <xs:attribute name="number" use="required"/>
+      <xs:attribute name="owner" use="required"/>
+      <xs:attribute name="placing" use="required" type="xs:boolean"/>
+      <xs:attribute name="prev_id" use="required"/>
+      <xs:attribute name="prev_ori" use="required" type="xs:NCName"/>
+      <xs:attribute name="prev_x" use="required" type="xs:integer"/>
+      <xs:attribute name="prev_y" use="required" type="xs:integer"/>
+      <xs:attribute name="prevlocation1"/>
+      <xs:attribute name="prevlocation2"/>
+      <xs:attribute name="prevlocation3"/>
+      <xs:attribute name="prot" use="required" type="xs:NCName"/>
+      <xs:attribute name="protver" use="required" type="xs:integer"/>
+      <xs:attribute name="purchased" use="required"/>
+      <xs:attribute name="remark" use="required"/>
+      <xs:attribute name="roadname" use="required"/>
+      <xs:attribute name="show" use="required" type="xs:boolean"/>
+      <xs:attribute name="spcnt" use="required" type="xs:integer"/>
+      <xs:attribute name="status" use="required" type="xs:NCName"/>
+      <xs:attribute name="subtype" type="xs:NCName"/>
+      <xs:attribute name="type" use="required" type="xs:NCName"/>
+      <xs:attribute name="usedir" use="required" type="xs:boolean"/>
+      <xs:attribute name="uselights" use="required" type="xs:boolean"/>
+      <xs:attribute name="value" use="required"/>
+      <xs:attribute name="waybill" use="required"/>
+      <xs:attribute name="weight_empty" use="required" type="xs:integer"/>
+      <xs:attribute name="weight_loaded" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="operatorlist">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="operator"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="operator">
+    <xs:complexType>
+      <xs:attribute name="V_max" use="required" type="xs:integer"/>
+      <xs:attribute name="cargo" use="required" type="xs:NCName"/>
+      <xs:attribute name="carids" use="required"/>
+      <xs:attribute name="centertrain" type="xs:integer"/>
+      <xs:attribute name="centertrainonly" type="xs:boolean"/>
+      <xs:attribute name="class" use="required"/>
+      <xs:attribute name="commuter" type="xs:boolean"/>
+      <xs:attribute name="home"/>
+      <xs:attribute name="id" use="required"/>
+      <xs:attribute name="inatpre2in" type="xs:boolean"/>
+      <xs:attribute name="lcid" use="required"/>
+      <xs:attribute name="length" use="required" type="xs:integer"/>
+      <xs:attribute name="location" type="xs:NCName"/>
+      <xs:attribute name="prev_id" use="required"/>
+      <xs:attribute name="prev_ori" use="required" type="xs:NCName"/>
+      <xs:attribute name="prev_x" use="required" type="xs:integer"/>
+      <xs:attribute name="prev_y" use="required" type="xs:integer"/>
+      <xs:attribute name="secondnextblock" type="xs:boolean"/>
+      <xs:attribute name="secondnextblock4wait" type="xs:boolean"/>
+      <xs:attribute name="shiftonly" use="required" type="xs:boolean"/>
+      <xs:attribute name="shortin" type="xs:boolean"/>
+      <xs:attribute name="swaptrainimage" use="required" type="xs:boolean"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="fundef">
+    <xs:complexType>
+      <xs:attribute name="addr" type="xs:integer"/>
+      <xs:attribute name="fn" use="required" type="xs:integer"/>
+      <xs:attribute name="icon" use="required"/>
+      <xs:attribute name="mappedfn" type="xs:integer"/>
+      <xs:attribute name="offblockid"/>
+      <xs:attribute name="offevent"/>
+      <xs:attribute name="onblockid"/>
+      <xs:attribute name="onevent"/>
+      <xs:attribute name="sound"/>
+      <xs:attribute name="text" use="required"/>
+      <xs:attribute name="timer" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
