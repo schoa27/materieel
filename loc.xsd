@@ -130,9 +130,9 @@
       <xs:attribute name="owner" use="required"/>
       <xs:attribute name="placing" use="required" type="xs:boolean"/>
       <xs:attribute name="prev_id" use="required"/>
-      <xs:attribute name="prev_ori" use="required" type="xs:NCName"/>
-      <xs:attribute name="prev_x" use="required" type="xs:integer"/>
-      <xs:attribute name="prev_y" use="required" type="xs:integer"/>
+      <xs:attribute name="prev_ori" type="xs:NCName"/>
+      <xs:attribute name="prev_x" type="xs:integer"/>
+      <xs:attribute name="prev_y" type="xs:integer"/>
       <xs:attribute name="priority" use="required" type="xs:integer"/>
       <xs:attribute name="prot" use="required" type="xs:NCName"/>
       <xs:attribute name="protver" use="required" type="xs:integer"/>
@@ -145,7 +145,7 @@
       <xs:attribute name="restorefx" use="required" type="xs:boolean"/>
       <xs:attribute name="restorefxalways" use="required" type="xs:boolean"/>
       <xs:attribute name="restorespeed" use="required" type="xs:boolean"/>
-      <xs:attribute name="resumeauto" use="required" type="xs:boolean"/>
+      <xs:attribute name="resumeauto" type="xs:boolean"/>
       <xs:attribute name="roadname" use="required"/>
       <xs:attribute name="routespeedatenter" use="required" type="xs:boolean"/>
       <xs:attribute name="runtime" type="xs:integer"/>
