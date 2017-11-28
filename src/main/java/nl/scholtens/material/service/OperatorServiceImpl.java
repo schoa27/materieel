@@ -74,7 +74,7 @@ public class OperatorServiceImpl implements OperatorService {
     }
 
     private OperatorTrain getLocById(OperatorTrain operatorTrain, String file) {
-        operatorTrain.setLocomotive(locService.getLocById(operatorTrain.getLocId(), file));
+        operatorTrain.setLocomotive(locService.getLocByLocId(operatorTrain.getLocId(), file));
 
         if (operatorTrain.getLocomotive() != null && operatorTrain.getLocomotive().getLength() != null) {
             operatorTrain.setLength(operatorTrain.getLength() + operatorTrain.getLocomotive().getLength() + getSlaveLenght(operatorTrain.getLocomotive()));

@@ -20,7 +20,7 @@ public class MaterialMapper {
         return plan;
     }
 
-    public List<Locomotive> getlocList(String file) throws IOException, JAXBException, SAXException {
+    public List<Locomotive> getLocList(String file) throws IOException, JAXBException, SAXException {
         List<Locomotive> locomotives = new ArrayList<>();
         int id = 0;
 

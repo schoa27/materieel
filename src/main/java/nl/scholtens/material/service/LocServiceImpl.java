@@ -22,14 +22,18 @@ public class LocServiceImpl implements LocService {
     @Override
     public List<Locomotive> getLocList(String file) {
         List<Locomotive> locomotives = getlocListFromFile(file);
-        for (Locomotive locomotive: locomotives) {
-            getSlaveLocomotives(locomotive, locomotives);
+        if (locomotives != null) {
+            for (Locomotive locomotive : locomotives) {
+                if (!locomotive.getSlaveLocIds().isEmpty()) {
+                    getSlaveLocomotives(locomotive, locomotives);
+                }
+            }
         }
         return locomotives;
     }
 
     @Override
-    public Locomotive getLoc(String id, String file) {
+    public Locomotive getLocById(String id, String file) {
         List<Locomotive> locomotives = getlocListFromFile(file);
 
         return locomotives
@@ -37,39 +41,42 @@ public class LocServiceImpl implements LocService {
                 .filter(locomotive -> locomotive.getId().equals(Integer.parseInt(id)))
                 .findFirst()
                 .get();
-
     }
 
     @Override
-    public Locomotive getLocById(String locId, String file) {
+    public Locomotive getLocByLocId(String locId, String file) {
         List<Locomotive> locomotives = getlocListFromFile(file);
 
         Locomotive locomotive = getLocomotive(locId, locomotives);
-        if (locomotive != null) {
+        if (locomotive != null && locomotive.getSlaveLocIds().isEmpty()) {
             getSlaveLocomotives(locomotive, locomotives);
         }
         return locomotive;
     }
 
     private Locomotive getLocomotive(String locId, List<Locomotive> locomotives) {
-        for (Locomotive locomotive : locomotives) {
-            if (locomotive.getLocid().equals(locId)) return locomotive;
-        }
-        logger.error("no loc found for id " + locId);
-        return null;
+        return locomotives
+                .stream()
+                .filter(locomotive -> locomotive != null)
+                .filter(locomotive -> locomotive.getLocid() != null)
+                .filter(locomotive -> locomotive.getLocid().equals(locId))
+                .findFirst()
+                .get();
     }
 
     private Locomotive getSlaveLocomotives(Locomotive locomotive, List<Locomotive> locomotives) {
         String[] locIds = locomotive.getSlaveLocIds().split(",");
         for (String locId : locIds) {
-            if (!locId.isEmpty()) locomotive.getSlaveLocList().add(getLocomotive(locId, locomotives));
+            if (!locId.isEmpty()) {
+                locomotive.getSlaveLocList().add(getLocomotive(locId, locomotives));
+            }
         }
         return locomotive;
     }
 
     private List<Locomotive> getlocListFromFile(String file) {
         try {
-            return material.getlocList(file);
+            return material.getLocList(file);
         } catch (FileNotFoundException e) {
             logger.error("collecting loc list file not found");
             e.printStackTrace();

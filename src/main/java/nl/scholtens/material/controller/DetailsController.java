@@ -40,7 +40,7 @@ public class DetailsController extends IoController {
 
         if (item.substring(0, 3).equals("loc")) {
             LocForm form = new LocForm(buildVersion, getSessionForm(request).getDate()
-                    , locService.getLoc(item.substring(4), getXmlPath()));
+                    , locService.getLocById(item.substring(4), getXmlPath()));
             model.addObject("form", form);
             model.addObject("id", "loc");
             model.setViewName("locDetails");

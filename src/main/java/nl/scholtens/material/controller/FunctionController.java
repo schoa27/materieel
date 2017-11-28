@@ -32,7 +32,7 @@ public class FunctionController extends IoController {
 
         if (item.substring(0, 3).equals("loc")) {
             LocForm form = new LocForm(buildVersion, getSessionForm(request).getDate()
-                    , locService.getLoc(item.substring(4), getXmlPath()));
+                    , locService.getLocById(item.substring(4), getXmlPath()));
             model.addObject("locform", form);
             model.addObject("carform", new CarForm(null, null));
             model.addObject("id","loc");

@@ -29,7 +29,7 @@ public class Locomotive {
 
     private Decoder decoder = new Decoder();
 
-    private String slaveLocIds;
+    private String slaveLocIds = new String();
 
     private List<Locomotive> slaveLocList = new ArrayList<>();
 
