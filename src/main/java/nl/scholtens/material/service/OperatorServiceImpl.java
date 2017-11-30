@@ -30,23 +30,27 @@ public class OperatorServiceImpl implements OperatorService {
 
     @Override
     public List<OperatorTrain> getOperatorList(String file) {
-        List<OperatorTrain> operatorTrains = makeCarList(getOperatorsFromFile(file), carService.getCarList(file));
-        getLocomotive(operatorTrains, file);
-
+        List<OperatorTrain> operatorTrains = getOperatorsFromFile(file);
+        if (operatorTrains != null) {
+            makeCarList(operatorTrains, carService.getCarList(file));
+            getLocomotive(operatorTrains, file);
+        }
         return operatorTrains;
     }
 
     @Override
     public OperatorTrain getOperatorById(String operatorId, String file) {
         List<OperatorTrain> operatorTrains = getOperatorList(file);
-        return getLocById(operatorTrains.get(Integer.parseInt(operatorId)), file);
+        OperatorTrain operatorTrain = operatorTrains.get(Integer.parseInt(operatorId));
+        getLocById(operatorTrain, file);
+        return operatorTrain;
     }
 
     private List<OperatorTrain> getLocomotive(List<OperatorTrain> operatorTrains, String file) {
         List<Locomotive> locomotives = locService.getLocList(file);
 
         for (OperatorTrain operatorTrain : operatorTrains) {
-            for (Locomotive locomotive: locomotives) {
+            for (Locomotive locomotive : locomotives) {
                 if (operatorTrain.getLocId().equals(locomotive.getLocid())) {
                     operatorTrain.setLocomotive(locomotive);
                 }
@@ -55,7 +59,7 @@ public class OperatorServiceImpl implements OperatorService {
         return operatorTrains;
     }
 
-    private List<OperatorTrain> makeCarList(List<OperatorTrain> operatorTrains, List<Waggon> waggons) {
+    private void makeCarList(List<OperatorTrain> operatorTrains, List<Waggon> waggons) {
         for (OperatorTrain operatorTrain : operatorTrains) {
             String[] carIds = operatorTrain.getCarIds().split(",");
 
@@ -70,16 +74,16 @@ public class OperatorServiceImpl implements OperatorService {
                 }
             }
         }
-        return operatorTrains;
     }
 
-    private OperatorTrain getLocById(OperatorTrain operatorTrain, String file) {
-        operatorTrain.setLocomotive(locService.getLocByLocId(operatorTrain.getLocId(), file));
+    private void getLocById(OperatorTrain operatorTrain, String file) {
+        if (!operatorTrain.getLocId().isEmpty()) {
+            operatorTrain.setLocomotive(locService.getLocByLocId(operatorTrain.getLocId(), file));
+        }
 
         if (operatorTrain.getLocomotive() != null && operatorTrain.getLocomotive().getLength() != null) {
             operatorTrain.setLength(operatorTrain.getLength() + operatorTrain.getLocomotive().getLength() + getSlaveLenght(operatorTrain.getLocomotive()));
         }
-        return operatorTrain;
     }
 
     private Integer getSlaveLenght(Locomotive locomotive) {

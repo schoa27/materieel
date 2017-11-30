@@ -14,7 +14,7 @@
         </tr>
         <tr>
             <td>
-                <div th:if="${form.operatorTrain.locomotive !=null}">
+                <div th:if="${form.operatorTrain.locomotive.id !=null}">
                     <table th:class="table-0-2-2">
                         <tbody>
                         <tr th:class="vTopw50">
@@ -45,7 +45,7 @@
                 <div class="inblok">
                     <table th:class="table-nb0-0-0">
                         <tr>
-                            <div th:if="${form.operatorTrain.locomotive !=null}">
+                            <div th:if="${form.operatorTrain.locomotive.id !=null}">
                                 <td><img th:src="@{/image/} + ${form.operatorTrain.locomotive.image}" align="center"/>
                                 </td>
                                 <div th:if="${!form.operatorTrain.locomotive.slaveLocList.empty}">
@@ -62,7 +62,7 @@
                             </div>
                         </tr>
                         <tr>
-                            <div th:if="${form.operatorTrain.locomotive !=null}">
+                            <div th:if="${form.operatorTrain.locomotive.id !=null}">
                                 <td class="font" border="1" th:text="${form.operatorTrain.locomotive.locid}"
                                     align="center"/>
                                 <div th:if="${!form.operatorTrain.locomotive.slaveLocList.empty}">
