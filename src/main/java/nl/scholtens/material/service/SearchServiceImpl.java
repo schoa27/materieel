@@ -42,7 +42,7 @@ public class SearchServiceImpl implements SearchService {
     }
 
     @Override
-    public Map<String, List<?>> searchBr(String br, String file) {
+    public Map<String, List<?>> searchBuildSeries(String br, String file) {
         Map<String, List<?>> brList = new HashMap<String, List<?>>();
         brList.put("loc", getLocomotiveByBr(br, file));
         return brList;

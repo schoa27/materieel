@@ -44,7 +44,7 @@ public class SearchController extends IoController {
 
     @RequestMapping(value = "/zoek/br", method = RequestMethod.GET)
     public ModelAndView searchBr(HttpServletRequest request, HttpServletResponse response) {
-        return getModelAndView(request, searchService.searchBr(getSessionForm(request).getSearchParameter(), getXmlPath()));
+        return getModelAndView(request, searchService.searchBuildSeries(getSessionForm(request).getSearchParameter(), getXmlPath()));
     }
 
     private ModelAndView getModelAndView(HttpServletRequest request, Map<String, List<?>> list) {

@@ -10,5 +10,5 @@ public interface SearchService {
 
     Map<String, List<?>> searchDccAddress(String address, String file);
 
-    Map<String, List<?>> searchBr(String br, String file);
+    Map<String, List<?>> searchBuildSeries(String br, String file);
 }
