@@ -28,7 +28,7 @@
         </tr>
         <div th:if="${id} == loc">
         <tr th:class="pointer"
-            th:onclick="'javascript:openWindow(\'/function/'+ ${'loc-'} + ${form.locomotive.id} + '\');'">
+            th:onclick="'javascript:openWindow(\'/function/'+ ${'loc-'} + ${form.locomotive.id} + '\', 0, 0);'">
 
             <td th:text="#{lang.function}"/>
             <td th:text="${form.decoder.functionCount}"/>
@@ -36,7 +36,7 @@
         </div>
         <div th:if="${id} == car">
             <tr th:class="pointer"
-                th:onclick="'javascript:openWindow(\'/function/'+ ${'car-'} + ${form.waggon.id} + '\');'">
+                th:onclick="'javascript:openWindow(\'/function/'+ ${'car-'} + ${form.waggon.id} + '\', 0, 0);'">
 
                 <td th:text="#{lang.function}"/>
                 <td th:text="${form.decoder.functionCount}"/>

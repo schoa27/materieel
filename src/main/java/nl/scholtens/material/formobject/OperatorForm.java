@@ -3,6 +3,7 @@ package nl.scholtens.material.formobject;
 import nl.scholtens.material.domain.Decoder;
 import nl.scholtens.material.domain.Locomotive;
 import nl.scholtens.material.domain.OperatorTrain;
+import nl.scholtens.material.sources.Operator;
 
 import java.util.List;
 
@@ -26,6 +27,12 @@ public class OperatorForm extends Body {
         setOperatorTrain(operatorTrain);
         setLocomotive(operatorTrain);
     }
+
+    public OperatorForm(OperatorTrain operatorTrain) {
+        setOperatorTrain(operatorTrain);
+        setLocomotive(operatorTrain);
+    }
+
 
 
     public List<OperatorTrain> getOperatorTrains() {

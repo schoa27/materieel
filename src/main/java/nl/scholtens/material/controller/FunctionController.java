@@ -35,18 +35,18 @@ public class FunctionController extends IoController {
                     , locService.getLocById(item.substring(4), getXmlPath()));
             model.addObject("locform", form);
             model.addObject("carform", new CarForm(null, null));
-            model.addObject("id","loc");
-            model.setViewName("functionlistView");
+            model.addObject("id", "loc");
         }
 
         if (item.substring(0, 3).equals("car")) {
             CarForm form = new CarForm(buildVersion, getSessionForm(request).getDate()
                     , carService.getCarById(item.substring(4), getXmlPath()));
             model.addObject("carform", form);
-            model.addObject("locform", new LocForm(null,null));
-            model.addObject("id","car");
-            model.setViewName("functionlistView");
+            model.addObject("locform", new LocForm(null, null));
+            model.addObject("id", "car");
         }
+
+        model.setViewName("functionlistView");
         return model;
     }
 

@@ -46,6 +46,14 @@ public class OperatorServiceImpl implements OperatorService {
         return operatorTrain;
     }
 
+    @Override
+    public OperatorTrain getOpertorByLocId(String locId, String file) {
+        Locomotive locomotive = locService.getLocById(locId, file);
+        List<OperatorTrain> operatorTrains = getOperatorList(file);
+        OperatorTrain operatorTrain = getLocomotiveByLocId(operatorTrains, locomotive.getLocid());
+        return operatorTrain;
+    }
+
     private List<OperatorTrain> getLocomotive(List<OperatorTrain> operatorTrains, String file) {
         List<Locomotive> locomotives = locService.getLocList(file);
 
@@ -84,6 +92,16 @@ public class OperatorServiceImpl implements OperatorService {
         if (operatorTrain.getLocomotive() != null && operatorTrain.getLocomotive().getLength() != null) {
             operatorTrain.setLength(operatorTrain.getLength() + operatorTrain.getLocomotive().getLength() + getSlaveLenght(operatorTrain.getLocomotive()));
         }
+    }
+
+    private OperatorTrain getLocomotiveByLocId(List<OperatorTrain> operatorTrains, String locId) {
+        OperatorTrain operatorTrain = operatorTrains
+                .stream()
+                .filter(o -> o.getLocId() != null)
+                .filter(o -> o.getLocId().equals(locId))
+                .findFirst()
+                .get();
+        return operatorTrain;
     }
 
     private Integer getSlaveLenght(Locomotive locomotive) {

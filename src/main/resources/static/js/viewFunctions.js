@@ -10,8 +10,7 @@ function DetailGegevens(servlet) {
     document.location.href = servlet;
 }
 
-function openWindow(param) {
-    window.open(param, 650, 400);
-    window.o
-
+function openWindow(param, xsize, ysize) {
+    var randomnumber = Math.floor((Math.random()*100)+1);
+    window.open(param, "_blank", 'PopUp', randomnumber, xsize, ysize);
 }

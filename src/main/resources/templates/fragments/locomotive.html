@@ -48,6 +48,10 @@
                         <td th:text="#{lang.used}"/>
                         <td th:text="#{lang. + ${form.locomotive.trainType}}"/>
                     </tr>
+                    <tr th:class="pointer"
+                        th:onclick="'javascript:openWindow(\'/operator/'+ ${'loc-'} + ${form.locomotive.id} + '\', 0,  0);'">
+                        <td th:text="#{lang.operatorcfg}"/>
+                    </tr>
                     </tbody>
                 </table>
             </td>

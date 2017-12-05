@@ -74,6 +74,14 @@ public class OperatorServiceTest {
         Assert.assertThat(operatorById.getWaggons().isEmpty(), not(true));
     }
 
+    @Test
+    public void getOpertorByLocId() {
+        Mockito.when(locService.getLocById(Mockito.anyString(), Mockito.anyString())).thenReturn(locomotives.get(0));
+
+        OperatorTrain opertorByLocId = operatorService.getOpertorByLocId(String.valueOf(locomotives.get(0).getId()), "file ");
+        Assert.assertThat(opertorByLocId.getLocId(), is("0"));
+    }
+
 
     @Test
     public void fileIOExeptionTest() throws IOException, SAXException, JAXBException {

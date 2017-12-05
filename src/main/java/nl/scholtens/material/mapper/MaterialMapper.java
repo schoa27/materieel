@@ -111,7 +111,8 @@ public class MaterialMapper {
                functionList.add(new DecoderFunction(((Fundef) object).getFn().toString(), ((Fundef) object).getText()));
             }
         }
-        Collections.sort(functionList, (fn1, fn2) -> fn1.getFn().compareTo(fn2.getFn()));
+        Collections.sort(functionList, (fn1, fn2) -> Integer.parseInt(fn1.getFn())
+                 - (Integer.parseInt(fn2.getFn())));
         return functionList;
     }
 }

@@ -10,4 +10,6 @@ public interface OperatorService {
 
 
     OperatorTrain getOperatorById(String operatorId, String file);
+
+    OperatorTrain getOpertorByLocId(String locId, String file);
 }
