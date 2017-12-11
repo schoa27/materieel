@@ -5,8 +5,13 @@
 
     <groupId>nl.scholtens</groupId>
     <artifactId>material</artifactId>
-    <version>SNAPSHOT-1.0.6</version>
+    <version>1.0.6-SNAPSHOT</version>
     <packaging>jar</packaging>
+
+    <scm>
+        <developerConnection>scm:git:ssh://discover.secret-messages.myn:22/data/git/repositories/materieel
+        </developerConnection>
+    </scm>
 
     <name>TrainMaterial</name>
     <description>Overview of trainmaterial</description>
@@ -20,6 +25,7 @@
     </parent>
 
     <properties>
+        <project.scm.id>my-scm-server</project.scm.id>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
@@ -91,8 +97,20 @@
                     <packageName>nl.scholtens.material.sources</packageName>
                     <laxSchemaValidation>true</laxSchemaValidation>
                 </configuration>
+
+
             </plugin>
         </plugins>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>2.5.3</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
 
         <resources>
             <resource>
