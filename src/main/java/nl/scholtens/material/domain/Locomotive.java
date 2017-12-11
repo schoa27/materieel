@@ -35,6 +35,8 @@ public class Locomotive {
 
     private List<DecoderFunction> functions = new ArrayList<>();
 
+    private boolean operator;
+
 
     public Integer getId() {
         return id;
@@ -154,5 +156,13 @@ public class Locomotive {
 
     public void setFunctions(List<DecoderFunction> functions) {
         this.functions = functions;
+    }
+
+    public boolean isOperator() {
+        return operator;
+    }
+
+    public void setOperator(boolean operator) {
+        this.operator = operator;
     }
 }

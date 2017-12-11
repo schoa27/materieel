@@ -57,6 +57,7 @@ public class DetailsController extends IoController {
         if (item.substring(0, 3).equals("opr")) {
             OperatorForm form = new OperatorForm(buildVersion, getSessionForm(request).getDate()
                     , operatorService.getOperatorById(item.substring(4), getXmlPath()));
+            form.getLocomotive().setOperator(true);
             model.addObject("form", form);
             model.addObject("id", "loc");
             model.setViewName("operatorDetails");
