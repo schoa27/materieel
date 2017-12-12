@@ -56,9 +56,11 @@ public class OperatorForm extends Body {
     }
 
     private void setLocomotive(OperatorTrain operatorTrain) {
-        if (operatorTrain.getLocomotive() != null) {
-            this.locomotive = operatorTrain.getLocomotive();
-            setDecoder();
+        if (operatorTrain != null) {
+            if (operatorTrain.getLocomotive() != null) {
+                this.locomotive = operatorTrain.getLocomotive();
+                setDecoder();
+            }
         }
     }
 

@@ -19,3 +19,5 @@ target/
 *.ini
 *.log
 
+pom.xml.releaseBackup
+release.properties

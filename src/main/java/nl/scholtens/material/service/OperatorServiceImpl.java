@@ -14,6 +14,7 @@ import javax.xml.bind.JAXBException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OperatorServiceImpl implements OperatorService {
@@ -95,13 +96,17 @@ public class OperatorServiceImpl implements OperatorService {
     }
 
     private OperatorTrain getLocomotiveByLocId(List<OperatorTrain> operatorTrains, String locId) {
-        OperatorTrain operatorTrain = operatorTrains
+        Optional<OperatorTrain> operatorTrain = operatorTrains
                 .stream()
                 .filter(o -> o.getLocId() != null)
                 .filter(o -> o.getLocId().equals(locId))
-                .findFirst()
-                .get();
-        return operatorTrain;
+                .findFirst();
+
+
+        if (operatorTrain.isPresent()) {
+            return operatorTrain.get();
+        }
+        return null;
     }
 
     private Integer getSlaveLenght(Locomotive locomotive) {

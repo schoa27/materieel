@@ -10,41 +10,47 @@
 <h3 style="text-align: center" th:text="#{lang.operatorcfg}"/>
 
 <fieldset style="width: auto; height: auto;">
-    <div class="inblok">
-        <table th:class="table-nb0-0-0">
-            <tr>
-                <div th:if="${form.operatorTrain.locomotive.id !=null}">
-                    <td><img th:src="@{/image/} + ${form.operatorTrain.locomotive.image}" align="center"/>
-                    </td>
-                    <div th:if="${!form.operatorTrain.locomotive.slaveLocList.empty}">
-                        <div th:each="slave, iterstat: ${form.operatorTrain.locomotive.slaveLocList}">
-                            <td th:id="|td${iterstat.index}|">
-                                <img th:src="@{/image/} + ${slave.image}" align="center"/>
-                            </td>
+    <div th:if="${form.operatorTrain != null}">
+        <div class="inblok">
+            <table th:class="table-nb0-0-0">
+                <tr>
+                    <div th:if="${form.operatorTrain.locomotive.id !=null}">
+                        <td><img th:src="@{/image/} + ${form.operatorTrain.locomotive.image}" align="center"/>
+                        </td>
+                        <div th:if="${!form.operatorTrain.locomotive.slaveLocList.empty}">
+                            <div th:each="slave, iterstat: ${form.operatorTrain.locomotive.slaveLocList}">
+                                <td th:id="|td${iterstat.index}|">
+                                    <img th:src="@{/image/} + ${slave.image}" align="center"/>
+                                </td>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div th:each="waggon, iterstat: ${form.operatorTrain.waggons}">
-                    <td th:id="|td${iterstat.index}|"><img th:src="@{/image/} + ${waggon.image}"
-                                                           align="center"/></td>
-                </div>
-            </tr>
-            <tr>
-                <div th:if="${form.operatorTrain.locomotive.id !=null}">
-                    <td class="font" border="1" th:text="${form.operatorTrain.locomotive.locid}"
-                        align="center"/>
-                    <div th:if="${!form.operatorTrain.locomotive.slaveLocList.empty}">
-                        <div th:each="slave, iterstat: ${form.operatorTrain.locomotive.slaveLocList}">
-                            <td style="font-size: 85%" border="1" th:text="${slave.locid}" align="center"/>
+                    <div th:each="waggon, iterstat: ${form.operatorTrain.waggons}">
+                        <td th:id="|td${iterstat.index}|"><img th:src="@{/image/} + ${waggon.image}"
+                                                               align="center"/></td>
+                    </div>
+                </tr>
+                <tr>
+                    <div th:if="${form.operatorTrain.locomotive.id !=null}">
+                        <td class="font" border="1" th:text="${form.operatorTrain.locomotive.locid}"
+                            align="center"/>
+                        <div th:if="${!form.operatorTrain.locomotive.slaveLocList.empty}">
+                            <div th:each="slave, iterstat: ${form.operatorTrain.locomotive.slaveLocList}">
+                                <td style="font-size: 85%" border="1" th:text="${slave.locid}" align="center"/>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div th:each="waggon, iterstat: ${form.operatorTrain.waggons}">
-                    <td style="font-size: 85%" border="1" th:text="${waggon.carid}" align="center"/>
-                </div>
-            </tr>
-        </table>
+                    <div th:each="waggon, iterstat: ${form.operatorTrain.waggons}">
+                        <td style="font-size: 85%" border="1" th:text="${waggon.carid}" align="center"/>
+                    </div>
+                </tr>
+            </table>
+        </div>
     </div>
+    <div th:if="${form.operatorTrain == null}">
+        <span th:class="center" th:text="#{lang.no-operator}" />
+    </div>
+
 
     <table align="center" width="auto" th:border="0" cellpadding="2" cellspacing="3">
         <tr>
