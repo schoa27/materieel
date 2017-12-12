@@ -4,13 +4,13 @@
 
     <groupId>nl.scholtens</groupId>
     <artifactId>material</artifactId>
-    <version>1.0.7-SNAPSHOT</version>
+    <version>1.0.7</version>
     <packaging>jar</packaging>
 
     <scm>
         <developerConnection>scm:git:ssh://discovery:22/data/git/repositories/materieel
         </developerConnection>
-      <tag>HEAD</tag>
+      <tag>material-1.0.7</tag>
   </scm>
 
     <name>TrainMaterial</name>
