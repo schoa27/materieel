@@ -4,14 +4,13 @@
 
     <groupId>nl.scholtens</groupId>
     <artifactId>material</artifactId>
-    <version>NetWork@1966</version>
+    <version>1.0.6-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <scm>
         <developerConnection>scm:git:ssh://discovery:22/data/git/repositories/materieel
         </developerConnection>
-      <tag>material-1.0.6</tag>
-  </scm>
+    </scm>
 
     <name>TrainMaterial</name>
     <description>Overview of trainmaterial</description>
