@@ -57,6 +57,8 @@
     </dependencies>
 
     <build>
+        <finalName>material</finalName>
+
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -121,5 +123,6 @@
                 <directory>src/main/resources</directory>
             </resource>
         </resources>
+
     </build>
 </project>
