@@ -30,6 +30,11 @@ public class LocForm extends Body {
         setBigImage(getImage());
     }
 
+    public LocForm(Locomotive locomotive) {
+        setLocomotive(locomotive);
+        setImage(locomotive);
+    }
+
     public List<Locomotive> getLocomotives() {
         return locomotives;
     }

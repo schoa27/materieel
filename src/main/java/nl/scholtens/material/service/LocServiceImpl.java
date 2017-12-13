@@ -11,6 +11,7 @@ import javax.xml.bind.JAXBException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class LocServiceImpl implements LocService {
@@ -35,26 +36,45 @@ public class LocServiceImpl implements LocService {
     @Override
     public Locomotive getLocById(String id, String file) {
         List<Locomotive> locomotives = getlocListFromFile(file);
+        return getLocomotiveById(id, locomotives);
+    }
 
-        return locomotives
-                .stream()
-                .filter(locomotive -> locomotive.getId().equals(Integer.parseInt(id)))
-                .findFirst()
-                .get();
+    @Override
+    public Locomotive getSlaveLocs(String id, String file) {
+        List<Locomotive> locomotives = getlocListFromFile(file);
+
+        Locomotive locomotive = getLocomotiveById(id, locomotives);
+        Locomotive masterloc = getMasterLoc(locomotive, locomotives);
+
+        if (masterloc == null) {
+            getSlaveLocomotives(locomotive, locomotives);
+        } else {
+            locomotive = masterloc;
+            locomotive.setSlaveLocList(getSlaveLocomotives(masterloc, locomotives).getSlaveLocList());
+        }
+        return locomotive;
     }
 
     @Override
     public Locomotive getLocByLocId(String locId, String file) {
         List<Locomotive> locomotives = getlocListFromFile(file);
 
-        Locomotive locomotive = getLocomotive(locId, locomotives);
+        Locomotive locomotive = getLocomotiveByLocId(locId, locomotives);
         if (locomotive != null && locomotive.getSlaveLocIds().isEmpty()) {
             getSlaveLocomotives(locomotive, locomotives);
         }
         return locomotive;
     }
 
-    private Locomotive getLocomotive(String locId, List<Locomotive> locomotives) {
+    private Locomotive getLocomotiveById(String id, List<Locomotive> locomotives) {
+        return locomotives
+                .stream()
+                .filter(loc -> loc.getId().equals(Integer.parseInt(id)))
+                .findFirst()
+                .get();
+    }
+
+    private Locomotive getLocomotiveByLocId(String locId, List<Locomotive> locomotives) {
         return locomotives
                 .stream()
                 .filter(locomotive -> locomotive != null)
@@ -66,12 +86,24 @@ public class LocServiceImpl implements LocService {
 
     private Locomotive getSlaveLocomotives(Locomotive locomotive, List<Locomotive> locomotives) {
         String[] locIds = locomotive.getSlaveLocIds().split(",");
+
         for (String locId : locIds) {
             if (!locId.isEmpty()) {
-                locomotive.getSlaveLocList().add(getLocomotive(locId, locomotives));
+                locomotive.getSlaveLocList().add(getLocomotiveByLocId(locId, locomotives));
             }
         }
         return locomotive;
+    }
+
+    private Locomotive getMasterLoc(Locomotive loc, List<Locomotive> locomotives) {
+        Optional<Locomotive> masterLoc = locomotives
+                .stream()
+                .filter(l -> l.getSlaveLocIds().contains(loc.getLocid())).findFirst();
+
+        if (masterLoc.isPresent()) {
+            return masterLoc.get();
+        }
+        return null;
     }
 
     private List<Locomotive> getlocListFromFile(String file) {

@@ -10,5 +10,7 @@ public interface LocService {
 
     Locomotive getLocById(String locId, String file);
 
+    Locomotive getSlaveLocs(String id, String file);
+
     Locomotive getLocByLocId(String locId, String file);
 }

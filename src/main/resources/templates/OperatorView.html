@@ -30,18 +30,23 @@
                                                                align="center"/></td>
                     </div>
                 </tr>
+            </table>
+            <table th:class="table-nb0-0-0">
                 <tr>
                     <div th:if="${form.operatorTrain.locomotive.id !=null}">
                         <td class="font" border="1" th:text="${form.operatorTrain.locomotive.locid}"
                             align="center"/>
+                        <td>,&nbsp;</td>
                         <div th:if="${!form.operatorTrain.locomotive.slaveLocList.empty}">
                             <div th:each="slave, iterstat: ${form.operatorTrain.locomotive.slaveLocList}">
                                 <td style="font-size: 85%" border="1" th:text="${slave.locid}" align="center"/>
+                                <td>,&nbsp;</td>
                             </div>
                         </div>
                     </div>
                     <div th:each="waggon, iterstat: ${form.operatorTrain.waggons}">
                         <td style="font-size: 85%" border="1" th:text="${waggon.carid}" align="center"/>
+                        <td>,&nbsp;</td>
                     </div>
                 </tr>
             </table>
@@ -50,7 +55,6 @@
     <div th:if="${form.operatorTrain == null}">
         <span th:class="center" th:text="#{lang.no-operator}" />
     </div>
-
 
     <table align="center" width="auto" th:border="0" cellpadding="2" cellspacing="3">
         <tr>
