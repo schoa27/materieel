@@ -35,35 +35,41 @@ public class LocServiceTest {
 
 
     @Before
-    public void setup() {
+    public void setup() throws IOException, SAXException, JAXBException {
         createLocList();
         addSlaveLoc();
-    }
 
+        Mockito.when(mapper.getLocList(Mockito.anyString())).thenReturn(locomotives);
+    }
 
     @Test
     public void getLocListTest() throws IOException, SAXException, JAXBException {
-        Mockito.when(mapper.getLocList(Mockito.anyString())).thenReturn(locomotives);
         Assert.assertThat(locService.getLocList("file").isEmpty(), not(true));
     }
 
     @Test
     public void getLocByIdTest() throws IOException, SAXException, JAXBException {
-        Mockito.when(mapper.getLocList(Mockito.anyString())).thenReturn(locomotives);
         Assert.assertThat(locService.getLocById("0", "file").getId(), is(0));
     }
 
     @Test
     public void getLocByLocId() throws IOException, SAXException, JAXBException {
-        Mockito.when(mapper.getLocList(Mockito.anyString())).thenReturn(locomotives);
         Assert.assertThat(locService.getLocByLocId("1", "file").getLocid(), is("1"));
     }
 
-
     @Test
     public void getLocByLocIdWithSlaves() throws IOException, SAXException, JAXBException {
-        Mockito.when(mapper.getLocList(Mockito.anyString())).thenReturn(locomotives);
         Assert.assertThat(locService.getLocByLocId("0", "file").getLocid(), is("0"));
+    }
+
+    @Test
+    public void getSlaveLocsFromMasterTest() throws IOException, SAXException, JAXBException {
+        Assert.assertThat(locService.getSlaveLocs("0", "file").getSlaveLocList().isEmpty(), not(true));
+    }
+
+    @Test
+    public void getSlaveLocsFromSlaveTest() throws IOException, SAXException, JAXBException {
+        Assert.assertThat(locService.getSlaveLocs("2", "file").getSlaveLocList().isEmpty(), not(true));
     }
 
     @Test

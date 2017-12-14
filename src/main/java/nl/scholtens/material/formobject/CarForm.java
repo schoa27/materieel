@@ -30,6 +30,10 @@ public class CarForm extends Body {
         setBigImage(getImage());
     }
 
+    public CarForm(Waggon waggon) {
+        setWaggon(waggon);
+    }
+
     public List<Waggon> getWaggons() {
         return waggons;
     }
