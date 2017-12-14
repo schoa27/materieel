@@ -1,4 +1,4 @@
-package nl.scholtens.material;
+package nl.scholtens.material.builders;
 
 import nl.scholtens.material.formobject.SessionForm;
 

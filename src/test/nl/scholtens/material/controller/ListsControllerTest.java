@@ -1,11 +1,9 @@
 package nl.scholtens.material.controller;
 
-import nl.scholtens.material.SessionBuilder;
 import nl.scholtens.material.TreinMaterieelApplicationTest;
 import nl.scholtens.material.domain.Locomotive;
 import nl.scholtens.material.domain.OperatorTrain;
 import nl.scholtens.material.domain.Waggon;
-import nl.scholtens.material.formobject.SessionForm;
 import nl.scholtens.material.service.CarService;
 import nl.scholtens.material.service.LocService;
 import nl.scholtens.material.service.OperatorService;
@@ -21,7 +19,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;

@@ -1,5 +1,6 @@
 package nl.scholtens.material;
 
+import nl.scholtens.material.builders.SessionBuilder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
