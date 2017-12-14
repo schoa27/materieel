@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class TreinMaterieelApplicationTest {
+public class TreinMaterieelApplicationTest extends SessionBuilder {
 
     @Test
     public void contextLoads() {

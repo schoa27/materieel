@@ -1,5 +1,6 @@
 package nl.scholtens.material.controller;
 
+import nl.scholtens.material.SessionBuilder;
 import nl.scholtens.material.TreinMaterieelApplicationTest;
 import nl.scholtens.material.domain.Locomotive;
 import nl.scholtens.material.domain.OperatorTrain;
@@ -10,27 +11,22 @@ import nl.scholtens.material.service.LocService;
 import nl.scholtens.material.service.OperatorService;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-
-import javax.servlet.http.HttpServletRequest;
-
+import java.util.ArrayList;
 import java.util.Date;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-
-public class DetailsControllerTest extends TreinMaterieelApplicationTest {
+public class ListsControllerTest  extends TreinMaterieelApplicationTest  {
 
     @Autowired
     private WebApplicationContext webApplicationContext;
@@ -56,38 +52,36 @@ public class DetailsControllerTest extends TreinMaterieelApplicationTest {
     }
 
     @Test
-    public void detailsLocTest() throws Exception {
-        Mockito.when(locService.getLocById(Mockito.anyString(), Mockito.anyString())).thenReturn(new Locomotive());
+    public void getLocLijstTest() throws Exception {
+        Mockito.when(locService.getLocList(Mockito.anyString())).thenReturn(new ArrayList<Locomotive>());
 
-        mockMvc.perform(get("/loc-0")
+        mockMvc.perform(get("/locs")
                 .session(session)
                 .accept(MediaType.TEXT_HTML))
                 .andExpect(status().isOk())
-                .andExpect(model().attribute("id", "loc"))
-                .andExpect(view().name("locDetails"));
+                .andExpect(view().name("loclistView"));
     }
 
     @Test
-    public void detailsCarTest() throws Exception {
-        Mockito.when(carService.getCarById(Mockito.anyString(), Mockito.anyString())).thenReturn(new Waggon());
+    public void getCarListTest() throws Exception {
+        Mockito.when(carService.getCarList(Mockito.anyString())).thenReturn(new ArrayList<Waggon>());
 
-        mockMvc.perform(get("/car-0")
+        mockMvc.perform(get("/cars")
                 .session(session)
                 .accept(MediaType.TEXT_HTML))
                 .andExpect(status().isOk())
-                .andExpect(model().attribute("id", "car"))
-                .andExpect(view().name("carDetails"));
+                .andExpect(view().name("carlistView"));
     }
 
     @Test
-    public void detailsOperatorTest() throws Exception {
-        Mockito.when(operatorService.getOperatorById(Mockito.anyString(), Mockito.anyString())).thenReturn(new OperatorTrain());
+    public void getOperatorsListTest() throws Exception {
+        Mockito.when(operatorService.getOperatorList(Mockito.anyString())).thenReturn(new ArrayList<OperatorTrain>());
 
-        mockMvc.perform(get("/opr-0")
+        mockMvc.perform(get("/operators")
                 .session(session)
                 .accept(MediaType.TEXT_HTML))
                 .andExpect(status().isOk())
-                .andExpect(model().attribute("id", "loc"))
-                .andExpect(view().name("operatorDetails"));
+                .andExpect(view().name("operatorListView"));
     }
+
 }
