@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Controller
-public class MaterieelController {
+public class MaterialController {
 
     @RequestMapping(value = "/material", method = RequestMethod.GET)
     public void start(HttpServletResponse response) throws IOException {
