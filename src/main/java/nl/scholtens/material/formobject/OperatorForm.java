@@ -3,7 +3,6 @@ package nl.scholtens.material.formobject;
 import nl.scholtens.material.domain.Decoder;
 import nl.scholtens.material.domain.Locomotive;
 import nl.scholtens.material.domain.OperatorTrain;
-import nl.scholtens.material.sources.Operator;
 
 import java.util.List;
 

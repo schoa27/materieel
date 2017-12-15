@@ -6,7 +6,6 @@ import nl.scholtens.material.domain.Locomotive;
 import nl.scholtens.material.domain.OperatorTrain;
 import nl.scholtens.material.domain.Waggon;
 import nl.scholtens.material.mapper.MaterialMapper;
-import nl.scholtens.material.sources.Operator;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

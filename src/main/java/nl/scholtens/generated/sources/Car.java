@@ -6,7 +6,7 @@
 //
 
 
-package nl.scholtens.material.sources;
+package nl.scholtens.generated.sources;
 
 import java.math.BigInteger;
 import java.util.ArrayList;

@@ -96,7 +96,7 @@
                         <xjbSource>src/main/resources/xjb/</xjbSource>
                     </xjbSources>
                     <!-- The package of your generated sources -->
-                    <packageName>nl.scholtens.material.sources</packageName>
+                    <packageName>nl.scholtens.generated.sources</packageName>
                     <laxSchemaValidation>true</laxSchemaValidation>
                 </configuration>
 

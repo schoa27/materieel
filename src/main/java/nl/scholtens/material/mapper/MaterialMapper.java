@@ -1,8 +1,8 @@
 package nl.scholtens.material.mapper;
 
+import nl.scholtens.generated.sources.*;
 import nl.scholtens.material.domain.*;
 import nl.scholtens.material.enums.constants.*;
-import nl.scholtens.material.sources.*;
 import org.xml.sax.SAXException;
 
 import javax.xml.bind.JAXBException;
