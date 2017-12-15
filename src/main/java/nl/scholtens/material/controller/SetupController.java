@@ -31,7 +31,7 @@ public class SetupController extends IoController {
     @Value("${build.version}")
     private String buildVersion;
 
-    private SessionForm sessionForm;
+    private SessionForm sessionForm = new SessionForm();
 
     @RequestMapping(value = "/setup", method = RequestMethod.GET)
     public ModelAndView instelling(HttpServletRequest request, ModelAndView model) throws IOException {
@@ -153,7 +153,6 @@ public class SetupController extends IoController {
     }
 
     private void createSessionForm(HttpServletRequest request) {
-        sessionForm = new SessionForm();
         sessionForm.setDate(getSetupService().getDate(request.getParameter("lang")));
         request.getSession().setAttribute("sessionform", sessionForm);
     }
