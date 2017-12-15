@@ -4,8 +4,6 @@ public class SessionForm {
 
     private String date;
 
-    private String language;
-
     private Boolean search;
 
     private Boolean list;
@@ -14,21 +12,12 @@ public class SessionForm {
 
     private String searchMethode;
 
-
     public String getDate() {
         return date;
     }
 
     public void setDate(String date) {
         this.date = date;
-    }
-
-    public String getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(String language) {
-        this.language = language;
     }
 
     public Boolean getSearch() {

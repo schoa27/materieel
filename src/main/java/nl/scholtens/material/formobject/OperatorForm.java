@@ -33,8 +33,6 @@ public class OperatorForm extends Body {
         setLocomotive(operatorTrain);
     }
 
-
-
     public List<OperatorTrain> getOperatorTrains() {
         return operatorTrains;
     }
