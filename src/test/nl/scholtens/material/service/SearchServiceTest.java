@@ -1,5 +1,7 @@
 package nl.scholtens.material.service;
 
+import nl.scholtens.material.builders.CarListBuilder;
+import nl.scholtens.material.builders.LocListBuilder;
 import nl.scholtens.material.domain.Decoder;
 import nl.scholtens.material.domain.Locomotive;
 import nl.scholtens.material.domain.OperatorTrain;
@@ -87,13 +89,13 @@ public class SearchServiceTest {
 
     @Test
     public void searchBr() {
-        Map<String, List<?>> result = searchService.searchBuildSeries("br","file");
+        Map<String, List<?>> result = searchService.searchBuildSeries("0","file");
         Assert.assertThat(result.containsKey("loc"), is(true));
 
         locResults = (List<Locomotive>) result.get("loc");
 
         Assert.assertThat(locResults.isEmpty(), not(true));
-        Assert.assertThat(locResults.get(0).getLocid(), is("br"));
+        Assert.assertThat(locResults.get(0).getLocid(), is("0"));
     }
 
 
@@ -106,17 +108,7 @@ public class SearchServiceTest {
     }
 
     private void createLocList() {
-        for (int i = 0; i < 5; i++) {
-            Locomotive locomotive = new Locomotive();
-            locomotive.setId(i);
-            locomotive.setLocid(String.valueOf(i));
-            locomotive.setLength(i);
-            locomotive.setLocid("br");
-            locomotive.setOwner("Owner");
-            locomotive.setCatalogNumber("CT12345");
-            locomotive.setDecoder(createDecoder());
-            locomotives.add(locomotive);
-        }
+        locomotives = LocListBuilder.getLocomotives();
 
         List<Locomotive> slaves = new ArrayList<>();
         slaves.add(locomotives.get(1));
@@ -124,22 +116,7 @@ public class SearchServiceTest {
     }
 
     private void createWaggonsList() {
-        for (int i = 0; i < 5; i++) {
-            Waggon waggon = new Waggon();
-            waggon.setId(i);
-            waggon.setCarid(String.valueOf(i));
-            waggon.setLength(i);
-            waggon.setCarid("br");
-            waggon.setManufactor("Owner");
-            waggon.setCatalognr("CT12345");
-            waggon.setDecoder(createDecoder());
-            waggons.add(waggon);
-        }
+        waggons = CarListBuilder.getCars();
     }
 
-    private Decoder createDecoder() {
-        Decoder decoder = new Decoder();
-        decoder.setAddress(1);
-        return decoder;
-    }
 }

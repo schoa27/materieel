@@ -1,5 +1,7 @@
 package nl.scholtens.material.service;
 
+import nl.scholtens.material.builders.CarListBuilder;
+import nl.scholtens.material.builders.LocListBuilder;
 import nl.scholtens.material.domain.Locomotive;
 import nl.scholtens.material.domain.OperatorTrain;
 import nl.scholtens.material.domain.Waggon;
@@ -107,7 +109,6 @@ public class OperatorServiceTest {
         Assert.assertThat(operatorService.getOperatorList("file"), nullValue());
     }
 
-
     private void createOperatorList() {
         for (int i = 0; i < 2; i++) {
             OperatorTrain operator = new OperatorTrain();
@@ -119,13 +120,7 @@ public class OperatorServiceTest {
     }
 
     private void createLocList() {
-        for (int i = 0; i < 5; i++) {
-            Locomotive locomotive = new Locomotive();
-            locomotive.setId(i);
-            locomotive.setLocid(String.valueOf(i));
-            locomotive.setLength(i);
-            locomotives.add(locomotive);
-        }
+        locomotives = LocListBuilder.getLocomotives();
 
         List<Locomotive> slaves = new ArrayList<>();
         slaves.add(locomotives.get(1));
@@ -133,12 +128,6 @@ public class OperatorServiceTest {
     }
 
     private void createWaggonsList() {
-        for (int i = 0; i < 5; i++) {
-            Waggon waggon = new Waggon();
-            waggon.setId(i);
-            waggon.setCarid(String.valueOf(i));
-            waggon.setLength(i);
-            waggons.add(waggon);
-        }
+       waggons = CarListBuilder.getCars();
     }
 }

@@ -14,6 +14,10 @@ public class CarListBuilder {
             waggon.setId(i);
             waggon.setCarid(String.valueOf(i));
             waggon.setImage(String.valueOf(i));
+            waggon.setLength(i);
+            waggon.setManufactor("Owner");
+            waggon.setCatalognr("CT12345");
+            waggon.setDecoder(DecoderBuilder.getDecoder());
             waggons.add(waggon);
         }
         return waggons;

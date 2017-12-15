@@ -1,5 +1,6 @@
 package nl.scholtens.material.service;
 
+import nl.scholtens.material.builders.LocListBuilder;
 import nl.scholtens.material.domain.Locomotive;
 import nl.scholtens.material.mapper.MaterialMapper;
 import org.junit.Assert;
@@ -97,12 +98,7 @@ public class LocServiceTest {
     }
 
     private void createLocList() {
-        for (int i = 0; i < 5; i++) {
-            Locomotive locomotive = new Locomotive();
-            locomotive.setId(i);
-            locomotive.setLocid(String.valueOf(i));
-            locomotives.add(locomotive);
-        }
+        locomotives = LocListBuilder.getLocomotives();
     }
 
     private void addSlaveLoc() {

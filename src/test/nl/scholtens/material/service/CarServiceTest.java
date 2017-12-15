@@ -1,5 +1,6 @@
 package nl.scholtens.material.service;
 
+import nl.scholtens.material.builders.CarListBuilder;
 import nl.scholtens.material.domain.Waggon;
 import nl.scholtens.material.mapper.MaterialMapper;
 import org.junit.Assert;
@@ -77,11 +78,6 @@ public class CarServiceTest {
     }
 
     private void createWaggonsList() {
-        for (int i = 0; i < 5; i++) {
-            Waggon waggon = new Waggon();
-            waggon.setId(i);
-            waggon.setCarid(String.valueOf(i));
-            waggons.add(waggon);
-        }
+        waggons = CarListBuilder.getCars();
     }
 }

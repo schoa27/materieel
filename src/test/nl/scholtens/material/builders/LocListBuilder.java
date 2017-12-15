@@ -14,6 +14,10 @@ public class LocListBuilder {
             locomotive.setId(i);
             locomotive.setLocid(String.valueOf(i));
             locomotive.setImage(String.valueOf(i));
+            locomotive.setLength(i);
+            locomotive.setOwner("Owner");
+            locomotive.setCatalogNumber("CT12345");
+            locomotive.setDecoder(DecoderBuilder.getDecoder());
             locomotives.add(locomotive);
         }
         return locomotives;
