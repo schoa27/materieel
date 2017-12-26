@@ -1,4 +1,4 @@
-package nl.scholtens.material.builders;
+package nl.scholtens.material.junit.builders;
 
 import nl.scholtens.material.formobject.SessionForm;
 

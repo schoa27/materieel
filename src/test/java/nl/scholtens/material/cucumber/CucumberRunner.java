@@ -1,4 +1,4 @@
-package nl.scholtens.cucumber;
+package nl.scholtens.material.cucumber;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.SnippetType;
@@ -6,9 +6,11 @@ import cucumber.api.junit.Cucumber;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(format = "html:target/material.html",
+@CucumberOptions(format = "html:target/materialResultPage",
                  features = "src/test/resources/features",
-                 glue = "nl.scholtens.cucumber.stepfefinitions",
+                 glue = "nl.scholtens.material.cucumber.stepfefinitions",
                  snippets = SnippetType.CAMELCASE)
 public class CucumberRunner {
+
 }
+

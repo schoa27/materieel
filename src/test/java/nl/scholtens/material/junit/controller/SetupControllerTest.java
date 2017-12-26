@@ -1,13 +1,10 @@
-package nl.scholtens.material.controller;
+package nl.scholtens.material.junit.controller;
 
-import nl.scholtens.material.TreinMaterieelApplicationTest;
+import nl.scholtens.material.junit.TreinMaterieelApplicationTest;
 import nl.scholtens.material.formobject.SessionForm;
 import nl.scholtens.material.service.SetupService;
 import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.notification.RunListener;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +15,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 

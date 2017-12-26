@@ -1,6 +1,6 @@
-package nl.scholtens.material.controller;
+package nl.scholtens.material.junit.controller;
 
-import nl.scholtens.material.TreinMaterieelApplicationTest;
+import nl.scholtens.material.junit.TreinMaterieelApplicationTest;
 import nl.scholtens.material.domain.Locomotive;
 import nl.scholtens.material.domain.Waggon;
 import nl.scholtens.material.service.CarService;

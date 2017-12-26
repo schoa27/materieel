@@ -1,11 +1,15 @@
-package nl.scholtens.material.service;
+package nl.scholtens.material.junit.service;
 
-import nl.scholtens.material.builders.CarListBuilder;
-import nl.scholtens.material.builders.LocListBuilder;
+import nl.scholtens.material.junit.builders.CarListBuilder;
+import nl.scholtens.material.junit.builders.LocListBuilder;
 import nl.scholtens.material.domain.Locomotive;
 import nl.scholtens.material.domain.OperatorTrain;
 import nl.scholtens.material.domain.Waggon;
 import nl.scholtens.material.mapper.MaterialMapper;
+import nl.scholtens.material.service.CarService;
+import nl.scholtens.material.service.LocService;
+import nl.scholtens.material.service.OperatorService;
+import nl.scholtens.material.service.OperatorServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,8 +26,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.hamcrest.core.IsNot.not;
 import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNot.not;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.core.IsNull.nullValue;
 

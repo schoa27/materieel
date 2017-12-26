@@ -1,6 +1,6 @@
 package nl.scholtens.material.controller;
 
-import nl.scholtens.material.domain.Locomotive;
+
 import nl.scholtens.material.formobject.CarForm;
 import nl.scholtens.material.formobject.LocForm;
 import nl.scholtens.material.formobject.OperatorForm;
@@ -8,7 +8,6 @@ import nl.scholtens.material.formobject.SessionForm;
 import nl.scholtens.material.service.CarService;
 import nl.scholtens.material.service.LocService;
 import nl.scholtens.material.service.OperatorService;
-import nl.scholtens.material.service.SetupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;

@@ -1,6 +1,6 @@
-package nl.scholtens.material.controller;
+package nl.scholtens.material.junit.controller;
 
-import nl.scholtens.material.TreinMaterieelApplicationTest;
+import nl.scholtens.material.junit.TreinMaterieelApplicationTest;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

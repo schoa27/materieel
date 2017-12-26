@@ -1,6 +1,8 @@
 package nl.scholtens.material.mapper;
 
 import nl.scholtens.generated.sources.Plan;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.springframework.core.io.ClassPathResource;
 import org.xml.sax.SAXException;
 
@@ -14,6 +16,8 @@ import static javax.xml.XMLConstants.W3C_XML_SCHEMA_NS_URI;
 
 
 public class PlanMapper {
+
+    private static Logger logger = LogManager.getLogger(PlanMapper.class);
 
     public Plan mapPlan(String file) throws JAXBException, JAXBException, SAXException, IOException {
         JAXBContext ctx = JAXBContext.newInstance("nl.scholtens.generated.sources");

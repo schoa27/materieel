@@ -1,10 +1,8 @@
-package nl.scholtens.material.controller;
+package nl.scholtens.material.junit.controller;
 
-import nl.scholtens.material.TreinMaterieelApplicationTest;
-import nl.scholtens.material.domain.Locomotive;
-import nl.scholtens.material.domain.Waggon;
-import nl.scholtens.material.service.CarService;
-import nl.scholtens.material.service.LocService;
+import nl.scholtens.material.junit.TreinMaterieelApplicationTest;
+import nl.scholtens.material.domain.OperatorTrain;
+import nl.scholtens.material.service.OperatorService;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -14,17 +12,17 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 
-public class SlavesControllerTest extends TreinMaterieelApplicationTest {
+public class OperatorControllerTest extends TreinMaterieelApplicationTest {
 
     @Autowired
     private WebApplicationContext webApplicationContext;
 
     @MockBean
-    private LocService locService;
+    private OperatorService operatorService;
 
     private MockMvc mockMvc;
 
@@ -34,12 +32,11 @@ public class SlavesControllerTest extends TreinMaterieelApplicationTest {
     }
 
     @Test
-    public void getSlaveLocsTest() throws Exception {
-        Mockito.when(locService.getSlaveLocs(Mockito.anyString(), Mockito.anyString())).thenReturn(new Locomotive());
+    public void getOperatorDetailsTest() throws Exception {
+        Mockito.when(operatorService.getOpertorByLocId(Mockito.anyString(), Mockito.anyString())).thenReturn(new OperatorTrain());
 
-        mockMvc.perform(get("/slaves/loc-0"))
+        mockMvc.perform(get("/operator/loc-1"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("tractionDetails"));
+                .andExpect(view().name("OperatorView"));
     }
-
 }

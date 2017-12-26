@@ -1,16 +1,17 @@
-package nl.scholtens.material.service;
+package nl.scholtens.material.junit.service;
 
-import nl.scholtens.material.builders.CarListBuilder;
-import nl.scholtens.material.builders.LocListBuilder;
-import nl.scholtens.material.domain.Decoder;
+import nl.scholtens.material.junit.builders.CarListBuilder;
+import nl.scholtens.material.junit.builders.LocListBuilder;
 import nl.scholtens.material.domain.Locomotive;
-import nl.scholtens.material.domain.OperatorTrain;
 import nl.scholtens.material.domain.Waggon;
+import nl.scholtens.material.service.CarService;
+import nl.scholtens.material.service.LocService;
+import nl.scholtens.material.service.SearchService;
+import nl.scholtens.material.service.SearchServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;

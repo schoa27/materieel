@@ -1,6 +1,7 @@
-package nl.scholtens.material.builders;
+package nl.scholtens.material.junit.builders;
 
 import nl.scholtens.material.domain.Locomotive;
+import nl.scholtens.material.junit.builders.DecoderBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
