@@ -49,28 +49,28 @@
                 <td>
                     <table th:class="table-0-2-2">
                         <tr>
-                            <td th:text="#{lang.paths}"/>
-                            <td th:text="${xmlpath}"/>
+                            <td id="paths" th:text="#{lang.paths}"/>
+                            <td id="paths_result" th:text="${xmlpath}"/>
                         </tr>
                         <tr>
                             <td/>
-                            <td th:text="${imagepath}"/>
+                            <td id="imagepath_result" th:text="${imagepath}"/>
                         </tr>
                         <br/>
                         <tr>
-                            <td th:text="#{lang.selectlang}"/>
-                            <td th:text="#{lang. + ${local}}"/>
+                            <td id="language" th:text="#{lang.selectlang}"/>
+                            <td id="language_result" th:text="#{lang. + ${local}}"/>
                         </tr>
                         <tr>
-                            <td th:text="#{lang.build}"/>
-                            <td th:text="#{lang.rocrail}"/>
+                            <td id="build" th:text="#{lang.build}"/>
+                            <td id="rocrail" th:text="#{lang.rocrail}"/>
                         </tr>
                     </table>
                 </td>
             </tr>
         </table>
-        <input type="submit" th:value="#{lang.search}" name="zoek"/>
-        <input type="submit" style="position: absolute; left: -9999px"/>
+        <input id="search_submit" type="submit" th:value="#{lang.search}" name="zoek"/>
+        <input id="search_enter" type="submit" style="position: absolute; left: -9999px"/>
     </form>
 </fieldset>
 

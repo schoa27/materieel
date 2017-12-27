@@ -237,8 +237,9 @@
       <xs:attribute name="fnlights" use="required" type="xs:integer"/>
       <xs:attribute name="home"/>
       <xs:attribute name="id" use="required"/>
-      <xs:attribute name="ident" use="required"/>
+      <xs:attribute name="ident" use="optional"/>
       <xs:attribute name="iid" use="required"/>
+      <xs:attribute name="identifier" use="optional"/>
       <xs:attribute name="image" use="required" type="xs:NCName"/>
       <xs:attribute name="invdir" use="required" type="xs:boolean"/>
       <xs:attribute name="len" use="required" type="xs:integer"/>

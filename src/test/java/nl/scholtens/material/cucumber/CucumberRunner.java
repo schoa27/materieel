@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(format = "html:target/materialResultPage",
                  features = "src/test/resources/features",
-                 glue = "nl.scholtens.material.cucumber.stepfefinitions",
+                 glue = "nl.scholtens.material.cucumber.stepdefinitions",
                  snippets = SnippetType.CAMELCASE)
 public class CucumberRunner {
 

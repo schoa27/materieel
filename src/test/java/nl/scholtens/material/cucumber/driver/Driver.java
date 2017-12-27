@@ -1,19 +1,24 @@
 package nl.scholtens.material.cucumber.driver;
 
 
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class Driver {
 
-    public static WebDriver getWebDriverFireFox() {
+    public static WebDriver getWebDriverFireFox(int with, int height) {
         System.setProperty("webdriver.gecko.driver", "/opt/java/lib/gecko-driver/geckodriver");
-        return new FirefoxDriver();
+        FirefoxDriver driver = new FirefoxDriver();
+        driver.manage().window().setSize(new Dimension(with, height));
+        return driver;
     }
 
-    public static WebDriver getWebDriverChrome() {
+    public static WebDriver getWebDriverChrome(int with, int height) {
         System.setProperty("webdriver.chrome.driver","/opt/java/lib/chrome-driver/chromedriver");
-        return new ChromeDriver();
+        ChromeDriver driver = new ChromeDriver();
+        driver.manage().window().setSize(new Dimension(with, height));
+        return driver;
     }
 }

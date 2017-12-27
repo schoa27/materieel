@@ -76,7 +76,7 @@ public class LocForm extends Body {
     }
 
     public void setBigImage(String image) {
-        if (getImage() != null) {
+        if (getImage() != null && !getImage().isEmpty()) {
             bigImage = getImage().substring(0, getImage().length() - 6) + ".png";
         }
     }
