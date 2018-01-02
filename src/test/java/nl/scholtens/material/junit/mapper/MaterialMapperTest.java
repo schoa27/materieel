@@ -1,11 +1,10 @@
-package nl.scholtens.material.mapper;
+package nl.scholtens.material.junit.mapper;
 
 import nl.scholtens.material.domain.Locomotive;
-
 import nl.scholtens.material.domain.OperatorTrain;
 import nl.scholtens.material.domain.Waggon;
+import nl.scholtens.material.mapper.MaterialMapper;
 import org.junit.Assert;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -15,8 +14,8 @@ import javax.xml.bind.JAXBException;
 import java.io.IOException;
 import java.util.List;
 
-import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.notNullValue;
 
 /**
  * This test class uses test.xml witch is located in root of the project.
