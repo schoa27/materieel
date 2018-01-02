@@ -5,6 +5,7 @@ Feature: Het instellen van de taal en de bestands paden voor de applicatie
     Given De setup pagina is geopend
     When Selecteer de Nederlandse taal in Dropdown overzicht Change the language
     Then De Setup pagina wordt getoond in het nederlands getoond
+    And De browser wordt gesloten
 
   Scenario: De browser is gestart en staat in de setup pagina bestands paden worden gevuld
     Given De browser is gestart
@@ -14,3 +15,4 @@ Feature: Het instellen van de taal en de bestands paden voor de applicatie
     And  Pad voor de afbeedling wordt in gevuld
     And  Wordt op de Doorgaan knop gedrukt
     Then Overzicht pagina wordt getoond met alle instellingen
+    And De browser wordt gesloten

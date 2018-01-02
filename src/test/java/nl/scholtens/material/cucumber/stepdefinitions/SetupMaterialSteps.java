@@ -3,6 +3,7 @@ package nl.scholtens.material.cucumber.stepdefinitions;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import nl.scholtens.material.cucumber.MaterialFeatureTest;
 import nl.scholtens.material.cucumber.driver.Driver;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -14,7 +15,7 @@ import static org.hamcrest.Matchers.comparesEqualTo;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.text.IsEqualIgnoringCase.equalToIgnoringCase;
 
-public class SetupMaterialSteps {
+public class SetupMaterialSteps extends MaterialFeatureTest {
 
     public static final String XML_FILE = "/home/schoa27/temp/rocrail/loc.xml";
     public static final String IMAGE_PATH = "/home/schoa27/temp/rocrail/image/";
@@ -41,7 +42,6 @@ public class SetupMaterialSteps {
     @Then("^De Setup pagina wordt getoond in het nederlands getoond$")
     public void deSetupPaginaWordtGetoondInHetNederlandsGetoond() throws Throwable {
         Assert.assertThat(driver.findElement(By.name("nl")).getText(), equalToIgnoringCase("Nederlands"));
-        driver.close();
     }
 
     @When("^Pad voor het XML bestand wordt in gevuld$")
@@ -64,5 +64,21 @@ public class SetupMaterialSteps {
         Assert.assertThat(driver.findElement(By.id("xmlpath")).getText(), equalTo(XML_FILE));
         Assert.assertThat(driver.findElement(By.id("imagepath")).getText(), equalTo(IMAGE_PATH));
         Assert.assertThat(driver.findElement(By.id("language_result")).getText(), equalTo("Nederlands"));
+    }
+
+
+    @When("^Bij volgende pagina wordt op de knop Locomotief Overzicht gedrukt$")
+    public void bijVolgendePaginaWordtOpDeKnopLocomotiefOverzichtGedrukt() throws Throwable {
+        driver.findElement(By.name("loc")).click();
+    }
+
+    @Then("^wordt een lijst met locomotieven getoond$")
+    public void wordtEenLijstMetLocomotievenGetoond() throws Throwable {
+        Assert.assertThat(driver.findElement(By.id("loc_overview")).getText(), equalTo("Locomotief Overzicht"));
+    }
+
+    @Then("^De browser wordt gesloten$")
+    public void deBrowserWordtGesloten() throws Throwable {
+        driver.close();
     }
 }

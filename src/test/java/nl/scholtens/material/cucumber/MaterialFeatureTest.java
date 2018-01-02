@@ -5,4 +5,6 @@ import org.springframework.test.context.ContextConfiguration;
 
 @ContextConfiguration
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT )
-public abstract class MaterialFeatureTest {}
+public abstract class MaterialFeatureTest {
+
+}

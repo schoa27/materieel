@@ -22,7 +22,7 @@ public class StartMaterialSteps extends MaterialFeatureTest {
         System.out.println("De browser wordt gestart");
 //        driver = Driver.getWebDriverFireFox();
         driver = Driver.getWebDriverChrome(1300, 700);
-        Assert.assertThat(this.driver, not(nullValue()));
+        Assert.assertThat(driver, not(nullValue()));
     }
 
     @When("^Het adres van Materieel Overzicht wordt in gevuld in dres balk$")
