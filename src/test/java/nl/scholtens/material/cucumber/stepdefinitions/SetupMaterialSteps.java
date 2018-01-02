@@ -77,6 +77,18 @@ public class SetupMaterialSteps extends MaterialFeatureTest {
         Assert.assertThat(driver.findElement(By.id("loc_overview")).getText(), equalTo("Locomotief Overzicht"));
     }
 
+    @When("^Bij volgende pagina wordt op de knop Wagen Overzicht gedrukt$")
+    public void bijVolgendePaginaWordtOpDeKnopWagenOverzichtGedrukt() throws Throwable {
+        driver.findElement(By.name("car")).click();
+
+    }
+
+    @Then("^wordt een lijst met Waggons getoond$")
+    public void wordtEenLijstmetWaggonsGetoond() throws Throwable {
+        Assert.assertThat(driver.findElement(By.id("car_overview")).getText(), equalTo("Wagen Overzicht"));
+    }
+
+
     @Then("^De browser wordt gesloten$")
     public void deBrowserWordtGesloten() throws Throwable {
         driver.close();
