@@ -237,7 +237,7 @@
       <xs:attribute name="fnlights" use="required" type="xs:integer"/>
       <xs:attribute name="home"/>
       <xs:attribute name="id" use="required"/>
-      <xs:attribute name="ident" use="required"/>
+      <xs:attribute name="ident" use="optional"/>
       <xs:attribute name="iid" use="required"/>
       <xs:attribute name="image" use="required" type="xs:NCName"/>
       <xs:attribute name="invdir" use="required" type="xs:boolean"/>
@@ -252,12 +252,13 @@
       <xs:attribute name="prev_ori" use="optional" type="xs:NCName"/>
       <xs:attribute name="prev_x" use="optional" type="xs:integer"/>
       <xs:attribute name="prev_y" use="optional" type="xs:integer"/>
-      <xs:attribute name="prevlocation1"/>
+            <xs:attribute name="prevlocation1"/>
       <xs:attribute name="prevlocation2"/>
       <xs:attribute name="prevlocation3"/>
       <xs:attribute name="prot" use="required" type="xs:NCName"/>
       <xs:attribute name="protver" use="required" type="xs:integer"/>
       <xs:attribute name="purchased" use="required"/>
+      <xs:attribute name="identifier" use="optional"/>
       <xs:attribute name="remark" use="required"/>
       <xs:attribute name="roadname" use="required"/>
       <xs:attribute name="show" use="required" type="xs:boolean"/>
