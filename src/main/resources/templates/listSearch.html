@@ -50,16 +50,16 @@
                     <table th:class="table-0-2-2">
                         <tr>
                             <td th:text="#{lang.paths}"/>
-                            <td th:text="${xmlpath}"/>
+                            <td id="xmlpath" th:text="${xmlpath}"/>
                         </tr>
                         <tr>
                             <td/>
-                            <td th:text="${imagepath}"/>
+                            <td id="imagepath" th:text="${imagepath}"/>
                         </tr>
                         <br/>
                         <tr>
                             <td th:text="#{lang.selectlang}"/>
-                            <td th:text="#{lang. + ${local}}"/>
+                            <td id="language_result" th:text="#{lang. + ${local}}"/>
                         </tr>
                         <tr>
                             <td th:text="#{lang.build}"/>
