@@ -13,27 +13,39 @@
 <body>
 
 <fieldset class="fieldset">
-    <table class="tabel" style="text-align: left; width: 100%;" border="0" cellpadding="1"
-           cellspacing="1">
+    <div th:if="${!form.locomotives.empty}">
+        <table class="tabel" style="text-align: left; width: 100%;" border="0" cellpadding="1"
+               cellspacing="1">
+            <tbody>
+            <tr>
+                <td style="vertical-align: middle; text-align: center;"><h3 th:text="#{lang.locoverview}"/></td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                    <div th:include="fragments/locomotives"/>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div th:if="${!form.waggons.empty}">
+        <table class="tabel" style="text-align: left; width: 100%;" border="0" cellpadding="1">
+            <tbody>
+            <tr>
+                <td style="vertical-align: middle; text-align: center;"><h3 th:text="#{lang.caroverview}"/></td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                    <div th:include="fragments/cars"/>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <table class="tabel" style="text-align: left; width: 100%;" border="0" cellpadding="1">
         <tbody>
-        <tr>
-            <td style="vertical-align: middle; text-align: center;"><h3 th:text="#{lang.locoverview}"/></td>
-        </tr>
-        <tr>
-            <td style="vertical-align: top;">
-                <div th:include="fragments/locomotives"/>
-            </td>
-        </tr>
-        <div th:if="${!form.waggons.empty}">
-        <tr>
-            <td style="vertical-align: middle; text-align: center;"><h3 th:text="#{lang.caroverview}"/></td>
-        </tr>
-        <tr>
-            <td style="vertical-align: top;">
-                <div th:include="fragments/cars"/>
-            </td>
-        </tr>
-        </div>
         <tr>
             <td>
                 <form method="post" action="/setup" name="setup">

@@ -22,7 +22,7 @@
                 th:each="waggon, iterstat: ${form.waggons}">
 
                 <td th:text="${waggon.manufactor}" th:id="|td${iterstat.index}|"/>
-                <td th:text="${waggon.carid}" th:id="|td${iterstat.index}|"/>
+                <td th:text="${waggon.catalognr}" th:id="|td${iterstat.index}|"/>
                 <td th:text="${waggon.company}" th:id="|td${iterstat.index}|"/>
                 <td th:text="#{lang. + ${waggon.type}}" th:id="|td${iterstat.index}|"/>
                 <div th:if="${!waggon.image.empty} ">
