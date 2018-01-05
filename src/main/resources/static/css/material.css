@@ -5,14 +5,22 @@ body {
 	width: 1242px;
 }
 
-.scroltable{
+.scroltable400 {
 	overflow-y:scroll;
 	height: 400px;
 	width: 100%;
 	display: inline-block;
 }
 
-.scroltableA{
+.scroltable200 {
+	vertical-align: top;
+	overflow-y:scroll;
+	height: 200px;
+	width: 100%;
+	display: inline-block;
+}
+
+.scroltable100 {
 	overflow-y:auto;
 	height:100px;
 	width: 100%;
@@ -42,10 +50,9 @@ a.cursief {
 
 /*id definities */
 #table-1-1-1 {
-	border-color: black;
 	text-align: left;
 	width: 100%;
-	border: 1px solid black;
+	border: 1px black;
 	padding: 1px;
 	border-spacing: 1px;
 }

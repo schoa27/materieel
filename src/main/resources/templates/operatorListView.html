@@ -18,7 +18,7 @@
             </tr>
             <tr>
                 <td>
-                    <div class="scroltable">
+                    <div th:class="scroltable400">
                         <table class="sortable" style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
                             <tbody>
                             <tr>
@@ -32,7 +32,7 @@
                                 <td th:text="${operatorTrain.id}"/>
                                 <td th:text="${operatorTrain.locId}"/>
                                 <td><span th:text="#{lang.traction}"/>
-                                    <div class="scroltableA">
+                                    <div th:class="scroltable100">
                                         <table style="text-align: left; width: 100%;" border="1"
                                                cellpadding="2" cellspacing="2">
                                             <tbody>
@@ -56,7 +56,7 @@
                                 </td>
 
                                 <td><span th:text="#{lang.waggons}"/>
-                                    <div class="scroltableA">
+                                    <div th:class="scroltable100">
                                         <table style="text-align: left; width: 100%;" border="1"
                                                cellpadding="2" cellspacing="2">
                                             <tbody>

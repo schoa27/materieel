@@ -14,15 +14,14 @@
 
 <fieldset class="fieldset">
     <div th:if="${!form.locomotives.empty}">
-        <table class="tabel" style="text-align: left; width: 100%;" border="0" cellpadding="1"
-               cellspacing="1">
+        <table th:class="table-0-2-2">
             <tbody>
             <tr>
-                <td style="vertical-align: middle; text-align: center;"><h3 th:text="#{lang.locoverview}"/></td>
+                <td th:class="middleCenter"><h3 th:text="#{lang.locoverview}"/></td>
             </tr>
             <tr>
-                <td style="vertical-align: top;">
-                    <div th:include="fragments/locomotives"/>
+                <td>
+                    <div th:class="scroltable200" th:include="fragments/locomotives"/>
                 </td>
             </tr>
             </tbody>
@@ -30,21 +29,21 @@
     </div>
 
     <div th:if="${!form.waggons.empty}">
-        <table class="tabel" style="text-align: left; width: 100%;" border="0" cellpadding="1">
+        <table th:class="table-0-2-2">
             <tbody>
             <tr>
-                <td style="vertical-align: middle; text-align: center;"><h3 th:text="#{lang.caroverview}"/></td>
+                <td th:class="middleCenter"><h3 th:text="#{lang.caroverview}"/></td>
             </tr>
             <tr>
-                <td style="vertical-align: top;">
-                    <div th:include="fragments/cars"/>
+                <td>
+                    <div th:class="scroltable200" th:include="fragments/cars"/>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
 
-    <table class="tabel" style="text-align: left; width: 100%;" border="0" cellpadding="1">
+    <table th:class="table-0-2-2">
         <tbody>
         <tr>
             <td>
