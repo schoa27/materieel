@@ -8,7 +8,7 @@
 
 <div th:fragment="locomotives">
     <div>
-        <table th:class="sortable" style="text-align: left; width: 100%;" border="1" cellpadding="1" cellspacing="1">
+        <table th:class="sortable" style="text-align: left; width: 100%;" border="1" cellpadding="1" cellspacing="2">
             <tbody>
             <tr>
                 <td th:text="#{lang.owner}"/>
@@ -18,7 +18,7 @@
                 <td th:text="#{lang.engine}"/>
                 <td th:text="#{lang.image}"/>
             </tr>
-            <tr onmouseover="ChangeColor(this, true);" onmouseout="ChangeColor(this, false);"
+            <tr th:onmouseover="'ChangeColor(this, true);'" th:onmouseout="'ChangeColor(this, false);'"
                 th:onclick="'javascript:DetailGegevens(\'/' + ${'loc-'} + ${locomotive.id} + '\');'"
                 th:each="locomotive, iterstat: ${form.locomotives}">
                 <td th:text="${locomotive.owner}" th:id="|td${iterstat.index}|"/>

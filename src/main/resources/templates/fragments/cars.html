@@ -7,31 +7,31 @@
 <body>
 
 <div th:fragment="cars">
-    <div>
-        <table th:class="sortable" style="text-align: left; width: 100%;" border="1" cellpadding="1" cellspacing="2">
-            <tbody>
-            <tr>
-                <td th:text="#{lang.owner}"/>
-                <td th:text="#{lang.catalognr}"/>
-                <td th:text="#{lang.company}"/>
-                <td th:text="#{lang.type}"/>
-                <td th:text="#{lang.image}"/>
-            </tr>
-            <tr onmouseover="ChangeColor(this, true);" onmouseout="ChangeColor(this, false);"
-                th:onclick="'javascript:DetailGegevens(\'/' +  ${'car-'} + ${waggon.id} + '\');'"
-                th:each="waggon, iterstat: ${form.waggons}">
+    <table th:class="sortable" style="text-align: left; width: 100%;" border="1" cellpadding="1" cellspacing="2">
+        <thead>
+        <tr>
+            <td th:text="#{lang.owner}"/>
+            <td th:text="#{lang.catalognr}"/>
+            <td th:text="#{lang.company}"/>
+            <td th:text="#{lang.type}"/>
+            <td th:text="#{lang.image}"/>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:onmouseover="'ChangeColor(this, true);'" th:onmouseout="'ChangeColor(this, false)'"
+            th:onclick="'javascript:DetailGegevens(\'/' +  ${'car-'} + ${waggon.id} + '\');'"
+            th:each="waggon, iterstat: ${form.waggons}">
 
-                <td th:text="${waggon.manufactor}" th:id="|td${iterstat.index}|"/>
-                <td th:text="${waggon.catalognr}" th:id="|td${iterstat.index}|"/>
-                <td th:text="${waggon.company}" th:id="|td${iterstat.index}|"/>
-                <td th:text="#{lang. + ${waggon.type}}" th:id="|td${iterstat.index}|"/>
-                <div th:if="${!waggon.image.empty} ">
-                    <td th:id="|td${iterstat.index}|"><img th:src="@{/image/} + ${waggon.image}"/></td>
-                </div>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+            <td th:text="${waggon.manufactor}" th:id="|td${iterstat.index}|"/>
+            <td th:text="${waggon.catalognr}" th:id="|td${iterstat.index}|"/>
+            <td th:text="${waggon.company}" th:id="|td${iterstat.index}|"/>
+            <td th:text="#{lang. + ${waggon.type}}" th:id="|td${iterstat.index}|"/>
+            <div th:if="${!waggon.image.empty} ">
+                <td th:id="|td${iterstat.index}|"><img th:src="@{/image/} + ${waggon.image}"/></td>
+            </div>
+        </tr>
+        </tbody>
+    </table>
 </div>
 
 </body>

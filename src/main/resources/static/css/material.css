@@ -52,7 +52,8 @@ a.cursief {
 #table-1-1-1 {
 	text-align: left;
 	width: 100%;
-	border: 1px black;
+	border: 2px black;
+	border-style: ridge;
 	padding: 1px;
 	border-spacing: 1px;
 }
@@ -60,7 +61,7 @@ a.cursief {
 #table-1-2-2 {
 	text-align: left;
 	width: 100%;
-	border: 1px ;
+	border: 1px black ;
 	cellpadding: 2px;
 	cellspacing: 2px;
 }
@@ -170,3 +171,13 @@ a.cursief {
 	background-color: #909090;
 	width: 620px;
 }
+
+/* Sortable tables */
+table.sortable thead {
+	background-color: #dfdfdf;
+	color: #000000;
+	cursor: pointer ;
+}
+
+
+
