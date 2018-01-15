@@ -19,15 +19,29 @@ public class ImageController {
     private SetupService setupService;
 
 
-    @RequestMapping(value = "/image/{imageName}", method = RequestMethod.GET)
+    @RequestMapping(value = "/smallImage/{imageName}", method = RequestMethod.GET)
     public @ResponseBody
-    byte[] getImage(@PathVariable(value = "imageName") String imageName) throws IOException {
-        File file = new File(getImagePath() + imageName + ".png");
+    byte[] getSmallImage(@PathVariable(value = "imageName") String imageName) throws IOException {
+        File file = new File(getSmallImagePath() + imageName + ".png");
         return Files.readAllBytes(file.toPath());
     }
-    private String getImagePath( ) {
+
+    @RequestMapping(value = "/largeImage/{imageName}", method = RequestMethod.GET)
+    public @ResponseBody
+    byte[] getLargeImage(@PathVariable(value = "imageName") String imageName) throws IOException {
+        File file = new File(getLargeImagePath() + imageName + ".png");
+        return Files.readAllBytes(file.toPath());
+    }
+
+
+    private String getSmallImagePath( ) {
         final String[] paths = readSetupFile();
         return paths[1];
+    }
+
+    private String getLargeImagePath( ) {
+        final String[] paths = readSetupFile();
+        return paths[2];
     }
 
     private String[] readSetupFile() {

@@ -2,7 +2,6 @@ package nl.scholtens.material.service;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.apache.tomcat.jni.Local;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
@@ -23,13 +22,13 @@ public class SetupServiceImpl implements SetupService {
         SimpleDateFormat dateFormatter = new SimpleDateFormat("EEEE, d MMMM ", Locale.US);
 
         if (location != null) {
-           dateFormatter = new SimpleDateFormat("EEEE, d MMMM ", Locale.forLanguageTag(location));
+            dateFormatter = new SimpleDateFormat("EEEE, d MMMM ", Locale.forLanguageTag(location));
         }
         return dateFormatter.format(new Date());
     }
 
     @Override
-    public void writeSetupFile(String pathXml, String pathImage) {
+    public void writeSetupFile(String[] paths) {
 
         BufferedWriter bufferedWriter = null;
         try {
@@ -39,9 +38,10 @@ public class SetupServiceImpl implements SetupService {
             }
             Writer writer = new FileWriter(file);
             bufferedWriter = new BufferedWriter(writer);
-            bufferedWriter.write(pathXml);
-            bufferedWriter.newLine();
-            bufferedWriter.write(pathImage);
+            for (String path : paths) {
+                bufferedWriter.write(path);
+                bufferedWriter.newLine();
+            }
         } catch (IOException e) {
             logger.error("error write file");
             e.printStackTrace();
@@ -59,7 +59,7 @@ public class SetupServiceImpl implements SetupService {
 
     @Override
     public String[] readSetupFile() {
-        String[] paths = new String[2];
+        String[] paths = new String[3];
 
         int row = 0;
         String path = null;
@@ -79,14 +79,25 @@ public class SetupServiceImpl implements SetupService {
 
     @Override
     public boolean isFileEmpty() {
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(FILENAME));
-            return br.readLine() == null;
-        } catch (FileNotFoundException e) {
-            logger.error("Unable to find the file methode isFileEmpty");
-        } catch (IOException e) {
-            logger.error("Unable to read the file methode isFileEmpty");
+        String[] paths = readSetupFile();
+
+        for (String path : paths) {
+            if (path.isEmpty()) {
+                return true;
+            }
         }
-        return true;
+        return false;
+//
+//
+//
+//        try {
+//            BufferedReader br = new BufferedReader(new FileReader(FILENAME));
+//            return br.readLine() == null;
+//        } catch (FileNotFoundException e) {
+//            logger.error("Unable to find the file methode isFileEmpty");
+//        } catch (IOException e) {
+//            logger.error("Unable to read the file methode isFileEmpty");
+//        }
+//        return true;
     }
 }

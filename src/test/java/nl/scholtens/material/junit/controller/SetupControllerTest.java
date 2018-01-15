@@ -48,7 +48,7 @@ public class SetupControllerTest extends TreinMaterieelApplicationTest {
 
     @Test
     public void instellingIniFileFiledTest() throws Exception {
-        String paths[] = {"1", "2"};
+        String paths[] = {"1", "2", "3"};
         Mockito.when(setupService.readSetupFile()).thenReturn(paths);
         mockMvc.perform(get("/setup"))
                 .andExpect(model().attribute("gevuld", false))
@@ -63,13 +63,14 @@ public class SetupControllerTest extends TreinMaterieelApplicationTest {
                 .andExpect(status().isOk())
                 .andExpect(model().attribute("gevuld", false))
                 .andExpect(model().attribute("xmlpath", "pad en bestand niet gevuld"))
-                .andExpect(model().attribute("imagepath", "pad niet gevuld"))
+                .andExpect(model().attribute("imagepathsmall", "pad niet gevuld"))
+                .andExpect(model().attribute("imagepathlarge", "pad niet gevuld"))
                 .andExpect(view().name("setupView"));
     }
 
     @Test
     public void writeSetupInputFielsEmptyTest() throws Exception {
-        String paths[] = {"1", "2"};
+        String paths[] = {"1", "2", "3"};
         Mockito.when(setupService.readSetupFile()).thenReturn(paths);
         mockMvc.perform(post("/setup"))
                 .andExpect(status().isOk())
@@ -78,15 +79,16 @@ public class SetupControllerTest extends TreinMaterieelApplicationTest {
 
     @Test
     public void writeSetupInputFielsFiledTest() throws Exception {
-        String paths[] = {"1", "2"};
+        String paths[] = {"1", "2", "3"};
         Mockito.when(setupService.readSetupFile()).thenReturn(paths);
         Mockito.when(setupService.isFileEmpty()).thenReturn(false);
 
-        Mockito.doNothing().when(setupService).writeSetupFile(Mockito.anyString() ,Mockito.anyString());
+        Mockito.doNothing().when(setupService).writeSetupFile(Mockito.anyObject());
 
         mockMvc.perform(post("/setup")
-                .param("padxml", "1")
-                .param("padafbeelding", "2")
+                .param("pathxml", "1")
+                .param("pathimagesmall", "2")
+                .param("pathimagelarge", "3")
                 .param("terug", "true"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("setupView"));

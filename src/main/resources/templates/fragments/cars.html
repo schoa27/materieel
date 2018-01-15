@@ -27,7 +27,7 @@
             <td th:text="${waggon.company}" th:id="|td${iterstat.index}|"/>
             <td th:text="#{lang. + ${waggon.type}}" th:id="|td${iterstat.index}|"/>
             <div th:if="${!waggon.image.empty} ">
-                <td th:id="|td${iterstat.index}|"><img th:src="@{/image/} + ${waggon.image}"/></td>
+                <td th:id="|td${iterstat.index}|"><img th:src="@{/smallImage/} + ${waggon.image}"/></td>
             </div>
         </tr>
         </tbody>

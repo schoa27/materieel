@@ -2,7 +2,7 @@ package nl.scholtens.material.service;
 
 public interface SetupService {
 
-    void writeSetupFile(String pathXml, String pathImage);
+    void writeSetupFile(String[] paths);
 
     String[] readSetupFile();
 

@@ -16,7 +16,6 @@ public class LocForm extends Body {
 
     private String image;
 
-    private String bigImage;
 
     public LocForm(String version, String date) {
         super(version, date);
@@ -27,7 +26,6 @@ public class LocForm extends Body {
         setLocomotive(locomotive);
         setDecoder(locomotive);
         setImage(locomotive);
-        setBigImage(getImage());
     }
 
     public LocForm(Locomotive locomotive) {
@@ -68,16 +66,6 @@ public class LocForm extends Body {
     private void setImage(Locomotive locomotive) {
         if (getLocomotive() != null) {
             image = locomotive.getImage();
-        }
-    }
-
-    public String getBigImage() {
-        return bigImage;
-    }
-
-    public void setBigImage(String image) {
-        if (getImage() != null) {
-            bigImage = getImage().substring(0, getImage().length() - 6) + ".png";
         }
     }
 }

@@ -26,11 +26,15 @@
                             <tbody>
                             <tr>
                                 <td th:text="#{lang.xmllocation}"/>
-                                <td><input type="text" name="padxml"/></td>
+                                <td><input type="text" name="pathxml"/></td>
                             </tr>
                             <tr>
-                                <td th:text="#{lang.imagelocation}"/>
-                                <td><input type="text" name="padafbeelding"/></td>
+                                <td th:text="#{lang.imagelocationsmall}"/>
+                                <td><input type="text" name="pathimagesmall"/></td>
+                            </tr>
+                            <tr>
+                                <td th:text="#{lang.imagelocationlarge}"/>
+                                <td><input type="text" name="pathimagelarge"/></td>
                             </tr>
                             </tbody>
                         </table>
@@ -44,7 +48,10 @@
                                 <td th:text="${xmlpath}"/>
                             </tr>
                             <tr>
-                                <td th:text="${imagepath}"/>
+                                <td th:text="${imagepathsmall}"/>
+                            </tr>
+                            <tr>
+                                <td th:text="${imagepathlarge}"/>
                             </tr>
                             </tbody>
                         </table>

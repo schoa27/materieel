@@ -46,18 +46,18 @@
                     <table th:class="table-nb0-0-0">
                         <tr>
                             <div th:if="${form.operatorTrain.locomotive.id !=null}">
-                                <td><img th:src="@{/image/} + ${form.operatorTrain.locomotive.image}" align="center"/>
+                                <td><img th:src="@{/smallImage/} + ${form.operatorTrain.locomotive.image}" align="center"/>
                                 </td>
                                 <div th:if="${!form.operatorTrain.locomotive.slaveLocList.empty}">
                                     <div th:each="slave, iterstat: ${form.operatorTrain.locomotive.slaveLocList}">
                                         <td th:id="|td${iterstat.index}|">
-                                            <img th:src="@{/image/} + ${slave.image}" align="center"/>
+                                            <img th:src="@{/smallImage/} + ${slave.image}" align="center"/>
                                         </td>
                                     </div>
                                 </div>
                             </div>
                             <div th:each="waggon, iterstat: ${form.operatorTrain.waggons}">
-                                <td th:id="|td${iterstat.index}|"><img th:src="@{/image/} + ${waggon.image}"
+                                <td th:id="|td${iterstat.index}|"><img th:src="@{/smallImage/} + ${waggon.image}"
                                                                        align="center"/></td>
                             </div>
                         </tr>

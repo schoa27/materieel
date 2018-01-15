@@ -2,26 +2,17 @@ package nl.scholtens.material.controller;
 
 import nl.scholtens.material.formobject.Body;
 import nl.scholtens.material.formobject.SessionForm;
-import nl.scholtens.material.service.SetupService;
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.LocaleContextResolver;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.util.Locale;
 
 @Controller
 public class SetupController extends IoController {
@@ -44,7 +35,8 @@ public class SetupController extends IoController {
             getFileParameters(model);
         } else {
             model.addObject("xmlpath", "pad en bestand niet gevuld");
-            model.addObject("imagepath", "pad niet gevuld");
+            model.addObject("imagepathsmall", "pad niet gevuld");
+            model.addObject("imagepathlarge", "pad niet gevuld");
         }
 
         model.addObject("form", new Body(buildVersion, sessionForm.getDate()));
@@ -54,16 +46,17 @@ public class SetupController extends IoController {
 
     @RequestMapping(value = "/setup", method = RequestMethod.POST)
     public ModelAndView writeSetup(HttpServletRequest request, ModelAndView model) {
-        model.addObject("gevuld", false);
         intitSessionForm();
 
-        if (request.getParameter("padxml") != null && !request.getParameter("padxml").isEmpty()
-                && !request.getParameter("padafbeelding").isEmpty()) {
+        model.addObject("gevuld", writepaths(request));
 
-            getSetupService().writeSetupFile(request.getParameter("padxml"), request.getParameter("padafbeelding"));
-
-            model.addObject("gevuld", true);
-        }
+//
+//        if (request.getParameter("pathxml") == null
+//                || !request.getParameter("pathxml").isEmpty()
+//                || !request.getParameter("pathimagesmall").isEmpty()
+//                || !request.getParameter("pathimagelarge").isEmpty()) {
+//
+//        }
 
         if (!getSetupService().isFileEmpty()) {
             model.addObject("gevuld", true);
@@ -72,6 +65,7 @@ public class SetupController extends IoController {
         if (request.getParameter("terug") != null && request.getParameter("terug").equals("true")) {
             model.addObject("gevuld", true);
         }
+
         model.addObject("form", new Body(buildVersion, sessionForm.getDate()));
         getFileParameters(model);
         model.setViewName("setupView");
@@ -165,7 +159,25 @@ public class SetupController extends IoController {
     private void getFileParameters(ModelAndView model) {
         final String[] paths = getSetupService().readSetupFile();
         model.addObject("xmlpath", paths[0]);
-        model.addObject("imagepath", paths[1]);
+        model.addObject("imagepathsmall", paths[1]);
+        model.addObject("imagepathlarge", paths[2]);
         model.addObject("local", LocaleContextHolder.getLocale().getLanguage());
+    }
+
+    private boolean writepaths(HttpServletRequest request) {
+        if (request.getParameter("pathxml") != null
+                && !request.getParameter("pathxml").isEmpty()
+                && !request.getParameter("pathimagesmall").isEmpty()
+                && !request.getParameter("pathimagelarge").isEmpty()) {
+
+            String paths[] = { request.getParameter("pathxml"),
+                    request.getParameter("pathimagesmall"),
+                    request.getParameter("pathimagelarge") };
+
+            getSetupService().writeSetupFile(paths);
+            return true;
+
+        }
+        return false;
     }
 }
