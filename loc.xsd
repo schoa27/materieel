@@ -305,6 +305,7 @@
       <xs:attribute name="shiftonly" use="required" type="xs:boolean"/>
       <xs:attribute name="shortin" type="xs:boolean"/>
       <xs:attribute name="swaptrainimage" use="required" type="xs:boolean"/>
+      <xs:attribute name="train_combination" use="optional" />
     </xs:complexType>
   </xs:element>
   <xs:element name="fundef">

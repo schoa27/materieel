@@ -41,7 +41,7 @@ public class ImageControllerTest extends TreinMaterieelApplicationTest {
         String paths[] = {"1", "test"};
         Mockito.when(setupService.readSetupFile()).thenReturn(paths);
 
-        mockMvc.perform(get("/image/bestand"))
+        mockMvc.perform(get("/smallImage/bestand"))
                 .andExpect(status().isOk());
 
     }

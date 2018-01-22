@@ -179,5 +179,10 @@ table.sortable thead {
 	cursor: pointer ;
 }
 
+div.size {
+	width: 400px;
+	height: 200px;
+}
+
 
 
