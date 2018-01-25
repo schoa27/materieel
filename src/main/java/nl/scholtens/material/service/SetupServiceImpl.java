@@ -6,8 +6,11 @@ import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
+import java.util.stream.Collectors;
 
 @Service
 public class SetupServiceImpl implements SetupService {
@@ -81,23 +84,8 @@ public class SetupServiceImpl implements SetupService {
     public boolean isFileEmpty() {
         String[] paths = readSetupFile();
 
-        for (String path : paths) {
-            if (path.isEmpty()) {
-                return true;
-            }
-        }
-        return false;
-//
-//
-//
-//        try {
-//            BufferedReader br = new BufferedReader(new FileReader(FILENAME));
-//            return br.readLine() == null;
-//        } catch (FileNotFoundException e) {
-//            logger.error("Unable to find the file methode isFileEmpty");
-//        } catch (IOException e) {
-//            logger.error("Unable to read the file methode isFileEmpty");
-//        }
-//        return true;
+        List<String> strings = Arrays.stream(paths).filter(s -> s != null).filter(s -> !s.isEmpty()).collect(Collectors.toList());
+
+        return strings.size() == 3 ? false: true;
     }
 }
