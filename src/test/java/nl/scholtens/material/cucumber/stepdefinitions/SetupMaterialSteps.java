@@ -17,8 +17,9 @@ import static org.hamcrest.text.IsEqualIgnoringCase.equalToIgnoringCase;
 
 public class SetupMaterialSteps extends MaterialFeatureTest {
 
-    public static final String XML_FILE = "/home/schoa27/temp/rocrail/loc.xml";
-    public static final String IMAGE_PATH = "/home/schoa27/temp/rocrail/image/";
+    public static final String XML_FILE = "/home/schoa27/rocrail/plans/smiplePlan/loc.xml";
+    public static final String IMAGE_PATH_SMALL = "/home/schoa27/rocrail/images/small/";
+    public static final String IMAGE_PATH_LARGE = "/home/schoa27/rocrail/images/large/";
 
     private WebDriver driver;
 
@@ -46,12 +47,25 @@ public class SetupMaterialSteps extends MaterialFeatureTest {
 
     @When("^Pad voor het XML bestand wordt in gevuld$")
     public void padVoorHetXMLBestandWordtInGevuld() throws Throwable {
-        driver.findElement(By.name("padxml")).sendKeys(XML_FILE);
+        driver.findElement(By.name("pathxml")).sendKeys(XML_FILE);
+    }
+//
+//    @When("^Pad voor de afbeedling wordt in gevuld$")
+//    public void padVoorDeAfbeedlingWordtInGevuld() throws Throwable {
+//        driver.findElement(By.name("padafbeelding")).sendKeys(IMAGE_PATH_SMALL);
+//    }
+
+
+    @When("^Pad voor kleine de afbeedlingen wordt in gevuld$")
+    public void padVvoorKleineDeAfbeedlingenWordtInGevuld() throws Throwable {
+        driver.findElement(By.name("pathimagesmall")).sendKeys(IMAGE_PATH_SMALL);
+
     }
 
-    @When("^Pad voor de afbeedling wordt in gevuld$")
-    public void padVoorDeAfbeedlingWordtInGevuld() throws Throwable {
-        driver.findElement(By.name("padafbeelding")).sendKeys(IMAGE_PATH);
+    @When("^Pad voor grote de afbeedlingen wordt in gevuld$")
+    public void padVoorGroteDeAfbeedlingenWordtInGevuld() throws Throwable {
+        driver.findElement(By.name("pathimagelarge")).sendKeys(IMAGE_PATH_LARGE);
+
     }
 
     @When("^Wordt op de Doorgaan knop gedrukt$")
@@ -62,7 +76,8 @@ public class SetupMaterialSteps extends MaterialFeatureTest {
     @Then("^Overzicht pagina wordt getoond met alle instellingen$")
     public void overzichtPaginaWordtGetoondMetAlleInstellingen() throws Throwable {
         Assert.assertThat(driver.findElement(By.id("xmlpath")).getText(), equalTo(XML_FILE));
-        Assert.assertThat(driver.findElement(By.id("imagepath")).getText(), equalTo(IMAGE_PATH));
+        Assert.assertThat(driver.findElement(By.id("imagepathsmall")).getText(), equalTo(IMAGE_PATH_SMALL));
+        Assert.assertThat(driver.findElement(By.id("imagepathlarge")).getText(), equalTo(IMAGE_PATH_LARGE));
         Assert.assertThat(driver.findElement(By.id("language_result")).getText(), equalTo("Nederlands"));
     }
 

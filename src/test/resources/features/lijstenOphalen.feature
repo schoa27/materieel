@@ -5,7 +5,8 @@ Feature: Ophalen van lijs met locomotieven, waggons, stammen
     Given De setup pagina is geopend
     When Selecteer de Nederlandse taal in Dropdown overzicht Change the language
     And Pad voor het XML bestand wordt in gevuld
-    And Pad voor de afbeedling wordt in gevuld
+    And Pad voor kleine de afbeedlingen wordt in gevuld
+    And Pad voor grote de afbeedlingen wordt in gevuld
     And Wordt op de Doorgaan knop gedrukt
     And Bij volgende pagina wordt op de knop Locomotief Overzicht gedrukt
     Then wordt een lijst met locomotieven getoond
@@ -17,7 +18,8 @@ Feature: Ophalen van lijs met locomotieven, waggons, stammen
     Given De setup pagina is geopend
     When Selecteer de Nederlandse taal in Dropdown overzicht Change the language
     And Pad voor het XML bestand wordt in gevuld
-    And Pad voor de afbeedling wordt in gevuld
+    And Pad voor kleine de afbeedlingen wordt in gevuld
+    And Pad voor grote de afbeedlingen wordt in gevuld
     And Wordt op de Doorgaan knop gedrukt
     And Bij volgende pagina wordt op de knop Wagen Overzicht gedrukt
     Then wordt een lijst met Waggons getoond

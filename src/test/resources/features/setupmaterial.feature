@@ -12,7 +12,8 @@ Feature: Het instellen van de taal en de bestands paden voor de applicatie
     Given De setup pagina is geopend
     When Selecteer de Nederlandse taal in Dropdown overzicht Change the language
     And Pad voor het XML bestand wordt in gevuld
-    And  Pad voor de afbeedling wordt in gevuld
-    And  Wordt op de Doorgaan knop gedrukt
+    And Pad voor kleine de afbeedlingen wordt in gevuld
+    And Pad voor grote de afbeedlingen wordt in gevuld
+    And Wordt op de Doorgaan knop gedrukt
     Then Overzicht pagina wordt getoond met alle instellingen
     And De browser wordt gesloten
