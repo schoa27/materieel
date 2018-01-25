@@ -1,5 +1,7 @@
 package nl.scholtens.material.cucumber.stepdefinitions;
 
+import cucumber.api.PendingException;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -20,8 +22,6 @@ public class SetupMaterialSteps extends MaterialFeatureTest {
     public static final String XML_FILE = "/home/schoa27/rocrail/plans/smiplePlan/loc.xml";
     public static final String IMAGE_PATH_SMALL = "/home/schoa27/rocrail/images/small/";
     public static final String IMAGE_PATH_LARGE = "/home/schoa27/rocrail/images/large/";
-
-    private WebDriver driver;
 
     @Given("^De browser is gestart$")
     public void deBrowserIsGestart() throws Throwable {
@@ -49,23 +49,15 @@ public class SetupMaterialSteps extends MaterialFeatureTest {
     public void padVoorHetXMLBestandWordtInGevuld() throws Throwable {
         driver.findElement(By.name("pathxml")).sendKeys(XML_FILE);
     }
-//
-//    @When("^Pad voor de afbeedling wordt in gevuld$")
-//    public void padVoorDeAfbeedlingWordtInGevuld() throws Throwable {
-//        driver.findElement(By.name("padafbeelding")).sendKeys(IMAGE_PATH_SMALL);
-//    }
-
 
     @When("^Pad voor kleine de afbeedlingen wordt in gevuld$")
     public void padVvoorKleineDeAfbeedlingenWordtInGevuld() throws Throwable {
         driver.findElement(By.name("pathimagesmall")).sendKeys(IMAGE_PATH_SMALL);
-
     }
 
     @When("^Pad voor grote de afbeedlingen wordt in gevuld$")
     public void padVoorGroteDeAfbeedlingenWordtInGevuld() throws Throwable {
         driver.findElement(By.name("pathimagelarge")).sendKeys(IMAGE_PATH_LARGE);
-
     }
 
     @When("^Wordt op de Doorgaan knop gedrukt$")
@@ -82,30 +74,35 @@ public class SetupMaterialSteps extends MaterialFeatureTest {
     }
 
 
-    @When("^Bij volgende pagina wordt op de knop Locomotief Overzicht gedrukt$")
-    public void bijVolgendePaginaWordtOpDeKnopLocomotiefOverzichtGedrukt() throws Throwable {
-        driver.findElement(By.name("loc")).click();
+    @And("^Bij volgende pagina wordt op de knop \"([^\"]*)\" Overzicht gedrukt$")
+    public void bijVolgendePaginaWordtOpDeKnopOverzichtGedrukt(String type) throws Throwable {
+        if (type.equals("Locomotief")) {
+            driver.findElement(By.name("loc")).click();
+        }
+        if (type.equals("Wagen")) {
+            driver.findElement(By.name("car")).click();
+        }
+        if (type.equals("Stam")) {
+            driver.findElement(By.name("train")).click();
+        }
     }
 
-    @Then("^wordt een lijst met locomotieven getoond$")
-    public void wordtEenLijstMetLocomotievenGetoond() throws Throwable {
-        Assert.assertThat(driver.findElement(By.id("loc_overview")).getText(), equalTo("Locomotief Overzicht"));
+    @Then("^wordt een lijst met \"([^\"]*)\" getoond$")
+    public void wordtEenLijstMetGetoond(String type) throws Throwable {
+        if (type.equals("locomotieven")) {
+            Assert.assertThat(driver.findElement(By.id("loc_overview")).getText(), equalTo("Locomotief Overzicht"));
+        }
+        if (type.equals("waggons")) {
+            Assert.assertThat(driver.findElement(By.id("car_overview")).getText(), equalTo("Wagen Overzicht"));
+        }
+        if (type.equals("stam-gegevens")) {
+            Assert.assertThat(driver.findElement(By.id("opr_overview")).getText(), equalTo("Stam Overzicht"));
+        }
     }
-
-    @When("^Bij volgende pagina wordt op de knop Wagen Overzicht gedrukt$")
-    public void bijVolgendePaginaWordtOpDeKnopWagenOverzichtGedrukt() throws Throwable {
-        driver.findElement(By.name("car")).click();
-
-    }
-
-    @Then("^wordt een lijst met Waggons getoond$")
-    public void wordtEenLijstmetWaggonsGetoond() throws Throwable {
-        Assert.assertThat(driver.findElement(By.id("car_overview")).getText(), equalTo("Wagen Overzicht"));
-    }
-
 
     @Then("^De browser wordt gesloten$")
     public void deBrowserWordtGesloten() throws Throwable {
         driver.close();
     }
+
 }

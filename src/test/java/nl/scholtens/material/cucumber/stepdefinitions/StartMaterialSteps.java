@@ -15,8 +15,6 @@ import static org.hamcrest.core.Is.is;
 
 public class StartMaterialSteps extends MaterialFeatureTest {
 
-    private WebDriver driver;
-
     @Given("^De browser wordt gestart$")
     public void deBrowserWordtGestart() throws Throwable {
         System.out.println("De browser wordt gestart");
