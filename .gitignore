@@ -1,6 +1,9 @@
 target/
 !.mvn/wrapper/maven-wrapper.jar
 
+generated.sources/
+
+
 ### STS ###
 .apt_generated
 .classpath
@@ -20,4 +23,6 @@ target/
 *.log
 
 pom.xml.releaseBackup
+pom.xml.versionsBackup
+
 release.properties

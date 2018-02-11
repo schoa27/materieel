@@ -14,7 +14,7 @@
 .thumbnail span { /*CSS for enlarged image*/
     position: absolute;
     background-color: transparent;
-    padding: 5px;
+    padding: 1px;
     left: -1000px;
     visibility: hidden;
     color: black;
@@ -22,13 +22,16 @@
 }
 
 .thumbnail span img { /*CSS for enlarged image*/
-    border-width: 2px;
-    padding: 2px;
+    border-width: 1px;
+    padding: 1px;
 }
 
 .thumbnail:hover span { /*CSS for enlarged image on hover*/
     visibility: visible;
-    top: 250px;
-    left: 120px; /*position where enlarged image should offset horizontally */
-    width: auto;
+    top: 550px;
+    left: 10px; /*position where enlarged image should offset horizontally */
+    /*width: auto;*/
+    width: 800px;
+    height: 270px;
+
 }
