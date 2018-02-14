@@ -3,41 +3,34 @@
 <head>
     <meta charset="UTF-8"/>
     <title>TractionDetails</title>
+    <link rel="stylesheet" th:href="@{/css/material.css}" type="text/css"/>
 </head>
 <body onload="window.resizeTo(1240,350)" style="background-color: #909090;">
-<h3 style="text-align: center" th:text="#{lang.slavescfg}"/>
+<h3 th:class="center" th:text="#{lang.slavescfg}"/>
 
 <fieldset>
-
     <div th:if="${!form.locomotive.slaveLocList.empty}">
-        <div class="inblok">
-            <table th:class="table-nb0-0-0">
-                <tr>
-                    <td><img th:src="@{/image/} + ${form.locomotive.image}"
-                             align="center"/></td>
-
-                    <div th:each="loc, iterstat: ${form.locomotive.slaveLocList}">
-                        <td th:id="|td${iterstat.index}|"><img th:src="@{/image/} + ${loc.image}"
-                                                               align="center"/></td>
-                    </div>
-                </tr>
-            </table>
-            <table th:class="table-nb0-0-0">
-                <tr>
-                    <td class="font" border="1" th:text="${form.locomotive.locid}"
-                        align="center"/>
-                    <td>,&nbsp;</td>
-
-                    <div th:each="loc, iterstat: ${form.locomotive.slaveLocList}">
-                        <td style="font-size: 85%" border="1" th:text="${loc.locid}" align="center"/>
-                        <td>,&nbsp;</td>
-                    </div>
-                </tr>
-            </table>
-        </div>
+        <table th:class="table-nb0-0-0">
+            <tr>
+                <td>
+                    <img th:src="@{/smallImage/} + ${form.locomotive.image}"/>
+                </td>
+                <div th:each="loc, iterstat: ${form.locomotive.slaveLocList}">
+                    <td th:id="|td${iterstat.index}|">
+                        <img th:src="@{/smallImage/} + ${loc.image}"/>
+                    </td>
+                </div>
+            </tr>
+            <tr>
+                <td th:class="font" th:text="${form.locomotive.locid}"/>
+                <div th:each="loc, iterstat: ${form.locomotive.slaveLocList}">
+                    <td th:class="font" th:text="${loc.locid}"/>
+                </div>
+            </tr>
+        </table>
     </div>
     <div th:if="${form.locomotive.slaveLocList.empty}">
-        <span th:class="center" th:text="#{lang.no-slave}" />
+        <span th:class="center" th:text="#{lang.no-slave}"/>
     </div>
 
     <table align="center" width="auto" th:border="0" cellpadding="2" cellspacing="3">

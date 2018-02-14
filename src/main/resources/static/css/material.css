@@ -139,6 +139,8 @@ a.cursief {
 	border: none;
 	border-spacing: 0px;
 	padding: 0px;
+	align-items: center;
+	text-align: center;
 }
 
 .table-3-5-5 {

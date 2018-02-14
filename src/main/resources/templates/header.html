@@ -3,8 +3,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="header">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" href="css/material.css" type="text/css"/>
-    <link rel="stylesheet" href="css/popup.css" type="text/css"/>
+    <link rel="stylesheet" th:href="@{css/material.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{css/popup.css}" type="text/css"/>
     <title th:text="#{lang.title}"/>
 
 <body>
