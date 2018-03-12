@@ -131,6 +131,7 @@
       <xs:attribute name="placing" use="required" type="xs:boolean"/>
       <xs:attribute name="prev_id" use="required"/>
       <xs:attribute name="prev_ori" type="xs:NCName"/>
+      <xs:attribute name="nraxis" use="optional"/>
       <xs:attribute name="prev_x" type="xs:integer"/>
       <xs:attribute name="prev_y" type="xs:integer"/>
       <xs:attribute name="priority" use="required" type="xs:integer"/>
@@ -156,6 +157,7 @@
       <xs:attribute name="secondnextblock4wait" use="required" type="xs:boolean"/>
       <xs:attribute name="secspcnt" use="required" type="xs:integer"/>
       <xs:attribute name="server" type="xs:NCName"/>
+      <xs:attribute name="ignorefn" use="optional" type="xs:boolean"/>
       <xs:attribute name="shortid" use="required"/>
       <xs:attribute name="shortin" use="required" type="xs:boolean"/>
       <xs:attribute name="show" use="required" type="xs:boolean"/>
@@ -168,6 +170,7 @@
       <xs:attribute name="throttleid" use="required"/>
       <xs:attribute name="throttlenr" use="required" type="xs:integer"/>
       <xs:attribute name="tourid"/>
+      <xs:attribute name="scheduleinithour" use="optional"/>
       <xs:attribute name="train"/>
       <xs:attribute name="trainlen" use="required" type="xs:integer"/>
       <xs:attribute name="trainweight" use="required" type="xs:integer"/>
