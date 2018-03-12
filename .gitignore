@@ -1,11 +1,11 @@
 target/
 !.mvn/wrapper/maven-wrapper.jar
 
-generated.sources/
+*/generated/sources/*
 
 
 ### STS ###
-.apt_generated
+*.generated
 .classpath
 .factorypath
 .project
