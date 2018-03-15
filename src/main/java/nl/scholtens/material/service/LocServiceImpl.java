@@ -99,7 +99,7 @@ public class LocServiceImpl implements LocService {
         Arrays.stream(locIds)
               .filter(locId -> !locId.isEmpty())
               .forEach(locId -> locomotive.getSlaveLocList().add(getLocomotiveByLocId(locId, locomotives)));
-        
+
         return locomotive;
     }
 
