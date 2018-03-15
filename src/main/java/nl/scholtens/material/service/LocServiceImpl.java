@@ -10,8 +10,11 @@ import org.xml.sax.SAXException;
 import javax.xml.bind.JAXBException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class LocServiceImpl implements LocService {
@@ -24,11 +27,8 @@ public class LocServiceImpl implements LocService {
     public List<Locomotive> getLocList(String file) {
         List<Locomotive> locomotives = getlocListFromFile(file);
         if (locomotives != null) {
-            for (Locomotive locomotive : locomotives) {
-                if (!locomotive.getSlaveLocIds().isEmpty()) {
-                    getSlaveLocomotives(locomotive, locomotives);
-                }
-            }
+            locomotives.stream()
+                       .forEach(locomotive -> getSlaveLocomotives(locomotive, locomotives));
         }
         return locomotives;
     }
@@ -96,11 +96,10 @@ public class LocServiceImpl implements LocService {
     private Locomotive getSlaveLocomotives(Locomotive locomotive, List<Locomotive> locomotives) {
         String[] locIds = locomotive.getSlaveLocIds().split(",");
 
-        for (String locId : locIds) {
-            if (!locId.isEmpty()) {
-                locomotive.getSlaveLocList().add(getLocomotiveByLocId(locId, locomotives));
-            }
-        }
+        Arrays.stream(locIds)
+              .filter(locId -> !locId.isEmpty())
+              .forEach(locId -> locomotive.getSlaveLocList().add(getLocomotiveByLocId(locId, locomotives)));
+        
         return locomotive;
     }
 
