@@ -36,7 +36,7 @@ public class LocServiceImpl implements LocService {
     @Override
     public Locomotive getLocById(String id, String file) {
         List<Locomotive> locomotives = getlocListFromFile(file);
-        return getLocomotiveById(id, locomotives);
+        return getSlaveLocomotives(getLocomotiveById(id, locomotives), locomotives);
     }
 
     @Override
@@ -66,6 +66,15 @@ public class LocServiceImpl implements LocService {
         return locomotive;
     }
 
+    @Override
+    public Locomotive getMasterLoc(Locomotive loc, List<Locomotive> locomotives) {
+        Optional<Locomotive> masterLoc = locomotives
+                .stream()
+                .filter(l -> l.getSlaveLocIds().contains(loc.getLocid())).findFirst();
+
+        return masterLoc.isPresent()? masterLoc.get():null;
+    }
+
     private Locomotive getLocomotiveById(String id, List<Locomotive> locomotives) {
         return locomotives
                 .stream()
@@ -93,17 +102,6 @@ public class LocServiceImpl implements LocService {
             }
         }
         return locomotive;
-    }
-
-    private Locomotive getMasterLoc(Locomotive loc, List<Locomotive> locomotives) {
-        Optional<Locomotive> masterLoc = locomotives
-                .stream()
-                .filter(l -> l.getSlaveLocIds().contains(loc.getLocid())).findFirst();
-
-        if (masterLoc.isPresent()) {
-            return masterLoc.get();
-        }
-        return null;
     }
 
     private List<Locomotive> getlocListFromFile(String file) {

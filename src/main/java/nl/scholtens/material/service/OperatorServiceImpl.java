@@ -44,6 +44,10 @@ public class OperatorServiceImpl implements OperatorService {
         List<OperatorTrain> operatorTrains = getOperatorList(file);
         OperatorTrain operatorTrain = operatorTrains.get(Integer.parseInt(operatorId));
         getLocById(operatorTrain, file);
+
+        Locomotive masterLoc = locService.getMasterLoc(operatorTrain.getLocomotive(), locService.getLocList(file));
+
+        operatorTrain.setLocomotive(masterLoc != null? masterLoc:operatorTrain.getLocomotive());
         return operatorTrain;
     }
 
@@ -52,6 +56,27 @@ public class OperatorServiceImpl implements OperatorService {
         Locomotive locomotive = locService.getLocById(locId, file);
         List<OperatorTrain> operatorTrains = getOperatorList(file);
         OperatorTrain operatorTrain = getLocomotiveByLocId(operatorTrains, locomotive.getLocid());
+
+        if (operatorTrain != null) {
+            Locomotive masterLoc = locService.getMasterLoc(operatorTrain.getLocomotive(), locService.getLocList(file));
+            operatorTrain.setLocomotive(masterLoc != null ? masterLoc : operatorTrain.getLocomotive());
+        } else {
+                operatorTrain = getOperatorFromSlaveLoc(locomotive, operatorTrains);
+        }
+
+        return operatorTrain;
+    }
+
+    private OperatorTrain getOperatorFromSlaveLoc(Locomotive locomotive, List<OperatorTrain> operatorTrains) {
+        List<Locomotive> slaveLocList = locomotive.getSlaveLocList();
+        OperatorTrain operatorTrain = null;
+        if (!slaveLocList.isEmpty()) {
+            for (Locomotive loc: slaveLocList) {
+                operatorTrain = getLocomotiveByLocId(operatorTrains, loc.getLocid());
+                operatorTrain.setLocomotive(locomotive);
+
+            }
+        }
         return operatorTrain;
     }
 
@@ -102,11 +127,7 @@ public class OperatorServiceImpl implements OperatorService {
                 .filter(o -> o.getLocId().equals(locId))
                 .findFirst();
 
-
-        if (operatorTrain.isPresent()) {
-            return operatorTrain.get();
-        }
-        return null;
+        return operatorTrain.isPresent()? operatorTrain.get():null;
     }
 
     private Integer getSlaveLenght(Locomotive locomotive) {
