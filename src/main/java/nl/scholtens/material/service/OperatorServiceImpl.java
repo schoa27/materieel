@@ -124,6 +124,9 @@ public class OperatorServiceImpl implements OperatorService {
             operatorTrain.getMasterloc().setSlaveLoc(locomotive != null? true:false);
             operatorTrain.getSlaveloc().setSlaveLoc(locomotive != null? true:false);
             operatorTrain.getMasterloc().setMasterLoc(locomotive == null? true:false);
+        } else {
+            operatorTrain.getMasterloc().setMasterLoc(true);
+            operatorTrain.getMasterloc().setSlaveLoc(false);
         }
 
         if (operatorTrain.getMasterloc() != null && operatorTrain.getMasterloc().getLength() != null) {
