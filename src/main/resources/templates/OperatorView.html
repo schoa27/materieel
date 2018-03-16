@@ -13,12 +13,12 @@
     <div th:if="${form.operatorTrain != null}">
             <table th:class="table-nb0-0-0">
                 <tr>
-                    <div th:if="${form.operatorTrain.locomotive.id !=null}">
+                    <div th:if="${form.operatorTrain.masterloc.id !=null}">
                         <td>
-                            <img th:src="@{/smallImage/} + ${form.operatorTrain.locomotive.image}"/>
+                            <img th:src="@{/smallImage/} + ${form.operatorTrain.masterloc.image}"/>
                         </td>
-                        <div th:if="${!form.operatorTrain.locomotive.slaveLocList.empty}">
-                            <div th:each="slave, iterstat: ${form.operatorTrain.locomotive.slaveLocList}">
+                        <div th:if="${!form.operatorTrain.masterloc.slaveLocList.empty}">
+                            <div th:each="slave, iterstat: ${form.operatorTrain.masterloc.slaveLocList}">
                                 <td th:id="|td${iterstat.index}|">
                                     <img th:src="@{/smallImage/} + ${slave.image}"/>
                                 </td>
@@ -33,10 +33,10 @@
                 </tr>
 
                 <tr>
-                    <div th:if="${form.operatorTrain.locomotive.id !=null}">
-                        <td class="font" border="1" th:text="${form.operatorTrain.locomotive.locid}"/>
-                        <div th:if="${!form.operatorTrain.locomotive.slaveLocList.empty}">
-                            <div th:each="slave, iterstat: ${form.operatorTrain.locomotive.slaveLocList}">
+                    <div th:if="${form.operatorTrain.masterloc.id !=null}">
+                        <td class="font" border="1" th:text="${form.operatorTrain.masterloc.locid}"/>
+                        <div th:if="${!form.operatorTrain.masterloc.slaveLocList.empty}">
+                            <div th:each="slave, iterstat: ${form.operatorTrain.masterloc.slaveLocList}">
                                 <td style="font-size: 85%" border="1" th:text="${slave.locid}"/>
                             </div>
                         </div>

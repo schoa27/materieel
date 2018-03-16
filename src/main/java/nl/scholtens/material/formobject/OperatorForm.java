@@ -54,8 +54,8 @@ public class OperatorForm extends Body {
 
     private void setLocomotive(OperatorTrain operatorTrain) {
         if (operatorTrain != null) {
-            if (operatorTrain.getLocomotive() != null) {
-                this.locomotive = operatorTrain.getLocomotive();
+            if (operatorTrain.getMasterloc() != null) {
+                this.locomotive = operatorTrain.getMasterloc();
                 setDecoder();
             }
         }

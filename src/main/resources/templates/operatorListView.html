@@ -40,7 +40,7 @@
                                                 <td th:text="#{lang.locomotive}"/>
                                                 <td th:text="#{lang.company}"/>
                                             </tr>
-                                            <div th:each="loc:${operatorTrain.locomotive}">
+                                            <div th:each="loc:${operatorTrain.masterloc}">
                                                 <div th:if="${!loc.slaveLocList.empty}">
                                                     <tr th:each="slaves: ${loc.slaveLocList}">
                                                         <div th:each="slave:${slaves}">

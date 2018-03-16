@@ -9,7 +9,8 @@
 
 <body>
 <fieldset>
-    <div th:if="${form.locomotive !=null}">
+    <div th:if="${form.locomotive !=null}"
+         th:with="loc=${form.locomotive}">
         <table th:class="tabel-main">
             <tbody>
             <tr>

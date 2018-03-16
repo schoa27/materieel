@@ -14,25 +14,51 @@
         </tr>
         <tr>
             <td>
-                <div th:if="${form.operatorTrain.locomotive.id !=null}">
-                    <table th:class="table-0-2-2">
-                        <tbody>
-                        <tr th:class="vTopw50">
-                            <td><h3 th:text="#{lang.loc}"/><br/>
-                                <div th:include="fragments/locomotive"/>
-                            </td>
-                            <td><h3 th:text="#{lang.decoder}"/><br/>
-                                <table th:class="table-3-5-5">
-                                    <tr>
-                                        <td>
-                                            <div th:include="fragments/decoder"/>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                <div th:if="${form.operatorTrain.masterloc.id !=null}">
+                    <div th:if="${form.operatorTrain.masterloc.slaveLoc == true}"
+                         th:with="loc=${form.operatorTrain.slaveloc}">
+                        <table th:class="table-0-2-2">
+                            <tbody>
+                            <tr th:class="vTopw50">
+                                <td><h3 th:text="#{lang.loc}"/><br/>
+                                    <div th:include="fragments/locomotive"/>
+                                </td>
+                                <td><h3 th:text="#{lang.decoder}"/><br/>
+                                    <table th:class="table-3-5-5">
+                                        <tr>
+                                            <td>
+                                                <div th:include="fragments/decoder"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div th:if="${form.operatorTrain.masterloc.masterLoc == true}
+                                   or (${form.operatorTrain.masterloc.masterLoc == false}
+                                          and ${form.operatorTrain.masterloc.slaveLoc == false})"
+                         th:with="loc=${form.operatorTrain.masterloc}">
+                        <table th:class="table-0-2-2">
+                            <tbody>
+                            <tr th:class="vTopw50">
+                                <td><h3 th:text="#{lang.loc}"/><br/>
+                                    <div th:include="fragments/locomotive"/>
+                                </td>
+                                <td><h3 th:text="#{lang.decoder}"/><br/>
+                                    <table th:class="table-3-5-5">
+                                        <tr>
+                                            <td>
+                                                <div th:include="fragments/decoder"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <table th:class="w12b0">
                     <tbody>
@@ -45,11 +71,12 @@
                 <div class="inblok">
                     <table th:class="table-nb0-0-0">
                         <tr>
-                            <div th:if="${form.operatorTrain.locomotive.id !=null}">
-                                <td><img th:src="@{/smallImage/} + ${form.operatorTrain.locomotive.image}" align="center"/>
+                            <div th:if="${form.operatorTrain.masterloc.id !=null}">
+                                <td><img th:src="@{/smallImage/} + ${form.operatorTrain.masterloc.image}"
+                                         align="center"/>
                                 </td>
-                                <div th:if="${!form.operatorTrain.locomotive.slaveLocList.empty}">
-                                    <div th:each="slave, iterstat: ${form.operatorTrain.locomotive.slaveLocList}">
+                                <div th:if="${!form.operatorTrain.masterloc.slaveLocList.empty}">
+                                    <div th:each="slave, iterstat: ${form.operatorTrain.masterloc.slaveLocList}">
                                         <td th:id="|td${iterstat.index}|">
                                             <img th:src="@{/smallImage/} + ${slave.image}" align="center"/>
                                         </td>
@@ -62,11 +89,11 @@
                             </div>
                         </tr>
                         <tr>
-                            <div th:if="${form.operatorTrain.locomotive.id !=null}">
-                                <td class="font" border="1" th:text="${form.operatorTrain.locomotive.locid}"
+                            <div th:if="${form.operatorTrain.masterloc.id !=null}">
+                                <td class="font" border="1" th:text="${form.operatorTrain.masterloc.locid}"
                                     align="center"/>
-                                <div th:if="${!form.operatorTrain.locomotive.slaveLocList.empty}">
-                                    <div th:each="slave, iterstat: ${form.operatorTrain.locomotive.slaveLocList}">
+                                <div th:if="${!form.operatorTrain.masterloc.slaveLocList.empty}">
+                                    <div th:each="slave, iterstat: ${form.operatorTrain.masterloc.slaveLocList}">
                                         <td class="font" border="1" th:text="${slave.locid}" align="center"/>
                                     </div>
                                 </div>

@@ -36,7 +36,16 @@ public class LocServiceImpl implements LocService {
     @Override
     public Locomotive getLocById(String id, String file) {
         List<Locomotive> locomotives = getlocListFromFile(file);
-        return getSlaveLocomotives(getLocomotiveById(id, locomotives), locomotives);
+        Locomotive locomotive = getSlaveLocomotives(getLocomotiveById(id, locomotives), locomotives);
+        Locomotive masterLoc = getMasterLoc(locomotive, locomotives);
+
+        if (masterLoc != null && !locomotive.getLocid().equals(masterLoc.getLocid())) {
+            locomotive.setSlaveLoc(true);
+        } else if (!locomotive.getSlaveLocList().isEmpty()) {
+            locomotive.setMasterLoc(true);
+        }
+
+        return locomotive;
     }
 
     @Override

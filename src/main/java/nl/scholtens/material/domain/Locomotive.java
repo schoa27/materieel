@@ -37,6 +37,10 @@ public class Locomotive {
 
     private boolean operator;
 
+    private boolean masterLoc;
+
+    private boolean slaveLoc;
+
 
     public Integer getId() {
         return id;
@@ -164,5 +168,21 @@ public class Locomotive {
 
     public void setOperator(boolean operator) {
         this.operator = operator;
+    }
+
+    public boolean isMasterLoc() {
+        return masterLoc;
+    }
+
+    public void setMasterLoc(boolean masterLoc) {
+        this.masterLoc = masterLoc;
+    }
+
+    public boolean isSlaveLoc() {
+        return slaveLoc;
+    }
+
+    public void setSlaveLoc(boolean slaveLoc) {
+        this.slaveLoc = slaveLoc;
     }
 }

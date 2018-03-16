@@ -9,7 +9,9 @@ public class OperatorTrain {
 
     private String locId;
 
-    private Locomotive locomotive = new Locomotive();
+    private Locomotive masterloc = new Locomotive();
+
+    private Locomotive slaveloc = new Locomotive();
 
     private String carIds;
 
@@ -43,12 +45,20 @@ public class OperatorTrain {
         this.locId = locId;
     }
 
-    public Locomotive getLocomotive() {
-        return locomotive;
+    public Locomotive getMasterloc() {
+        return masterloc;
     }
 
-    public void setLocomotive(Locomotive locomotive) {
-        this.locomotive = locomotive;
+    public void setMasterloc(Locomotive masterloc) {
+        this.masterloc = masterloc;
+    }
+
+    public Locomotive getSlaveloc() {
+        return slaveloc;
+    }
+
+    public void setSlaveloc(Locomotive slaveloc) {
+        this.slaveloc = slaveloc;
     }
 
     public String getCarIds() {

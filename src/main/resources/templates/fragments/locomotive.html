@@ -14,47 +14,61 @@
                     <tbody>
                     <tr>
                         <td th:class="w40" th:text="#{lang.baureihe}"/>
-                        <td th:text="${form.locomotive.locid}"/>
+                        <td th:text="${loc.locid}"/>
                     </tr>
                     <tr>
                         <td th:text="#{lang.number}"/>
-                        <td th:text="${form.locomotive.number}"/>
+                        <td th:text="${loc.number}"/>
                     </tr>
                     <tr>
                         <td th:text="#{lang.owner}"/>
-                        <td th:text="${form.locomotive.owner}"/>
+                        <td th:text="${loc.owner}"/>
                     </tr>
                     <tr>
                         <td th:text="#{lang.length}"/>
-                        <td th:text="${form.locomotive.length}"/>
+                        <td th:text="${loc.length}"/>
                     </tr>
                     <tr>
                         <td th:text="#{lang.catalognr}"/>
-                        <td th:text="${form.locomotive.catalogNumber}"/>
+                        <td th:text="${loc.catalogNumber}"/>
                     </tr>
                     <tr>
                         <td th:text="#{lang.company}"/>
-                        <td th:text="${form.locomotive.company}"/>
+                        <td th:text="${loc.company}"/>
                     </tr>
                     <tr>
                         <td th:text="#{lang.engine}"/>
-                        <td th:text="#{lang. + ${form.locomotive.engine}}"/>
+                        <td th:text="#{lang. + ${loc.engine}}"/>
                     </tr>
                     <tr>
                         <td th:text="#{lang.epoch}"/>
-                        <td th:text="${form.locomotive.era}"/>
+                        <td th:text="${loc.era}"/>
                     </tr>
                     <tr>
                         <td th:text="#{lang.used}"/>
-                        <td th:text="#{lang. + ${form.locomotive.trainType}}"/>
+                        <td th:text="#{lang. + ${loc.trainType}}"/>
                     </tr>
+
+                    <tr>
+                        <td th:text="#{lang.tractioninfo}"/>
+                        <div th:if="${loc.masterLoc == true}">
+                            <td th:text="#{lang.master}"/>
+                        </div>
+                        <div th:if="${loc.slaveLoc == true}">
+                            <td th:text="#{lang.slave}"/>
+                        </div>
+                        <div th:if="${loc.masterLoc == false} and ${loc.slaveLoc == false}">
+                            <td th:text="#{lang.notraction}"/>
+                        </div>
+                    </tr>
+
                     <tr th:class="pointer"
-                        th:onclick="'javascript:openWindow(\'/slaves/'+ ${form.locomotive.id} + '\', 0,  0);'" >
+                        th:onclick="'javascript:openWindow(\'/slaves/'+ ${loc.id} + '\', 0,  0);'">
                         <td th:text="#{lang.slavescfg}"/>
                     </tr>
-                    <div th:if="${!form.locomotive.operator}">
+                    <div th:if="${!loc.operator}">
                         <tr th:class="pointer"
-                            th:onclick="'javascript:openWindow(\'/operator/'+ ${'loc-'} + ${form.locomotive.id} + '\', 0,  0);'">
+                            th:onclick="'javascript:openWindow(\'/operator/'+ ${'loc-'} + ${loc.id} + '\', 0,  0);'">
                             <td th:text="#{lang.operatorcfg}"/>
                         </tr>
                     </div>

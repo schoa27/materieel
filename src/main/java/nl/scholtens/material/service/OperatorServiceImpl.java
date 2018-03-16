@@ -45,9 +45,6 @@ public class OperatorServiceImpl implements OperatorService {
         OperatorTrain operatorTrain = operatorTrains.get(Integer.parseInt(operatorId));
         getLocById(operatorTrain, file);
 
-        Locomotive masterLoc = locService.getMasterLoc(operatorTrain.getLocomotive(), locService.getLocList(file));
-
-        operatorTrain.setLocomotive(masterLoc != null? masterLoc:operatorTrain.getLocomotive());
         return operatorTrain;
     }
 
@@ -58,8 +55,8 @@ public class OperatorServiceImpl implements OperatorService {
         OperatorTrain operatorTrain = getLocomotiveByLocId(operatorTrains, locomotive.getLocid());
 
         if (operatorTrain != null) {
-            Locomotive masterLoc = locService.getMasterLoc(operatorTrain.getLocomotive(), locService.getLocList(file));
-            operatorTrain.setLocomotive(masterLoc != null ? masterLoc : operatorTrain.getLocomotive());
+            Locomotive masterLoc = locService.getMasterLoc(operatorTrain.getMasterloc(), locService.getLocList(file));
+            operatorTrain.setMasterloc(masterLoc != null? masterLoc : operatorTrain.getMasterloc());
         } else {
                 operatorTrain = getOperatorFromSlaveLoc(locomotive, operatorTrains);
         }
@@ -73,8 +70,9 @@ public class OperatorServiceImpl implements OperatorService {
         if (!slaveLocList.isEmpty()) {
             for (Locomotive loc: slaveLocList) {
                 operatorTrain = getLocomotiveByLocId(operatorTrains, loc.getLocid());
-                operatorTrain.setLocomotive(locomotive);
-
+                if (operatorTrain != null) {
+                    operatorTrain.setMasterloc(locomotive);
+                }
             }
         }
         return operatorTrain;
@@ -86,7 +84,7 @@ public class OperatorServiceImpl implements OperatorService {
         for (OperatorTrain operatorTrain : operatorTrains) {
             for (Locomotive locomotive : locomotives) {
                 if (operatorTrain.getLocId().equals(locomotive.getLocid())) {
-                    operatorTrain.setLocomotive(locomotive);
+                    operatorTrain.setMasterloc(locomotive);
                 }
             }
         }
@@ -111,12 +109,25 @@ public class OperatorServiceImpl implements OperatorService {
     }
 
     private void getLocById(OperatorTrain operatorTrain, String file) {
-        if (!operatorTrain.getLocId().isEmpty()) {
-            operatorTrain.setLocomotive(locService.getLocByLocId(operatorTrain.getLocId(), file));
+        Locomotive loc = locService.getLocByLocId(operatorTrain.getLocId(), file);
+
+        Locomotive masterLoc = locService.getMasterLoc(loc, locService.getLocList(file));
+
+        if (masterLoc !=null) {
+            operatorTrain.setMasterloc(masterLoc);
+            List<Locomotive> slaveLocs = masterLoc.getSlaveLocList();
+            Locomotive locomotive = slaveLocs.stream()
+                                             .filter(sl -> sl.getLocid().equals(operatorTrain.getLocId()))
+                                             .findFirst()
+                                             .get();
+            operatorTrain.setSlaveloc(locomotive);
+            operatorTrain.getMasterloc().setSlaveLoc(locomotive != null? true:false);
+            operatorTrain.getSlaveloc().setSlaveLoc(locomotive != null? true:false);
+            operatorTrain.getMasterloc().setMasterLoc(locomotive == null? true:false);
         }
 
-        if (operatorTrain.getLocomotive() != null && operatorTrain.getLocomotive().getLength() != null) {
-            operatorTrain.setLength(operatorTrain.getLength() + operatorTrain.getLocomotive().getLength() + getSlaveLenght(operatorTrain.getLocomotive()));
+        if (operatorTrain.getMasterloc() != null && operatorTrain.getMasterloc().getLength() != null) {
+            operatorTrain.setLength(operatorTrain.getLength() + operatorTrain.getMasterloc().getLength() + getSlaveLenght(operatorTrain.getMasterloc()));
         }
     }
 

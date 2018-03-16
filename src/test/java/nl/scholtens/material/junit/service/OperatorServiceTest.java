@@ -75,7 +75,7 @@ public class OperatorServiceTest {
         OperatorTrain operatorById = operatorService.getOperatorById("0", "file");
 
         Assert.assertThat(operatorById.getId(), is("0"));
-        Assert.assertThat(operatorById.getLocomotive(), notNullValue());
+        Assert.assertThat(operatorById.getMasterloc(), notNullValue());
         Assert.assertThat(operatorById.getWaggons().isEmpty(), not(true));
     }
 
